@@ -1,15 +1,24 @@
 package me.xdrop.jrand
 
+import com.google.common.base.CharMatcher
+import me.xdrop.jrand.builders.basics.CharacterGenerator
 import org.codehaus.groovy.runtime.MethodClosure
 
-class JRandTest extends groovy.util.GroovyTestCase {
+class JRandTest extends GroovyTestCase {
 
     void testBool() {
         def instance = JRand.bool()
         assertTrue instance.likelihood(100).generate()
         assertFalse instance.likelihood(0).generate()
         likelihoodTest(instance.&likelihood)
-        def fun = instance.&likelihood
+    }
+
+    void testChar() {
+        assertTrue CharMatcher.JAVA_UPPER_CASE.matchesAllOf(JRand.character().casing("upper").alpha().generate().toString())
+        assertTrue CharMatcher.JAVA_LOWER_CASE.matchesAllOf(JRand.character().casing("lower").alpha().generate().toString())
+        assertTrue CharMatcher.JAVA_LETTER.matchesAllOf(JRand.character().alpha().generate().toString())
+        assertTrue CharMatcher.JAVA_LETTER_OR_DIGIT.matchesAllOf(JRand.character().generate().toString())
+        assertTrue CharMatcher.JAVA_DIGIT.matchesAllOf(JRand.character().number().generate().toString())
     }
 
     boolean likelihoodTest(MethodClosure func) {
@@ -33,7 +42,6 @@ class JRandTest extends groovy.util.GroovyTestCase {
         println("Likelihood actual": actual);
         println("Likelihood expected": likelihood);
         assertTrue((likelihood - 3) <= actual && actual <= (likelihood + 3))
-
 
     }
 }

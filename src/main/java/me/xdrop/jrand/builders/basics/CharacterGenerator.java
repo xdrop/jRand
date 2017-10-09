@@ -9,6 +9,7 @@ public class CharacterGenerator extends Generator<Character> {
     private boolean alpha;
     private boolean symbols;
     private Casing casing;
+    private boolean number;
 
     public enum Casing {
         LOWER, UPPER
@@ -21,18 +22,53 @@ public class CharacterGenerator extends Generator<Character> {
         this.casing = Casing.LOWER;
     }
 
-    CharacterGenerator pool(String pool) {
+    public CharacterGenerator pool(String pool) {
         this.customPool = pool;
         return this;
     }
 
-    CharacterGenerator symbols(boolean symbols) {
+    public CharacterGenerator symbols(boolean symbols) {
         this.symbols = symbols;
         return this;
     }
 
-    CharacterGenerator casing(Casing casing) {
+    public CharacterGenerator alpha(boolean alpha) {
+        this.alpha = alpha;
+        return this;
+    }
+
+    public CharacterGenerator symbols() {
+        this.symbols = true;
+        return this;
+    }
+
+    public CharacterGenerator alpha() {
+        this.alpha = true;
+        return this;
+    }
+
+    public CharacterGenerator casing(Casing casing) {
         this.casing = casing;
+        return this;
+    }
+
+    public CharacterGenerator number() {
+        this.number = true;
+        return this;
+    }
+
+    public CharacterGenerator number(boolean number) {
+        this.number = number;
+        return this;
+    }
+
+
+    public CharacterGenerator casing(String casing) {
+        if (casing.equalsIgnoreCase("lower")) {
+            this.casing = Casing.LOWER;
+        } else {
+            this.casing = Casing.UPPER;
+        }
         return this;
     }
 
@@ -57,6 +93,8 @@ public class CharacterGenerator extends Generator<Character> {
                 charPool = letterPool;
             } else if (symbols) {
                 charPool = Constants.symbolsPool;
+            } else if (number) {
+                charPool = Constants.numericPool;
             } else {
                 charPool = letterPool + Constants.numericPool + Constants.symbolsPool;
             }
