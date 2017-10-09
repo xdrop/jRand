@@ -9,7 +9,6 @@ class JRandTest extends groovy.util.GroovyTestCase {
         assertTrue instance.likelihood(100).generate()
         assertFalse instance.likelihood(0).generate()
         likelihoodTest(instance.&likelihood)
-        def fun = instance.&likelihood
     }
 
     boolean likelihoodTest(MethodClosure func) {
