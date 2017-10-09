@@ -1,9 +1,7 @@
 package me.xdrop.jrand.builders.basics;
 
-import com.sun.tools.internal.jxc.apt.Const;
 import me.xdrop.jrand.Constants;
 import me.xdrop.jrand.Generator;
-import sun.plugin.converter.resources.Converter_sv;
 
 public class CharacterGenerator extends Generator<Character> {
 
@@ -11,6 +9,10 @@ public class CharacterGenerator extends Generator<Character> {
     private boolean alpha;
     private boolean symbols;
     private Casing casing;
+
+    public enum Casing {
+        LOWER, UPPER
+    }
 
     public CharacterGenerator() {
         this.customPool = null;
@@ -33,6 +35,7 @@ public class CharacterGenerator extends Generator<Character> {
         this.casing = casing;
         return this;
     }
+
 
     @Override
     public Character generate() {
@@ -60,10 +63,5 @@ public class CharacterGenerator extends Generator<Character> {
         }
 
         return charPool.charAt(random().randInt(charPool.length() - 1));
-    }
-
-
-    public enum Casing {
-        LOWER, UPPER
     }
 }
