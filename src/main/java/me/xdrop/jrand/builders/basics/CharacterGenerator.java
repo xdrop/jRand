@@ -19,6 +19,7 @@ public class CharacterGenerator extends Generator<Character> {
         this.customPool = null;
         this.alpha = false;
         this.symbols = false;
+        this.number = false;
         this.casing = Casing.LOWER;
     }
 
