@@ -20,10 +20,7 @@ public class CharacterGenerator extends Generator<Character> {
     public CharacterGenerator include(CHARSET... charsets) {
 
         for (CHARSET set : charsets) {
-            if (includedCharsets.contains(set)) {
-                continue;
-            } else {
-                includedCharsets.add(set);
+            if (!includedCharsets.add(set)) {
                 for (char c : set.getCharset()) {
                     charPool.add(c);
                 }
