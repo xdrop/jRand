@@ -1,12 +1,14 @@
 package me.xdrop.jrand.builders.basics;
 
+import me.xdrop.jrand.Constants;
 import me.xdrop.jrand.Generator;
 
-public class FloatGenerator extends Generator<Float> {
-    private float min;
-    private float max;
+public class DoubleGenerator extends Generator<Double> {
 
-    public FloatGenerator() {
+    private double min;
+    private double max;
+
+    public DoubleGenerator() {
         this.min = 0;
         this.max = 1;
     }
@@ -16,7 +18,7 @@ public class FloatGenerator extends Generator<Float> {
      * @param max The maximum value
      * @return
      */
-    public FloatGenerator max(float max) {
+    public DoubleGenerator max(double max) {
         this.max = max;
         return this;
     }
@@ -26,15 +28,15 @@ public class FloatGenerator extends Generator<Float> {
      * @param min The minimum value
      * @return
      */
-    public FloatGenerator min(float min) {
+    public DoubleGenerator min(double min) {
         this.min = min;
         return this;
     }
 
     @Override
-    public Float rand() {
-        float rand = random().randFloat();
-        float result = min + (rand * (max-min));
+    public Double rand() {
+        double rand = random().randDouble();
+        double result = min + (rand * (max-min));
         return result;
     }
 }

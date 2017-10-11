@@ -14,6 +14,10 @@ public abstract class Generator<T> {
         return this.randGen;
     }
 
-    public abstract T generate();
+    public abstract T rand();
+
+    public String randString() {
+        return rand().toString();
+    }
 
 }

@@ -1,16 +1,26 @@
 package me.xdrop.jrand;
 
-import me.xdrop.jrand.builders.basics.BoolGenerator;
-import me.xdrop.jrand.builders.basics.CharacterGenerator;
+import me.xdrop.jrand.builders.basics.*;
 
+/*
+                               JRand Facade
+ */
 public class JRand {
 
-    public static BoolGenerator bool() {
+    public static final BoolGenerator bool() {
         return new BoolGenerator();
     }
 
-    public static CharacterGenerator character() {
+    public static final CharacterGenerator character() {
         return new CharacterGenerator();
+    }
+
+    public static final DoubleGenerator dbl() { return new DoubleGenerator(); }
+
+    public static final FloatGenerator flt() { return new FloatGenerator(); }
+
+    public static final DecimalGenerator decimal() {
+        return new DecimalGenerator();
     }
 
 
