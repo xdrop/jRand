@@ -18,16 +18,16 @@ public abstract class Generator<T> {
         return this.randGen;
     }
 
-    public abstract T rand();
+    public abstract T gen();
 
     public String randString() {
-        return rand().toString();
+        return gen().toString();
     }
 
-    public Collection<T> generateMany(int num){
+    public Collection<T> genMany(int num){
         List<T> many = new ArrayList<>();
         for(int n = 0; n < num; n++) {
-            many.add(generate());
+            many.add(gen());
         }
         return many;
     }

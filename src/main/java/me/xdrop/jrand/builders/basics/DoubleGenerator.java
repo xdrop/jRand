@@ -34,7 +34,7 @@ public class DoubleGenerator extends Generator<Double> {
     }
 
     @Override
-    public Double rand() {
+    public Double gen() {
         double rand = random().randDouble();
         double result = min + (rand * (max-min));
         return result;

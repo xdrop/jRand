@@ -14,6 +14,7 @@ public class CharacterGenerator extends Generator<Character> {
 
     public CharacterGenerator() {
         this.charPool = new ArrayList<>(30);
+        this.includedCharsets = new HashSet<>();
     }
 
     public CharacterGenerator include(CHARSET... charsets) {
@@ -34,7 +35,7 @@ public class CharacterGenerator extends Generator<Character> {
 
 
     @Override
-    public Character generate() {
+    public Character gen() {
         return charPool.get(random().randInt(charPool.size() - 1));
     }
 }
