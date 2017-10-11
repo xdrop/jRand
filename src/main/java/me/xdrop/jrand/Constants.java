@@ -1,6 +1,10 @@
 package me.xdrop.jrand;
 
 public class Constants {
+
+    public static int MAX_INT = Integer.MAX_VALUE;
+    public static int MIN_INT = Integer.MIN_VALUE;
+
     public static String alphaLowerPool = "abcdefghijklmnopqrstuvwxyz";
     public static String alphaUpperPool = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     public static String numericPool    = "1234567890";

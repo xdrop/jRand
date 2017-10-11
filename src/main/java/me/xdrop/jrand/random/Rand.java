@@ -9,6 +9,10 @@ public class Rand {
         return random.nextFloat();
     }
 
+    public double randDouble() {
+        return random.nextDouble();
+    }
+
     public int randInt() {
         return random.nextInt();
     }

@@ -75,7 +75,7 @@ public class CharacterGenerator extends Generator<Character> {
 
 
     @Override
-    public Character generate() {
+    public Character rand() {
         String charPool;
         String letterPool;
 
