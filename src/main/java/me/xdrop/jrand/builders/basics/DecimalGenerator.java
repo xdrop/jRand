@@ -52,7 +52,7 @@ public class DecimalGenerator extends Generator<String> {
     }
 
     @Override
-    public String rand() {
+    public String gen() {
         double rand = random().randDouble();
         BigDecimal decimal;
         if (roundUp) {
