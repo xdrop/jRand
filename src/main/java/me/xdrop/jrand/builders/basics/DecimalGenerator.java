@@ -1,6 +1,7 @@
 package me.xdrop.jrand.builders.basics;
 
 import me.xdrop.jrand.Generator;
+import me.xdrop.jrand.JRand;
 
 import java.math.BigDecimal;
 
@@ -53,7 +54,7 @@ public class DecimalGenerator extends Generator<String> {
 
     @Override
     public String rand() {
-        double rand = random().randDouble();
+        double rand = JRand.dbl().min(this.min).max(this.max).rand();
         BigDecimal decimal;
         if (roundUp) {
             decimal = BigDecimal.valueOf(rand).setScale(digits, BigDecimal.ROUND_UP);

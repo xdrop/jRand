@@ -22,13 +22,18 @@ class JRandTest extends GroovyTestCase {
     }
 
     void testDouble() {
-        assertTrue JRand.dbl().max(2) <= 2
-        assertTrue JRand.dbl().min(5) >= 5
+        assertTrue JRand.dbl().max(2).rand() <= 2
+        assertTrue JRand.dbl().min(5).rand() >= 5
     }
 
     void testFloat() {
-        assertTrue JRand.flt().max(2) <=2
-        assertTrue JRand.flt().min(5) >=5
+        assertTrue JRand.flt().max(2).rand() <=2
+        assertTrue JRand.flt().min(5).rand() >=5
+    }
+
+    void testDecimal() {
+        println JRand.decimal().min(4).min(1).digits(2).rand()
+        assertTrue JRand.decimal().max(4).min(1).digits(2).rand().length() == 4
     }
 
     boolean likelihoodTest(MethodClosure func) {

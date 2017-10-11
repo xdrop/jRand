@@ -7,8 +7,8 @@ public class FloatGenerator extends Generator<Float> {
     private float max;
 
     public FloatGenerator() {
-        this.min = 0;
-        this.max = 1;
+        this.min = Float.MIN_VALUE;
+        this.max = Float.MAX_VALUE;
     }
 
     /**

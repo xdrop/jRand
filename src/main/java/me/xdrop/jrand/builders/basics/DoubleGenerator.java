@@ -9,8 +9,8 @@ public class DoubleGenerator extends Generator<Double> {
     private double max;
 
     public DoubleGenerator() {
-        this.min = 0;
-        this.max = 1;
+        this.min = Double.MIN_VALUE;
+        this.max = Double.MAX_VALUE;
     }
 
     /**
