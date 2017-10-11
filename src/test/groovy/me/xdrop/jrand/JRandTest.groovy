@@ -2,6 +2,7 @@ package me.xdrop.jrand
 
 import com.google.common.base.CharMatcher
 import me.xdrop.jrand.builders.basics.CharacterGenerator
+import me.xdrop.jrand.builders.basics.enums.CHARSET
 import org.codehaus.groovy.runtime.MethodClosure
 
 class JRandTest extends GroovyTestCase {
@@ -14,7 +15,7 @@ class JRandTest extends GroovyTestCase {
     }
 
     void testChar() {
-        assertTrue CharMatcher.JAVA_UPPER_CASE.matchesAllOf(JRand.character().generate().toString())
+        assertTrue CharMatcher.JAVA_UPPER_CASE.matchesAllOf(JRand.character().include(CHARSET.CHARS_UPPER).generate().toString());
         assertTrue CharMatcher.JAVA_LOWER_CASE.matchesAllOf(JRand.character().casing("lower").alpha().generate().toString())
         assertTrue CharMatcher.JAVA_LETTER.matchesAllOf(JRand.character().alpha().generate().toString())
         assertTrue CharMatcher.JAVA_LETTER_OR_DIGIT.matchesAllOf(JRand.character().generate().toString())

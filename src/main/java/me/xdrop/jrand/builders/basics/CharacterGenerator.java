@@ -37,14 +37,4 @@ public class CharacterGenerator extends Generator<Character> {
     public Character generate() {
         return charPool.get(random().randInt(charPool.size() - 1));
     }
-
-    @Override
-    public Collection<Character> generateMany(int num) {
-        List<Character> list = new ArrayList<>();
-        for(int n = 0; n < num; n++) {
-            list.add(this.generate());
-        }
-
-        return list;
-    }
 }

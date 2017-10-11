@@ -2,7 +2,9 @@ package me.xdrop.jrand;
 
 import me.xdrop.jrand.random.Rand;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public abstract class Generator<T> {
 
@@ -18,6 +20,12 @@ public abstract class Generator<T> {
 
     public abstract T generate();
 
-    public abstract Collection<T> generateMany(int num);
+    public Collection<T> generateMany(int num){
+        List<T> many = new ArrayList<>();
+        for(int n = 0; n < num; n++) {
+            many.add(generate());
+        }
+        return many;
+    }
 
 }
