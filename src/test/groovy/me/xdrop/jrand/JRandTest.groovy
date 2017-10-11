@@ -14,7 +14,7 @@ class JRandTest extends GroovyTestCase {
     }
 
     void testChar() {
-        assertTrue CharMatcher.JAVA_UPPER_CASE.matchesAllOf(JRand.character().casing("upper").alpha().generate().toString())
+        assertTrue CharMatcher.JAVA_UPPER_CASE.matchesAllOf(JRand.character().generate().toString())
         assertTrue CharMatcher.JAVA_LOWER_CASE.matchesAllOf(JRand.character().casing("lower").alpha().generate().toString())
         assertTrue CharMatcher.JAVA_LETTER.matchesAllOf(JRand.character().alpha().generate().toString())
         assertTrue CharMatcher.JAVA_LETTER_OR_DIGIT.matchesAllOf(JRand.character().generate().toString())
