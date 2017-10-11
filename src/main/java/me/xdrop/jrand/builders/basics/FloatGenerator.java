@@ -32,7 +32,7 @@ public class FloatGenerator extends Generator<Float> {
     }
 
     @Override
-    public Float rand() {
+    public Float gen() {
         float rand = random().randFloat();
         float result = min + (rand * (max-min));
         return result;

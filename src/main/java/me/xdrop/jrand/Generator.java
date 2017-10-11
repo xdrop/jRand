@@ -2,6 +2,10 @@ package me.xdrop.jrand;
 
 import me.xdrop.jrand.random.Rand;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 public abstract class Generator<T> {
 
     private Rand randGen;
@@ -14,10 +18,18 @@ public abstract class Generator<T> {
         return this.randGen;
     }
 
-    public abstract T rand();
+    public abstract T gen();
 
     public String randString() {
-        return rand().toString();
+        return gen().toString();
+    }
+
+    public Collection<T> genMany(int num){
+        List<T> many = new ArrayList<>();
+        for(int n = 0; n < num; n++) {
+            many.add(gen());
+        }
+        return many;
     }
 
 }
