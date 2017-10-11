@@ -1,25 +1,34 @@
 package me.xdrop.jrand
 
 import com.google.common.base.CharMatcher
-import me.xdrop.jrand.builders.basics.CharacterGenerator
-import me.xdrop.jrand.builders.basics.enums.CHARSET
 import org.codehaus.groovy.runtime.MethodClosure
 
 class JRandTest extends GroovyTestCase {
 
     void testBool() {
         def instance = JRand.bool()
-        assertTrue instance.likelihood(100).generate()
-        assertFalse instance.likelihood(0).generate()
+        assertTrue instance.likelihood(100).rand()
+        assertFalse instance.likelihood(0).rand()
         likelihoodTest(instance.&likelihood)
     }
 
     void testChar() {
-        assertTrue CharMatcher.JAVA_UPPER_CASE.matchesAllOf(JRand.character().include(CHARSET.CHARS_UPPER).generate().toString());
-        assertTrue CharMatcher.JAVA_LOWER_CASE.matchesAllOf(JRand.character().casing("lower").alpha().generate().toString())
-        assertTrue CharMatcher.JAVA_LETTER.matchesAllOf(JRand.character().alpha().generate().toString())
-        assertTrue CharMatcher.JAVA_LETTER_OR_DIGIT.matchesAllOf(JRand.character().generate().toString())
-        assertTrue CharMatcher.JAVA_DIGIT.matchesAllOf(JRand.character().number().generate().toString())
+        assertTrue CharMatcher.JAVA_UPPER_CASE.matchesAllOf(JRand.character().casing("upper").alpha().randString())
+        assertTrue CharMatcher.JAVA_LOWER_CASE.matchesAllOf(JRand.character().casing("lower").alpha().randString())
+        assertTrue CharMatcher.JAVA_LETTER.matchesAllOf(JRand.character().alpha().randString())
+        assertTrue CharMatcher.JAVA_LETTER_OR_DIGIT.matchesAllOf(JRand.character().randString())
+        assertFalse CharMatcher.JAVA_LETTER_OR_DIGIT.matchesAllOf(JRand.character().symbols().randString())
+        assertTrue CharMatcher.JAVA_DIGIT.matchesAllOf(JRand.character().number().randString())
+    }
+
+    void testDouble() {
+        assertTrue JRand.dbl().max(2) <= 2
+        assertTrue JRand.dbl().min(5) >= 5
+    }
+
+    void testFloat() {
+        assertTrue JRand.flt().max(2) <=2
+        assertTrue JRand.flt().min(5) >=5
     }
 
     boolean likelihoodTest(MethodClosure func) {
@@ -42,7 +51,7 @@ class JRandTest extends GroovyTestCase {
         def actual = (bucketYes / iterations) * 100
         println("Likelihood actual": actual);
         println("Likelihood expected": likelihood);
-        assertTrue((likelihood - 3) <= actual && actual <= (likelihood + 3))
+        assertTrue((likelihood - 5) <= actual && actual <= (likelihood + 5))
 
     }
 }
