@@ -21,6 +21,16 @@ class JRandTest extends GroovyTestCase {
         assertTrue CharMatcher.JAVA_DIGIT.matchesAllOf(JRand.character().number().randString())
     }
 
+    void testDouble() {
+        assertTrue JRand.dbl().max(2) <= 2
+        assertTrue JRand.dbl().min(5) >= 5
+    }
+
+    void testFloat() {
+        assertTrue JRand.flt().max(2) <=2
+        assertTrue JRand.flt().min(5) >=5
+    }
+
     boolean likelihoodTest(MethodClosure func) {
         def likelihood = new Random().nextInt(100)
         def generator = func(likelihood)
