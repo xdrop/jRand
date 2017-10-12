@@ -5,7 +5,7 @@ import me.xdrop.jrand.Generator;
 public class TextGenerator extends Generator<String> {
 
     @Override
-    public String rand() {
+    public String gen() {
         return null;
     }
 }
