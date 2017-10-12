@@ -1,14 +1,15 @@
 package me.xdrop.jrand
 
 import com.google.common.base.CharMatcher
+import me.xdrop.jrand.builders.basics.enums.CHARSET
 import org.codehaus.groovy.runtime.MethodClosure
 
 class JRandTest extends GroovyTestCase {
 
     void testBool() {
         def instance = JRand.bool()
-        assertTrue instance.likelihood(100).rand()
-        assertFalse instance.likelihood(0).rand()
+        assertTrue instance.likelihood(100).gen()
+        assertFalse instance.likelihood(0).gen()
         likelihoodTest(instance.&likelihood)
     }
 
@@ -22,18 +23,18 @@ class JRandTest extends GroovyTestCase {
     }
 
     void testDouble() {
-        assertTrue JRand.dbl().max(2).rand() <= 2
-        assertTrue JRand.dbl().min(5).rand() >= 5
+        assertTrue JRand.dbl().max(2).gen() <= 2
+        assertTrue JRand.dbl().min(5).gen() >= 5
     }
 
     void testFloat() {
-        assertTrue JRand.flt().max(2).rand() <=2
-        assertTrue JRand.flt().min(5).rand() >=5
+        assertTrue JRand.flt().max(2).gen() <=2
+        assertTrue JRand.flt().min(5).gen() >=5
     }
 
     void testDecimal() {
-        println JRand.decimal().min(4).min(1).digits(2).rand()
-        assertTrue JRand.decimal().max(4).min(1).digits(2).rand().length() == 4
+        println JRand.decimal().min(4).min(1).digits(2).gen()
+        assertTrue JRand.decimal().max(4).min(1).digits(2).gen().length() == 4
     }
 
     boolean likelihoodTest(MethodClosure func) {
@@ -46,7 +47,7 @@ class JRandTest extends GroovyTestCase {
         int iterations = 1000
 
         for (int i = 0; i <= iterations; i++) {
-            if (generator.generate()) {
+            if (generator.gen()) {
                 bucketYes++
             } else {
                 bucketNo++;

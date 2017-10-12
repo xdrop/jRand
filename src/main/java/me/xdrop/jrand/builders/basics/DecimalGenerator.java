@@ -32,6 +32,18 @@ public class DecimalGenerator extends Generator<String> {
     }
 
     /**
+     * Set a min/max range
+     * @param min Minimum value to be returned (inclusive)
+     * @param max Maximum value to be returned (inclusive)
+     * @return
+     */
+    public DecimalGenerator range(double min, double max) {
+        this.max = max;
+        this.min = min;
+        return this;
+    }
+
+    /**
      * Sets the number of digits to return
      * @param digits Number of digits
      * @return
@@ -51,11 +63,9 @@ public class DecimalGenerator extends Generator<String> {
         return this;
     }
 
-    @Override
-    public String rand() {
-        double rand = JRand.dbl().min(this.min).max(this.max).rand();
+
     public String gen() {
-        double rand = random().randDouble();
+        double rand = new DoubleGenerator().min(this.min).max(this.max).gen();
         BigDecimal decimal;
         if (roundUp) {
             decimal = BigDecimal.valueOf(rand).setScale(digits, BigDecimal.ROUND_UP);

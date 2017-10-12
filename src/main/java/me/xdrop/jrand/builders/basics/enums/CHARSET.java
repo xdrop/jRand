@@ -3,7 +3,6 @@ package me.xdrop.jrand.builders.basics.enums;
 import org.apache.commons.lang3.ArrayUtils;
 
 import static me.xdrop.jrand.Constants.*;
-import org.apache.commons.lang3.ArrayUtils;
 
 public enum CHARSET {
 

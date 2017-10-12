@@ -20,7 +20,7 @@ public abstract class Generator<T> {
 
     public abstract T gen();
 
-    public String randString() {
+    public String genString() {
         return gen().toString();
     }
 
