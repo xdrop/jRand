@@ -32,8 +32,8 @@ class JRandTest extends GroovyTestCase {
     }
 
     void testDecimal() {
-        println JRand.decimal().min(4.0).min(1.0).digits(2.0).gen()
-        assertTrue JRand.decimal().max(4.0).min(1.0).digits(2.0).gen().length() == 4
+        println JRand.decimal().min(4.0).min(1.0).digits(2).gen()
+        assertTrue JRand.decimal().max(4.0).min(1.0).digits(2).gen().length() == 4
     }
 
     boolean likelihoodTest(MethodClosure func) {
