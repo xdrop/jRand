@@ -1,12 +1,9 @@
 package me.xdrop.jrand.builders.basics.enums;
 
-import org.apache.commons.lang3.ArrayUtils;
-
 import static me.xdrop.jrand.Constants.*;
 
 public enum CHARSET {
 
-    CHARS_ALL(ArrayUtils.addAll(alphaLowerPoolChar, alphaUpperPoolChar)),
     CHARS_LOWER(alphaLowerPoolChar),
     CHARS_UPPER(alphaUpperPoolChar),
     NUMBERS(numericPoolChar),

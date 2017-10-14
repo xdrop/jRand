@@ -9,101 +9,98 @@ import java.util.*;
 public class CharacterGenerator extends Generator<Character> {
 
     private String customPool;
-    private boolean alpha;
-    private boolean symbols;
-    private Casing casing;
-    private boolean number;
+    private List<Character> pool;
+    private Set<CHARSET> includedCharsets;
+    private boolean _default;
 
     public enum Casing {
         LOWER, UPPER
     }
 
     public CharacterGenerator() {
+        this.includedCharsets = new HashSet<>();
+        this.includedCharsets.add(CHARSET.CHARS_UPPER);
+        this.includedCharsets.add(CHARSET.CHARS_LOWER);
+        this.includedCharsets.add(CHARSET.SYMBOLS);
+        this.includedCharsets.add(CHARSET.NUMBERS);
         this.customPool = null;
-        this.alpha = false;
-        this.symbols = false;
-        this.number = false;
-        this.casing = Casing.LOWER;
+        this._default = true;
+        this.pool = new ArrayList<>(32);
+    }
+
+    private void resetIncluded() {
+        if (this._default) {
+            this._default = false;
+            includedCharsets.clear();
+        }
     }
 
     public CharacterGenerator pool(String pool) {
-        this.customPool = pool;
-        return this;
-    }
-
-    public CharacterGenerator symbols(boolean symbols) {
-        this.symbols = symbols;
-        return this;
-    }
-
-    public CharacterGenerator alpha(boolean alpha) {
-        this.alpha = alpha;
+        this.pool.clear();
+        for (char c : pool.toCharArray()) {
+            this.pool.add(c);
+        }
         return this;
     }
 
     public CharacterGenerator symbols() {
-        this.symbols = true;
+        resetIncluded();
+        includedCharsets.add(CHARSET.SYMBOLS);
+        preparePool();
         return this;
     }
 
     public CharacterGenerator alpha() {
-        this.alpha = true;
+        resetIncluded();
+        includedCharsets.add(CHARSET.CHARS_LOWER);
+        includedCharsets.add(CHARSET.CHARS_UPPER);
+        preparePool();
         return this;
     }
 
+
     public CharacterGenerator casing(Casing casing) {
-        this.casing = casing;
+        if (casing == Casing.LOWER) {
+            includedCharsets.remove(CHARSET.CHARS_UPPER);
+        } else {
+            includedCharsets.remove(CHARSET.CHARS_LOWER);
+        }
+        preparePool();
         return this;
     }
 
     public CharacterGenerator number() {
-        this.number = true;
-        return this;
-    }
-
-    public CharacterGenerator number(boolean number) {
-        this.number = number;
+        includedCharsets.add(CHARSET.NUMBERS);
+        preparePool();
         return this;
     }
 
 
     public CharacterGenerator casing(String casing) {
         if (casing.equalsIgnoreCase("lower")) {
-            this.casing = Casing.LOWER;
+            return casing(Casing.LOWER);
         } else {
-            this.casing = Casing.UPPER;
+            return casing(Casing.UPPER);
         }
-        return this;
+    }
+
+    private void preparePool() {
+        pool.clear();
+        for (CHARSET charset: includedCharsets) {
+            for (char c : charset.getCharset()){
+                pool.add(c);
+            }
+        }
     }
 
 
     @Override
-    public Character gen() {
-        String charPool;
-        String letterPool;
+    public Character gen() { ;
 
-        if (customPool != null && customPool.length() > 0) {
-            charPool = customPool;
-        } else {
-            if (casing == Casing.LOWER) {
-                letterPool = Constants.alphaLowerPool;
-            } else if (casing == Casing.UPPER) {
-                letterPool = Constants.alphaUpperPool;
-            } else {
-                letterPool = Constants.alphaLowerPool + Constants.alphaUpperPool;
-            }
-
-            if (alpha) {
-                charPool = letterPool;
-            } else if (symbols) {
-                charPool = Constants.symbolsPool;
-            } else if (number) {
-                charPool = Constants.numericPool;
-            } else {
-                charPool = letterPool + Constants.numericPool + Constants.symbolsPool;
-            }
+        if (pool.size() < 1){
+            return 'c';
         }
 
-        return charPool.charAt(random().randInt(charPool.length() - 1));
+        return pool.get(random().randInt(pool.size() - 1));
     }
 }
