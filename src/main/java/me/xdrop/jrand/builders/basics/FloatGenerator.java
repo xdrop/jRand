@@ -13,6 +13,7 @@ public class FloatGenerator extends Generator<Float> {
 
     /**
      * Sets the maximum value (inclusive)
+     *
      * @param max The maximum value
      * @return
      */
@@ -23,6 +24,7 @@ public class FloatGenerator extends Generator<Float> {
 
     /**
      * Set the minimum value (inclusive)
+     *
      * @param min The minimum value
      * @return
      */
@@ -33,6 +35,7 @@ public class FloatGenerator extends Generator<Float> {
 
     /**
      * Set a min/max range
+     *
      * @param min Minimum value to be returned (inclusive)
      * @param max Maximum value to be returned (inclusive)
      * @return
@@ -46,7 +49,7 @@ public class FloatGenerator extends Generator<Float> {
     @Override
     public Float gen() {
         float rand = random().randFloat();
-        float result = min + (rand * (max-min));
+        float result = min + (rand * (max - min));
         return result;
     }
 }

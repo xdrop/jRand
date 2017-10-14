@@ -8,7 +8,7 @@ public class Constants {
     public static String alphaLowerPool = "abcdefghijklmnopqrstuvwxyz";
     public static String alphaUpperPool = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     public static String numericPool    = "1234567890";
-    public static String symbolsPool    ="!@#$%^&*()[]";
+    public static String symbolsPool    = "!@#$%^&*()[]";
 
     /*
         Probably don't need these, but provide a direct char[] interface.
