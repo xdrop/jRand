@@ -14,11 +14,11 @@ class JRandTest extends GroovyTestCase {
     }
 
     void testChar() {
-        assertTrue CharMatcher.JAVA_UPPER_CASE.matchesAllOf(JRand.character().include(CHARSET.CHARS_UPPER).genString())
-        assertTrue CharMatcher.JAVA_LOWER_CASE.matchesAllOf(JRand.character().include(CHARSET.CHARS_LOWER).genString())
-        assertTrue CharMatcher.JAVA_LETTER.matchesAllOf(JRand.character().include(CHARSET.CHARS_UPPER, CHARSET.CHARS_LOWER).genString())
-        assertTrue CharMatcher.JAVA_LETTER_OR_DIGIT.matchesAllOf(JRand.character().include(CHARSET.CHARS_LOWER, CHARSET.CHARS_UPPER, CHARSET.NUMBERS).genString())
-
+        assertTrue CharMatcher.JAVA_UPPER_CASE.matchesAllOf(JRand.character().alpha().casing("upper").genString())
+        assertTrue CharMatcher.JAVA_LOWER_CASE.matchesAllOf(JRand.character().alpha().casing("lower").genString())
+        assertTrue CharMatcher.JAVA_LETTER.matchesAllOf(JRand.character().alpha().genString())
+        assertTrue CharMatcher.JAVA_LETTER_OR_DIGIT.matchesAllOf(JRand.character().genString())
+        assertFalse CharMatcher.JAVA_LETTER_OR_DIGIT.matchesAllOf(JRand.character().symbols().genString())
     }
 
     void testDouble() {
