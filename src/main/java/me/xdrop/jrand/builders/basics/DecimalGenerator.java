@@ -13,6 +13,7 @@ public class DecimalGenerator extends Generator<String> {
 
     /**
      * Set the minimum value (inclusive)
+     *
      * @param min The minimum value
      * @return
      */
@@ -23,6 +24,7 @@ public class DecimalGenerator extends Generator<String> {
 
     /**
      * Sets the maximum value (inclusive)
+     *
      * @param max The maximum value
      * @return
      */
@@ -33,6 +35,7 @@ public class DecimalGenerator extends Generator<String> {
 
     /**
      * Set a min/max range
+     *
      * @param min Minimum value to be returned (inclusive)
      * @param max Maximum value to be returned (inclusive)
      * @return
@@ -45,6 +48,7 @@ public class DecimalGenerator extends Generator<String> {
 
     /**
      * Sets the number of digits to return
+     *
      * @param digits Number of digits
      * @return
      */
@@ -55,10 +59,11 @@ public class DecimalGenerator extends Generator<String> {
 
     /**
      * Set whether to round up or down
+     *
      * @param roundUp True for round up, false for round down
      * @return
      */
-    public DecimalGenerator roundUp(boolean roundUp){
+    public DecimalGenerator roundUp(boolean roundUp) {
         this.roundUp = roundUp;
         return this;
     }

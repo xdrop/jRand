@@ -14,6 +14,7 @@ public class BoolGenerator extends Generator<Boolean> {
 
     /**
      * Sets the likelihood of generating a true value
+     *
      * @param likelihood The likelihood as int between 0 and 100
      * @return
      */
@@ -25,7 +26,7 @@ public class BoolGenerator extends Generator<Boolean> {
     @Override
     public Boolean gen() {
         float rand = random().randFloat();
-        if (rand <= ((float)likelihood / 100)) {
+        if (rand <= ((float) likelihood / 100)) {
             return true;
         } else {
             return false;
