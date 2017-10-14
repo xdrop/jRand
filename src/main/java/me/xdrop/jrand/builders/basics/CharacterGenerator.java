@@ -8,31 +8,99 @@ import java.util.*;
 
 public class CharacterGenerator extends Generator<Character> {
 
-    private List<Character> charPool;
-    //To ensure user doesn't add duplicate charsets to pool.
+    private String customPool;
+    private List<Character> pool;
     private Set<CHARSET> includedCharsets;
+    private boolean _default;
 
-    public CharacterGenerator() {
-        this.charPool = new ArrayList<>(30);
-        this.includedCharsets = new HashSet<>();
+    public enum Casing {
+        LOWER, UPPER
     }
 
-    public CharacterGenerator include(CHARSET... charsets) {
+    public CharacterGenerator() {
+        this.includedCharsets = new HashSet<>();
+        this.includedCharsets.add(CHARSET.CHARS_UPPER);
+        this.includedCharsets.add(CHARSET.CHARS_LOWER);
+        this.includedCharsets.add(CHARSET.SYMBOLS);
+        this.includedCharsets.add(CHARSET.NUMBERS);
+        this.customPool = null;
+        this._default = true;
+        this.pool = new ArrayList<>(32);
+    }
 
-        for (CHARSET set : charsets) {
-            if (!includedCharsets.add(set)) {
-                for (char c : set.getCharset()) {
-                    charPool.add(c);
-                }
-            }
+    private void resetIncluded() {
+        if (this._default) {
+            this._default = false;
+            includedCharsets.clear();
         }
+    }
 
+    public CharacterGenerator pool(String pool) {
+        this.pool.clear();
+        for (char c : pool.toCharArray()) {
+            this.pool.add(c);
+        }
+        return this;
+    }
+
+    public CharacterGenerator symbols() {
+        resetIncluded();
+        includedCharsets.add(CHARSET.SYMBOLS);
+        preparePool();
+        return this;
+    }
+
+    public CharacterGenerator alpha() {
+        resetIncluded();
+        includedCharsets.add(CHARSET.CHARS_LOWER);
+        includedCharsets.add(CHARSET.CHARS_UPPER);
+        preparePool();
         return this;
     }
 
 
+    public CharacterGenerator casing(Casing casing) {
+        if (casing == Casing.LOWER) {
+            includedCharsets.remove(CHARSET.CHARS_UPPER);
+        } else {
+            includedCharsets.remove(CHARSET.CHARS_LOWER);
+        }
+        preparePool();
+        return this;
+    }
+
+    public CharacterGenerator number() {
+        includedCharsets.add(CHARSET.NUMBERS);
+        preparePool();
+        return this;
+    }
+
+
+    public CharacterGenerator casing(String casing) {
+        if (casing.equalsIgnoreCase("lower")) {
+            return casing(Casing.LOWER);
+        } else {
+            return casing(Casing.UPPER);
+        }
+    }
+
+    private void preparePool() {
+        pool.clear();
+        for (CHARSET charset: includedCharsets) {
+            for (char c : charset.getCharset()){
+                pool.add(c);
+            }
+        }
+    }
+
+
     @Override
-    public Character gen() {
-        return charPool.get(random().randInt(charPool.size() - 1));
+    public Character gen() { ;
+
+        if (pool.size() < 1){
+            return 'c';
+        }
+
+        return pool.get(random().randInt(pool.size() - 1));
     }
 }

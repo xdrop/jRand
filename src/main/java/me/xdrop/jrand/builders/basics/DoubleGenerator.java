@@ -9,12 +9,13 @@ public class DoubleGenerator extends Generator<Double> {
     private double max;
 
     public DoubleGenerator() {
-        this.min = 0;
-        this.max = 1;
+        this.min = Double.MIN_VALUE;
+        this.max = Double.MAX_VALUE;
     }
 
     /**
      * Sets the maximum value (inclusive)
+     *
      * @param max The maximum value
      * @return
      */
@@ -25,6 +26,7 @@ public class DoubleGenerator extends Generator<Double> {
 
     /**
      * Set the minimum value (inclusive)
+     *
      * @param min The minimum value
      * @return
      */
@@ -33,10 +35,23 @@ public class DoubleGenerator extends Generator<Double> {
         return this;
     }
 
+    /**
+     * Set a min/max range
+     *
+     * @param min Minimum value to be returned (inclusive)
+     * @param max Maximum value to be returned (inclusive)
+     * @return
+     */
+    public DoubleGenerator range(double min, double max) {
+        this.max = max;
+        this.min = min;
+        return this;
+    }
+
     @Override
     public Double gen() {
         double rand = random().randDouble();
-        double result = min + (rand * (max-min));
+        double result = min + (rand * (max - min));
         return result;
     }
 }

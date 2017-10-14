@@ -20,13 +20,13 @@ public abstract class Generator<T> {
 
     public abstract T gen();
 
-    public String randString() {
+    public String genString() {
         return gen().toString();
     }
 
-    public Collection<T> genMany(int num){
+    public Collection<T> genMany(int num) {
         List<T> many = new ArrayList<>();
-        for(int n = 0; n < num; n++) {
+        for (int n = 0; n < num; n++) {
             many.add(gen());
         }
         return many;
