@@ -27,5 +27,12 @@ public class JRand {
         return new DecimalGenerator();
     }
 
+    public static final NaturalGenerator natural() {
+        return new NaturalGenerator();
+    }
+
+    public static final StringGenerator string() {
+        return new StringGenerator();
+    }
 
 }
