@@ -6,12 +6,16 @@ import me.xdrop.jrand.builders.basics.NaturalGenerator;
 
 public class ParagraphGenerator extends Generator<String> {
 
-    private int sentences;
+    private int minSentences;
+    private int maxSentences;
     private SentenceGenerator sentGen;
+    private NaturalGenerator nat;
 
     public ParagraphGenerator() {
-        this.sentences = new NaturalGenerator().range(3,7).gen();
+        this.nat = new NaturalGenerator();
         this.sentGen = new SentenceGenerator();
+        this.minSentences = 3;
+        this.maxSentences = 7;
     }
 
     /**
@@ -21,7 +25,21 @@ public class ParagraphGenerator extends Generator<String> {
      * @return
      */
     public ParagraphGenerator sentences(int sentences) {
-        this.sentences = sentences;
+        this.minSentences = sentences;
+        this.maxSentences = -1;
+        return this;
+    }
+
+    /**
+     * Set the number of sentences to return.
+     *
+     * @param min Minimum number of sentences
+     * @param max Maximum number of sentences
+     * @return
+     */
+    public ParagraphGenerator sentences(int min, int max) {
+        this.minSentences = min;
+        this.maxSentences = max;
         return this;
     }
 
@@ -60,6 +78,12 @@ public class ParagraphGenerator extends Generator<String> {
 
     @Override
     public String gen(){
-        return CharUtils.join(sentGen.genMany(this.sentences)," ");
+        int sentences;
+        if (maxSentences == -1){
+            sentences = minSentences;
+        } else {
+            sentences = nat.range(minSentences, maxSentences).gen();
+        }
+        return CharUtils.join(sentGen.genMany(sentences)," ");
     }
 }

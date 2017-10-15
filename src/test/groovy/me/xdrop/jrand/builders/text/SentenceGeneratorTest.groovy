@@ -5,13 +5,12 @@ class SentenceGeneratorTest extends GroovyTestCase {
     def instance = {-> new SentenceGenerator()}
 
     void testWords() {
+        assertTrue instance().words(5).gen().split(" ").length == 5
+        def length = instance().words(1, 3).gen().split(" ").length
+        assertTrue length <= 3 && length >= 1
     }
 
     void testPunctuation() {
-        println instance().punctuation().gen()
-        println instance().punctuation().gen()
-        println instance().punctuation().gen()
-        println instance().punctuation().gen()
-        println instance().punctuation().gen()
+        // Might need internal test
     }
 }
