@@ -70,6 +70,7 @@ public class CharacterGenerator extends Generator<Character> {
     }
 
     public CharacterGenerator number() {
+        resetIncluded();
         includedCharsets.add(CHARSET.NUMBERS);
         preparePool();
         return this;

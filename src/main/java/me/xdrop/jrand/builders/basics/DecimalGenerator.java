@@ -11,6 +11,11 @@ public class DecimalGenerator extends Generator<String> {
     private int digits;
     private boolean roundUp;
 
+    public DecimalGenerator() {
+        this.roundUp = true;
+        this.max = 100;
+    }
+
     /**
      * Set the minimum value (inclusive)
      *
@@ -69,14 +74,23 @@ public class DecimalGenerator extends Generator<String> {
     }
 
 
-    public String gen() {
+    public BigDecimal genAsDecimal() {
         double rand = new DoubleGenerator().min(this.min).max(this.max).gen();
         BigDecimal decimal;
-        if (roundUp) {
-            decimal = BigDecimal.valueOf(rand).setScale(digits, BigDecimal.ROUND_UP);
+        if (digits != 0) {
+            if (roundUp) {
+                decimal = BigDecimal.valueOf(rand).setScale(digits, BigDecimal.ROUND_UP);
+            } else {
+                decimal = BigDecimal.valueOf(rand).setScale(digits, BigDecimal.ROUND_DOWN);
+            }
         } else {
-            decimal = BigDecimal.valueOf(rand).setScale(digits, BigDecimal.ROUND_DOWN);
+            decimal = BigDecimal.valueOf(rand);
         }
-        return decimal.toString();
+
+        return decimal;
+    }
+
+    public String gen() {
+        return genAsDecimal().toString();
     }
 }
