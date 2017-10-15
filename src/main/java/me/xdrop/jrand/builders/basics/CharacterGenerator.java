@@ -2,6 +2,7 @@ package me.xdrop.jrand.builders.basics;
 
 import me.xdrop.jrand.Constants;
 import me.xdrop.jrand.Generator;
+import me.xdrop.jrand.Tuple;
 import me.xdrop.jrand.builders.basics.enums.CHARSET;
 
 import java.util.*;
@@ -35,6 +36,12 @@ public class CharacterGenerator extends Generator<Character> {
         }
     }
 
+    /**
+     * Set the pool of characters to choose from
+     *
+     * @param pool The pool of characters to choose from
+     * @return
+     */
     public CharacterGenerator pool(String pool) {
         this.pool.clear();
         for (char c : pool.toCharArray()) {
@@ -43,6 +50,11 @@ public class CharacterGenerator extends Generator<Character> {
         return this;
     }
 
+    /**
+     * Return only symbols
+     *
+     * @return
+     */
     public CharacterGenerator symbols() {
         resetIncluded();
         includedCharsets.add(CHARSET.SYMBOLS);
@@ -50,6 +62,12 @@ public class CharacterGenerator extends Generator<Character> {
         return this;
     }
 
+
+    /**
+     * Return only alphabet characters
+     *
+     * @return
+     */
     public CharacterGenerator alpha() {
         resetIncluded();
         includedCharsets.add(CHARSET.CHARS_LOWER);
@@ -58,7 +76,12 @@ public class CharacterGenerator extends Generator<Character> {
         return this;
     }
 
-
+    /**
+     * Set the casing of the letters (in case alpha() is used)
+     *
+     * @param casing Casing of the letters
+     * @return
+     */
     public CharacterGenerator casing(Casing casing) {
         if (casing == Casing.LOWER) {
             includedCharsets.remove(CHARSET.CHARS_UPPER);
@@ -69,14 +92,26 @@ public class CharacterGenerator extends Generator<Character> {
         return this;
     }
 
-    public CharacterGenerator number() {
+    /**
+     * Return only digits
+     *
+     * @return
+     */
+    public CharacterGenerator digit() {
         resetIncluded();
         includedCharsets.add(CHARSET.NUMBERS);
         preparePool();
         return this;
     }
 
-
+    /**
+     * Set the casing of the letters (in case alpha() is used)
+     *
+     * "upper" is uppercase, "lower" is lowercase
+     *
+     * @param casing Casing of the letters. Use "upper" or "lower"
+     * @return
+     */
     public CharacterGenerator casing(String casing) {
         if (casing.equalsIgnoreCase("lower")) {
             return casing(Casing.LOWER);
@@ -103,5 +138,14 @@ public class CharacterGenerator extends Generator<Character> {
         }
 
         return pool.get(random().randInt(pool.size() - 1));
+    }
+
+    public Tuple<Character, Integer> genWithIndex() {
+        if (pool.size() < 1){
+            return new Tuple<>('c', -1);
+        }
+
+        int index = random().randInt(pool.size() - 1);
+        return Tuple.from(pool.get(index), index);
     }
 }

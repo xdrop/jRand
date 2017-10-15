@@ -29,7 +29,7 @@ class StringGeneratorTest extends GroovyTestCase {
     }
 
     void testNumber() {
-        assertTrue CharMatcher.JAVA_DIGIT.matchesAllOf(instance().number().gen())
+        assertTrue CharMatcher.JAVA_DIGIT.matchesAllOf(instance().digits().gen())
     }
 
     void testLowerCase() {
