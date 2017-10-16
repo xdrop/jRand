@@ -1,7 +1,7 @@
 package me.xdrop.jrand.builders.basics
 
 class DecimalGeneratorTest extends GroovyTestCase {
-    def instance = {-> new DecimalGenerator() }
+    def instance = { -> new DecimalGenerator() }
 
     void testMin() {
         assertTrue instance().min(5.0).genAsDecimal() >= 5
@@ -17,7 +17,8 @@ class DecimalGeneratorTest extends GroovyTestCase {
     }
 
     void testDigits() {
-        assertTrue instance().digits(2).gen().length() == 5
+        def gen = instance().digits(2).gen().split("\\.")[1]
+        assertTrue gen.length() == 2
     }
 
     void testRoundUp() {
