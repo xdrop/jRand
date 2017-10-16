@@ -1,4 +1,4 @@
-package me.xdrop.jrand.builders.basics;
+package me.xdrop.jrand.generators.basics;
 
 import me.xdrop.jrand.Generator;
 

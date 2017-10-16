@@ -1,4 +1,4 @@
-package me.xdrop.jrand.builders.basics
+package me.xdrop.jrand.generators.basics
 
 import com.google.common.base.CharMatcher
 

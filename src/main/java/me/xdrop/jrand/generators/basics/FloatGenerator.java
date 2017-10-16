@@ -1,16 +1,14 @@
-package me.xdrop.jrand.builders.basics;
+package me.xdrop.jrand.generators.basics;
 
-import me.xdrop.jrand.Constants;
 import me.xdrop.jrand.Generator;
 
-public class DoubleGenerator extends Generator<Double> {
+public class FloatGenerator extends Generator<Float> {
+    private float min;
+    private float max;
 
-    private double min;
-    private double max;
-
-    public DoubleGenerator() {
-        this.min = Double.MIN_VALUE;
-        this.max = Double.MAX_VALUE;
+    public FloatGenerator() {
+        this.min = Float.MIN_VALUE;
+        this.max = Float.MAX_VALUE;
     }
 
     /**
@@ -19,7 +17,7 @@ public class DoubleGenerator extends Generator<Double> {
      * @param max The maximum value
      * @return
      */
-    public DoubleGenerator max(double max) {
+    public FloatGenerator max(float max) {
         this.max = max;
         return this;
     }
@@ -30,7 +28,7 @@ public class DoubleGenerator extends Generator<Double> {
      * @param min The minimum value
      * @return
      */
-    public DoubleGenerator min(double min) {
+    public FloatGenerator min(float min) {
         this.min = min;
         return this;
     }
@@ -42,16 +40,16 @@ public class DoubleGenerator extends Generator<Double> {
      * @param max Maximum value to be returned (inclusive)
      * @return
      */
-    public DoubleGenerator range(double min, double max) {
+    public FloatGenerator range(float min, float max) {
         this.max = max;
         this.min = min;
         return this;
     }
 
     @Override
-    public Double gen() {
-        double rand = random().randDouble();
-        double result = min + (rand * (max - min));
+    public Float gen() {
+        float rand = random().randFloat();
+        float result = min + (rand * (max - min));
         return result;
     }
 }

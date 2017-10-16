@@ -1,4 +1,4 @@
-package me.xdrop.jrand.builders.text
+package me.xdrop.jrand.generators.text
 
 class WordGeneratorTest extends GroovyTestCase {
     def instance = {-> new WordGenerator()}

@@ -1,9 +1,8 @@
-package me.xdrop.jrand.builders.basics;
+package me.xdrop.jrand.generators.basics;
 
-import me.xdrop.jrand.Constants;
 import me.xdrop.jrand.Generator;
 import me.xdrop.jrand.Tuple;
-import me.xdrop.jrand.builders.basics.enums.CHARSET;
+import me.xdrop.jrand.generators.basics.enums.CHARSET;
 
 import java.util.*;
 
