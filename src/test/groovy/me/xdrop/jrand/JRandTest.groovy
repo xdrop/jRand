@@ -1,42 +1,27 @@
 package me.xdrop.jrand
 
-import com.google.common.base.CharMatcher
-import me.xdrop.jrand.builders.basics.enums.CHARSET
+import me.xdrop.jrand.builders.basics.BoolGenerator
+import me.xdrop.jrand.builders.basics.CharacterGenerator
+import me.xdrop.jrand.builders.basics.DecimalGenerator
+import me.xdrop.jrand.builders.basics.DoubleGenerator
+import me.xdrop.jrand.builders.basics.FloatGenerator
+import me.xdrop.jrand.builders.basics.NaturalGenerator
+import me.xdrop.jrand.builders.basics.StringGenerator
 import org.codehaus.groovy.runtime.MethodClosure
 
 class JRandTest extends GroovyTestCase {
 
-    void testBool() {
-        def instance = JRand.bool()
-        assertTrue instance.likelihood(100).gen()
-        assertFalse instance.likelihood(0).gen()
-        likelihoodTest(instance.&likelihood)
+    void testFacade() {
+        assertTrue JRand.character() instanceof CharacterGenerator
+        assertTrue JRand.flt() instanceof FloatGenerator
+        assertTrue JRand.dbl() instanceof DoubleGenerator
+        assertTrue JRand.bool() instanceof BoolGenerator
+        assertTrue JRand.decimal() instanceof DecimalGenerator
+        assertTrue JRand.string() instanceof StringGenerator
+        assertTrue JRand.natural() instanceof NaturalGenerator
     }
 
-    void testChar() {
-        assertTrue CharMatcher.JAVA_UPPER_CASE.matchesAllOf(JRand.character().alpha().casing("upper").genString())
-        assertTrue CharMatcher.JAVA_LOWER_CASE.matchesAllOf(JRand.character().alpha().casing("lower").genString())
-        assertTrue CharMatcher.JAVA_LETTER.matchesAllOf(JRand.character().alpha().genString())
-        assertTrue CharMatcher.JAVA_LETTER_OR_DIGIT.matchesAllOf(JRand.character().genString())
-        assertFalse CharMatcher.JAVA_LETTER_OR_DIGIT.matchesAllOf(JRand.character().symbols().genString())
-    }
-
-    void testDouble() {
-        assertTrue JRand.dbl().max(2.0).gen() <= 2
-        assertTrue JRand.dbl().min(5.0).gen() >= 5
-    }
-
-    void testFloat() {
-        assertTrue JRand.flt().max(2.0).gen() <=2
-        assertTrue JRand.flt().min(5.0).gen() >=5
-    }
-
-    void testDecimal() {
-        println JRand.decimal().min(4.0).min(1.0).digits(2).gen()
-        assertTrue JRand.decimal().max(4.0).min(1.0).digits(2).gen().length() == 4
-    }
-
-    boolean likelihoodTest(MethodClosure func) {
+   static boolean likelihoodTest(MethodClosure func) {
         def likelihood = new Random().nextInt(100)
         def generator = func(likelihood)
 
