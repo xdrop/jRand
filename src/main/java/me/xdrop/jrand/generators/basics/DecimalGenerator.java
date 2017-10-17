@@ -73,7 +73,11 @@ public class DecimalGenerator extends Generator<String> {
         return this;
     }
 
-
+    /**
+     * Generate a {@link BigDecimal} as opposed to a String
+     *
+     * @return
+     */
     public BigDecimal genAsDecimal() {
         double rand = new DoubleGenerator().min(this.min).max(this.max).gen();
         BigDecimal decimal;
@@ -90,6 +94,7 @@ public class DecimalGenerator extends Generator<String> {
         return decimal;
     }
 
+    @Override
     public String gen() {
         return genAsDecimal().toString();
     }
