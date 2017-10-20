@@ -1,8 +1,6 @@
-package me.xdrop.jrand.builders.basics;
+package me.xdrop.jrand.generators.basics;
 
 import me.xdrop.jrand.Generator;
-
-import java.util.Random;
 
 public class BoolGenerator extends Generator<Boolean> {
 

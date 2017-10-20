@@ -1,12 +1,12 @@
 package me.xdrop.jrand
 
-import me.xdrop.jrand.builders.basics.BoolGenerator
-import me.xdrop.jrand.builders.basics.CharacterGenerator
-import me.xdrop.jrand.builders.basics.DecimalGenerator
-import me.xdrop.jrand.builders.basics.DoubleGenerator
-import me.xdrop.jrand.builders.basics.FloatGenerator
-import me.xdrop.jrand.builders.basics.NaturalGenerator
-import me.xdrop.jrand.builders.basics.StringGenerator
+import me.xdrop.jrand.generators.basics.BoolGenerator
+import me.xdrop.jrand.generators.basics.CharacterGenerator
+import me.xdrop.jrand.generators.basics.DecimalGenerator
+import me.xdrop.jrand.generators.basics.DoubleGenerator
+import me.xdrop.jrand.generators.basics.FloatGenerator
+import me.xdrop.jrand.generators.basics.NaturalGenerator
+import me.xdrop.jrand.generators.basics.StringGenerator
 import org.codehaus.groovy.runtime.MethodClosure
 
 class JRandTest extends GroovyTestCase {

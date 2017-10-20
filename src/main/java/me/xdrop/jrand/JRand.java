@@ -1,6 +1,6 @@
 package me.xdrop.jrand;
 
-import me.xdrop.jrand.builders.basics.*;
+import me.xdrop.jrand.generators.basics.*;
 
 /*
                                JRand Facade

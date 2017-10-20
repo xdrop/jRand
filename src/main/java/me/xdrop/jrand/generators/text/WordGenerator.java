@@ -1,7 +1,7 @@
-package me.xdrop.jrand.builders.text;
+package me.xdrop.jrand.generators.text;
 
 import me.xdrop.jrand.Generator;
-import me.xdrop.jrand.builders.basics.NaturalGenerator;
+import me.xdrop.jrand.generators.basics.NaturalGenerator;
 
 public class WordGenerator extends Generator<String> {
 

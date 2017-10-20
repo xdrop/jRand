@@ -1,4 +1,4 @@
-package me.xdrop.jrand.builders.basics
+package me.xdrop.jrand.generators.basics
 
 class DecimalGeneratorTest extends GroovyTestCase {
     def instance = { -> new DecimalGenerator() }

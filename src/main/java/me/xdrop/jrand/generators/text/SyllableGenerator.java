@@ -1,11 +1,11 @@
-package me.xdrop.jrand.builders.text;
+package me.xdrop.jrand.generators.text;
 
 import me.xdrop.jrand.CharUtils;
 import me.xdrop.jrand.Constants;
 import me.xdrop.jrand.Generator;
 import me.xdrop.jrand.Tuple;
-import me.xdrop.jrand.builders.basics.CharacterGenerator;
-import me.xdrop.jrand.builders.basics.NaturalGenerator;
+import me.xdrop.jrand.generators.basics.CharacterGenerator;
+import me.xdrop.jrand.generators.basics.NaturalGenerator;
 
 public class SyllableGenerator extends Generator<String> {
 

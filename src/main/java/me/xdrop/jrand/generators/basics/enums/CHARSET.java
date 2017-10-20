@@ -1,4 +1,4 @@
-package me.xdrop.jrand.builders.basics.enums;
+package me.xdrop.jrand.generators.basics.enums;
 
 import static me.xdrop.jrand.Constants.*;
 

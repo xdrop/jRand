@@ -1,6 +1,5 @@
-package me.xdrop.jrand.builders.basics
+package me.xdrop.jrand.generators.basics
 
-import me.xdrop.jrand.JRand
 import me.xdrop.jrand.JRandTest
 
 class BoolGeneratorTest extends GroovyTestCase {
