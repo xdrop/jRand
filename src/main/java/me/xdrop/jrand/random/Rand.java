@@ -19,15 +19,19 @@ public class Rand {
         return random.nextInt();
     }
 
-    public int randInt(int n){
+    public long randLong() {
+        return random.nextLong();
+    }
+
+    public int randInt(int n) {
         return random.nextInt(n);
     }
 
-    public <T> T chooseOne(List<T> list){
+    public <T> T chooseOne(List<T> list) {
         return list.get(randInt(list.size()));
     }
 
-    public <T> T chooseOne(T[] list){
+    public <T> T chooseOne(T[] list) {
         return list[randInt(list.length)];
     }
 }
