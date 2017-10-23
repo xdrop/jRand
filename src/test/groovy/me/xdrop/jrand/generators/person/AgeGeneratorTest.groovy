@@ -1,5 +1,6 @@
 package me.xdrop.jrand.generators.person
 
+
 class AgeGeneratorTest extends GroovyTestCase {
     def instance = {-> new AgeGenerator()}
 
