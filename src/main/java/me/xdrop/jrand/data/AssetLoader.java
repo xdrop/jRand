@@ -5,10 +5,24 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 public class AssetLoader {
-    public List<String> loadAsset(String assetName) {
-        ClassLoader classLoader = getClass().getClassLoader();
+
+    private static Map<String, List<String>> cache;
+
+    public static List<String> loadAsset(String assetName) {
+        if (cache.containsKey(assetName)) {
+            return cache.get(assetName);
+        }
+        List<String> cached = internalLoadAsset(assetName);
+        cache.put(assetName, cached);
+
+        return cached;
+    }
+
+    private static List<String> internalLoadAsset(String assetName) {
+        ClassLoader classLoader = AssetLoader.class.getClassLoader();
         URL filename = classLoader.getResource(assetName);
 
         if (filename == null) return Collections.emptyList();
