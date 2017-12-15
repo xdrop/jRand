@@ -1,38 +1,55 @@
 package me.xdrop.jrand;
 
 import me.xdrop.jrand.generators.basics.*;
+import me.xdrop.jrand.generators.person.AgeGenerator;
+import me.xdrop.jrand.generators.person.BirthdayGenerator;
+import me.xdrop.jrand.generators.person.GenderGenerator;
 
 /*
                                JRand Facade
  */
 public class JRand {
 
-    public static final BoolGenerator bool() {
+    public static BoolGenerator bool() {
         return new BoolGenerator();
     }
 
-    public static final CharacterGenerator character() {
+    public static CharacterGenerator character() {
         return new CharacterGenerator();
     }
 
-    public static final DoubleGenerator dbl() {
+    public static DoubleGenerator dbl() {
         return new DoubleGenerator();
     }
 
-    public static final FloatGenerator flt() {
+    public static FloatGenerator flt() {
         return new FloatGenerator();
     }
 
-    public static final DecimalGenerator decimal() {
+    public static DecimalGenerator decimal() {
         return new DecimalGenerator();
     }
 
-    public static final NaturalGenerator natural() {
+    public static NaturalGenerator natural() {
         return new NaturalGenerator();
     }
 
-    public static final StringGenerator string() {
+    public static StringGenerator string() {
         return new StringGenerator();
     }
+
+    public static AgeGenerator age() {
+        return new AgeGenerator();
+    }
+
+    public static BirthdayGenerator birthday() {
+        return new BirthdayGenerator();
+    }
+
+    public static GenderGenerator gender() {
+        return new GenderGenerator();
+    }
+
+
 
 }
