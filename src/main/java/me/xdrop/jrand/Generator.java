@@ -30,6 +30,23 @@ public abstract class Generator<T> {
         return many;
     }
 
+    public List<T> genManyUnique(int num) {
+        List<T> many = new LinkedList<>();
+        Set<T> present = new HashSet<>();
+
+
+        for (int n = 0; n < num; n++) {
+            T gen;
+            do {
+                gen = gen();
+            } while (present.contains(gen));
+            many.add(gen);
+            present.add(gen);
+        }
+
+        return many;
+    }
+
     public Set<T> genManyAsSet(int num) {
         List<T> many = new LinkedList<>();
         for (int n = 0; n < num; n++) {
