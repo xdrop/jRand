@@ -23,6 +23,8 @@ public class Rand {
         return random.nextLong();
     }
 
+    public boolean randBool() { return random.nextBoolean(); }
+
     public int randInt(int n) {
         return random.nextInt(n);
     }
