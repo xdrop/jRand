@@ -2,14 +2,11 @@ package me.xdrop.jrand.data;
 
 import java.io.*;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class AssetLoader {
 
-    private static Map<String, List<String>> cache;
+    private static Map<String, List<String>> cache = new HashMap<>();
 
     public static List<String> loadAsset(String assetName) {
         if (cache.containsKey(assetName)) {
@@ -23,7 +20,7 @@ public class AssetLoader {
 
     private static List<String> internalLoadAsset(String assetName) {
         ClassLoader classLoader = AssetLoader.class.getClassLoader();
-        URL filename = classLoader.getResource(assetName);
+        URL filename = classLoader.getResource("data/" + assetName);
 
         if (filename == null) return Collections.emptyList();
 

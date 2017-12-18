@@ -2,6 +2,9 @@ package me.xdrop.jrand.generators.basics;
 
 import me.xdrop.jrand.Generator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class NaturalGenerator extends Generator<Integer> {
 
     private int min;
@@ -45,6 +48,40 @@ public class NaturalGenerator extends Generator<Integer> {
         min(min);
         max(max);
         return this;
+    }
+
+    /**
+     * Set a range starting from 0
+     *
+     * @param max Maximum value to be returned (inclusive)
+     * @return
+     */
+    public NaturalGenerator range(int max) {
+        min(0);
+        max(max - 1);
+        return this;
+    }
+
+    /**
+     * Retrieve n uniform samples from population without replacement
+     * @param sampleSize Number of samples to retrieve
+     * @param population The population size
+     * @return A list of integer samples
+     */
+    public List<Integer> sample(int sampleSize, int population) {
+        int t = 0, m =0;
+        List<Integer> samples = new ArrayList<>();
+
+        while (m < sampleSize) {
+            double u = random().randDouble();
+            if ((population -t) * u >= sampleSize -m) {
+                t++;
+            } else {
+                samples.add(t);
+                t++; m++;
+            }
+        }
+        return samples;
     }
 
     @Override
