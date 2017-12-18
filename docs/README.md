@@ -116,3 +116,5 @@ character.casing("upper").gen()
 => 'Z'
 ```
 
+?> Remember you can always use `.genString()` to get a `String` instead of `Character`
+
