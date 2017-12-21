@@ -22,10 +22,17 @@ public class Constants {
             "?","!"
     };
 
+    public static final String[] prefixes = new String[] {
+            "Mr", "Mrs", "Ms", "Dr"
+    };
+
+    public static final String[] prefixesLong = new String[] {
+            "Mister", "Misses", "Miss", "Doctor"
+    };
 
     /*
         Probably don't need these, but provide a direct char[] interface.
-     */
+    */
     public static final char[] alphaLowerPoolChar = alphaLowerPool.toCharArray();
 
     public static final char[] alphaUpperPoolChar = alphaUpperPool.toCharArray();
