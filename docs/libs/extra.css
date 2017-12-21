@@ -1,0 +1,20 @@
+
+pre.unformatted .token.jrand {
+  color: #525252;
+}
+
+pre .token.jrand {
+  color: #043eb5;
+}
+
+pre .token.jrand-class {
+  color: #043eb5;
+}
+
+pre .token.jrand-string {
+  color: #e96900;
+}
+
+pre .token.jrand-trademark {
+  color: #9611b5;
+}

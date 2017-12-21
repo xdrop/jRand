@@ -1,5 +1,4 @@
 # JRand
-
 > A Java library to generate random data for all sorts of things.
 
 JRand is heavily inspired by [ChanceJS](http://chancejs.com) and tries to bring together a lot of that functionality to Java.
@@ -52,20 +51,28 @@ The basic generators are used to generate different kinds of common data includi
 
 Returns a random boolean value.
 
-**Methods:**
+**Methods**
 ```java$ 
 JRand.bool()
 // Set the likelihood of generating true
 JRand.bool().likelihood(float)
 ```
 
-**Example:**
-```java
+**Example**
+```java 
 BoolGenerator bool = JRand.bool();
+```
 
+You can generate a uniform random boolean using:
+
+```java 
 bool.gen();
 => true
+```
 
+Alternatively, you can set the likelihood of returning `true` using:
+
+```java 
 bool.likelihood(0.1).gen();
 => false
 ```
@@ -74,12 +81,12 @@ bool.likelihood(0.1).gen();
 
 Returns a random character (`char`).
 
-**Methods:**
+**Methods**
 
 ```java$
 JRand.character()
 // Set the pool of characters to return from
-JRand.character().pool(String)
+JRand.character().pool(String charPool)
 // Return only symbols
 JRand.character().symbols()
 // Return only alphanumeric
@@ -87,31 +94,38 @@ JRand.character().alpha()
 // Return only digits
 JRand.character().digit()
 // Set the casing
-JRand.character().casing(String)
+JRand.character().casing(String casing)
 ```
 
-**Examples:**
+**Examples**
 
-```java
+```java 
 CharacterGenerator character = JRand.character()
+```
 
-// Set the pool of characters to return from
+
+You can provide a string containing a character pool from which random characters are
+to be selected from:
+```java 
 character.pool("abcdef").gen()
 => 'b'
+```
 
-// Return only symbols
+You can turn on the `symbols` flag to return only symbols, the `alpha` flag to return only
+alphabet characters or the `digit` to return only numerical digits:
+```java 
 character.symbols().gen()
 => '$'
 
-// Return only alphanumeric
 character.alpha().gen()
 => 'w'
 
-// Return only digits
 character().digit().gen()
 => '2'
+```
 
-// Set the casing
+The `casing` flag will decide whether the returned alphabet characters are uppercase
+```java 
 character.casing("upper").gen()
 => 'Z'
 ```
@@ -123,7 +137,10 @@ character.casing("upper").gen()
 
 Returns a random decimal number.
 
-**Methods:**
+!> This is designed to return `String` or `BigDecimal`, 
+if you require a double or float there are other generators for them.
+
+**Methods**
 
 ```java$
 JRand.decimal()
@@ -139,32 +156,98 @@ JRand.decimal().digits(int digits)
 JRand.decimal().roundUp(boolean roundUp)
 ```
 
-**Examples:**
+**Examples**
 
-```java
+```java 
 DecimalGenerator decimal = JRand.decimal()
+```
 
-// Set the pool of characters to return from
-decimal.gen()
+To generate a random decimal.  `0` to `100` with arbitrary number of digits.
+```java 
+decimal.gen() // Return as String
+decimal.genAsDecimal() // Return BigDecimal
 => 2.14
+```
 
-// Set the maximum to 3
+Set the maximum number to generate
+```java 
 decimal.max(3.0).gen()
 => 2.78
+``````
 
-// Set the minimum to 16 
+Set the minimum number to generate
+```java 
 decimal.min(16.0).gen()
 => 32.8
+```
 
-// Return decimal between 0 and 1
+Set a range between which to generate
+```java 
 decimal.range(0,1).gen()
 => 0.54
+```
 
-// Set the number of digits to 3
+Set the number of digits. By default they are rounded up.
+```java 
 decimal.digits(3).gen()
 => 0.321
+```
 
-// Round up
-decimal.roundUp().gen()
+Alternatively, you can disable/re-enable rounding up
+```java 
+decimal.roundUp(false).gen()
 => 45.3
 ```
+
+### double (dbl)
+
+Returns a random double.
+
+**Methods**
+```java$
+JRand.dbl()
+JRand.dbl().min(double min)
+JRand.dbl().max(double max)
+JRand.dbl().range(double min, double max)
+```
+
+**Examples**
+
+Generate a random `double`:
+
+```java 
+DoubleGenerator dbl = JRand.dbl();
+```
+
+You can set the `min`,`max` using:
+```java 
+dbl.min(500.0).gen()
+=> 723.0
+```
+
+!> If you set a `min` without updating `max`, `max` will be updated on its own to be *twice*
+the size of `min`
+
+You can also set `min` and `max` using a single method using `range`:
+```java
+dbl.range(2.0,3.0).gen()
+=> 2.9286619065030964
+```
+
+### float (flt)
+
+Returns a random `float`
+
+**Methods**
+```java$
+JRand.flt()
+JRand.flt().min(double min)
+JRand.flt().max(double max)
+JRand.flt().range(double min, double max)
+```
+See [double](#double-dbl), they have the same interface except return `float`.
+
+
+
+
+
