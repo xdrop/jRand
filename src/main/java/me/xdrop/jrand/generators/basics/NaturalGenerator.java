@@ -11,7 +11,7 @@ public class NaturalGenerator extends Generator<Integer> {
     private int max;
 
     public NaturalGenerator() {
-        this.max = Integer.MAX_VALUE;
+        this.max = Integer.MAX_VALUE - 1;
         this.min = 0;
     }
 
