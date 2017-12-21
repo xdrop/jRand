@@ -18,3 +18,11 @@ pre .token.jrand-string {
 pre .token.jrand-trademark {
   color: #9611b5;
 }
+
+img[alt=jrand] {
+	width: 168.5px;
+}
+
+h1#jrand {
+	display: none;
+}
