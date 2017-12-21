@@ -4,6 +4,7 @@ import me.xdrop.jrand.CharUtils;
 import me.xdrop.jrand.Constants;
 import me.xdrop.jrand.Generator;
 import me.xdrop.jrand.generators.basics.NaturalGenerator;
+import me.xdrop.jrand.generators.collections.ListRandUtils;
 
 import java.util.List;
 
@@ -86,7 +87,7 @@ public class SentenceGenerator extends Generator<String>{
 
                 // Randomly at punc. at the end of it
                 if (i != size && nat.range(1,6).gen() == 1){
-                    sbr.append(random().chooseOne(Constants.midPunc));
+                    sbr.append(ListRandUtils.chooseOne(Constants.midPunc));
                 }
 
                 if (i != size){
@@ -96,7 +97,7 @@ public class SentenceGenerator extends Generator<String>{
 
             // One in five times we change from full-stop to something else
             if (nat.range(1,5).gen() == 1){
-                sbr.append(random().chooseOne(Constants.endPunc));
+                sbr.append(ListRandUtils.chooseOne(Constants.endPunc));
             } else {
                 sbr.append(".");
             }
