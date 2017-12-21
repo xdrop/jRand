@@ -105,7 +105,7 @@ CharacterGenerator character = JRand.character()
 ```
 
 By default this generates a character which can **include uppercase**
-as well as **lowercase letters**, **symbols**, and **numbers**.
+as well as **lowercase letters**, and **numbers**.
 ```java 
 character.gen()
 => 'A'
@@ -324,7 +324,7 @@ StringGenerator string = JRand.string();
 ```
 
 By default this generates a string between `1` and `6` characters (at random) which can **include uppercase**
-as well as **lowercase letters**, **symbols**, and **numbers**.
+as well as **lowercase letters**, and **numbers**.
 ```java 
 string.gen();
 => "dj4fn$"

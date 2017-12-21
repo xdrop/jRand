@@ -24,10 +24,6 @@ public class BoolGenerator extends Generator<Boolean> {
     @Override
     public Boolean gen() {
         float rand = random().randFloat();
-        if (rand <= ((float) likelihood / 100)) {
-            return true;
-        } else {
-            return false;
-        }
+        return rand <= ((float) likelihood / 100);
     }
 }

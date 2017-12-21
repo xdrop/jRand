@@ -21,11 +21,11 @@ public class CharacterGenerator extends Generator<Character> {
         this.includedCharsets = new HashSet<>();
         this.includedCharsets.add(CHARSET.CHARS_UPPER);
         this.includedCharsets.add(CHARSET.CHARS_LOWER);
-        this.includedCharsets.add(CHARSET.SYMBOLS);
         this.includedCharsets.add(CHARSET.NUMBERS);
         this.customPool = null;
         this._default = true;
         this.pool = new ArrayList<>(32);
+        preparePool();
     }
 
     private void resetIncluded() {
@@ -42,6 +42,9 @@ public class CharacterGenerator extends Generator<Character> {
      * @return
      */
     public CharacterGenerator pool(String pool) {
+        if (pool == null) {
+            return this;
+        }
         this.pool.clear();
         for (char c : pool.toCharArray()) {
             this.pool.add(c);
@@ -130,18 +133,20 @@ public class CharacterGenerator extends Generator<Character> {
 
 
     @Override
-    public Character gen() { ;
+    public Character gen() {
 
-        if (pool.size() < 1){
-            return 'c';
+        if (pool == null || pool.size() < 1){
+            throw new RuntimeException("The character pool is empty, please ensure you call .pool()" +
+                    "before continuing");
         }
 
         return pool.get(random().randInt(pool.size() - 1));
     }
 
     public Tuple<Character, Integer> genWithIndex() {
-        if (pool.size() < 1){
-            return new Tuple<>('c', -1);
+        if (pool == null || pool.size() < 1){
+            throw new RuntimeException("The character pool is empty, please ensure you call .pool()" +
+                    "before continuing");
         }
 
         int index = random().randInt(pool.size() - 1);
