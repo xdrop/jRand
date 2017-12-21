@@ -1,5 +1,6 @@
 package me.xdrop.jrand.random;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Random;
@@ -29,11 +30,4 @@ public class Rand {
         return random.nextInt(n);
     }
 
-    public <T> T chooseOne(List<T> list) {
-        return list.get(randInt(list.size()));
-    }
-
-    public <T> T chooseOne(T[] list) {
-        return list[randInt(list.length)];
-    }
 }

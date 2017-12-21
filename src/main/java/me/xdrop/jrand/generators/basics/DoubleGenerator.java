@@ -31,6 +31,9 @@ public class DoubleGenerator extends Generator<Double> {
      */
     public DoubleGenerator min(double min) {
         this.min = min;
+        if (this.max < min) {
+            this.max = min * 2;
+        }
         return this;
     }
 
