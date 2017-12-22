@@ -27,7 +27,7 @@ class JRandTest extends GroovyTestCase {
         assertTrue JRand.birthday() instanceof BirthdayGenerator
     }
 
-   static boolean likelihoodTest(MethodClosure func) {
+   static void likelihoodTest(MethodClosure func) {
         def likelihood = new Random().nextInt(100)
         def generator = func(likelihood)
 
@@ -40,13 +40,13 @@ class JRandTest extends GroovyTestCase {
             if (generator.gen()) {
                 bucketYes++
             } else {
-                bucketNo++;
+                bucketNo++
             }
         }
 
         def actual = (bucketYes / iterations) * 100
-        println("Likelihood actual": actual);
-        println("Likelihood expected": likelihood);
+        println("Likelihood actual": actual)
+        println("Likelihood expected": likelihood)
         assertTrue((likelihood - 5) <= actual && actual <= (likelihood + 5))
 
     }

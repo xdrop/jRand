@@ -1,6 +1,6 @@
 <!-- Load the header without a physical h1 tag -->
 <!-- hidden-header:JRand:1 -->
-![jrand](_media/jrand.svg)
+![jrand](https://jrand.xdrop.me/_media/jrand.svg)
 
 > A Java library to generate random data for all sorts of things.
 
@@ -14,7 +14,7 @@ access to any generator you wish via the `JRand` facade class.
 You can install `JRand` via Maven Central:
 
 **Maven**
-```
+```xml
 <dependency>
     <groupId>me.xdrop</groupId>
     <artifactId>jrand</artifactId>
@@ -23,7 +23,7 @@ You can install `JRand` via Maven Central:
 ```
 
 **Gradle**:
-```
+```gradle
 compile 'me.xdrop:jrand:0.1.17-alpha'
 ```
 

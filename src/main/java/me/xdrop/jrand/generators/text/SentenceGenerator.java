@@ -26,7 +26,7 @@ public class SentenceGenerator extends Generator<String>{
      * Generate a sentence with this amount of words
      *
      * @param words Amount of words in the sentence
-     * @return
+     * @return The same generator
      */
     public SentenceGenerator words(int words) {
         this.wordsMin = words;
@@ -39,7 +39,7 @@ public class SentenceGenerator extends Generator<String>{
      *
      * @param min Minimum number of words
      * @param max Maximum number of words
-     * @return
+     * @return The same generator
      */
     public SentenceGenerator words(int min, int max) {
         this.wordsMin = min;
@@ -51,7 +51,7 @@ public class SentenceGenerator extends Generator<String>{
     /**
      * Enable extended punctuation (include ?,!,'s,') in sentence
      * @param punctuation true for enabled
-     * @return
+     * @return The same generator
      */
     public SentenceGenerator punctuation(boolean punctuation) {
         this.punctuation = punctuation;
@@ -60,7 +60,7 @@ public class SentenceGenerator extends Generator<String>{
 
     /**
      * Enable extended punctuation (include ?,!,'s,') in sentence
-     * @return
+     * @return The same generator
      */
     public SentenceGenerator punctuation() {
         return punctuation(true);

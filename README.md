@@ -15,7 +15,7 @@ access to any generator you wish via the `JRand` facade class.
 You can install `JRand` via Maven Central:
 
 **Maven**
-```
+```xml
 <dependency>
     <groupId>me.xdrop</groupId>
     <artifactId>jrand</artifactId>
@@ -24,7 +24,7 @@ You can install `JRand` via Maven Central:
 ```
 
 **Gradle**:
-```
+```gradle
 compile 'me.xdrop:jrand:0.1.17-alpha'
 ```
 

@@ -7,7 +7,7 @@ class StringGeneratorTest extends GroovyTestCase {
     def instance = {-> new StringGenerator()}
 
     void testPool() {
-        def pool = "qwz";
+        def pool = "qwz"
         def parts = ["q","w","z"]
 
         def cgen = instance().pool(pool).gen()
