@@ -33,7 +33,7 @@ public class PrefixGenerator extends Generator<String> {
     /**
      * Set whether to return prefixes are returned in a non-abreviated form
      * For example Misses instead of Mrs
-     * @return
+     * @return The same generator
      */
     public PrefixGenerator full(boolean isLong) {
         this.isLong = isLong;
@@ -45,8 +45,8 @@ public class PrefixGenerator extends Generator<String> {
      * "male" or "m" for male, "female" or "f" for female,
      * anything else to include both.
      *
-     * @param gender
-     * @return
+     * @param gender Set to "m"/"male" for male and "f"/"female" for female
+     * @return The same generator
      */
     public PrefixGenerator gender(String gender) {
         if (gender.equalsIgnoreCase("male") || gender.equalsIgnoreCase("m")) {

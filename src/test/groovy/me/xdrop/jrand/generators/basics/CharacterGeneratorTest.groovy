@@ -9,8 +9,8 @@ class CharacterGeneratorTest extends GroovyTestCase {
     def instance = { -> return new CharacterGenerator() }
 
     void testPool() {
-        def pool = "qwz";
-        def cpool = pool.toCharArray();
+        def pool = "qwz"
+        def cpool = pool.toCharArray()
         def cgen = instance().pool(pool)
         for (def i = 0; i < 10; i++) {
             assertTrue cgen.gen() in cpool

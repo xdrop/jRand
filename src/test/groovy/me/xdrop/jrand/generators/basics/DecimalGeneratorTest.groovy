@@ -4,15 +4,15 @@ class DecimalGeneratorTest extends GroovyTestCase {
     def instance = { -> new DecimalGenerator() }
 
     void testMin() {
-        assertTrue instance().min(5.0).genAsDecimal() >= 5
+        assertTrue instance().min(5.0 as double).genAsDecimal() >= 5
     }
 
     void testMax() {
-        assertTrue instance().max(5.0).genAsDecimal() <= 5
+        assertTrue instance().max(5.0 as double).genAsDecimal() <= 5
     }
 
     void testRange() {
-        def res = instance().range(0.0, 1.0).genAsDecimal()
+        def res = instance().range(0.0 as double, 1.0 as double).genAsDecimal()
         assertTrue res >= 0.0 && res <= 1.0
     }
 

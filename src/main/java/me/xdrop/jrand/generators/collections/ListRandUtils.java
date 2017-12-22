@@ -11,6 +11,7 @@ public class ListRandUtils {
 
     /**
      * Return a random element from the list
+     * @param list The input list
      * @return The random element
      */
     public static <T> T chooseOne(List<T> list) {
@@ -20,14 +21,16 @@ public class ListRandUtils {
 
     /**
      * Return a random element from the list
+     * @param arr The input array
      * @return The random element
      */
-    public static <T> T chooseOne(T[] list) {
-        int index = nat.range(list.length).gen();
-        return list[index];
+    public static <T> T chooseOne(T[] arr) {
+        int index = nat.range(arr.length).gen();
+        return arr[index];
     }
     /**
      * Return n random elements from the list (with replacement)
+     * @param list Input list
      * @param n Number of elements to retrieve
      * @return A list of random elements
      */
@@ -42,6 +45,7 @@ public class ListRandUtils {
 
     /**
      * Return n *unique* random elements from the list (without replacement)
+     * @param list Input list
      * @param n Number of elements to return
      * @return A list of unique random elements
      */

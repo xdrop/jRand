@@ -13,4 +13,4 @@
 [GitHub](https://github.com/xdrop/jrand/)
 [Get Started](#jrand)
 
-![](_media/bg.png)
+![](_media/bg.jpg)
