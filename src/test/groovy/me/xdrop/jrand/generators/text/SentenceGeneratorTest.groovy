@@ -12,5 +12,8 @@ class SentenceGeneratorTest extends GroovyTestCase {
 
     void testPunctuation() {
         // Might need internal test
+        // For now we do a simple test
+        def sentence = instance().punctuation().words(5).gen()
+        assertTrue sentence.contains(".") || sentence.contains("?") || sentence.contains("!")
     }
 }

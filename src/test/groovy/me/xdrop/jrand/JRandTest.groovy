@@ -7,6 +7,9 @@ import me.xdrop.jrand.generators.basics.DoubleGenerator
 import me.xdrop.jrand.generators.basics.FloatGenerator
 import me.xdrop.jrand.generators.basics.NaturalGenerator
 import me.xdrop.jrand.generators.basics.StringGenerator
+import me.xdrop.jrand.generators.person.AgeGenerator
+import me.xdrop.jrand.generators.person.BirthdayGenerator
+import me.xdrop.jrand.generators.person.GenderGenerator
 import org.codehaus.groovy.runtime.MethodClosure
 
 class JRandTest extends GroovyTestCase {
@@ -19,6 +22,9 @@ class JRandTest extends GroovyTestCase {
         assertTrue JRand.decimal() instanceof DecimalGenerator
         assertTrue JRand.string() instanceof StringGenerator
         assertTrue JRand.natural() instanceof NaturalGenerator
+        assertTrue JRand.age() instanceof AgeGenerator
+        assertTrue JRand.gender() instanceof GenderGenerator
+        assertTrue JRand.birthday() instanceof BirthdayGenerator
     }
 
    static boolean likelihoodTest(MethodClosure func) {
