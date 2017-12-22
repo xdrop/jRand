@@ -2799,7 +2799,8 @@ var cleanPath = cached(function (path) {
 });
 
 var cachedLinks = {};
-function getAndRemoveConfig (str) {
+
+function getAndRemoveConfig(str) {
   if ( str === void 0 ) str = '';
 
   var config = {};
@@ -2813,10 +2814,10 @@ function getAndRemoveConfig (str) {
       .trim();
   }
 
-  return { str: str, config: config }
+  return {str: str, config: config}
 }
 
-var Compiler = function Compiler (config, router) {
+var Compiler = function Compiler(config, router) {
   this.config = config;
   this.router = router;
   this.cacheTree = {};
@@ -2874,12 +2875,27 @@ Compiler.prototype._initRenderer = function _initRenderer () {
   var _self = this;
   var origin = {};
 
+  origin.html = renderer.html = function (html) {
+    if (html.startsWith("<!-- hidden")){
+      var reg = /<!-- hidden-header:(.+):(\d)/g.exec(html);
+      var name = reg[1];
+      var level = reg[2];
+      var slug = slugify(name);
+      var url = router.toURL(router.getCurrentPath(), {id: slug});
+      var nextToc = {level: level, title: name, slug: url};
+      _self.toc.push(nextToc);
+      return ("<h" + level + " style=\"height: 0\" id=\"" + slug + "\"><a href=\"" + url + "\" data-id=\"" + slug + "\" class=\"anchor\"></a></h" + level + ">")
+    }
+
+    return html;
+  };
+
   /**
    * render anchor tag
    * @link https://github.com/chjj/marked#overriding-renderer-methods
    */
   origin.heading = renderer.heading = function (text, level) {
-    var nextToc = { level: level, title: text };
+    var nextToc = {level: level, title: text};
 
     if (/{docsify-ignore}/g.test(text)) {
       text = text.replace('{docsify-ignore}', '');
@@ -2894,7 +2910,7 @@ Compiler.prototype._initRenderer = function _initRenderer () {
     }
 
     var slug = slugify(text);
-    var url = router.toURL(router.getCurrentPath(), { id: slug });
+    var url = router.toURL(router.getCurrentPath(), {id: slug});
     nextToc.slug = url;
     _self.toc.push(nextToc);
 
@@ -2908,7 +2924,7 @@ Compiler.prototype._initRenderer = function _initRenderer () {
     var unformmated = false;
 
     if (lang.endsWith('$')) {
-      lang = lang.replace("$",'');
+      lang = lang.replace("$", '');
       unformmated = true;
     }
     var hl = prism.highlight(
@@ -2959,7 +2975,7 @@ Compiler.prototype._initRenderer = function _initRenderer () {
   };
   origin.paragraph = renderer.paragraph = function (text) {
     if (/^!&gt;/.test(text)) {
-        return helper('tip', text)
+      return helper('tip', text)
     } else if (/^\?&gt;/.test(text)) {
       return helper('warn', text)
     }

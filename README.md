@@ -11,6 +11,7 @@ access to any generator you wish via the `JRand` facade class.
 
 ## Installation
 
+(Coming soon)
 You can install `JRand` via Maven Central:
 
 **Maven**
