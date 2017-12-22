@@ -1,6 +1,9 @@
-# JRand
-![jrand](jrand-logo.png)
+<!-- Load the header without a physical h1 tag -->
+<!-- hidden-header:JRand:1 -->
+![jrand](_media/jrand.svg)
+
 > A Java library to generate random data for all sorts of things.
+
 
 JRand is heavily inspired by [ChanceJS](http://chancejs.com) and tries to bring together a lot of that functionality to Java.
 In JRand there are `Generator`'s which are reusable components to generate all sorts of things. You can get
@@ -15,13 +18,13 @@ You can install `JRand` via Maven Central:
 <dependency>
     <groupId>me.xdrop</groupId>
     <artifactId>jrand</artifactId>
-    <version>0.0.1</version>
+    <version>0.1.17-alpha</version>
 </dependency>
 ```
 
 **Gradle**:
 ```
-compile 'me.xdrop:jrand:0.0.1'
+compile 'me.xdrop:jrand:0.1.17-alpha'
 ```
 
 ## Generator
@@ -105,7 +108,7 @@ CharacterGenerator character = JRand.character()
 ```
 
 By default this generates a character which can **include uppercase**
-as well as **lowercase letters**, **symbols**, and **numbers**.
+as well as **lowercase letters**, and **numbers**.
 ```java 
 character.gen()
 => 'A'
@@ -324,7 +327,7 @@ StringGenerator string = JRand.string();
 ```
 
 By default this generates a string between `1` and `6` characters (at random) which can **include uppercase**
-as well as **lowercase letters**, **symbols**, and **numbers**.
+as well as **lowercase letters**, and **numbers**.
 ```java 
 string.gen();
 => "dj4fn$"

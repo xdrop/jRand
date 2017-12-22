@@ -17,4 +17,12 @@ class NaturalGeneratorTest extends GroovyTestCase {
         assertTrue instance().range(5,7).gen() >= 5
         assertTrue instance().range(5,7).gen() <= 7
     }
+
+    void testSample() {
+        def res = instance().sample(50, 100)
+        assertTrue res.size() == 50
+        for (int i : res) {
+            assertTrue i >= 0 && i < 100
+        }
+    }
 }

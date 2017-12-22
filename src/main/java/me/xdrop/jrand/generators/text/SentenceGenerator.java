@@ -50,12 +50,20 @@ public class SentenceGenerator extends Generator<String>{
 
     /**
      * Enable extended punctuation (include ?,!,'s,') in sentence
-     *
+     * @param punctuation true for enabled
+     * @return
+     */
+    public SentenceGenerator punctuation(boolean punctuation) {
+        this.punctuation = punctuation;
+        return this;
+    }
+
+    /**
+     * Enable extended punctuation (include ?,!,'s,') in sentence
      * @return
      */
     public SentenceGenerator punctuation() {
-        this.punctuation = true;
-        return this;
+        return punctuation(true);
     }
 
 
