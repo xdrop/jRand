@@ -28,7 +28,7 @@ public class WordGenerator extends Generator<String> {
      * Set the length of the word to return
      *
      * @param length The length of the word to return
-     * @return
+     * @return The same generator
      */
     public WordGenerator length(int length) {
         this.length = length;
@@ -39,7 +39,7 @@ public class WordGenerator extends Generator<String> {
      * Set the number of syllables to return
      *
      * @param syllables Number of syllables to return
-     * @return
+     * @return The same generator
      */
     public WordGenerator syllables(int syllables) {
         this.syllablesMin = syllables;
@@ -52,7 +52,7 @@ public class WordGenerator extends Generator<String> {
      *
      * @param min Minimum number of syllables to return
      * @param max Maximum number of syllables to return
-     * @return
+     * @return The same generator
      */
     public WordGenerator syllables(int min, int max) {
         this.syllablesMin = min;

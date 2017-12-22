@@ -22,7 +22,7 @@ public class ParagraphGenerator extends Generator<String> {
      * Set the number of sentences to return.
      *
      * @param sentences Number of sentences to return
-     * @return
+     * @return The same generator
      */
     public ParagraphGenerator sentences(int sentences) {
         this.minSentences = sentences;
@@ -35,7 +35,7 @@ public class ParagraphGenerator extends Generator<String> {
      *
      * @param min Minimum number of sentences
      * @param max Maximum number of sentences
-     * @return
+     * @return The same generator
      */
     public ParagraphGenerator sentences(int min, int max) {
         this.minSentences = min;
@@ -46,7 +46,7 @@ public class ParagraphGenerator extends Generator<String> {
     /**
      * Enable extended punctuation (include ?,!,'s,') in sentence
      *
-     * @return
+     * @return The same generator
      */
     public ParagraphGenerator punctuation() {
         sentGen.punctuation();
@@ -57,7 +57,7 @@ public class ParagraphGenerator extends Generator<String> {
      * Generate a sentence with this amount of words
      *
      * @param wordsPerSentence Amount of words in the sentence
-     * @return
+     * @return The same generator
      */
     public ParagraphGenerator wordsPerSentence(int wordsPerSentence) {
         sentGen.words(wordsPerSentence);
@@ -69,7 +69,7 @@ public class ParagraphGenerator extends Generator<String> {
      *
      * @param min Minimum number of words
      * @param max Maximum number of words
-     * @return
+     * @return The same generator
      */
     public ParagraphGenerator wordsPerSentence(int min, int max) {
         sentGen.words(min, max);

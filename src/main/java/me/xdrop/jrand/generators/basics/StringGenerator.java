@@ -20,7 +20,7 @@ public class StringGenerator extends Generator<String> {
      * Set the pool of characters to choose from
      *
      * @param pool The pool of characters to choose from
-     * @return
+     * @return The same generator
      */
     public StringGenerator pool(String pool) {
         charGen.pool(pool);
@@ -30,7 +30,7 @@ public class StringGenerator extends Generator<String> {
     /**
      * Return only symbols
      *
-     * @return
+     * @return The same generator
      */
     public StringGenerator symbols() {
         charGen.symbols();
@@ -40,7 +40,7 @@ public class StringGenerator extends Generator<String> {
     /**
      * Return only alphabet characters
      *
-     * @return
+     * @return The same generator
      */
     public StringGenerator alpha() {
         charGen.alpha();
@@ -51,7 +51,7 @@ public class StringGenerator extends Generator<String> {
      * Set the casing of the letters (in case alpha() is used)
      *
      * @param casing Casing of the letters
-     * @return
+     * @return The same generator
      */
     public StringGenerator casing(CharacterGenerator.Casing casing) {
         charGen.casing(casing);
@@ -61,7 +61,7 @@ public class StringGenerator extends Generator<String> {
     /**
      * Return only digits
      *
-     * @return
+     * @return The same generator
      */
     public StringGenerator digits() {
         charGen.digit();
@@ -74,7 +74,7 @@ public class StringGenerator extends Generator<String> {
      * "upper" is uppercase, "lower" is lowercase
      *
      * @param casing Casing of the letters. Use "upper" or "lower"
-     * @return
+     * @return The same generator
      */
     public StringGenerator casing(String casing) {
         charGen.casing(casing);
@@ -87,7 +87,7 @@ public class StringGenerator extends Generator<String> {
      *
      * @param min Minimum string length (inclusive)
      * @param max Maximum string length (inclusive)
-     * @return
+     * @return The same generator
      */
     public StringGenerator range(int min, int max) {
         this.min = min;
@@ -99,7 +99,7 @@ public class StringGenerator extends Generator<String> {
      * Set the length of the string
      *
      * @param length The length of the string
-     * @return
+     * @return The same generator
      */
     public StringGenerator length(int length) {
         this.length = length;

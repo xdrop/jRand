@@ -23,7 +23,7 @@ public class SyllableGenerator extends Generator<String> {
      * Set the syllable length
      *
      * @param length Syllable length
-     * @return
+     * @return The same generator
      */
     public SyllableGenerator length(int length) {
         this.length = length;
@@ -34,7 +34,7 @@ public class SyllableGenerator extends Generator<String> {
      * Capitalize the first letter of the syllable
      *
      * @param capitalize True for capitalize, false otherwise
-     * @return
+     * @return The same generator
      */
     public SyllableGenerator capitalize(boolean capitalize) {
         this.capitalize = capitalize;

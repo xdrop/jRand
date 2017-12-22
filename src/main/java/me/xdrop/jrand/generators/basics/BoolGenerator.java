@@ -14,7 +14,7 @@ public class BoolGenerator extends Generator<Boolean> {
      * Sets the likelihood of generating a true value
      *
      * @param likelihood The likelihood as int between 0 and 100
-     * @return
+     * @return The same generator
      */
     public BoolGenerator likelihood(int likelihood) {
         this.likelihood = likelihood;
