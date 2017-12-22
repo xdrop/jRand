@@ -8,7 +8,6 @@ import java.util.*;
 
 public class CharacterGenerator extends Generator<Character> {
 
-    private String customPool;
     private List<Character> pool;
     private Set<CHARSET> includedCharsets;
     private boolean _default;
@@ -22,7 +21,6 @@ public class CharacterGenerator extends Generator<Character> {
         this.includedCharsets.add(CHARSET.CHARS_UPPER);
         this.includedCharsets.add(CHARSET.CHARS_LOWER);
         this.includedCharsets.add(CHARSET.NUMBERS);
-        this.customPool = null;
         this._default = true;
         this.pool = new ArrayList<>(32);
         preparePool();
@@ -39,7 +37,7 @@ public class CharacterGenerator extends Generator<Character> {
      * Set the pool of characters to choose from
      *
      * @param pool The pool of characters to choose from
-     * @return
+     * @return The same generator
      */
     public CharacterGenerator pool(String pool) {
         if (pool == null) {
@@ -55,7 +53,7 @@ public class CharacterGenerator extends Generator<Character> {
     /**
      * Return only symbols
      *
-     * @return
+     * @return The same generator
      */
     public CharacterGenerator symbols() {
         resetIncluded();
@@ -68,7 +66,7 @@ public class CharacterGenerator extends Generator<Character> {
     /**
      * Return only alphabet characters
      *
-     * @return
+     * @return The same generator
      */
     public CharacterGenerator alpha() {
         resetIncluded();
@@ -82,7 +80,7 @@ public class CharacterGenerator extends Generator<Character> {
      * Set the casing of the letters (in case alpha() is used)
      *
      * @param casing Casing of the letters
-     * @return
+     * @return The same generator
      */
     public CharacterGenerator casing(Casing casing) {
         if (casing == Casing.LOWER) {
@@ -97,7 +95,7 @@ public class CharacterGenerator extends Generator<Character> {
     /**
      * Return only digits
      *
-     * @return
+     * @return The same generator
      */
     public CharacterGenerator digit() {
         resetIncluded();
@@ -112,7 +110,7 @@ public class CharacterGenerator extends Generator<Character> {
      * "upper" is uppercase, "lower" is lowercase
      *
      * @param casing Casing of the letters. Use "upper" or "lower"
-     * @return
+     * @return The same generator
      */
     public CharacterGenerator casing(String casing) {
         if (casing.equalsIgnoreCase("lower")) {

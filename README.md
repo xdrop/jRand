@@ -1,4 +1,4 @@
-<a href="https://jrand.xdrop.me"><img src="https://github.com/xdrop/jRand/raw/master/docs/jrand-logo.png" width="168.5px"/></a>
+<a href="https://jrand.xdrop.me"><img src="https://jrand.xdrop.me/_media/jrand.svg" width="168.5px"/></a>
 
 
 [![Build Status](https://travis-ci.org/xdrop/jRand.svg?branch=master)](https://travis-ci.org/xdrop/jRand)
@@ -15,7 +15,7 @@ access to any generator you wish via the `JRand` facade class.
 You can install `JRand` via Maven Central:
 
 **Maven**
-```
+```xml
 <dependency>
     <groupId>me.xdrop</groupId>
     <artifactId>jrand</artifactId>
@@ -24,7 +24,7 @@ You can install `JRand` via Maven Central:
 ```
 
 **Gradle**:
-```
+```gradle
 compile 'me.xdrop:jrand:0.1.17-alpha'
 ```
 

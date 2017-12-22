@@ -19,7 +19,7 @@ public class NaturalGenerator extends Generator<Integer> {
      * Set the minimum value (inclusive)
      *
      * @param min The minimum value
-     * @return
+     * @return The same generator
      */
     public NaturalGenerator min(int min) {
         this.min = min;
@@ -30,7 +30,7 @@ public class NaturalGenerator extends Generator<Integer> {
      * Set the maximum value to return (inclusive)
      *
      * @param max The maximum value to return (inclusive)
-     * @return
+     * @return The same generator
      */
     public NaturalGenerator max(int max) {
         this.max = max;
@@ -42,7 +42,7 @@ public class NaturalGenerator extends Generator<Integer> {
      *
      * @param min Minimum value to be returned (inclusive)
      * @param max Maximum value to be returned (inclusive)
-     * @return
+     * @return The same generator
      */
     public NaturalGenerator range(int min, int max) {
         min(min);
@@ -54,7 +54,7 @@ public class NaturalGenerator extends Generator<Integer> {
      * Set a range starting from 0
      *
      * @param max Maximum value to be returned (inclusive)
-     * @return
+     * @return The same generator
      */
     public NaturalGenerator range(int max) {
         min(0);
