@@ -32,9 +32,9 @@ compile 'me.xdrop:jrand:0.1.17-alpha'
 Every random generator will extend the `Generator` class in which there are a few methods to generate your random
 results.
 
-### `.gen();`
+### `.gen()`
 
-`.gen();` will generate a new random value every time based on your configured object.
+`.gen()` will generate a new random value every time based on your configured object.
 
 ### `.genMany(int n)`
 
