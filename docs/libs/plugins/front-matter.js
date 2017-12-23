@@ -359,7 +359,7 @@ function processBlock(blocks) {
         if (currentObj != null) { res.push(currentObj); }
         currentObj = {};
         isMap = true;
-        
+        continue
       } else if ((m = line.match(/^-\s*(.*)/))) {
         if (currentObj != null) { currentObj.push(processValue(m[1])); }
         else {
@@ -371,7 +371,7 @@ function processBlock(blocks) {
           }
           res.push(processValue(m[1]));
         }
-        
+        continue
       }
     }
 

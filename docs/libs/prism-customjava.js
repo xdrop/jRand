@@ -17,8 +17,15 @@ Prism.languages.insertBefore('java','function', {
     'jrand-string': {
         pattern: /\bString\b/
     },
+    'string': {
+    		pattern: /(["'])(?:\\[\s\S]|(?!\1)[^\\])*\1/,
+    		greedy: true
+	},
+    'arrow': {
+        pattern: /=>/
+    },
     'jrand': {
-        pattern: /(\b(?:bool|character|decimal|dbl|flt)(?:\(\))?\.)\w+/i,
+        pattern: /(\b(?:bool|character|decimal|dbl|flt|string|paragraph|sentence|word|syllable|firstname|lastname|name)(?:\(\))?\.)\w+/i,
         lookbehind: true
     }
 });
