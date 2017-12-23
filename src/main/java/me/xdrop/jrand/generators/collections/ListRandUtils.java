@@ -26,6 +26,25 @@ public class ListRandUtils {
         int index = nat.range(list.length).gen();
         return list[index];
     }
+
+    /**
+     * Return a random element from the list
+     * @return The random element
+     */
+    public static int chooseOne(int[] list) {
+        int index = nat.range(list.length).gen();
+        return list[index];
+    }
+
+    /**
+     * Return a random element from the list
+     * @return The random element
+     */
+    public static double chooseOne(double[] list) {
+        int index = nat.range(list.length).gen();
+        return list[index];
+    }
+
     /**
      * Return n random elements from the list (with replacement)
      * @param n Number of elements to retrieve
