@@ -41,6 +41,15 @@ public class SyllableGenerator extends Generator<String> {
         return this;
     }
 
+    /**
+     * Capitalize the first letter of the syllable
+     *
+     * @return The same generator
+     */
+    public SyllableGenerator capitalize() {
+        return capitalize(true);
+    }
+
     @Override
     public String gen() {
         StringBuilder sbr = new StringBuilder(4);
