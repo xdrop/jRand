@@ -8,6 +8,7 @@ public class ParagraphGenerator extends Generator<String> {
 
     private int minSentences;
     private int maxSentences;
+    private String joining;
     private SentenceGenerator sentGen;
     private NaturalGenerator nat;
 
@@ -16,6 +17,7 @@ public class ParagraphGenerator extends Generator<String> {
         this.sentGen = new SentenceGenerator();
         this.minSentences = 3;
         this.maxSentences = 7;
+        this.joining = " ";
     }
 
     /**
@@ -76,6 +78,16 @@ public class ParagraphGenerator extends Generator<String> {
         return this;
     }
 
+    /**
+     * Set the paragraph joining string
+     * @param joining The joining string
+     * @return The same generator
+     */
+    public ParagraphGenerator joining(String joining) {
+        this.joining = joining;
+        return this;
+    }
+
     @Override
     public String gen(){
         int sentences;
@@ -84,6 +96,6 @@ public class ParagraphGenerator extends Generator<String> {
         } else {
             sentences = nat.range(minSentences, maxSentences).gen();
         }
-        return CharUtils.join(sentGen.genMany(sentences)," ");
+        return CharUtils.join(sentGen.genMany(sentences), joining);
     }
 }

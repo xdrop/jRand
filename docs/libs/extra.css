@@ -15,6 +15,10 @@ pre .token.jrand-string {
   color: #e96900;
 }
 
+pre .token.arrow {
+  color: #e96900;
+}
+
 pre .token.jrand-trademark {
   color: #9611b5;
 }
