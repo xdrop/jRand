@@ -2,6 +2,6 @@ package me.xdrop.jrand.data
 
 class AssetLoaderTest extends GroovyTestCase {
     void testNullHandler() {
-        assertTrue AssetLoader.loadAsset("No exists").size() == 0
+        assertTrue AssetLoader.loadList("No exists").size() == 0
     }
 }
