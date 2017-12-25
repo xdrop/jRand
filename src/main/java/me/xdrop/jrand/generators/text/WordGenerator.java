@@ -1,5 +1,6 @@
 package me.xdrop.jrand.generators.text;
 
+import me.xdrop.jrand.CharUtils;
 import me.xdrop.jrand.Generator;
 import me.xdrop.jrand.generators.basics.NaturalGenerator;
 
@@ -7,6 +8,7 @@ public class WordGenerator extends Generator<String> {
 
     private NaturalGenerator nat;
     private SyllableGenerator syl;
+    private boolean capitalize;
     private int syllablesMin;
     private int syllablesMax;
     private int length;
@@ -15,6 +17,7 @@ public class WordGenerator extends Generator<String> {
         this.syllablesMin = 1;
         this.syllablesMax = 3;
         this.length = -1;
+        this.capitalize = false;
         this.syl = new SyllableGenerator();
         this.nat = new NaturalGenerator();
     }
@@ -60,15 +63,35 @@ public class WordGenerator extends Generator<String> {
         return this;
     }
 
+    /**
+     * Capitalize the first letter of the word
+     * @return The same generator
+     */
+    public WordGenerator capitalize() {
+        return capitalize(true);
+    }
+
+    /**
+     * Capitalize the first letter of the word
+     * @param enable True to capitalize
+     *               False otherwise
+     * @return The same generator
+     */
+    public WordGenerator capitalize(boolean enable) {
+        this.capitalize = enable;
+        return this;
+    }
+
     @Override
     public String gen() {
         StringBuilder sbr = new StringBuilder(8);
+        String result;
 
         if (length > 0) {
             while (sbr.length() < length) {
                 sbr.append(syl.gen());
             }
-            return sbr.substring(0, length);
+            result = sbr.substring(0, length);
         } else {
             int syllables;
             if (syllablesMax == -1) {
@@ -80,8 +103,14 @@ public class WordGenerator extends Generator<String> {
                 sbr.append(syl.gen());
             }
 
-            return sbr.toString();
+            result = sbr.toString();
         }
+
+        if (capitalize) {
+            return CharUtils.capitalize(result);
+        }
+
+        return result;
 
     }
 }
