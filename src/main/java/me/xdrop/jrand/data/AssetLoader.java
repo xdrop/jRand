@@ -6,34 +6,74 @@ import java.util.*;
 
 public class AssetLoader {
 
-    private static Map<String, List<String>> cache = new HashMap<>();
+    private static Map<String, List<Object>> cache = new HashMap<>();
 
-    public static List<String> loadAsset(String assetName) {
+    @SuppressWarnings("unchecked")
+    public static List<String> loadList(String assetName) {
         if (cache.containsKey(assetName)) {
-            return cache.get(assetName);
+            return (List) cache.get(assetName);
         }
-        List<String> cached = internalLoadAsset(assetName);
-        cache.put(assetName, cached);
+        List<String> cached = internalLoadList(assetName);
+        cache.put(assetName, (List) cached);
 
         return cached;
     }
 
-    private static List<String> internalLoadAsset(String assetName) {
+    @SuppressWarnings("unchecked")
+    public static <T> List<T> loadListMapped(String assetName, AssetMapper<T> mapper) {
+        if (cache.containsKey(assetName)) {
+            return (List) cache.get(assetName);
+        }
+        List<T> cached = loadMappedList(assetName, mapper);
+        cache.put(assetName, (List) cached);
+
+        return cached;
+    }
+
+    private static <T> List<T> loadMappedList(String assetName, AssetMapper<T> mapper) {
+        File file =loadFileByAssetName(assetName);
+
+        if (file == null) {
+            return Collections.emptyList();
+        }
+
+        List<T> list = new ArrayList<>();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            while(reader.ready()) {
+                list.add(mapper.map(reader.readLine()));
+            }
+        } catch (IOException e) {
+            return Collections.emptyList();
+        }
+
+        return list;
+    }
+
+    private static File loadFileByAssetName(String assetName) {
         ClassLoader classLoader = AssetLoader.class.getClassLoader();
         URL filename = classLoader.getResource("data/" + assetName);
 
-        if (filename == null) return Collections.emptyList();
+        if (filename == null) return null;
 
-        File file = new File(filename.getFile());
+        return new File(filename.getFile());
+    }
+
+    private static List<String> internalLoadList(String assetName) {
+        File file = loadFileByAssetName(assetName);
+
+        if (file == null) {
+            return Collections.emptyList();
+        }
+
         List<String> list = new ArrayList<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             while(reader.ready()) {
                 list.add(reader.readLine());
             }
-
         } catch (IOException e) {
-           return new ArrayList<>();
+           return Collections.emptyList();
         }
         return list;
     }
