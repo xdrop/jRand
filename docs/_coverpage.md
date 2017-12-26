@@ -2,7 +2,7 @@
 
 ![logo](_media/logoonly.svg)
 
-# jrand <small>0.1.17-alpha</small>
+# jrand <small>0.1.19-alpha</small>
 
 > A Java library to generate random data for all sorts of things. 
 

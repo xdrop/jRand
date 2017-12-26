@@ -10,7 +10,7 @@ public class LastnameGenerator extends Generator<String> {
     private List<String> names;
 
     LastnameGenerator() {
-        this.names = AssetLoader.loadAsset("surnames.txt");
+        this.names = AssetLoader.loadList("surnames.txt");
     }
 
     @Override
