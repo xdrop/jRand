@@ -613,3 +613,53 @@ lastname.gen();
 => "Alianiello"
 ```
 
+## Location
+
+### street
+
+Returns a random street.
+
+**Methods**
+
+```java$
+JRand.street()
+JRand.street().uk()
+JRand.street().us()
+JRand.street().houseNumber()
+JRand.street().shortSuffix(boolean enable)
+JRand.street().shortSuffix()
+```
+
+**Examples**
+
+```java 
+StreetGenerator street = new StreetGenerator();
+```
+
+Generate a random street using:
+```java 
+street.gen();
+=> "Edmimo Heights"
+```
+
+This includes both UK and US street prefixes, if you use to use only one of them 
+set the `uk()` or `us()` flags.
+```java 
+street.uk().gen();
+=> "Isa Garden"
+street.us().gen();
+=> "Hakemi Place"
+```
+
+You can optinally use the short suffix version with the `shortSuffix()` flag:
+```java 
+street.shortSuffix().gen();
+=> "Pavel Str"
+```
+
+Or include a house number using `houseNumber()`
+```java 
+street.houseNumber().gen();
+=> "36 Obel Street"
+```
+
