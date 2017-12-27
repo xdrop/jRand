@@ -1,6 +1,7 @@
 package me.xdrop.jrand.generators.money;
 
 import me.xdrop.jrand.Generator;
+import me.xdrop.jrand.generators.location.CountryGenerator;
 import me.xdrop.jrand.generators.location.StreetGenerator;
 import me.xdrop.jrand.generators.person.NameGenerator;
 
