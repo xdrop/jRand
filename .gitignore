@@ -1,6 +1,9 @@
 *.class
 .clover/**
 .coveralls.yml
+*.bak
+*.versionsBackup
+dependency-reduced-pom.xml
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
