@@ -12,4 +12,9 @@ class CVVGeneratorTest extends GroovyTestCase {
         def cvv = instance()
         assertTrue cvv.amex().gen().length() == 4
     }
+
+    void testPrint(){
+        println instance().gen()
+        println instance().amex().gen()
+    }
 }
