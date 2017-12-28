@@ -15,4 +15,14 @@ class PostcodeGeneratorTest extends GroovyTestCase {
         assertTrue CharMatcher.javaLetter().matchesAnyOf(ukPostcode)
     }
 
+    void testDefault() {
+        def postcode = instance().gen()
+        assertTrue postcode.length() > 3
+    }
+
+    void testFixedPostcode() {
+        def fixed = instance().country("FK").gen()
+        assertTrue  fixed == "FIQQ 1ZZ"
+    }
+
 }

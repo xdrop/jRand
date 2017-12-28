@@ -13,15 +13,7 @@ public class StreetSuffix {
         return longVersion;
     }
 
-    public void setLongVersion(String longVersion) {
-        this.longVersion = longVersion;
-    }
-
     public String getShortVersion() {
         return shortVersion;
-    }
-
-    public void setShortVersion(String shortVersion) {
-        this.shortVersion = shortVersion;
     }
 }
