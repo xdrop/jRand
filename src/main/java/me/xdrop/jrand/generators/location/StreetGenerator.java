@@ -22,8 +22,8 @@ public class StreetGenerator extends Generator<String> {
 
     public StreetGenerator() {
         this.wordGenerator = new WordGenerator();
-        ukStreetSuffixes = AssetLoader.loadListMapped("uk/street_suffixes.txt", new StreetSuffixMapper());
-        usStreetPrefixes = AssetLoader.loadListMapped("us/street_suffixes.txt", new StreetSuffixMapper());
+        ukStreetSuffixes = AssetLoader.loadList("uk/street_suffixes.txt", new StreetSuffixMapper());
+        usStreetPrefixes = AssetLoader.loadList("us/street_suffixes.txt", new StreetSuffixMapper());
         all = new ArrayList<>(ukStreetSuffixes);
         all.addAll(usStreetPrefixes);
         this.country = "all";

@@ -18,13 +18,13 @@ You can install `JRand` via Maven Central:
 <dependency>
     <groupId>me.xdrop</groupId>
     <artifactId>jrand</artifactId>
-    <version>0.1.19-alpha</version>
+    <version>0.1.20-alpha</version>
 </dependency>
 ```
 
 **Gradle**:
 ```gradle
-compile 'me.xdrop:jrand:0.1.19-alpha'
+compile 'me.xdrop:jrand:0.1.20-alpha'
 ```
 
 ## Generator
@@ -47,7 +47,7 @@ results.
 
 
 
-## Basic
+## Basic ️
 
 The basic generators are used to generate different kinds of common data including numbers and strings.
 
@@ -612,6 +612,91 @@ Returns a random lastname:
 lastname.gen();
 => "Alianiello"
 ```
+
+## Money
+
+### card
+
+Returns a random `Card` object.
+
+**Methods**
+
+```java$
+JRand.gen()
+```
+
+**Examples**
+
+Some text
+```java 
+```
+
+### cardNo
+
+Returns a random card number. 
+
+**Methods**
+
+```java$
+JRand.()
+```
+
+**Examples**
+
+Some text
+```java 
+```
+
+### cardType
+
+Returns a random `CardType` object.
+
+**Methods**
+
+```java$
+JRand.()
+```
+
+**Examples**
+
+Some text
+```java 
+```
+
+### expiry
+
+Returns a random expiry date.
+
+**Methods**
+
+```java$
+JRand.()
+```
+
+**Examples**
+
+Some text
+```java 
+```
+
+### issue
+
+Returns a random issue date. 
+
+**Methods**
+
+```java$
+JRand.()
+```
+
+**Examples**
+
+Some text
+```java 
+```
+
+
+
 
 ## Location
 

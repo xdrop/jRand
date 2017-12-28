@@ -5,7 +5,7 @@
 
     <groupId>me.xdrop</groupId>
     <artifactId>jRand</artifactId>
-    <version>0.1.19-alpha</version>
+    <version>0.1.20-alpha</version>
     <packaging>jar</packaging>
     <name>jrand</name>
     <description>Java random data generation library</description>
