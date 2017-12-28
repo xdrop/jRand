@@ -1,53 +1,87 @@
 package me.xdrop.jrand.data;
 
+import me.xdrop.jrand.Tuple;
+
 import java.io.*;
 import java.net.URL;
 import java.util.*;
 
 public class AssetLoader {
 
-    private static Map<String, List<Object>> cache = new HashMap<>();
+    private static Map<String, Asset> cache = new HashMap<>();
 
-    @SuppressWarnings("unchecked")
     public static List<String> loadList(String assetName) {
-        if (cache.containsKey(assetName)) {
-            return (List) cache.get(assetName);
-        }
-        List<String> cached = internalLoadList(assetName);
-        cache.put(assetName, (List) cached);
-
-        return cached;
+       return loadList(assetName, new StringMapper());
     }
 
     @SuppressWarnings("unchecked")
-    public static <T> List<T> loadListMapped(String assetName, AssetMapper<T> mapper) {
+    public static <T> List<T> loadList(String assetName, AssetMapper<T> assetMapper) {
         if (cache.containsKey(assetName)) {
-            return (List) cache.get(assetName);
+            return cache.get(assetName).getList();
         }
-        List<T> cached = loadMappedList(assetName, mapper);
-        cache.put(assetName, (List) cached);
+        Asset<T> cached = internalLoad(assetName, assetMapper);
+        cache.put(assetName,  cached);
 
-        return cached;
+        return cached.getList();
     }
 
-    private static <T> List<T> loadMappedList(String assetName, AssetMapper<T> mapper) {
-        File file =loadFileByAssetName(assetName);
+    @SuppressWarnings("unchecked")
+    public static <T> Map<String, T> loadIndex(String assetName, IndexedAssetMapper<T> assetMapper) {
+        if (cache.containsKey(assetName)) {
+            return cache.get(assetName).getIndex();
+        }
+        Asset<T> cached = internalLoad(assetName, assetMapper);
+        cache.put(assetName,  cached);
+
+        return cached.getIndex();
+    }
+
+
+    private static <T> Asset<T> internalLoad(String assetName, AssetMapper<T> mapper) {
+        File file = loadFileByAssetName(assetName);
 
         if (file == null) {
-            return Collections.emptyList();
+            return Asset.from(Collections.<T>emptyList());
         }
 
+        if (mapper instanceof IndexedAssetMapper) {
+            return loadIndexed(file, (IndexedAssetMapper<T>) mapper);
+        } else {
+            return loadUnindexed(file, mapper);
+        }
+
+    }
+
+    private static <T> Asset<T> loadUnindexed(File file, AssetMapper<T> mapper) {
         List<T> list = new ArrayList<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             while(reader.ready()) {
-                list.add(mapper.map(reader.readLine()));
+                T entry = mapper.map(reader.readLine());
+                list.add(entry);
             }
         } catch (IOException e) {
-            return Collections.emptyList();
+            return Asset.from(Collections.<T>emptyList());
         }
 
-        return list;
+        return Asset.from(list);
+    }
+
+    private static <T> Asset<T> loadIndexed(File file, IndexedAssetMapper<T> mapper) {
+        List<T> list = new ArrayList<>();
+        Map<String,T> map = new HashMap<>();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            while(reader.ready()) {
+                Tuple<String, T> entry = mapper.indexedMap(reader.readLine());
+                list.add(entry.getVal());
+                map.put(entry.getKey(), entry.getVal());
+            }
+        } catch (IOException e) {
+            return Asset.from(Collections.<T>emptyList());
+        }
+
+        return Asset.from(list,map);
     }
 
     private static File loadFileByAssetName(String assetName) {
@@ -59,24 +93,6 @@ public class AssetLoader {
         return new File(filename.getFile());
     }
 
-    private static List<String> internalLoadList(String assetName) {
-        File file = loadFileByAssetName(assetName);
-
-        if (file == null) {
-            return Collections.emptyList();
-        }
-
-        List<String> list = new ArrayList<>();
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            while(reader.ready()) {
-                list.add(reader.readLine());
-            }
-        } catch (IOException e) {
-           return Collections.emptyList();
-        }
-        return list;
-    }
 
 
 
