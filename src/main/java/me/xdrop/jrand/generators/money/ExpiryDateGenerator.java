@@ -9,12 +9,15 @@ import org.joda.time.format.DateTimeFormatter;
 public class ExpiryDateGenerator extends Generator<String>{
     private boolean longVersion;
     private boolean expired;
+    private boolean canExpire;
+
     private NaturalGenerator nat;
 
     public ExpiryDateGenerator() {
         this.nat = new NaturalGenerator();
         longVersion = false;
         expired = false;
+        canExpire = false;
     }
 
     public ExpiryDateGenerator longVersion() {
@@ -23,6 +26,11 @@ public class ExpiryDateGenerator extends Generator<String>{
 
     public ExpiryDateGenerator longVersion(boolean longVersion) {
         this.longVersion = longVersion;
+        return this;
+    }
+
+    public ExpiryDateGenerator canExpire(boolean enabled) {
+        this.canExpire = enabled;
         return this;
     }
 
@@ -39,7 +47,9 @@ public class ExpiryDateGenerator extends Generator<String>{
     public String gen() {
         DateTime now = new DateTime();
         if (expired) {
-            now = now.minusYears(nat.range(1,2).gen());
+            now = now.minusYears(nat.range(1, 2).gen());
+        } else if (canExpire) {
+            now = now.minusYears(nat.range(-5,5).gen());
         } else {
             now = now.plusYears(nat.range(1,5).gen());
         }

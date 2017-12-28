@@ -2,12 +2,14 @@ package me.xdrop.jrand.generators.money;
 
 public class Card {
     private String cardNumber;
-    private String ccv;
+    private String cardType;
+    private String cvv;
     private String expiryDate;
     private String issueDate;
     private String name;
     private String country;
     private String billingAddress;
+    private String postcode;
 
     public String getCardNumber() {
         return cardNumber;
@@ -17,12 +19,12 @@ public class Card {
         this.cardNumber = cardNumber;
     }
 
-    public String getCcv() {
-        return ccv;
+    public String getCvv() {
+        return cvv;
     }
 
-    public void setCcv(String ccv) {
-        this.ccv = ccv;
+    public void setCvv(String cvv) {
+        this.cvv = cvv;
     }
 
     public String getExpiryDate() {
@@ -63,5 +65,34 @@ public class Card {
 
     public void setBillingAddress(String billingAddress) {
         this.billingAddress = billingAddress;
+    }
+
+    public String getPostcode() {
+        return postcode;
+    }
+
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
+    }
+
+    public String getCardType() {
+        return cardType;
+    }
+
+    public void setCardType(String cardType) {
+        this.cardType = cardType;
+    }
+
+    @Override
+    public String toString() {
+        return  "[Name]: " + name + "\n" +
+                "[CardType]: " + cardType +"\n" +
+                "[CardNo]: " + cardNumber + "\n" +
+                "[Address]: " + billingAddress + "\n" +
+                "[Postcode]: " + postcode + "\n" +
+                "[Country]: " + country + "\n" +
+                "[IssueDate]: " + issueDate + "\n" +
+                "[ExpiryDate]: " + expiryDate + "\n" +
+                "[CVV]: " + cvv+ "\n";
     }
 }

@@ -46,4 +46,11 @@ class CardNumberGeneratorTest extends GroovyTestCase {
         assertTrue CardNumberGenerator.luhnCalculate("630403851107382") == 7
     }
 
+    void testPrint() {
+        println instance().gen()
+        println instance().format("XXXX XXXX XXXX XXXX").gen()
+        println instance().common().gen()
+        println instance().cardType("amex").gen()
+    }
+
 }
