@@ -4,7 +4,7 @@ import me.xdrop.jrand.data.AssetLoader
 
 class CountryGeneratorTest extends GroovyTestCase {
     def instance = {-> new CountryGenerator()}
-    def countries = AssetLoader.loadListMapped("countries.txt", new CountryMapper())
+    def countries = AssetLoader.loadList("countries.txt", new CountryMapper())
 
     void testCountry() {
         def country = instance().gen()

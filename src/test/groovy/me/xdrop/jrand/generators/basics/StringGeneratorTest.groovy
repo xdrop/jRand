@@ -17,23 +17,23 @@ class StringGeneratorTest extends GroovyTestCase {
     }
 
     void testSymbols() {
-        assertFalse CharMatcher.JAVA_LETTER_OR_DIGIT.matchesAllOf(instance().symbols().gen())
+        assertFalse CharMatcher.javaLetterOrDigit().matchesAllOf(instance().symbols().gen())
     }
 
     void testAlpha() {
-        assertTrue CharMatcher.JAVA_LETTER.matchesAllOf(instance().alpha().gen())
+        assertTrue CharMatcher.javaLetter().matchesAllOf(instance().alpha().gen())
     }
 
     void testUpperCase() {
-       assertTrue CharMatcher.JAVA_UPPER_CASE.matchesAllOf(instance().alpha().casing("upper").gen())
+       assertTrue CharMatcher.javaUpperCase().matchesAllOf(instance().alpha().casing("upper").gen())
     }
 
     void testNumber() {
-        assertTrue CharMatcher.JAVA_DIGIT.matchesAllOf(instance().digits().gen())
+        assertTrue CharMatcher.javaDigit().matchesAllOf(instance().digits().gen())
     }
 
     void testLowerCase() {
-        assertTrue CharMatcher.JAVA_LOWER_CASE.matchesAllOf(instance().alpha().casing("lower").gen())
+        assertTrue CharMatcher.javaLowerCase().matchesAllOf(instance().alpha().casing("lower").gen())
     }
 
     void testRange() {
