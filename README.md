@@ -19,13 +19,13 @@ You can install `JRand` via Maven Central:
 <dependency>
     <groupId>me.xdrop</groupId>
     <artifactId>jrand</artifactId>
-    <version>0.1.20-alpha</version>
+    <version>0.2.0-alpha</version>
 </dependency>
 ```
 
 **Gradle**:
 ```gradle
-compile 'me.xdrop:jrand:0.1.20-alpha'
+compile 'me.xdrop:jrand:0.2.0-alpha'
 ```
 
 ## Documentation
