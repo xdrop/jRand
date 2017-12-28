@@ -32,7 +32,7 @@ class StreetGeneratorTest extends GroovyTestCase {
     }
 
     void testUS(){
-        List<StreetSuffix> us = AssetLoader.loadList("uk/street_suffixes.txt", new StreetSuffixMapper())
+        List<StreetSuffix> us = AssetLoader.loadList("us/street_suffixes.txt", new StreetSuffixMapper())
 
         def street = instance().us().gen()
         assertTrue street.split(" ")[1] in us.stream().map({s -> s.longVersion}).collect(Collectors.toList())

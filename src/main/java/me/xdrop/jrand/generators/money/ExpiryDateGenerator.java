@@ -53,7 +53,7 @@ public class ExpiryDateGenerator extends Generator<String>{
         } else {
             now = now.plusYears(nat.range(1,5).gen());
         }
-        now = now.minusMonths(nat.range(0,12).gen());
+        now = now.minusMonths(nat.range(0,11).gen());
         return formatDate(now, longVersion);
     }
 
