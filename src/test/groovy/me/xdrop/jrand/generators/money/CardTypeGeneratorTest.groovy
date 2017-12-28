@@ -44,4 +44,9 @@ class CardTypeGeneratorTest extends GroovyTestCase {
         def onlyVisa = [CardType.VISA, CardType.VISA_ELECTRON]
         assertTrue instance().only(CardType.VISA_ELECTRON, CardType.VISA).gen() in onlyVisa
     }
+
+    void testPrint() {
+        println instance().gen()
+        println instance().common().gen()
+    }
 }

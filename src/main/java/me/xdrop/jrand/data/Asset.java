@@ -28,15 +28,8 @@ public class Asset<T> {
         return list;
     }
 
-    public void setList(List<T> list) {
-        this.list = list;
-    }
-
     public Map<String, T> getIndex() {
         return index;
     }
 
-    public void setIndex(Map<String, T> index) {
-        this.index = index;
-    }
 }

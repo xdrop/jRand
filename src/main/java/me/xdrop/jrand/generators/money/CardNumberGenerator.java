@@ -111,8 +111,7 @@ public class CardNumberGenerator extends Generator<String> {
      * @return The same generator
      */
     public CardNumberGenerator common() {
-        ctype.common();
-        return this;
+        return common(true);
     }
 
     /**
