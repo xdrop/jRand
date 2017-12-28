@@ -31,7 +31,7 @@ public class PostcodeGenerator extends Generator<String> {
         for (char c : postalFormat.toCharArray()) {
             if (c == 'A') {
                 sb.append(character.alpha().casing("upper").gen());
-            } else if (c == '9'){
+            } else if (c == '9') {
                 sb.append(character.pool("123456789").gen());
             } else {
                 sb.append(c);
@@ -42,9 +42,14 @@ public class PostcodeGenerator extends Generator<String> {
 
     @Override
     public String gen() {
-        if (country != null && !country.getPostalFormat().equals("-")) {
-            return fromFormat(country.getPostalFormat());
+        if (country == null ){
+            country = countryGen.genAsCountry();
         }
-        return fromFormat(countryGen.genAsCountry().getPostalFormat());
+
+        if (!country.isPostalFixed()) {
+            return fromFormat(country.getPostalFormat());
+        } else {
+            return country.getPostalFormat();
+        }
     }
 }
