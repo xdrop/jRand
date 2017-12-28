@@ -12,7 +12,7 @@ public class CountryGenerator extends Generator<String> {
     private boolean prefix;
 
     public CountryGenerator() {
-        this.countries = AssetLoader.loadListMapped("countries.txt", new CountryMapper());
+        this.countries = AssetLoader.loadList("countries.txt", new CountryMapper());
         this.prefix = false;
     }
 
@@ -23,6 +23,10 @@ public class CountryGenerator extends Generator<String> {
     public CountryGenerator prefix(boolean enabled) {
         this.prefix = enabled;
         return this;
+    }
+
+    public Country genAsCountry(){
+        return ListRandUtils.chooseOne(countries);
     }
 
     @Override

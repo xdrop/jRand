@@ -1,263 +1,252 @@
-AF:Afghanistan
-AL:Albania
-DZ:Algeria
-AS:American Samoa
-AD:Andorra
-AO:Angola
-AI:Anguilla
-AQ:Antarctica
-AG:Antigua and Barbuda
-AR:Argentina
-AM:Armenia
-AW:Aruba
-AU:Australia
-AT:Austria
-AZ:Azerbaijan
-BS:Bahamas
-BH:Bahrain
-BD:Bangladesh
-BB:Barbados
-BY:Belarus
-BE:Belgium
-BZ:Belize
-BJ:Benin
-BM:Bermuda
-BT:Bhutan
-BO:Bolivia
-BA:Bosnia and Herzegovina
-BW:Botswana
-BV:Bouvet Island
-BR:Brazil
-BQ:British Antarctic Territory
-IO:British Indian Ocean Territory
-VG:British Virgin Islands
-BN:Brunei
-BG:Bulgaria
-BF:Burkina Faso
-BI:Burundi
-KH:Cambodia
-CM:Cameroon
-CA:Canada
-CT:Canton and Enderbury Islands
-CV:Cape Verde
-KY:Cayman Islands
-CF:Central African Republic
-TD:Chad
-CL:Chile
-CN:China
-CX:Christmas Island
-CC:Cocos [Keeling] Islands
-CO:Colombia
-KM:Comoros
-CG:Congo - Brazzaville
-CD:Congo - Kinshasa
-CK:Cook Islands
-CR:Costa Rica
-HR:Croatia
-CU:Cuba
-CY:Cyprus
-CZ:Czech Republic
-CI:Côte d’Ivoire
-DK:Denmark
-DJ:Djibouti
-DM:Dominica
-DO:Dominican Republic
-NQ:Dronning Maud Land
-DD:East Germany
-EC:Ecuador
-EG:Egypt
-SV:El Salvador
-GQ:Equatorial Guinea
-ER:Eritrea
-EE:Estonia
-ET:Ethiopia
-FK:Falkland Islands
-FO:Faroe Islands
-FJ:Fiji
-FI:Finland
-FR:France
-GF:French Guiana
-PF:French Polynesia
-TF:French Southern Territories
-FQ:French Southern and Antarctic Territories
-GA:Gabon
-GM:Gambia
-GE:Georgia
-DE:Germany
-GH:Ghana
-GI:Gibraltar
-GR:Greece
-GL:Greenland
-GD:Grenada
-GP:Guadeloupe
-GU:Guam
-GT:Guatemala
-GG:Guernsey
-GN:Guinea
-GW:Guinea-Bissau
-GY:Guyana
-HT:Haiti
-HM:Heard Island and McDonald Islands
-HN:Honduras
-HK:Hong Kong SAR China
-HU:Hungary
-IS:Iceland
-IN:India
-ID:Indonesia
-IR:Iran
-IQ:Iraq
-IE:Ireland
-IM:Isle of Man
-IL:Israel
-IT:Italy
-JM:Jamaica
-JP:Japan
-JE:Jersey
-JT:Johnston Island
-JO:Jordan
-KZ:Kazakhstan
-KE:Kenya
-KI:Kiribati
-KW:Kuwait
-KG:Kyrgyzstan
-LA:Laos
-LV:Latvia
-LB:Lebanon
-LS:Lesotho
-LR:Liberia
-LY:Libya
-LI:Liechtenstein
-LT:Lithuania
-LU:Luxembourg
-MO:Macau SAR China
-MK:Macedonia
-MG:Madagascar
-MW:Malawi
-MY:Malaysia
-MV:Maldives
-ML:Mali
-MT:Malta
-MH:Marshall Islands
-MQ:Martinique
-MR:Mauritania
-MU:Mauritius
-YT:Mayotte
-FX:Metropolitan France
-MX:Mexico
-FM:Micronesia
-MI:Midway Islands
-MD:Moldova
-MC:Monaco
-MN:Mongolia
-ME:Montenegro
-MS:Montserrat
-MA:Morocco
-MZ:Mozambique
-MM:Myanmar [Burma]
-NA:Namibia
-NR:Nauru
-NP:Nepal
-NL:Netherlands
-AN:Netherlands Antilles
-NT:Neutral Zone
-NC:New Caledonia
-NZ:New Zealand
-NI:Nicaragua
-NE:Niger
-NG:Nigeria
-NU:Niue
-NF:Norfolk Island
-KP:North Korea
-VD:North Vietnam
-MP:Northern Mariana Islands
-NO:Norway
-OM:Oman
-PC:Pacific Islands Trust Territory
-PK:Pakistan
-PW:Palau
-PS:Palestinian Territories
-PA:Panama
-PZ:Panama Canal Zone
-PG:Papua New Guinea
-PY:Paraguay
-YD:People's Democratic Republic of Yemen
-PE:Peru
-PH:Philippines
-PN:Pitcairn Islands
-PL:Poland
-PT:Portugal
-PR:Puerto Rico
-QA:Qatar
-RO:Romania
-RU:Russia
-RW:Rwanda
-RE:Réunion
-BL:Saint Barthélemy
-SH:Saint Helena
-KN:Saint Kitts and Nevis
-LC:Saint Lucia
-MF:Saint Martin
-PM:Saint Pierre and Miquelon
-VC:Saint Vincent and the Grenadines
-WS:Samoa
-SM:San Marino
-SA:Saudi Arabia
-SN:Senegal
-RS:Serbia
-CS:Serbia and Montenegro
-SC:Seychelles
-SL:Sierra Leone
-SG:Singapore
-SK:Slovakia
-SI:Slovenia
-SB:Solomon Islands
-SO:Somalia
-ZA:South Africa
-GS:South Georgia and the South Sandwich Islands
-KR:South Korea
-ES:Spain
-LK:Sri Lanka
-SD:Sudan
-SR:Suriname
-SJ:Svalbard and Jan Mayen
-SZ:Swaziland
-SE:Sweden
-CH:Switzerland
-SY:Syria
-ST:São Tomé and Príncipe
-TW:Taiwan
-TJ:Tajikistan
-TZ:Tanzania
-TH:Thailand
-TL:Timor-Leste
-TG:Togo
-TK:Tokelau
-TO:Tonga
-TT:Trinidad and Tobago
-TN:Tunisia
-TR:Turkey
-TM:Turkmenistan
-TC:Turks and Caicos Islands
-TV:Tuvalu
-UM:U.S. Minor Outlying Islands
-PU:U.S. Miscellaneous Pacific Islands
-VI:U.S. Virgin Islands
-UG:Uganda
-UA:Ukraine
-SU:Union of Soviet Socialist Republics
-AE:United Arab Emirates
-GB:United Kingdom
-US:United States
-UY:Uruguay
-UZ:Uzbekistan
-VU:Vanuatu
-VA:Vatican City
-VE:Venezuela
-VN:Vietnam
-WK:Wake Island
-WF:Wallis and Futuna
-EH:Western Sahara
-YE:Yemen
-ZM:Zambia
-ZW:Zimbabwe
-AX:Åland Islands
+AD;Andorra;AD999
+AE;United Arab Emirates;-
+AF;Afghanistan;9999
+AG;Antigua and Barbuda;-
+AI;Anguilla;"""AI-2640"""
+AL;Albania;9999
+AM;Armenia;9999
+AO;Angola;-
+AQ;Antarctica;-
+AR;Argentina;A9999AAA
+AS;American Samoa;99999
+AT;Austria;9999
+AU;Australia;9999
+AW;Aruba;-
+AX;Åland;AX-99999
+AZ;Azerbaijan;AZ 9999
+BA;Bosnia-Herzegovina;99999
+BB;Barbados;BB99999
+BD;Bangladesh;9999
+BE;Belgium;9999
+BF;Burkina Faso;-
+BG;Bulgaria;9999
+BH;Bahrain;[9]999
+BI;Burundi;-
+BJ;Benin;-
+BL;Saint Barthélemy;99999
+BM;Bermuda;AA 99
+BN;Brunei;AA9999
+BO;Bolivia;9999
+BQ;Bonaire, St Eustatius & Saba;9999 AA
+BR;Brazil;99999-999
+BS;Bahamas;-
+BT;Bhutan;999
+BV;Bouvet Island;-
+BW;Botswana;-
+BY;Belarus;299999
+BZ;Belize;-
+C-;Clipperton Island;-
+CA;Canada;A9A 9A9
+CC;Cocos (Keeling) Islands;9999
+CD;Congo D.R.;-
+CF;Central African Rep.;-
+CG;Congo;-
+CH;Switzerland;9999
+CI;Côte d'Ivoire;-
+CK;Cook Islands;-
+CL;Chile;999-9999
+CM;Cameroon;-
+CN;China;999999
+CO;Colombia;999999
+CR;Costa Rica;99999
+CU;Cuba;99999
+CV;Cape Verde;9999
+CW;Curaçao;-
+CX;Christmas Island;9999
+CY;Cyprus;9999
+CZ;Czech Republic;999 99
+DE;Germany;99999
+DJ;Djibouti;-
+DK;Denmark;9999
+DM;Dominica;-
+DO;Dominican Republic;99999
+DZ;Algeria;99999
+EC;Ecuador;999999
+EE;Estonia;99999
+EG;Egypt;99999
+EH;Western Sahara;99999
+ER;Eritrea;-
+ES;Spain;99999
+ET;Ethiopia;9999
+FI;Finland;99999
+FJ;Fiji;-
+FK;Falkland Islands;"""FIQQ 1ZZ"""
+FM;Micronesia;99999
+FO;Faroe Islands;999
+FR;France;99999
+GA;Gabon;99 city 99
+GB;United Kingdom;AA9 9AA
+GD;Grenada;-
+GE;Georgia;9999
+GF;French Guiana;99999
+GG;Guernsey;GY9 9AA
+GH;Ghana;-
+GI;Gibraltar;"""GX11 1AA"""
+GL;Greenland;9999
+GM;Gambia;-
+GN;Guinea;-
+GP;Guadeloupe;99999
+GQ;Equatorial Guinea;-
+GR;Greece;999 99
+GS;South Georgia & Sandwich;"""SIQQ 1ZZ"""
+GT;Guatemala;99999
+GU;Guam;99999
+GW;Guinea-Bissau;9999
+GY;Guyana;-
+HK;Hong Kong;-
+HM;Heard & McDonald Islands;9999
+HN;Honduras;99999
+HR;Croatia;99999
+HT;Haiti;9999
+HU;Hungary;9999
+ID;Indonesia;99999
+IE;Ireland;D99
+IL;Israel;9999999
+IM;Isle of Man;IM9 9AA
+IN;India;999999
+IO;British Indian Ocean Terr.;"""BB9D 1ZZ"""
+IQ;Iraq;99999
+IR;Iran;99999-99999
+IS;Iceland;999
+IT;Italy;99999
+JE;Jersey;JE9 9AA
+JM;Jamaica;JMAAA99
+JO;Jordan;99999
+JP;Japan;999-9999
+KE;Kenya;99999
+KG;Kyrgyzstan;999999
+KH;Cambodia;99999
+KI;Kiribati;-
+KM;Comoros;-
+KN;Saint Kitts and Nevis;-
+KP;North Korea;-
+KR;South Korea;999-999
+KW;Kuwait;99999
+KY;Cayman Islands;KY9-9999
+KZ;Kazakhstan;999999
+LA;Laos;99999
+LB;Lebanon;9999 9999
+LC;Saint Lucia;-
+LI;Liechtenstein;9999
+LK;Sri Lanka;99999
+LR;Liberia;9999
+LS;Lesotho;999
+LT;Lithuania;99999
+LU;Luxembourg;9999
+LV;Latvia;LV-9999
+LY;Libya;99999
+MA;Morocco;99999
+MC;Monaco;"""98000"""
+MD;Moldova;9999
+ME;Montenegro;99999
+MF;Saint Martin;99999
+MG;Madagascar;999
+MH;Marshall Islands;99999
+MK;Macedonia;9999
+ML;Mali;-
+MM;Burma;99999
+MN;Mongolia;999999
+MO;Macau;-
+MP;Northern Mariana Islands;99999
+MQ;Martinique;99999
+MR;Mauritania;-
+MS;Montserrat;-
+MT;Malta;AAA 9999
+MU;Mauritius;-
+MV;Maldives;99-99
+MW;Malawi;-
+MX;Mexico;99999
+MY;Malaysia;99999
+MZ;Mozambique;9999
+NA;Namibia;99999
+NC;New Caledonia;99999
+NE;Niger;9999
+NF;Norfolk Island;9999
+NG;Nigeria;999999
+NI;Nicaragua;999-999-9
+NL;Netherlands;9999 AA
+NO;Norway;9999
+NP;Nepal;99999
+NR;Nauru;-
+NU;Niue;-
+NZ;New Zealand;9999
+OM;Oman;999
+P-;Paracel Islands;-
+PA;Panama;999999
+PE;Peru;99999
+PF;French Polynesia;99999
+PG;Papua New Guinea;999
+PH;Philippines;9999
+PK;Pakistan;99999
+PL;Poland;99-999
+PM;Saint Pierre & Miquelon;99999
+PN;Pitcairn Islands;"""PCR9 1ZZ"""
+PR;Puerto Rico;99999
+PS;Gaza Strip;-
+PT;Portugal;9999-999
+PW;Palau;99999
+PY;Paraguay;9999
+QA;Qatar;-
+RE;Réunion;99999
+RO;Romania;999999
+RS;Serbia;99999
+RU;Russia;999999
+RW;Rwanda;-
+S-;Spratly Islands;-
+SA;Saudi Arabia;99999
+SB;Solomon Islands;-
+SC;Seychelles;-
+SD;Sudan;99999
+SE;Sweden;999 99
+SG;Singapore;999999
+SH;Saint Helena;"""TDCU 1ZZ"""
+SI;Slovenia;9999
+SJ;Svalbard and Jan Mayen;9999
+SK;Slovakia;999 99
+SL;Sierra Leone;-
+SM;San Marino;99999
+SN;Senegal;99999
+SO;Somalia;-
+SR;Suriname;-
+SS;South Sudan;99999
+ST;Sao Tome and Principe;-
+SV;El Salvador;9999
+SX;Sint Maarten;-
+SY;Syria;-
+SZ;Swaziland;A999
+TC;Turks and Caicos Islands;"""TKCA 1ZZ"""
+TD;Chad;99999
+TF;French Southern Territories;-
+TG;Togo;-
+TH;Thailand;99999
+TJ;Tajikistan;999999
+TK;Tokelau;-
+TL;Timor-Leste;-
+TM;Turkmenistan;999999
+TN;Tunisia;9999
+TO;Tonga;-
+TR;Turkey;99999
+TT;Trinidad and Tobago;999999
+TV;Tuvalu;-
+TW;Taiwan;999 99
+TZ;Tanzania;-
+UA;Ukraine;99999
+UG;Uganda;-
+UM;Minor Outlying Islands;-
+US;United States;99999
+UY;Uruguay;99999
+UZ;Uzbekistan;999999
+VA;Vatican;"""00120"""
+VC;St Vincent & the Grenadines;VC9999
+VE;Venezuela;9999
+VG;British Virgin Islands;VG9999
+VI;Virgin Islands;99999
+VN;Vietnam;999999
+VU;Vanuatu;-
+WF;Wallis and Futuna;99999
+WS;Samoa;-
+YE;Yemen;-
+YT;Mayotte;99999
+ZA;South Africa;9999
+ZM;Zambia;99999
+ZW;Zimbabwe;-
