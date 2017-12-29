@@ -3,6 +3,9 @@
 .coveralls.yml
 *.bak
 *.versionsBackup
+*.iml
+**/*.iml
+
 dependency-reduced-pom.xml
 
 # Mobile Tools for Java (J2ME)
