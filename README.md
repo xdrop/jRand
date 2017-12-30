@@ -28,6 +28,46 @@ You can install `JRand` via Maven Central:
 compile 'me.xdrop:jrand:0.2.0-alpha'
 ```
 
+## Generators
+
+#### Basic
+* [Natural numbers](https://jrand.xdrop.me/#/?id=natural)
+* [Boolean](https://jrand.xdrop.me/#/?id=bool)
+* [Decimal](https://jrand.xdrop.me/#/?id=decimal)
+* [Double](https://jrand.xdrop.me/#/?id=double-dbl)
+* [Float](https://jrand.xdrop.me/#/?id=float-flt)
+* [Character](https://jrand.xdrop.me/#/?id=character)
+* [String](https://jrand.xdrop.me/#/?id=string)
+
+#### Text
+* [Syllable](https://jrand.xdrop.me/#/?id=syllable)
+* [Word](https://jrand.xdrop.me/#/?id=word)
+* [Sentence](https://jrand.xdrop.me/#/?id=sentence)
+* [Paragraph](https://jrand.xdrop.me/#/?id=paragraph)
+
+#### Person
+* [Firstname](https://jrand.xdrop.me/#/?id=firstname)
+* [Lastname](https://jrand.xdrop.me/#/?id=lastname)
+* [Age](https://jrand.xdrop.me/#/?id=age)
+* [Birthday](https://jrand.xdrop.me/#/?id=birthday)
+* [Gender](https://jrand.xdrop.me/#/?id=gender)
+* [Person](https://jrand.xdrop.me/#/?id=person-object)
+* [Prefix](https://jrand.xdrop.me/#/?id=prefix)
+
+#### Location
+* [Street](https://jrand.xdrop.me/#/?id=street)
+* [Country](https://jrand.xdrop.me/#/?id=country)
+* [Postcode](https://jrand.xdrop.me/#/?id=postcode)
+
+#### Money
+* [Credit Card](https://jrand.xdrop.me/#/?id=card)
+* [Credit Card Number](https://jrand.xdrop.me/#/?id=cardNo)
+* [Card Type](https://jrand.xdrop.me/#/?id=cardType)
+* [CVV](https://jrand.xdrop.me/#/?id=cvv)
+* [Expiry Date](https://jrand.xdrop.me/#/?id=expiryDate)
+* [Issue Date](https://jrand.xdrop.me/#/?id=issueDate)
+
+
 ## Examples
 ```java
 JRand.string().pool("abcd").gen();
