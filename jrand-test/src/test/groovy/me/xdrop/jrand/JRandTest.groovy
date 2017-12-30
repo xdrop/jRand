@@ -27,6 +27,10 @@ class JRandTest extends GroovyTestCase {
 //        assertTrue JRand.birthday() instanceof BirthdayGenerator
 //    }
 
+    void testFacade(){
+        // TODO: Write for the generated facade
+    }
+
    static void likelihoodTest(MethodClosure func) {
         def likelihood = new Random().nextInt(100)
         def generator = func(likelihood)
