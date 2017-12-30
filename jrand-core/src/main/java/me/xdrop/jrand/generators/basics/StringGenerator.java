@@ -1,7 +1,9 @@
 package me.xdrop.jrand.generators.basics;
 
 import me.xdrop.jrand.Generator;
+import me.xdrop.jrand.annotation.Facade;
 
+@Facade(accessor = "string")
 public class StringGenerator extends Generator<String> {
 
     private CharacterGenerator charGen;

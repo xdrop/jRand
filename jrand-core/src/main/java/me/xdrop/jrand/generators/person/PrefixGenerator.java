@@ -1,13 +1,16 @@
 package me.xdrop.jrand.generators.person;
 
 import me.xdrop.jrand.Generator;
-import me.xdrop.jrand.generators.collections.ListRandUtils;
+import me.xdrop.jrand.annotation.Facade;
+import me.xdrop.jrand.model.person.Prefix;
+import me.xdrop.jrand.utils.Choose;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 
+@Facade(accessor = "prefix")
 public class PrefixGenerator extends Generator<String> {
     private boolean isLong;
     private List<Prefix> prefixPool;
@@ -61,7 +64,7 @@ public class PrefixGenerator extends Generator<String> {
     }
     
     public String gen() {
-        Prefix prefix = ListRandUtils.chooseOne(prefixPool);
+        Prefix prefix = Choose.chooseOne(prefixPool);
         return isLong ? prefix.full : prefix.abbreviation;
     }
 }

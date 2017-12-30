@@ -8,6 +8,13 @@
         <version>0.2.0-alpha</version>
     </parent>
     <artifactId>jrand-annotation</artifactId>
+    <packaging>jar</packaging>
+    <description>JRand generator annotations</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.7</java.version>
+    </properties>
 
     <build>
         <plugins>

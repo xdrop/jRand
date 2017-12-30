@@ -1,5 +1,7 @@
 package me.xdrop.jrand.generators.money
 
+import me.xdrop.jrand.model.money.CardType
+
 import java.util.regex.Matcher
 
 class CardNumberGeneratorTest extends GroovyTestCase {

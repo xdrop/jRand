@@ -14,18 +14,18 @@ import org.codehaus.groovy.runtime.MethodClosure
 
 class JRandTest extends GroovyTestCase {
 
-    void testFacade() {
-        assertTrue JRand.character() instanceof CharacterGenerator
-        assertTrue JRand.flt() instanceof FloatGenerator
-        assertTrue JRand.dbl() instanceof DoubleGenerator
-        assertTrue JRand.bool() instanceof BoolGenerator
-        assertTrue JRand.decimal() instanceof DecimalGenerator
-        assertTrue JRand.string() instanceof StringGenerator
-        assertTrue JRand.natural() instanceof NaturalGenerator
-        assertTrue JRand.age() instanceof AgeGenerator
-        assertTrue JRand.gender() instanceof GenderGenerator
-        assertTrue JRand.birthday() instanceof BirthdayGenerator
-    }
+//    void testFacade() {
+//        assertTrue JRand.character() instanceof CharacterGenerator
+//        assertTrue JRand.flt() instanceof FloatGenerator
+//        assertTrue JRand.dbl() instanceof DoubleGenerator
+//        assertTrue JRand.bool() instanceof BoolGenerator
+//        assertTrue JRand.decimal() instanceof DecimalGenerator
+//        assertTrue JRand.string() instanceof StringGenerator
+//        assertTrue JRand.natural() instanceof NaturalGenerator
+//        assertTrue JRand.age() instanceof AgeGenerator
+//        assertTrue JRand.gender() instanceof GenderGenerator
+//        assertTrue JRand.birthday() instanceof BirthdayGenerator
+//    }
 
    static void likelihoodTest(MethodClosure func) {
         def likelihood = new Random().nextInt(100)

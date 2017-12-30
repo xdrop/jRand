@@ -1,6 +1,8 @@
 package me.xdrop.jrand.generators.location
 
 import me.xdrop.jrand.data.AssetLoader
+import me.xdrop.jrand.model.location.StreetSuffix
+import me.xdrop.jrand.model.location.StreetSuffixMapper
 
 import java.util.stream.Collectors
 

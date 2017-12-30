@@ -12,8 +12,8 @@
     <url>https://github.com/xdrop/jrand</url>
 
     <modules>
-        <module>jrand-processor</module>
         <module>jrand-annotation</module>
+        <module>jrand-annotation-processor</module>
         <module>jrand-core</module>
         <module>jrand-test</module>
         <module>jrand-assembly</module>

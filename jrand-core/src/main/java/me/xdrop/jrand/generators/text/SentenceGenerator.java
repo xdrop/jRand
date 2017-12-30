@@ -3,11 +3,13 @@ package me.xdrop.jrand.generators.text;
 import me.xdrop.jrand.CharUtils;
 import me.xdrop.jrand.Constants;
 import me.xdrop.jrand.Generator;
+import me.xdrop.jrand.annotation.Facade;
 import me.xdrop.jrand.generators.basics.NaturalGenerator;
-import me.xdrop.jrand.generators.collections.ListRandUtils;
+import me.xdrop.jrand.utils.Choose;
 
 import java.util.List;
 
+@Facade(accessor = "sentence")
 public class SentenceGenerator extends Generator<String>{
     private WordGenerator wordGen;
     private NaturalGenerator nat;
@@ -95,7 +97,7 @@ public class SentenceGenerator extends Generator<String>{
 
                 // Randomly at punc. at the end of it
                 if (i != size && nat.range(1,6).gen() == 1){
-                    sbr.append(ListRandUtils.chooseOne(Constants.midPunc));
+                    sbr.append(Choose.chooseOne(Constants.midPunc));
                 }
 
                 if (i != size){
@@ -105,7 +107,7 @@ public class SentenceGenerator extends Generator<String>{
 
             // One in five times we change from full-stop to something else
             if (nat.range(1,5).gen() == 1){
-                sbr.append(ListRandUtils.chooseOne(Constants.endPunc));
+                sbr.append(Choose.chooseOne(Constants.endPunc));
             } else {
                 sbr.append(".");
             }

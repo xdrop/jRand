@@ -1,5 +1,6 @@
 package me.xdrop.jrand.generators.person
 
+import me.xdrop.jrand.model.person.PersonType
 import org.joda.time.DateTime
 import org.joda.time.Period
 

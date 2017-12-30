@@ -1,7 +1,9 @@
 package me.xdrop.jrand.generators.person;
 
 import me.xdrop.jrand.Generator;
+import me.xdrop.jrand.annotation.Facade;
 
+@Facade(accessor = "name")
 public class NameGenerator extends Generator<String> {
 
     private LastnameGenerator last;

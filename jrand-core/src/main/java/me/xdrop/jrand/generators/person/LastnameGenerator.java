@@ -1,11 +1,13 @@
 package me.xdrop.jrand.generators.person;
 
 import me.xdrop.jrand.Generator;
+import me.xdrop.jrand.annotation.Facade;
 import me.xdrop.jrand.data.AssetLoader;
-import me.xdrop.jrand.generators.collections.ListRandUtils;
+import me.xdrop.jrand.utils.Choose;
 
 import java.util.List;
 
+@Facade(accessor = "lastname")
 public class LastnameGenerator extends Generator<String> {
     private List<String> names;
 
@@ -15,6 +17,6 @@ public class LastnameGenerator extends Generator<String> {
 
     @Override
     public String gen() {
-        return ListRandUtils.chooseOne(names);
+        return Choose.chooseOne(names);
     }
 }

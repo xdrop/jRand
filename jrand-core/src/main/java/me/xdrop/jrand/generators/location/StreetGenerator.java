@@ -1,18 +1,22 @@
 package me.xdrop.jrand.generators.location;
 
 import me.xdrop.jrand.Generator;
+import me.xdrop.jrand.annotation.Facade;
 import me.xdrop.jrand.data.AssetLoader;
 import me.xdrop.jrand.generators.basics.NaturalGenerator;
-import me.xdrop.jrand.generators.collections.ListRandUtils;
 import me.xdrop.jrand.generators.text.WordGenerator;
+import me.xdrop.jrand.model.location.StreetSuffix;
+import me.xdrop.jrand.model.location.StreetSuffixMapper;
+import me.xdrop.jrand.utils.Choose;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Facade(accessor = "street")
 public class StreetGenerator extends Generator<String> {
 
-    private final WordGenerator wordGenerator;
-    private final NaturalGenerator nat;
+    private WordGenerator wordGenerator;
+    private NaturalGenerator nat;
     private String country;
     private boolean shortSuffix;
     private List<StreetSuffix> ukStreetSuffixes;
@@ -106,11 +110,11 @@ public class StreetGenerator extends Generator<String> {
         StreetSuffix suffix;
 
         if (country.equals("uk")) {
-            suffix = ListRandUtils.chooseOne(ukStreetSuffixes);
+            suffix = Choose.chooseOne(ukStreetSuffixes);
         } else if (country.equals("us")) {
-            suffix = ListRandUtils.chooseOne(usStreetPrefixes);
+            suffix = Choose.chooseOne(usStreetPrefixes);
         } else {
-            suffix = ListRandUtils.chooseOne(all);
+            suffix = Choose.chooseOne(all);
         }
 
         if (shortSuffix) {

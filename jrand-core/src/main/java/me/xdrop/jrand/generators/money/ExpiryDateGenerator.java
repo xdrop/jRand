@@ -1,11 +1,13 @@
 package me.xdrop.jrand.generators.money;
 
 import me.xdrop.jrand.Generator;
+import me.xdrop.jrand.annotation.Facade;
 import me.xdrop.jrand.generators.basics.NaturalGenerator;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
+@Facade(accessor = "expiryDate")
 public class ExpiryDateGenerator extends Generator<String>{
     private boolean longVersion;
     private boolean expired;

@@ -1,8 +1,11 @@
 package me.xdrop.jrand.generators.person;
 
 import me.xdrop.jrand.Generator;
+import me.xdrop.jrand.annotation.Facade;
 import me.xdrop.jrand.generators.basics.NaturalGenerator;
+import me.xdrop.jrand.model.person.PersonType;
 
+@Facade(accessor = "age")
 public class AgeGenerator extends Generator<Integer> {
 
     private PersonType personType;

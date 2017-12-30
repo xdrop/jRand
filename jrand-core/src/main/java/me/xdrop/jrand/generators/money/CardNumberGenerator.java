@@ -1,9 +1,13 @@
 package me.xdrop.jrand.generators.money;
 
 import me.xdrop.jrand.Generator;
+import me.xdrop.jrand.annotation.Facade;
 import me.xdrop.jrand.generators.basics.NaturalGenerator;
-import me.xdrop.jrand.generators.collections.ListRandUtils;
+import me.xdrop.jrand.model.money.CardType;
+import me.xdrop.jrand.model.money.IINRange;
+import me.xdrop.jrand.utils.Choose;
 
+@Facade(accessor = "cardNo")
 public class CardNumberGenerator extends Generator<String> {
 
     private NaturalGenerator nat;
@@ -152,8 +156,8 @@ public class CardNumberGenerator extends Generator<String> {
     }
 
     private String generateCardNumber(CardType type) {
-        IINRange iinRange = ListRandUtils.chooseOne(type.getIinRange());
-        int length = ListRandUtils.chooseOne(type.getLengths());
+        IINRange iinRange = Choose.chooseOne(type.getIinRange());
+        int length = Choose.chooseOne(type.getLengths());
         StringBuilder sb = new StringBuilder(length);
         String prefix;
         if (iinRange.getEnd() == -1) {

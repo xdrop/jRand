@@ -1,8 +1,10 @@
 package me.xdrop.jrand.generators.money;
 
 import me.xdrop.jrand.Generator;
+import me.xdrop.jrand.annotation.Facade;
 import me.xdrop.jrand.generators.basics.NaturalGenerator;
 
+@Facade(accessor = "cvv")
 public class CVVGenerator extends Generator<String> {
     private NaturalGenerator nat;
     private boolean amex;

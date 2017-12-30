@@ -1,7 +1,9 @@
 package me.xdrop.jrand.generators.basics;
 
 import me.xdrop.jrand.Generator;
+import me.xdrop.jrand.annotation.Facade;
 
+@Facade(accessor = "flt")
 public class FloatGenerator extends Generator<Float> {
     private float min;
     private float max;

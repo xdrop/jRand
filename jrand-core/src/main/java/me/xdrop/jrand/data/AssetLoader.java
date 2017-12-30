@@ -88,7 +88,4 @@ public class AssetLoader {
         return AssetLoader.class.getResourceAsStream("/data/" + assetName);
     }
 
-
-
-
 }

@@ -1,12 +1,16 @@
 package me.xdrop.jrand.generators.money;
 
 import me.xdrop.jrand.Generator;
-import me.xdrop.jrand.generators.location.Country;
+import me.xdrop.jrand.annotation.Facade;
+import me.xdrop.jrand.model.location.Country;
 import me.xdrop.jrand.generators.location.CountryGenerator;
 import me.xdrop.jrand.generators.location.PostcodeGenerator;
 import me.xdrop.jrand.generators.location.StreetGenerator;
 import me.xdrop.jrand.generators.person.NameGenerator;
+import me.xdrop.jrand.model.money.Card;
+import me.xdrop.jrand.model.money.CardType;
 
+@Facade(accessor = "card")
 public class CardGenerator extends Generator<Card> {
     private StreetGenerator street;
     private NameGenerator name;
@@ -46,4 +50,5 @@ public class CardGenerator extends Generator<Card> {
         card.setPostcode(postcode.country(_country.getPrefix()).gen());
         return card;
     }
+
 }

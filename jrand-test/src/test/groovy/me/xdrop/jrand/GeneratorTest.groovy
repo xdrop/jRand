@@ -1,9 +1,11 @@
 package me.xdrop.jrand
 
+import me.xdrop.jrand.generators.basics.NaturalGenerator
+
 
 class GeneratorTest extends GroovyTestCase {
     void testGenManyUnique() {
-        def chosen = JRand.natural().range(0,100).genManyUnique(50)
+        def chosen = new NaturalGenerator().range(0,100).genManyUnique(50)
         def seen = new HashSet()
         assertTrue chosen.size() == 50
         chosen.forEach({ i ->
@@ -12,7 +14,7 @@ class GeneratorTest extends GroovyTestCase {
     }
 
     void testGenManyAsSet() {
-        assertTrue JRand.natural().genManyAsSet(50) instanceof Set
-        assertTrue JRand.natural().genManyAsSet(50).size() > 0
+        assertTrue new NaturalGenerator().genManyAsSet(50) instanceof Set
+        assertTrue new NaturalGenerator().genManyAsSet(50).size() > 0
     }
 }

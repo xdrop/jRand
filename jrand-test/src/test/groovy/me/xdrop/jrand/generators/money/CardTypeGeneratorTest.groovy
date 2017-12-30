@@ -1,5 +1,7 @@
 package me.xdrop.jrand.generators.money
 
+import me.xdrop.jrand.model.money.CardType
+
 class CardTypeGeneratorTest extends GroovyTestCase {
     def instance = {-> new CardTypeGenerator()}
 

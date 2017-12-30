@@ -1,6 +1,8 @@
 package me.xdrop.jrand.generators.person;
 
 import me.xdrop.jrand.Generator;
+import me.xdrop.jrand.annotation.Facade;
+import me.xdrop.jrand.model.person.PersonType;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeConstants;
 import org.joda.time.Period;
@@ -9,6 +11,7 @@ import org.joda.time.format.DateTimeFormatter;
 
 import java.util.Date;
 
+@Facade(accessor = "birthday")
 public class BirthdayGenerator extends Generator<Date> {
 
     private PersonType personType;

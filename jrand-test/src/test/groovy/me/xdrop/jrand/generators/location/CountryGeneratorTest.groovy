@@ -1,6 +1,7 @@
 package me.xdrop.jrand.generators.location
 
 import me.xdrop.jrand.data.AssetLoader
+import me.xdrop.jrand.model.location.CountryMapper
 
 class CountryGeneratorTest extends GroovyTestCase {
     def instance = {-> new CountryGenerator()}

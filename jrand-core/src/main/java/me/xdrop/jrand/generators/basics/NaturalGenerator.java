@@ -1,10 +1,12 @@
 package me.xdrop.jrand.generators.basics;
 
 import me.xdrop.jrand.Generator;
+import me.xdrop.jrand.annotation.Facade;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Facade(accessor = "natural")
 public class NaturalGenerator extends Generator<Integer> {
 
     private int min;

@@ -3,7 +3,7 @@ package me.xdrop.jrand.generators.basics;
 import me.xdrop.jrand.Generator;
 import me.xdrop.jrand.Tuple;
 import me.xdrop.jrand.annotation.Facade;
-import me.xdrop.jrand.generators.basics.enums.CHARSET;
+import me.xdrop.jrand.model.basics.enums.CHARSET;
 
 import java.util.*;
 

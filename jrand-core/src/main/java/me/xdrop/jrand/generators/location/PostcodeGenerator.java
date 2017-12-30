@@ -1,14 +1,18 @@
 package me.xdrop.jrand.generators.location;
 
 import me.xdrop.jrand.Generator;
+import me.xdrop.jrand.annotation.Facade;
 import me.xdrop.jrand.data.AssetLoader;
 import me.xdrop.jrand.generators.basics.CharacterGenerator;
+import me.xdrop.jrand.model.location.Country;
+import me.xdrop.jrand.model.location.CountryMapper;
 
 import java.util.Map;
 
+@Facade(accessor = "postcode")
 public class PostcodeGenerator extends Generator<String> {
-    private final CharacterGenerator character;
-    private final CountryGenerator countryGen;
+    private CharacterGenerator character;
+    private CountryGenerator countryGen;
     private Country country;
 
     public PostcodeGenerator() {

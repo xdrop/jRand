@@ -8,7 +8,7 @@
         <version>0.2.0-alpha</version>
     </parent>
 
-    <artifactId>jRand-test</artifactId>
+    <artifactId>jrand-test</artifactId>
     <packaging>jar</packaging>
     <description>JRand test suite</description>
 
@@ -39,7 +39,7 @@
 
         <dependency>
             <groupId>me.xdrop</groupId>
-            <artifactId>jRand-core</artifactId>
+            <artifactId>jrand-core</artifactId>
             <version>0.2.0-alpha</version>
             <scope>compile</scope>
         </dependency>

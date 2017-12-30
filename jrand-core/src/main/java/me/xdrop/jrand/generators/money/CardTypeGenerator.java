@@ -1,11 +1,13 @@
 package me.xdrop.jrand.generators.money;
 
 import me.xdrop.jrand.Generator;
-import me.xdrop.jrand.generators.basics.NaturalGenerator;
-import me.xdrop.jrand.generators.collections.ListRandUtils;
+import me.xdrop.jrand.annotation.Facade;
+import me.xdrop.jrand.model.money.CardType;
+import me.xdrop.jrand.utils.Choose;
 
 import java.util.*;
 
+@Facade(accessor = "cardType")
 public class CardTypeGenerator extends Generator<CardType> {
 
     private static Map<String, CardType> all;
@@ -139,9 +141,9 @@ public class CardTypeGenerator extends Generator<CardType> {
     @Override
     public CardType gen() {
         if (customPool.size() != 0) {
-            return ListRandUtils.chooseOne(customPool);
+            return Choose.chooseOne(customPool);
         }
-        return ListRandUtils.chooseOne(allCol);
+        return Choose.chooseOne(allCol);
     }
 
 
