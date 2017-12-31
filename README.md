@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/xdrop/jRand.svg?branch=master)](https://travis-ci.org/xdrop/jRand)
 [![Documentation](https://img.shields.io/badge/documentation-0.2.0--alpha-green.svg)](https://jrand.xdrop.me)
 [ ![Download](https://api.bintray.com/packages/xdrop/jrand/jRand/images/download.svg) ](https://bintray.com/xdrop/jrand/jRand/_latestVersion)
-> A Java library to generate random data for all sorts of things.
+> The *best* Java library for random data generation.
 
 JRand is heavily inspired by [ChanceJS](http://chancejs.com) and tries to bring together a lot of that functionality to Java.
 In JRand there are `Generator`'s which are reusable components to generate all sorts of things. You can get
