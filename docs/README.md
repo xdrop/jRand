@@ -2,12 +2,14 @@
 <!-- hidden-header:JRand:1 -->
 ![jrand](https://jrand.xdrop.me/_media/jrand.svg)
 
-> A Java library to generate random data for all sorts of things.
+> Probably the *best* Java library for random data generation.*
 
 
 JRand is heavily inspired by [ChanceJS](http://chancejs.com) and tries to bring together a lot of that functionality to Java.
 In JRand there are `Generator`'s which are reusable components to generate all sorts of things. You can get
 access to any generator you wish via the `JRand` facade class.
+
+The library is under development with *weekly* releases of new generators.
 
 ## Installation
 
@@ -45,9 +47,10 @@ results.
 `genString()` returns a `String` version of your random value
 
 
+?> **Remember:** Different options and flags on generators can be *chained* in a builder
+fashion
 
-
-## Basic ️
+## Basic️
 
 The basic generators are used to generate different kinds of common data including numbers and strings.
 
@@ -748,3 +751,18 @@ street.houseNumber().gen();
 => "36 Obel Street"
 ```
 
+
+## License
+Copyright 2018 - xdrop
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.

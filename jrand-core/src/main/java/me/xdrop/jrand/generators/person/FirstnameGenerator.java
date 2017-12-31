@@ -16,8 +16,8 @@ public class FirstnameGenerator extends Generator<String>{
     private GenderGenerator genderGen;
 
     public FirstnameGenerator() {
-        this.maleNames = AssetLoader.loadList("firstnames-male.txt");
-        this.femaleNames = AssetLoader.loadList("firstnames-female.txt");
+        this.maleNames = AssetLoader.loadList("male/firstnames.txt");
+        this.femaleNames = AssetLoader.loadList("female/firstnames.txt");
         this.genderGen = new GenderGenerator();
     }
 

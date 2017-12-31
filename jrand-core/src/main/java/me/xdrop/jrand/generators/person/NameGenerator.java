@@ -2,30 +2,47 @@ package me.xdrop.jrand.generators.person;
 
 import me.xdrop.jrand.Generator;
 import me.xdrop.jrand.annotation.Facade;
+import me.xdrop.jrand.model.person.Gender;
 
 @Facade(accessor = "name")
 public class NameGenerator extends Generator<String> {
 
     private LastnameGenerator last;
     private FirstnameGenerator first;
+    private PrefixGenerator prefix;
+
     private boolean reverseOrder;
     private boolean withMiddleName;
-    private String separator = " ";
+    private boolean withPrefix;
     private boolean asCardName;
+
+    private Gender gender;
+
+    private String separator = " ";
 
     public NameGenerator() {
         this.last = new LastnameGenerator();
         this.first = new FirstnameGenerator();
+        this.prefix = new PrefixGenerator();
     }
 
     /**
      * Set an option to print lastname first then the surname
-     *
+     * @param enabled True for reverse order,
+     *                False otherwise
+     * @return The same generator
+     */
+    public NameGenerator reverseOrder(boolean enabled) {
+        this.reverseOrder = enabled;
+        return this;
+    }
+
+    /**
+     * Set an option to print lastname first then the surname
      * @return The same generator
      */
     public NameGenerator reverseOrder() {
-        this.reverseOrder = true;
-        return this;
+        return reverseOrder(true);
     }
 
     /**
@@ -52,12 +69,66 @@ public class NameGenerator extends Generator<String> {
     /**
      * Formats the name as the uppercase shortened names
      * typically found on cards
+     * @param enabled True for a cardname,
+     *                False otherwise
+     * @return The same generator
+     */
+    public NameGenerator cardName(boolean enabled) {
+        this.asCardName = true;
+        return this;
+    }
+
+    /**
+     * Formats the name as the uppercase shortened names
+     * typically found on cards
      *
      * @return The same generator
      */
     public NameGenerator cardName() {
-        this.asCardName = true;
+        return cardName(true);
+    }
+
+    /**
+     * Add a prefix to the name (eg. Mr)
+     * @param enabled True for prefix,
+     *                False otherwise
+     * @return The same generator
+     */
+    public NameGenerator withPrefix(boolean enabled) {
+        this.withPrefix = enabled;
         return this;
+    }
+
+    /**
+     * Set the gender
+     * @param gender The gender as a string,
+     *               m for male, f for female
+     * @return The same generator
+     */
+    public NameGenerator gender(String gender) {
+        this.first.gender(gender);
+        this.prefix.gender(gender);
+        return this;
+    }
+
+    /**
+     * Set the gender
+     * @param gender The gender as a {@link Gender} type
+     * @return The same generator
+     */
+    public NameGenerator gender(Gender gender) {
+        this.first.gender(gender);
+        this.prefix.gender(gender);
+        return this;
+    }
+
+
+    /**
+     * Add a prefix to the name (eg. Mr)
+     * @return The same generator
+     */
+    public NameGenerator withPrefix() {
+        return withPrefix(true);
     }
 
     @Override
@@ -78,6 +149,10 @@ public class NameGenerator extends Generator<String> {
             } else {
                 name = firstName + separator + lastName;
             }
+        }
+
+        if (withPrefix) {
+            name = prefix.gen() + separator + name;
         }
 
         if (asCardName) {

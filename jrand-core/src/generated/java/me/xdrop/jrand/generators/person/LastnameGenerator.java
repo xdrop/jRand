@@ -13,7 +13,7 @@ public class LastnameGenerator extends Generator<String> {
     private List<String> names;
 
     public LastnameGenerator() {
-        this.names = AssetLoader.loadList("surnames.txt");
+        this.names = AssetLoader.loadList("neutral/surnames.txt");
     }
 
     @Override
