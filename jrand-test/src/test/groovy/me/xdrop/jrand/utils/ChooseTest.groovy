@@ -11,8 +11,12 @@ class ChooseTest extends GroovyTestCase {
 
     void testChooseOneArray() {
         String[] list = ["a", "b", "c"] as String[]
+        double[] dbl = [1.0, 2.0, 3.0] as double[]
+        int[] ints = [1,2,3] as int[]
         assertTrue Choose.chooseOne(list) in list
         assertTrue Choose.chooseOne(["a"] as String[]) == "a"
+        assertTrue Choose.chooseOne(dbl) in dbl
+        assertTrue Choose.chooseOne(ints) in ints
     }
 
     void testChooseN() {
@@ -23,6 +27,7 @@ class ChooseTest extends GroovyTestCase {
             assertTrue i in list
         })
     }
+
 
     void testChooseNUnique() {
         def list = ["a", "b", "c", "d", "e"]

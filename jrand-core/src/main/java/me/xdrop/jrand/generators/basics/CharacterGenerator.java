@@ -131,7 +131,6 @@ public class CharacterGenerator extends Generator<Character> {
         }
     }
 
-
     @Override
     public Character gen() {
 
@@ -143,6 +142,11 @@ public class CharacterGenerator extends Generator<Character> {
         return pool.get(random().randInt(pool.size() - 1));
     }
 
+    /**
+     * When specifying a pool you can use this to generate an item from the pool
+     * along with its index it in the pool
+     * @return A {@link Tuple} of a character and its index in the pool
+     */
     public Tuple<Character, Integer> genWithIndex() {
         if (pool == null || pool.size() < 1){
             throw new RuntimeException("The character pool is empty, please ensure you call .pool()" +

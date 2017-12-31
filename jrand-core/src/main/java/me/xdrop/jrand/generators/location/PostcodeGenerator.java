@@ -20,12 +20,35 @@ public class PostcodeGenerator extends Generator<String> {
         this.countryGen = new CountryGenerator();
     }
 
+    /**
+     * Specify the country <b>prefix</b> as a string to generate the postcode for.
+     * @param countryPrefix The country's 2 or 3 digit prefix
+     * @return The same generator
+     */
     public PostcodeGenerator country(String countryPrefix) {
         Map<String, Country> index = AssetLoader.loadIndex("countries.txt", new CountryMapper());
         this.country = index.get(countryPrefix.toUpperCase());
         return this;
     }
 
+    /**
+     * Generate a postcode from a postal format.
+     *
+     * In the postal format 'A' will generate an alphabet
+     * character while '9' will generate a digit.
+     *
+     * For example:
+     * <pre>
+     *     A999
+     * </pre>
+     *
+     * Will return something like:
+     * <pre>
+     *     Z233
+     * </pre>
+     * @param postalFormat The postal format string
+     * @return The random postcode generated
+     */
     public String fromFormat(String postalFormat) {
         if (postalFormat.equals("-")) {
             return fromFormat("A9999");

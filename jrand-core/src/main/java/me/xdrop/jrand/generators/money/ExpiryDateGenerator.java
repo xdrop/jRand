@@ -22,24 +22,51 @@ public class ExpiryDateGenerator extends Generator<String>{
         canExpire = false;
     }
 
+
+    /**
+     * Return the expiry date as MM/YYYY
+     * @return The same generator
+     */
     public ExpiryDateGenerator longVersion() {
         return longVersion(true);
     }
 
+    /**
+     * Return the expiry date as MM/YYYY
+     * @param longVersion True for MM/YYYY,
+     *                    False for MM/YY
+     * @return The same generator
+     */
     public ExpiryDateGenerator longVersion(boolean longVersion) {
         this.longVersion = longVersion;
         return this;
     }
 
+    /**
+     * Set whether this can generate a past expiry date card
+     * @param enabled True for enabled,
+     *                False otherwise
+     * @return The same generator
+     */
     public ExpiryDateGenerator canExpire(boolean enabled) {
         this.canExpire = enabled;
         return this;
     }
 
+    /**
+     * Generate an expired card
+     * @return The same generator
+     */
     public ExpiryDateGenerator expired() {
         return expired(true);
     }
 
+    /**
+     * Generate an expired card
+     * @param enabled True for enabled,
+     *                False otherwise
+     * @return The same generator
+     */
     public ExpiryDateGenerator expired(boolean enabled) {
         this.expired = enabled;
         return this;

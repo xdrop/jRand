@@ -47,5 +47,10 @@ class BirthdayGeneratorTest extends GroovyTestCase {
         assertTrue instance().format("dd").genString().length() == 2
     }
 
+    void testDate() {
+        assertTrue instance().gen() instanceof Date
+        assertTrue instance().gen() != new Date()
+    }
+
 
 }
