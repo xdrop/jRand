@@ -47,12 +47,21 @@ public class NameGenerator extends Generator<String> {
 
     /**
      * Set an option to add a middlename
-     *
+     * @param enabled True for middle name,
+     *                False otherwise
+     * @return The same generator
+     */
+    public NameGenerator withMiddleName(boolean enabled) {
+        this.withMiddleName = enabled;
+        return this;
+    }
+
+    /**
+     * Set an option to add a middlename
      * @return The same generator
      */
     public NameGenerator withMiddleName() {
-        this.withMiddleName = true;
-        return this;
+        return withMiddleName(true);
     }
 
     /**

@@ -62,7 +62,7 @@ Returns a random boolean value.
 ```java$ 
 JRand.bool()
 // Set the likelihood of generating true
-JRand.bool().likelihood(float)
+JRand.bool().likelihood(int)
 ```
 
 **Example**
@@ -77,10 +77,11 @@ bool.gen();
 => true
 ```
 
-Alternatively, you can set the likelihood of returning `true` using:
+You can also set the likelihood as an integer out of 100 to indicate the probablity
+of returning `true` using:
 
 ```java 
-bool.likelihood(0.1).gen();
+bool.likelihood(50).gen();
 => false
 ```
 
@@ -102,6 +103,8 @@ JRand.character().alpha()
 JRand.character().digit()
 // Set the casing
 JRand.character().casing(String casing)
+// Pick a random element from the pool and return it with its index
+JRand.character().pool(String charPool).genWithIndex()
 ```
 
 **Examples**
@@ -137,6 +140,28 @@ character().digit().gen();
 => '2'
 ```
 
+You can optionally *add* (as opposed to only return) symbols to the pool using:
+```java 
+character.addSymbols().gen();
+=> 'x'
+```
+
+You can chain different *add* methods together:
+```java 
+character.addAlpha().addSymbols().gen();
+=> '$'
+```
+
+Or even add your own charset:
+```java 
+character.addCharset(CHARSET.CHARS_LOWER)
+         .addCharset(CHARSET.SYMBOLS)
+         .gen();
+=> 'l'
+```
+
+The available `CHARSET`s are: `SYMBOLS`,`CHARS_LOWER`,`CHARS_UPPER`,`NUMBERS`
+
 The `casing` flag will decide whether the returned alphabet characters are uppercase
 ```java 
 character.casing("upper").gen();
@@ -167,6 +192,8 @@ JRand.decimal().range(double min, double max)
 JRand.decimal().digits(int digits)
 // Set whether to round up or not
 JRand.decimal().roundUp(boolean roundUp)
+// Returns the decimal as BigDecimal
+JRand.decimal().genAsDecimal();
 ```
 
 **Examples**
@@ -210,6 +237,12 @@ Alternatively, you can disable/re-enable rounding up
 ```java 
 decimal.roundUp(false).gen();
 => 45.3
+```
+
+Or generate your result as `BigDecimal`:
+```java 
+decimal.genAsDecimal();
+=> BigDecimal(2.0)
 ```
 
 ### double (dbl)
@@ -317,8 +350,12 @@ JRand.string()
 JRand.string().pool(String charPool)
 JRand.string().symbols()
 JRand.string().alpha()
-JRand.string().casing(String casing)
 JRand.string().digits()
+JRand.string().addDigits()
+JRand.string().addSymbols()
+JRand.string().addAlpha()
+JRand.string().addCharset(CHARSET charset)
+JRand.string().casing(String casing)
 JRand.string().range(int min, int max)
 JRand.string().length(int length)
 ```
@@ -349,6 +386,28 @@ string.symbols();
 string.alpha();
 string.digit();
 ```
+
+You can optionally *add* (as opposed to only return) symbols to the pool using:
+```java 
+string.addSymbols().gen();
+=> 'x'
+```
+
+You can chain different *add* methods together:
+```java 
+string.addAlpha().addSymbols().gen();
+=> '$'
+```
+
+Or even add your own charset:
+```java 
+string.addCharset(CHARSET.CHARS_LOWER)
+      .addCharset(CHARSET.SYMBOLS)
+      .gen();
+=> 'l'
+```
+
+The available `CHARSET`s are: `SYMBOLS`,`CHARS_LOWER`,`CHARS_UPPER`,`NUMBERS`
 
 You can set the casing using:
 ```java 
@@ -419,6 +478,8 @@ JRand.word().length(int length)
 JRand.word().syllables(int syllables)
 JRand.word().syllables(int min, int max)
 JRand.word().setSyl(SyllableGenerator syl)
+JRand.word().capitalize()
+JRand.word().capitalize(boolean enable)
 ```
 
 **Examples**
@@ -449,6 +510,12 @@ Or specify a range:
 ```java 
 word.syllables(1,2).gen()
 => "lee"
+```
+
+Optionally, capitalize the word:
+```java 
+word.capitalize().gen();
+=> "Lee"
 ```
 
 Or set your own syllable generator:
@@ -581,6 +648,8 @@ Returns a random firstname
 
 ```java$
 JRand.firstname()
+JRand.gender(String gender)
+JRand.gender(Gender gender)
 ```
 
 **Examples**
@@ -594,6 +663,15 @@ Returns a random firstname:
 firstname.gen();
 => "Betty"
 ```
+
+You can set the gender to be male or female:
+```java 
+firstname.gender(Gender.MALE).gen();
+=> "Andrew"
+firstname.gender("female").gen();
+=> "Laura"
+```
+
 ### lastname
 
 Returns a random lastname
@@ -615,6 +693,52 @@ Returns a random lastname:
 lastname.gen();
 => "Alianiello"
 ```
+
+### name
+
+Returns a random name
+
+**Methods**
+
+```java$
+JRand.name()
+JRand.name().withPrefix()
+JRand.name().withPrefix(boolean enabled)
+JRand.name().withMiddleName()
+JRand.name().withMiddleName(boolean enabled)
+JRand.name().separator(String sep)
+JRand.name().gender(String gender)
+JRand.name().gender(Gender gender)
+JRand.name().reverseOrder(boolean enabled)
+JRand.name().reverseOrder()
+JRand.name().cardName(boolean enabled)
+JRand.name().cardName()
+```
+
+**Examples**
+
+```java 
+NameGenerator name = JRand.name();
+```
+
+Return a random name of any gender, without a prefix:
+```java 
+name.gen();
+=> "John Smith"
+```
+
+Return lastname first then firstname:
+```java 
+name.reverseOrder().gen();
+=> "Smith John"
+```
+
+Include a middle name:
+```java 
+name.withMiddleName().gen();
+=> "John Albert Smith"
+```
+
 
 ## Money
 

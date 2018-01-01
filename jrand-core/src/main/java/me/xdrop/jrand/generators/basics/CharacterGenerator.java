@@ -5,6 +5,7 @@ import me.xdrop.jrand.Tuple;
 import me.xdrop.jrand.annotation.Facade;
 import me.xdrop.jrand.model.basics.enums.CHARSET;
 
+import java.nio.charset.Charset;
 import java.util.*;
 
 @Facade(accessor = "character")
@@ -102,6 +103,51 @@ public class CharacterGenerator extends Generator<Character> {
     public CharacterGenerator digit() {
         resetIncluded();
         includedCharsets.add(CHARSET.NUMBERS);
+        preparePool();
+        return this;
+    }
+
+    /**
+     * Add digits to the pool of elements this generator
+     * will return
+     * @return The same generator
+     */
+    public CharacterGenerator addDigits() {
+        includedCharsets.add(CHARSET.NUMBERS);
+        preparePool();
+        return this;
+    }
+
+    /**
+     * Add letters to the pool of elements this generator
+     * will return
+     * @return The same generator
+     */
+    public CharacterGenerator addAlpha() {
+        includedCharsets.add(CHARSET.CHARS_LOWER);
+        includedCharsets.add(CHARSET.CHARS_UPPER);
+        preparePool();
+        return this;
+    }
+
+    /**
+     * Add symbols to the pool of elements this generator
+     * will return
+     * @return The same generator
+     */
+    public CharacterGenerator addSymbols() {
+        includedCharsets.add(CHARSET.SYMBOLS);
+        preparePool();
+        return this;
+    }
+
+    /**
+     * Add a charset to the pool
+     * @param charset The charset to add
+     * @return The same generator
+     */
+    public CharacterGenerator addCharset(CHARSET charset) {
+        includedCharsets.add(charset);
         preparePool();
         return this;
     }

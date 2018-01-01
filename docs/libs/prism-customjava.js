@@ -8,6 +8,10 @@ Prism.languages.java = Prism.languages.extend('clike', {
 });
 
 Prism.languages.insertBefore('java','function', {
+    'jrand': {
+        pattern: /\.(\w+)(?=\([.\s\S]*gen)/i,
+        greedy: true
+    },
     'jrand-class': {
         pattern: /^[A-Z][a-zA-Z]+(?=(\s+\w+\s*=\s*JRand\.\w+))/i
     },
@@ -23,10 +27,6 @@ Prism.languages.insertBefore('java','function', {
 	},
     'arrow': {
         pattern: /=>/
-    },
-    'jrand': {
-        pattern: /(\b(?:bool|character|decimal|dbl|flt|string|paragraph|sentence|word|syllable|firstname|lastname|name)(?:\(\))?\.)\w+/i,
-        lookbehind: true
     }
 });
 
