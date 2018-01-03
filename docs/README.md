@@ -739,6 +739,12 @@ name.withMiddleName().gen();
 => "John Albert Smith"
 ```
 
+Include a prefix:
+```java 
+name.withPrefix().gen();
+=> "Mr John Albert"
+```
+
 
 ## Money
 
