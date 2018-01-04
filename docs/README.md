@@ -745,6 +745,17 @@ name.withPrefix().gen();
 => "Mr John Albert"
 ```
 
+Set the gender with:
+```java 
+name.gender("f").gen();
+=> "Veronica Hastings"
+```
+
+You can also return a short version (typically found on cards):
+```java 
+name.cardName().gen();
+=> "R. Z. SMITH"
+```
 
 ## Money
 
