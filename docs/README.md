@@ -771,8 +771,31 @@ JRand.gen()
 
 **Examples**
 
-Some text
+Generate a `Card` object.
 ```java 
+JRand.gen();
+=> "[Name]: Hal Goodrich
+    [CardType]: Discover
+    [CardNo]: 6523079816424856
+    [Address]: 18 Sagois Way
+    [Postcode]: S1252JEL
+    [Country]: Argentina
+    [IssueDate]: 07/10
+    [ExpiryDate]: 06/21
+    [CVV]: 120"
+```
+
+The `Card` object has the following methods:
+```java 
+getCardNumber();
+getCvv();
+getExpiryDate();
+getIssueDate();
+getName();
+getCountry();
+getBillingAddress();
+getPostcode();
+getCardType();
 ```
 
 ### cardNo
