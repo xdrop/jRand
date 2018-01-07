@@ -19,12 +19,13 @@ class NameGeneratorTest extends GroovyTestCase {
     }
 
     void testGender() {
-        assertTrue instance().gender("m").gen().split(" ")[0] in ["Mr", "Sir"]
-        assertTrue instance().gender(Gender.MALE).gen().split(" ")[0] in ["Mr", "Sir"]
+        assertTrue instance().gender("m").withPrefix().gen().split(" ")[0] in ["Mr", "Sir"]
+        assertTrue instance().gender(Gender.MALE).withPrefix().gen().split(" ")[0] in ["Mr", "Sir"]
     }
 
     void testCardName() {
-        assertTrue CharMatcher.javaUpperCase().matchesAllOf(instance().cardName().gen())
+        def noFormatting = instance().cardName().gen().replace(".", "").replace(" ","")
+        assertTrue CharMatcher.javaUpperCase().matchesAllOf(noFormatting)
     }
 
     void testPrint() {
