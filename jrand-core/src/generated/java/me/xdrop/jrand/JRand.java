@@ -23,6 +23,7 @@ import me.xdrop.jrand.generators.person.GenderGenerator;
 import me.xdrop.jrand.generators.person.LastnameGenerator;
 import me.xdrop.jrand.generators.person.NameGenerator;
 import me.xdrop.jrand.generators.person.PrefixGenerator;
+import me.xdrop.jrand.generators.text.LoremGenerator;
 import me.xdrop.jrand.generators.text.ParagraphGenerator;
 import me.xdrop.jrand.generators.text.SentenceGenerator;
 import me.xdrop.jrand.generators.text.SyllableGenerator;
@@ -67,6 +68,10 @@ public final class JRand {
 
     public static final ExpiryDateGenerator expiryDate() {
         return new ExpiryDateGenerator();
+    }
+
+    public static final LoremGenerator lorem() {
+        return new LoremGenerator();
     }
 
     public static final CharacterGenerator character() {

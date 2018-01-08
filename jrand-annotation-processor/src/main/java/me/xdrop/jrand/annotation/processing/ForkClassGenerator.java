@@ -84,7 +84,11 @@ public class ForkClassGenerator {
 
         }
 
-        methodBuilder.addStatement("return new $T($L)", generator, fields.substring(0, fields.length() - 2));
+        String fieldString = "";
+        if (fields.length() > 1) {
+            fieldString = fields.substring(0, fields.length() - 2);
+        }
+        methodBuilder.addStatement("return new $T($L)", generator, fieldString);
 
         return methodBuilder.build();
     }

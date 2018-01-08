@@ -763,11 +763,6 @@ name.cardName().gen();
 
 Returns a random `Card` object.
 
-**Methods**
-
-```java$
-JRand.gen()
-```
 
 **Examples**
 
@@ -805,13 +800,32 @@ Returns a random card number.
 **Methods**
 
 ```java$
-JRand.()
+JRand.cardNo()
+JRand.cardNo().cardType(CardType cardType)
+JRand.cardNo().cardType(String cardType)
+JRand.cardNo().format()
+JRand.cardNo().format(boolean useDefault)
+JRand.cardNo().common()
+JRand.cardNo().common(boolean enabled)
+JRand.cardNo().only(String ... names)
+JRand.cardNo().only(CardType ... cardTypes)
+JRand.cardNo().luhnCalculate(String cardNum)
 ```
 
 **Examples**
 
-Some text
+Return a random card number (with correct lengths and prefixes) from the following card issuers:
+`Visa`, `Visa Electron`, `Mastercard`,`China UnionPay`,`Maestro`,`American Express`,`Discover`,`JCB`,
+`Diners Club Carte Blanche`, `Diners Club International`, `Diners Club United States & Canada`,`InstaPayment`,
+`Laser`,`Solo`,`Switch`.
 ```java 
+CardNumberGenerator cardNo = JRand.cardNo();
+```
+
+Generate a random card number from any of the above networks:
+```java 
+cardNo.gen();
+=> "5497658596955975"
 ```
 
 ### cardType
