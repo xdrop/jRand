@@ -22,6 +22,7 @@ class BirthdayGeneratorTest extends GroovyTestCase {
     void testChild() {
         DateTime date = instance().child().getDateTime()
         def years = new Period(date, new DateTime()).years
+        println years
         assertTrue years <= PersonType.CHILD.max && years >= PersonType.CHILD.min
     }
 

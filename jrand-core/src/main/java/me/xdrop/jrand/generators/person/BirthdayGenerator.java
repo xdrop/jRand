@@ -123,10 +123,8 @@ public class BirthdayGenerator extends Generator<Date> {
         int age = new AgeGenerator().personType(personType).gen();
         int dobYear = now.minusYears(age).getYear();
         DateTime yearBegin = new DateTime(dobYear, DateTimeConstants.JANUARY, 1, 0,0);
-        Period offsetInCurrentYear = new Period(now, new DateTime(now.getYear(), DateTimeConstants.JANUARY, 1, 0, 0));
-        DateTime nextYear  = yearBegin.plusYears(1).minusDays(1).plus(offsetInCurrentYear);
 
-        long mills = getRandomTimeBetweenTwoDates(nextYear.getMillis(), yearBegin.getMillis());
+        long mills = getRandomTimeBetweenTwoDates(now.minusYears(age).getMillis(), yearBegin.getMillis());
         return new DateTime(mills);
     }
 
