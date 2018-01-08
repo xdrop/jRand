@@ -174,7 +174,7 @@ public class NameGenerator extends Generator<String> {
 
     private String formatAsCardName(String name) {
         StringBuilder cardName = new StringBuilder(32);
-        name = name.toUpperCase();
+        name = name.toUpperCase().replaceAll("[^A-Z]","");
         String[] parts = name.split(" ");
         int i = 0;
         for (String part : parts) {
