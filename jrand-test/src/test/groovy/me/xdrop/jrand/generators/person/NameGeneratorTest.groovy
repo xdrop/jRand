@@ -11,7 +11,8 @@ class NameGeneratorTest extends GroovyTestCase {
     }
 
     void testWithMiddleName() {
-        assertTrue instance().withMiddleName().gen().split(" ").length == 3
+        def gen = instance().withMiddleName().gen()
+        assertTrue gen.split(" ").length >= 3
     }
 
     void testSeparator() {
@@ -24,7 +25,7 @@ class NameGeneratorTest extends GroovyTestCase {
     }
 
     void testCardName() {
-        def noFormatting = instance().cardName().gen().replace(".", "").replace(" ","")
+        def noFormatting = instance().cardName().gen().replace(".", "").replace(" ", "")
         assertTrue CharMatcher.javaUpperCase().matchesAllOf(noFormatting)
     }
 
