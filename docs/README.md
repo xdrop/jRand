@@ -828,6 +828,55 @@ cardNo.gen();
 => "5497658596955975"
 ```
 
+Include only the four common ones (Visa, Mastercard, American Express, Discover):
+```java 
+cardNo.common().gen();
+=> "344369886838383"
+```
+
+There is a default formatting associated with some networks which you can enable via:
+```java 
+cardNo.format(true).gen();
+=> "5544 1705 6751 9841"
+```
+
+Or you can specify your own. Note that any instance of the character `X` in the string will
+be replaced by a card digit while any instance of `_` will obscure a digit
+by returning `X` instead.
+```java 
+cardNo.format("XXXX XXXX XXXX XXXX").gen();
+=> "5544 1705 6751 9841"
+```
+
+You can optionally set the card type using:
+```java 
+cardNo.cardType("amex").gen();
+=> "347220089369775"
+```
+
+Or return from a set using:
+```java 
+cardNo.only("amex","visa").gen();
+=> "347220089369775"
+```
+
+You can also calculate the last [Luhn digit](https://en.wikipedia.org/wiki/Luhn_algorithm) 
+ (used as the last digit for checksum purposes on different numbers including 
+ credit card numbers) using:
+```java 
+cardNo.luhnCalculate("630403851107382")
+=> 7
+```
+
+Available string options are: 
+
+`AMEX`,`AMERICAN EXPRESS`,`VISA`,`ELECTRON`,`VISA ELECTRON`,`MASTERCARD`,`MC`,`CHINA UNIONPAY`,
+`CUP`,`MAES`,`MAESTRO`,`DISCOVER`,`DISC`, `DC-CB`, `DC-INT`, `DC-UC`,`JCB`,`INSTAPAYMENT`,
+`IPI`,`LASER`,`LASR`,`SOLO`,`SWCH`, `SWITCH`
+
+Alternatively have a look at the `CardType` enum
+
+
 ### cardType
 
 Returns a random `CardType` object.
