@@ -1,7 +1,9 @@
 package me.xdrop.jrand.model.money;
 
+import me.xdrop.jrand.CharUtils;
 import me.xdrop.jrand.model.money.IINRange;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -149,9 +151,12 @@ public enum CardType {
         sb.append(getFullname());
         sb.append(" [").append(getSymbol()).append("] ");
         sb.append("Prefixes: ");
+        List<String> prefixes = new ArrayList<>();
         for (IINRange range : getIinRange()){
-            sb.append(range.toString());
+            prefixes.add(range.toString());
         }
+        String join = CharUtils.join(prefixes, ",");
+        sb.append(join);
         return sb.toString();
     }
 }

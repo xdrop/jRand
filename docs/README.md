@@ -818,6 +818,10 @@ Return a random card number (with correct lengths and prefixes) from the followi
 `Visa`, `Visa Electron`, `Mastercard`,`China UnionPay`,`Maestro`,`American Express`,`Discover`,`JCB`,
 `Diners Club Carte Blanche`, `Diners Club International`, `Diners Club United States & Canada`,`InstaPayment`,
 `Laser`,`Solo`,`Switch`.
+
+The card numbers start with the right prefix for each network and end with a check digit
+calculated using [Luhn's algorithm](https://en.wikipedia.org/wiki/Luhn_algorithm).
+
 ```java 
 CardNumberGenerator cardNo = JRand.cardNo();
 ```
@@ -884,13 +888,40 @@ Returns a random `CardType` object.
 **Methods**
 
 ```java$
-JRand.()
+JRand.cardType()
+JRand.cardType().common();
+JRand.cardType().common(boolean enabled);
+JRand.cardType().only(String ... names);
+JRand.cardType().only(CardTypes ... cardTypes);
+JRand.cardType().getTypeByName(String name);
 ```
 
 **Examples**
 
-Some text
+Generate a random `CardType`.
+
 ```java 
+CardTypeGenerator cardType = JRand.cardType();
+```
+
+Choose from all available card types:
+```java 
+cardType.gen();
+=> CardType {Diners Club United States & Canada [DC-UC] Prefixes: 54,55}
+```
+
+You can specify the set of types to choose from using:
+```java 
+cardType.only("visa","amex").gen();
+=> CardType {Visa [Visa] Prefixes: 4}
+cardType.only(CardType.VISA,CardType.AMERICAN_EXPRESS).gen();
+=> CardType {American Express [AmEx] Prefixes: 34,37}
+```
+
+Or include only the four common ones (Visa, Mastercard, American Express, Discover):
+```java 
+cardType.common().gen();
+=> CardType {Visa [Visa] Prefixes: 4}
 ```
 
 ### expiry
