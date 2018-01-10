@@ -814,6 +814,10 @@ JRand.cardNo().luhnCalculate(String cardNum)
 
 **Examples**
 
+```java 
+CardNumberGenerator cardNo = JRand.cardNo();
+```
+
 Return a random card number (with correct lengths and prefixes) from the following card issuers:
 `Visa`, `Visa Electron`, `Mastercard`,`China UnionPay`,`Maestro`,`American Express`,`Discover`,`JCB`,
 `Diners Club Carte Blanche`, `Diners Club International`, `Diners Club United States & Canada`,`InstaPayment`,
@@ -821,12 +825,6 @@ Return a random card number (with correct lengths and prefixes) from the followi
 
 The card numbers start with the right prefix for each network and end with a check digit
 calculated using [Luhn's algorithm](https://en.wikipedia.org/wiki/Luhn_algorithm).
-
-```java 
-CardNumberGenerator cardNo = JRand.cardNo();
-```
-
-Generate a random card number from any of the above networks:
 ```java 
 cardNo.gen();
 => "5497658596955975"
@@ -931,13 +929,42 @@ Returns a random expiry date.
 **Methods**
 
 ```java$
-JRand.()
+JRand.expiryDate()
+JRand.expiryDate().longVersion()
+JRand.expiryDate().longVersion(boolean enabled)
+JRand.expiryDate().expired()
+JRand.expiryDate().expired(boolean enabled)
+JRand.expiryDate().canExpire(boolean enabled)
 ```
 
 **Examples**
 
-Some text
 ```java 
+ExpiryDateGenerator expiryDate = JRand.expiryDate();
+```
+
+Generate a random expiry date in the form of `MM/yy`:
+```java 
+expiryDate.gen();
+=> "12/19"
+```
+
+You can also choose to return a longer version:
+```java 
+expiryDate.longVersion().gen();
+=> "12/2019"
+```
+
+You can force the date to be expired:
+```java 
+expiryDate.expired().gen();
+=> "03/15"
+```
+
+Or allow it to *optionally* be expired:
+```java 
+expiryDate.canExpire(true).gen();
+=> "04/16"
 ```
 
 ### issue
@@ -947,13 +974,29 @@ Returns a random issue date.
 **Methods**
 
 ```java$
-JRand.()
+JRand.issueDate()
+JRand.issueDate().longVersion()
+JRand.issueDate().longVersion(boolean enabled)
 ```
 
 **Examples**
 
-Some text
 ```java 
+IssueDateGenerator issueDate = JRand.issueDate();
+```
+
+?> An issue date will *always* occur in the past 
+
+Generate a random issue date as `MM/YY`.
+```java 
+issueDate.gen();
+=> "04/09"
+```
+
+You can also print it in `MM/YYYY`:
+```java 
+issueDate.longVersion().gen();
+=> "12/2011"
 ```
 
 
