@@ -2,6 +2,7 @@ package me.xdrop.jrand.generators.basics;
 
 import me.xdrop.jrand.Generator;
 import me.xdrop.jrand.annotation.Facade;
+import me.xdrop.jrand.model.basics.enums.CHARSET;
 import javax.annotation.Generated;
 
 @Facade(accessor = "string")
@@ -47,6 +48,45 @@ public class StringGenerator extends Generator<String> {
      */
     public StringGenerator alpha() {
         charGen.alpha();
+        return this;
+    }
+    /**
+     * Add digits to the pool of elements this generator
+     * will return
+     * @return The same generator
+     */
+    public StringGenerator addDigits() {
+        charGen.addDigits();
+        return this;
+    }
+
+    /**
+     * Add letters to the pool of elements this generator
+     * will return
+     * @return The same generator
+     */
+    public StringGenerator addAlpha() {
+        charGen.addAlpha();
+        return this;
+    }
+
+    /**
+     * Add symbols to the pool of elements this generator
+     * will return
+     * @return The same generator
+     */
+    public StringGenerator addSymbols() {
+        charGen.addSymbols();
+        return this;
+    }
+
+    /**
+     * Add a charset to the pool
+     * @param charset The charset to add
+     * @return The same generator
+     */
+    public StringGenerator addCharset(CHARSET charset) {
+        charGen.addCharset(charset);
         return this;
     }
 

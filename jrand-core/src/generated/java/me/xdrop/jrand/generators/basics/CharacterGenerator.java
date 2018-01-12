@@ -5,6 +5,7 @@ import me.xdrop.jrand.Tuple;
 import me.xdrop.jrand.annotation.Facade;
 import me.xdrop.jrand.model.basics.enums.CHARSET;
 
+import java.nio.charset.Charset;
 import java.util.*;
 import javax.annotation.Generated;
 
@@ -108,6 +109,51 @@ public class CharacterGenerator extends Generator<Character> {
     }
 
     /**
+     * Add digits to the pool of elements this generator
+     * will return
+     * @return The same generator
+     */
+    public CharacterGenerator addDigits() {
+        includedCharsets.add(CHARSET.NUMBERS);
+        preparePool();
+        return this;
+    }
+
+    /**
+     * Add letters to the pool of elements this generator
+     * will return
+     * @return The same generator
+     */
+    public CharacterGenerator addAlpha() {
+        includedCharsets.add(CHARSET.CHARS_LOWER);
+        includedCharsets.add(CHARSET.CHARS_UPPER);
+        preparePool();
+        return this;
+    }
+
+    /**
+     * Add symbols to the pool of elements this generator
+     * will return
+     * @return The same generator
+     */
+    public CharacterGenerator addSymbols() {
+        includedCharsets.add(CHARSET.SYMBOLS);
+        preparePool();
+        return this;
+    }
+
+    /**
+     * Add a charset to the pool
+     * @param charset The charset to add
+     * @return The same generator
+     */
+    public CharacterGenerator addCharset(CHARSET charset) {
+        includedCharsets.add(charset);
+        preparePool();
+        return this;
+    }
+
+    /**
      * Set the casing of the letters (in case alpha() is used)
      *
      * "upper" is uppercase, "lower" is lowercase
@@ -132,7 +178,6 @@ public class CharacterGenerator extends Generator<Character> {
         }
     }
 
-
     @Override
     public Character gen() {
 
@@ -144,6 +189,11 @@ public class CharacterGenerator extends Generator<Character> {
         return pool.get(random().randInt(pool.size() - 1));
     }
 
+    /**
+     * When specifying a pool you can use this to generate an item from the pool
+     * along with its index it in the pool
+     * @return A {@link Tuple} of a character and its index in the pool
+     */
     public Tuple<Character, Integer> genWithIndex() {
         if (pool == null || pool.size() < 1){
             throw new RuntimeException("The character pool is empty, please ensure you call .pool()" +

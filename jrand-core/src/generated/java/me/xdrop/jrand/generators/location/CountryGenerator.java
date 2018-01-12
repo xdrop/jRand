@@ -21,15 +21,30 @@ public class CountryGenerator extends Generator<String> {
         this.prefix = false;
     }
 
+    /**
+     * Return a country prefix
+     * @return The same generator
+     */
     public CountryGenerator prefix() {
         return prefix(true);
     }
 
+
+    /**
+     * Return a country prefix
+     * @param enabled True to return prefix,
+     *                False otherwise
+     * @return The same generator
+     */
     public CountryGenerator prefix(boolean enabled) {
         this.prefix = enabled;
         return this;
     }
 
+    /**
+     * Generate as a {@link Country} object
+     * @return The country object
+     */
     public Country genAsCountry(){
         return Choose.chooseOne(countries);
     }
