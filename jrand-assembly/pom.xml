@@ -2,19 +2,65 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <artifactId>jRand</artifactId>
-        <groupId>me.xdrop</groupId>
-        <version>0.2.0-alpha</version>
-    </parent>
 
-    <artifactId>jrand-assembly</artifactId>
-    <packaging>jar</packaging>
-    <description>JRand archive assembly</description>
+    <groupId>me.xdrop</groupId>
+    <artifactId>jRand</artifactId>
+    <version>0.2.0-alpha</version>
+    <name>jrand</name>
+    <description>Java random data generation library</description>
+    <url>https://jrand.xdrop.me</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.7</java.version>
+    </properties>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>xdrop</id>
+            <name>Panayiotis P</name>
+            <url>http://www.github.com/xdrop</url>
+            <timezone>0</timezone>
+        </developer>
+    </developers>
+
+
+    <issueManagement>
+        <system>Github</system>
+        <url>https://github.com/xdrop/jrand/issues</url>
+    </issueManagement>
+
+    <scm>
+        <url>https://github.com/xdrop/jrand</url>
+        <developerConnection>scm:git:git@github.com:xdrop/jrand.git</developerConnection>
+        <connection>scm:git:git://github.com/jrand/jrand.git</connection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>bintray-xdrop-jrand</id>
+            <name>xdrop-jrand</name>
+            <url>https://api.bintray.com/maven/xdrop/jrand/jRand/</url>
+        </repository>
+    </distributionManagement>
 
     <build>
         <sourceDirectory>${basedir}/sources/main/java</sourceDirectory>
 
+        <resources>
+            <resource>
+                <directory>${basedir}/sources/main/resources</directory>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <artifactId>maven-antrun-plugin</artifactId>
@@ -24,6 +70,8 @@
                         <configuration>
                             <tasks>
 
+                                <mkdir dir="sources" />
+
                                 <delete includeEmptyDirs="true">
                                     <fileset dir="sources" includes="**/*" defaultexcludes="no"/>
                                 </delete>
@@ -32,6 +80,10 @@
                                     <fileset dir="../jrand-core/src/main/">
                                         <exclude name="**/generators/**"/>
                                     </fileset>
+                                </copy>
+
+                                <copy todir="sources/main/resources">
+                                    <fileset dir="../jrand-core/src/main/resources"/>
                                 </copy>
 
                                 <copy todir="sources/main/java">
@@ -54,23 +106,6 @@
                     <source>1.7</source>
                     <target>1.7</target>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>2.4.3</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <filters>
-                            </filters>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -136,7 +171,6 @@
         </plugins>
     </build>
 
-
     <dependencies>
         <dependency>
             <groupId>me.xdrop</groupId>
@@ -145,8 +179,15 @@
         </dependency>
         <dependency>
             <groupId>me.xdrop</groupId>
-            <artifactId>jrand-annotation</artifactId>
+            <artifactId>jrand-test</artifactId>
+            <version>0.2.0-alpha</version>
+        </dependency>
+        <dependency>
+            <groupId>me.xdrop</groupId>
+            <artifactId>jrand-annotation-processor</artifactId>
             <version>0.2.0-alpha</version>
         </dependency>
     </dependencies>
+
+
 </project>
