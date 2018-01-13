@@ -2,12 +2,14 @@
 <!-- hidden-header:JRand:1 -->
 ![jrand](https://jrand.xdrop.me/_media/jrand.svg)
 
-> A Java library to generate random data for all sorts of things.
+> Probably the *best* Java library for random data generation.*
 
 
 JRand is heavily inspired by [ChanceJS](http://chancejs.com) and tries to bring together a lot of that functionality to Java.
 In JRand there are `Generator`'s which are reusable components to generate all sorts of things. You can get
 access to any generator you wish via the `JRand` facade class.
+
+The library is under development with *weekly* releases of new generators.
 
 ## Installation
 
@@ -18,13 +20,13 @@ You can install `JRand` via Maven Central:
 <dependency>
     <groupId>me.xdrop</groupId>
     <artifactId>jrand</artifactId>
-    <version>0.1.20-alpha</version>
+    <version>0.2.0-alpha</version>
 </dependency>
 ```
 
 **Gradle**:
 ```gradle
-compile 'me.xdrop:jrand:0.1.20-alpha'
+compile 'me.xdrop:jrand:0.2.0-alpha'
 ```
 
 ## Generator
@@ -45,9 +47,10 @@ results.
 `genString()` returns a `String` version of your random value
 
 
+?> **Remember:** Different options and flags on generators can be *chained* in a builder
+fashion
 
-
-## Basic ️
+## Basic️
 
 The basic generators are used to generate different kinds of common data including numbers and strings.
 
@@ -59,7 +62,7 @@ Returns a random boolean value.
 ```java$ 
 JRand.bool()
 // Set the likelihood of generating true
-JRand.bool().likelihood(float)
+JRand.bool().likelihood(int)
 ```
 
 **Example**
@@ -74,10 +77,11 @@ bool.gen();
 => true
 ```
 
-Alternatively, you can set the likelihood of returning `true` using:
+You can also set the likelihood as an integer out of 100 to indicate the probablity
+of returning `true` using:
 
 ```java 
-bool.likelihood(0.1).gen();
+bool.likelihood(50).gen();
 => false
 ```
 
@@ -99,6 +103,8 @@ JRand.character().alpha()
 JRand.character().digit()
 // Set the casing
 JRand.character().casing(String casing)
+// Pick a random element from the pool and return it with its index
+JRand.character().pool(String charPool).genWithIndex()
 ```
 
 **Examples**
@@ -134,6 +140,28 @@ character().digit().gen();
 => '2'
 ```
 
+You can optionally *add* (as opposed to only return) symbols to the pool using:
+```java 
+character.addSymbols().gen();
+=> 'x'
+```
+
+You can chain different *add* methods together:
+```java 
+character.addAlpha().addSymbols().gen();
+=> '$'
+```
+
+Or even add your own charset:
+```java 
+character.addCharset(CHARSET.CHARS_LOWER)
+         .addCharset(CHARSET.SYMBOLS)
+         .gen();
+=> 'l'
+```
+
+The available `CHARSET`s are: `SYMBOLS`,`CHARS_LOWER`,`CHARS_UPPER`,`NUMBERS`
+
 The `casing` flag will decide whether the returned alphabet characters are uppercase
 ```java 
 character.casing("upper").gen();
@@ -164,6 +192,8 @@ JRand.decimal().range(double min, double max)
 JRand.decimal().digits(int digits)
 // Set whether to round up or not
 JRand.decimal().roundUp(boolean roundUp)
+// Returns the decimal as BigDecimal
+JRand.decimal().genAsDecimal();
 ```
 
 **Examples**
@@ -207,6 +237,12 @@ Alternatively, you can disable/re-enable rounding up
 ```java 
 decimal.roundUp(false).gen();
 => 45.3
+```
+
+Or generate your result as `BigDecimal`:
+```java 
+decimal.genAsDecimal();
+=> BigDecimal(2.0)
 ```
 
 ### double (dbl)
@@ -314,8 +350,12 @@ JRand.string()
 JRand.string().pool(String charPool)
 JRand.string().symbols()
 JRand.string().alpha()
-JRand.string().casing(String casing)
 JRand.string().digits()
+JRand.string().addDigits()
+JRand.string().addSymbols()
+JRand.string().addAlpha()
+JRand.string().addCharset(CHARSET charset)
+JRand.string().casing(String casing)
 JRand.string().range(int min, int max)
 JRand.string().length(int length)
 ```
@@ -346,6 +386,28 @@ string.symbols();
 string.alpha();
 string.digit();
 ```
+
+You can optionally *add* (as opposed to only return) symbols to the pool using:
+```java 
+string.addSymbols().gen();
+=> 'x'
+```
+
+You can chain different *add* methods together:
+```java 
+string.addAlpha().addSymbols().gen();
+=> '$'
+```
+
+Or even add your own charset:
+```java 
+string.addCharset(CHARSET.CHARS_LOWER)
+      .addCharset(CHARSET.SYMBOLS)
+      .gen();
+=> 'l'
+```
+
+The available `CHARSET`s are: `SYMBOLS`,`CHARS_LOWER`,`CHARS_UPPER`,`NUMBERS`
 
 You can set the casing using:
 ```java 
@@ -416,6 +478,8 @@ JRand.word().length(int length)
 JRand.word().syllables(int syllables)
 JRand.word().syllables(int min, int max)
 JRand.word().setSyl(SyllableGenerator syl)
+JRand.word().capitalize()
+JRand.word().capitalize(boolean enable)
 ```
 
 **Examples**
@@ -446,6 +510,12 @@ Or specify a range:
 ```java 
 word.syllables(1,2).gen()
 => "lee"
+```
+
+Optionally, capitalize the word:
+```java 
+word.capitalize().gen();
+=> "Lee"
 ```
 
 Or set your own syllable generator:
@@ -578,6 +648,8 @@ Returns a random firstname
 
 ```java$
 JRand.firstname()
+JRand.gender(String gender)
+JRand.gender(Gender gender)
 ```
 
 **Examples**
@@ -591,6 +663,15 @@ Returns a random firstname:
 firstname.gen();
 => "Betty"
 ```
+
+You can set the gender to be male or female:
+```java 
+firstname.gender(Gender.MALE).gen();
+=> "Andrew"
+firstname.gender("female").gen();
+=> "Laura"
+```
+
 ### lastname
 
 Returns a random lastname
@@ -613,22 +694,103 @@ lastname.gen();
 => "Alianiello"
 ```
 
+### name
+
+Returns a random name
+
+**Methods**
+
+```java$
+JRand.name()
+JRand.name().withPrefix()
+JRand.name().withPrefix(boolean enabled)
+JRand.name().withMiddleName()
+JRand.name().withMiddleName(boolean enabled)
+JRand.name().separator(String sep)
+JRand.name().gender(String gender)
+JRand.name().gender(Gender gender)
+JRand.name().reverseOrder(boolean enabled)
+JRand.name().reverseOrder()
+JRand.name().cardName(boolean enabled)
+JRand.name().cardName()
+```
+
+**Examples**
+
+```java 
+NameGenerator name = JRand.name();
+```
+
+Return a random name of any gender, without a prefix:
+```java 
+name.gen();
+=> "John Smith"
+```
+
+Return lastname first then firstname:
+```java 
+name.reverseOrder().gen();
+=> "Smith John"
+```
+
+Include a middle name:
+```java 
+name.withMiddleName().gen();
+=> "John Albert Smith"
+```
+
+Include a prefix:
+```java 
+name.withPrefix().gen();
+=> "Mr John Albert"
+```
+
+Set the gender with:
+```java 
+name.gender("f").gen();
+=> "Veronica Hastings"
+```
+
+You can also return a short version (typically found on cards):
+```java 
+name.cardName().gen();
+=> "R. Z. SMITH"
+```
+
 ## Money
 
 ### card
 
 Returns a random `Card` object.
 
-**Methods**
-
-```java$
-JRand.gen()
-```
 
 **Examples**
 
-Some text
+Generate a `Card` object.
 ```java 
+JRand.gen();
+=> "[Name]: Hal Goodrich
+    [CardType]: Discover
+    [CardNo]: 6523079816424856
+    [Address]: 18 Sagois Way
+    [Postcode]: S1252JEL
+    [Country]: Argentina
+    [IssueDate]: 07/10
+    [ExpiryDate]: 06/21
+    [CVV]: 120"
+```
+
+The `Card` object has the following methods:
+```java 
+getCardNumber();
+getCvv();
+getExpiryDate();
+getIssueDate();
+getName();
+getCountry();
+getBillingAddress();
+getPostcode();
+getCardType();
 ```
 
 ### cardNo
@@ -638,14 +800,84 @@ Returns a random card number.
 **Methods**
 
 ```java$
-JRand.()
+JRand.cardNo()
+JRand.cardNo().cardType(CardType cardType)
+JRand.cardNo().cardType(String cardType)
+JRand.cardNo().format()
+JRand.cardNo().format(boolean useDefault)
+JRand.cardNo().common()
+JRand.cardNo().common(boolean enabled)
+JRand.cardNo().only(String ... names)
+JRand.cardNo().only(CardType ... cardTypes)
+JRand.cardNo().luhnCalculate(String cardNum)
 ```
 
 **Examples**
 
-Some text
 ```java 
+CardNumberGenerator cardNo = JRand.cardNo();
 ```
+
+Return a random card number (with correct lengths and prefixes) from the following card issuers:
+`Visa`, `Visa Electron`, `Mastercard`,`China UnionPay`,`Maestro`,`American Express`,`Discover`,`JCB`,
+`Diners Club Carte Blanche`, `Diners Club International`, `Diners Club United States & Canada`,`InstaPayment`,
+`Laser`,`Solo`,`Switch`.
+
+The card numbers start with the right prefix for each network and end with a check digit
+calculated using [Luhn's algorithm](https://en.wikipedia.org/wiki/Luhn_algorithm).
+```java 
+cardNo.gen();
+=> "5497658596955975"
+```
+
+Include only the four common ones (Visa, Mastercard, American Express, Discover):
+```java 
+cardNo.common().gen();
+=> "344369886838383"
+```
+
+There is a default formatting associated with some networks which you can enable via:
+```java 
+cardNo.format(true).gen();
+=> "5544 1705 6751 9841"
+```
+
+Or you can specify your own. Note that any instance of the character `X` in the string will
+be replaced by a card digit while any instance of `_` will obscure a digit
+by returning `X` instead.
+```java 
+cardNo.format("XXXX XXXX XXXX XXXX").gen();
+=> "5544 1705 6751 9841"
+```
+
+You can optionally set the card type using:
+```java 
+cardNo.cardType("amex").gen();
+=> "347220089369775"
+```
+
+Or return from a set using:
+```java 
+cardNo.only("amex","visa").gen();
+=> "347220089369775"
+```
+
+You can also calculate the last [Luhn digit](https://en.wikipedia.org/wiki/Luhn_algorithm) 
+ (used as the last digit for checksum purposes on different numbers including 
+ credit card numbers) using:
+```java 
+cardNo.luhnCalculate("630403851107382")
+=> 7
+```
+
+Available string options are: 
+
+`AMEX`,`AMERICAN EXPRESS`,`VISA`,`ELECTRON`,`VISA ELECTRON`,`MASTERCARD`,`MC`,`CHINA UNIONPAY`,
+`CUP`,`MAES`,`MAESTRO`,`DISCOVER`,`DISC`, `DC-CB`, `DC-INT`, `DC-UC`,`JCB`,`INSTAPAYMENT`,
+`IPI`,`LASER`,`LASR`,`SOLO`,`SWCH`, `SWITCH`
+
+Alternatively have a look at the `CardType` enum
+
 
 ### cardType
 
@@ -654,13 +886,40 @@ Returns a random `CardType` object.
 **Methods**
 
 ```java$
-JRand.()
+JRand.cardType()
+JRand.cardType().common();
+JRand.cardType().common(boolean enabled);
+JRand.cardType().only(String ... names);
+JRand.cardType().only(CardTypes ... cardTypes);
+JRand.cardType().getTypeByName(String name);
 ```
 
 **Examples**
 
-Some text
+Generate a random `CardType`.
+
 ```java 
+CardTypeGenerator cardType = JRand.cardType();
+```
+
+Choose from all available card types:
+```java 
+cardType.gen();
+=> CardType {Diners Club United States & Canada [DC-UC] Prefixes: 54,55}
+```
+
+You can specify the set of types to choose from using:
+```java 
+cardType.only("visa","amex").gen();
+=> CardType {Visa [Visa] Prefixes: 4}
+cardType.only(CardType.VISA,CardType.AMERICAN_EXPRESS).gen();
+=> CardType {American Express [AmEx] Prefixes: 34,37}
+```
+
+Or include only the four common ones (Visa, Mastercard, American Express, Discover):
+```java 
+cardType.common().gen();
+=> CardType {Visa [Visa] Prefixes: 4}
 ```
 
 ### expiry
@@ -670,13 +929,42 @@ Returns a random expiry date.
 **Methods**
 
 ```java$
-JRand.()
+JRand.expiryDate()
+JRand.expiryDate().longVersion()
+JRand.expiryDate().longVersion(boolean enabled)
+JRand.expiryDate().expired()
+JRand.expiryDate().expired(boolean enabled)
+JRand.expiryDate().canExpire(boolean enabled)
 ```
 
 **Examples**
 
-Some text
 ```java 
+ExpiryDateGenerator expiryDate = JRand.expiryDate();
+```
+
+Generate a random expiry date in the form of `MM/yy`:
+```java 
+expiryDate.gen();
+=> "12/19"
+```
+
+You can also choose to return a longer version:
+```java 
+expiryDate.longVersion().gen();
+=> "12/2019"
+```
+
+You can force the date to be expired:
+```java 
+expiryDate.expired().gen();
+=> "03/15"
+```
+
+Or allow it to *optionally* be expired:
+```java 
+expiryDate.canExpire(true).gen();
+=> "04/16"
 ```
 
 ### issue
@@ -686,13 +974,29 @@ Returns a random issue date.
 **Methods**
 
 ```java$
-JRand.()
+JRand.issueDate()
+JRand.issueDate().longVersion()
+JRand.issueDate().longVersion(boolean enabled)
 ```
 
 **Examples**
 
-Some text
 ```java 
+IssueDateGenerator issueDate = JRand.issueDate();
+```
+
+?> An issue date will *always* occur in the past 
+
+Generate a random issue date as `MM/YY`.
+```java 
+issueDate.gen();
+=> "04/09"
+```
+
+You can also print it in `MM/YYYY`:
+```java 
+issueDate.longVersion().gen();
+=> "12/2011"
 ```
 
 
@@ -748,3 +1052,18 @@ street.houseNumber().gen();
 => "36 Obel Street"
 ```
 
+
+## License
+Copyright 2018 - xdrop
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.

@@ -1,0 +1,193 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>me.xdrop</groupId>
+    <artifactId>jRand</artifactId>
+    <version>0.2.0-alpha</version>
+    <name>jrand</name>
+    <description>Java random data generation library</description>
+    <url>https://jrand.xdrop.me</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.7</java.version>
+    </properties>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>xdrop</id>
+            <name>Panayiotis P</name>
+            <url>http://www.github.com/xdrop</url>
+            <timezone>0</timezone>
+        </developer>
+    </developers>
+
+
+    <issueManagement>
+        <system>Github</system>
+        <url>https://github.com/xdrop/jrand/issues</url>
+    </issueManagement>
+
+    <scm>
+        <url>https://github.com/xdrop/jrand</url>
+        <developerConnection>scm:git:git@github.com:xdrop/jrand.git</developerConnection>
+        <connection>scm:git:git://github.com/jrand/jrand.git</connection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>bintray-xdrop-jrand</id>
+            <name>xdrop-jrand</name>
+            <url>https://api.bintray.com/maven/xdrop/jrand/jRand/</url>
+        </repository>
+    </distributionManagement>
+
+    <build>
+        <sourceDirectory>${basedir}/sources/main/java</sourceDirectory>
+
+        <resources>
+            <resource>
+                <directory>${basedir}/sources/main/resources</directory>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <tasks>
+
+                                <mkdir dir="sources" />
+
+                                <delete includeEmptyDirs="true">
+                                    <fileset dir="sources" includes="**/*" defaultexcludes="no"/>
+                                </delete>
+
+                                <copy todir="sources/main">
+                                    <fileset dir="../jrand-core/src/main/">
+                                        <exclude name="**/generators/**"/>
+                                    </fileset>
+                                </copy>
+
+                                <copy todir="sources/main/resources">
+                                    <fileset dir="../jrand-core/src/main/resources"/>
+                                </copy>
+
+                                <copy todir="sources/main/java">
+                                    <fileset dir="../jrand-core/src/generated/java"/>
+                                </copy>
+
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.1</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                        <manifest>
+                            <addClasspath>false</addClasspath>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
+                <configuration>
+                    <skip>false</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>me.xdrop</groupId>
+            <artifactId>jrand-core</artifactId>
+            <version>0.2.0-alpha</version>
+        </dependency>
+        <dependency>
+            <groupId>me.xdrop</groupId>
+            <artifactId>jrand-test</artifactId>
+            <version>0.2.0-alpha</version>
+        </dependency>
+        <dependency>
+            <groupId>me.xdrop</groupId>
+            <artifactId>jrand-annotation-processor</artifactId>
+            <version>0.2.0-alpha</version>
+        </dependency>
+    </dependencies>
+
+
+</project>
