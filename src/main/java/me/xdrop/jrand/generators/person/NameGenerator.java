@@ -1,9 +1,6 @@
 package me.xdrop.jrand.generators.person;
 
 import me.xdrop.jrand.Generator;
-import me.xdrop.jrand.data.AssetLoader;
-
-import java.util.List;
 
 public class NameGenerator extends Generator<String> {
 
@@ -22,7 +19,7 @@ public class NameGenerator extends Generator<String> {
     /**
      * Set an option to print lastname first then the surname
      *
-     * @return
+     * @return The same generator
      */
     public NameGenerator reverseOrder() {
         this.reverseOrder = true;
@@ -32,7 +29,7 @@ public class NameGenerator extends Generator<String> {
     /**
      * Set an option to add a middlename
      *
-     * @return
+     * @return The same generator
      */
     public NameGenerator withMiddleName() {
         this.withMiddleName = true;
@@ -43,7 +40,7 @@ public class NameGenerator extends Generator<String> {
      * Set the separator joining the name and the surname
      *
      * @param sep The separator to use as a string
-     * @return
+     * @return The same generator
      */
     public NameGenerator separator(String sep) {
         this.separator = sep;
@@ -54,7 +51,7 @@ public class NameGenerator extends Generator<String> {
      * Formats the name as the uppercase shortened names
      * typically found on cards
      *
-     * @return
+     * @return The same generator
      */
     public NameGenerator cardName() {
         this.asCardName = true;
