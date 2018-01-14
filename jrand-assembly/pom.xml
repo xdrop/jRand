@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.xdrop</groupId>
-    <artifactId>jRand</artifactId>
+    <artifactId>jrand</artifactId>
     <version>0.2.0-alpha</version>
     <name>jrand</name>
     <description>Java random data generation library</description>
@@ -49,7 +49,7 @@
         <repository>
             <id>bintray-xdrop-jrand</id>
             <name>xdrop-jrand</name>
-            <url>https://api.bintray.com/maven/xdrop/jrand/jRand/</url>
+            <url>https://api.bintray.com/maven/xdrop/jrand/jrand/</url>
         </repository>
     </distributionManagement>
 

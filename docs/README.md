@@ -922,7 +922,7 @@ cardType.common().gen();
 => CardType {Visa [Visa] Prefixes: 4}
 ```
 
-### expiry
+### expiryDate
 
 Returns a random expiry date.
 
@@ -967,7 +967,7 @@ expiryDate.canExpire(true).gen();
 => "04/16"
 ```
 
-### issue
+### issueDate
 
 Returns a random issue date. 
 
@@ -999,10 +999,118 @@ issueDate.longVersion().gen();
 => "12/2011"
 ```
 
+### CVV
+
+Returns a random CVV code.
+
+**Methods**
+
+```java$
+JRand.cvv()
+JRand.cvv().amex()
+JRand.cvv().amex(boolean enabled)
+```
+
+**Examples**
+
+```java 
+CVVGenerator cvv = JRand.cvv();
+```
+
+Generate a random three-digit `CVV` code.
+
+```java 
+cvv.gen();
+=> "344"
+```
+
+Generate a **four** digit CVV code (for American Express cards):
+
+```java 
+cvv.amex().gen();
+=> "3221"
+```
+
 
 
 
 ## Location
+
+### country
+
+Returns a random country.
+
+**Methods**
+
+```java$
+JRand.country()
+JRand.country().prefix()
+JRand.country().prefix(boolean enabled)
+JRand.country().genAsCountry()
+```
+
+**Examples**
+
+```java 
+CountryGenerator country = JRand.country();
+```
+
+Generate a random country returning its full name:
+
+```java 
+country.gen();
+=> "United States"
+```
+
+You can optionally return the country prefix (short version):
+```java 
+country.prefix().gen();
+=> "US"
+```
+
+You can also get a `Country` object instead of a `String` using:
+```java 
+country.genAsCountry();
+=> Country {Name: United States, Prefix: US, Postal format: 99999)
+```
+
+### postcode
+
+Returns a random postcode.
+
+**Methods**
+
+```java$
+JRand.postcode()
+JRand.postcode().country(String countryPrefix)
+JRand.postcode().fromFormat(String postalFormat)
+```
+
+**Examples**
+
+```java 
+PostcodeGenerator postcode = JRand.postcode();
+```
+
+Return a random postcode for any country:
+```java 
+postcode.gen();
+=> "DH34LL"
+```
+
+Optionally you can specify the country prefix:
+```java 
+postcode.country("us").gen();
+=> "34555"
+```
+
+!> **Note**: This doesn't return an instance so a call to `gen` is not needed)
+There is also a *helper* function that can generate a postcode given a postal format,
+where 'A' indicates alphabet character and '9' indicates a digit:
+```java 
+postcode.fromFormat("999");
+=> "827"
+```
 
 ### street
 

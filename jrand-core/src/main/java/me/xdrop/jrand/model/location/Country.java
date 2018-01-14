@@ -1,7 +1,5 @@
 package me.xdrop.jrand.model.location;
 
-import me.xdrop.jrand.annotation.Facade;
-
 public class Country {
     private String name;
     private String prefix;
