@@ -10,7 +10,7 @@ JRand is heavily inspired by [ChanceJS](http://chancejs.com) and tries to bring 
 In JRand there are `Generator`'s which are reusable components to generate all sorts of things. You can get
 access to any generator you wish via the `JRand` facade class.
 
-The library is under development with *weekly* releases of new generators.
+**The library is still under development with *weekly* releases of new generators.**
 
 **Coming soon***
 
