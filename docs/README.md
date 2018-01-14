@@ -20,13 +20,13 @@ You can install `JRand` via Maven Central:
 <dependency>
     <groupId>me.xdrop</groupId>
     <artifactId>jrand</artifactId>
-    <version>0.2.0-alpha</version>
+    <version>0.2.1-alpha</version>
 </dependency>
 ```
 
 **Gradle**:
 ```gradle
-compile 'me.xdrop:jrand:0.2.0-alpha'
+compile 'me.xdrop:jrand:0.2.1-alpha'
 ```
 
 ## Generator
@@ -1296,7 +1296,6 @@ postcode.country("us").gen();
 => "34555"
 ```
 
-!> **Note**: This doesn't return an instance so a call to `gen` is not needed.
 
 
 There is also a *helper* function that can generate a postcode given a postal format,
@@ -1305,6 +1304,8 @@ where 'A' indicates alphabet character and '9' indicates a digit:
 postcode.fromFormat("999");
 => "827"
 ```
+
+!> **Note**: This doesn't return an instance so a call to `gen` is not needed.
 
 ### street
 
