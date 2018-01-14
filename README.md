@@ -10,9 +10,21 @@ JRand is heavily inspired by [ChanceJS](http://chancejs.com) and tries to bring 
 In JRand there are `Generator`'s which are reusable components to generate all sorts of things. You can get
 access to any generator you wish via the `JRand` facade class.
 
-The library is under development with *weekly* releases of new generators.
+**The library is still under development with *weekly* releases of new generators.**
 
-**Coming soon***
+## Examples
+> **Builder** style random data generators with **a lot** of options
+```java
+JRand.string().pool("abcd").length(3).gen();
+=> "bcc"
+
+JRand.firstname().gender("m").gen();
+=> "Sean"
+
+// ...Read our documentation for a lot more examples!
+```
+
+[>>> Documentation](https://jrand.xdrop.me)
 
 ## Installation
 
@@ -31,6 +43,8 @@ You can install `JRand` via Maven Central:
 ```gradle
 compile 'me.xdrop:jrand:0.2.0-alpha'
 ```
+
+
 
 ## Generators
 
@@ -52,6 +66,7 @@ compile 'me.xdrop:jrand:0.2.0-alpha'
 #### Person
 * [Firstname](https://jrand.xdrop.me/#/?id=firstname)
 * [Lastname](https://jrand.xdrop.me/#/?id=lastname)
+* [Name](https://jrand.xdrop.me/#/?id=name)
 * [Age](https://jrand.xdrop.me/#/?id=age)
 * [Birthday](https://jrand.xdrop.me/#/?id=birthday)
 * [Gender](https://jrand.xdrop.me/#/?id=gender)
@@ -65,21 +80,13 @@ compile 'me.xdrop:jrand:0.2.0-alpha'
 
 #### Money
 * [Credit Card](https://jrand.xdrop.me/#/?id=card)
-* [Credit Card Number](https://jrand.xdrop.me/#/?id=cardNo)
-* [Card Type](https://jrand.xdrop.me/#/?id=cardType)
+* [Credit Card Number](https://jrand.xdrop.me/#/?id=cardno)
+* [Card Type](https://jrand.xdrop.me/#/?id=cardtype)
 * [CVV](https://jrand.xdrop.me/#/?id=cvv)
 * [Expiry Date](https://jrand.xdrop.me/#/?id=expiryDate)
 * [Issue Date](https://jrand.xdrop.me/#/?id=issueDate)
 
 
-## Examples
-```java
-JRand.string().pool("abcd").length(3).gen();
-=> "bcc"
-
-JRand.firstname().gender("m").gen();
-=> "Sean"
-```
 
 ## Documentation
 
