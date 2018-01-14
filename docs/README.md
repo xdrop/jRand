@@ -694,6 +694,48 @@ lastname.gen();
 => "Alianiello"
 ```
 
+### prefix
+
+Returns a random name prefix.
+
+**Methods**
+
+```java$
+JRand.prefix()
+JRand.prefix().gender(String gender)
+JRand.prefix().gender(Gender gender)
+```
+
+**Examples**
+
+```java 
+PrefixGenerator prefix = JRand.prefix();
+```
+
+Generate a name prefix as `String`
+```java 
+prefix.gen();
+=> "Mr"
+```
+
+Or generate as a `Prefix` object:
+```java 
+prefix.genAsPrefix();
+=> Prefix {Full: Mister, Abbreviation: Mr}
+```
+
+You can specify the gender either via passing a `String` or `Gender`:
+```java 
+prefix.gender("m").gen();
+=> "Mr"
+prefix.gender("f").gen();
+=> "Ms"
+prefix.gender("n").gen(); // For neutral
+=> "Dr"
+prefix.gender(Gender.NEUTRAL).gen();
+=> "Dr"
+```
+
 ### name
 
 Returns a random name
@@ -755,6 +797,156 @@ You can also return a short version (typically found on cards):
 ```java 
 name.cardName().gen();
 => "R. Z. SMITH"
+```
+
+### age
+
+Returns a random age.
+
+**Methods**
+
+```java$
+JRand.age()
+JRand.age().child()
+JRand.age().adult()
+JRand.age().adult()
+JRand.age().teen()
+JRand.age().senior()
+JRand.age().personType()
+```
+
+**Examples**
+
+```java 
+AgeGenerator age = JRand.age();
+```
+
+Return a random age as `Integer`:
+```java 
+age.gen();
+=> 45
+```
+
+Alternatively you can use the following helper functions to set the person type:
+```java 
+age.child().gen();
+=> 10
+age.teen().gen();
+=> 15
+age.adult().gen();
+=> 25
+age.senior().gen();
+=> 45
+```
+
+Or you can set the person type via the `PersonType` enum:
+```java 
+age.personType(PersonType.SENIOR).gen();
+=> 60
+```
+
+Available `PersonType`'s: `CHILD(1,12)`, `TEEN(13,17)`,`ADULT(18,40)`,`SENIOR(41,120)`,`GENERIC(1,120)` 
+
+### birthday
+
+Returns a random birthday.
+
+**Methods**
+
+```java$
+JRand.birthday()
+JRand.birthday().child()
+JRand.birthday().adult()
+JRand.birthday().teen()
+JRand.birthday().senior()
+JRand.birthday().type(PersonType type)
+JRand.birthday().american()
+JRand.birthday().american(boolean enabled)
+JRand.birthday().format(String format)
+JRand.birthday().getDateTime(); // Joda DateTime
+```
+
+**Examples**
+
+```java 
+BirthdayGenerator birthday = JRand.birthday();
+```
+
+Generate a random birthday (of any person type) as Java `Date`.
+```java 
+birthday.gen();
+=> java.util.Date {01/01/1994}
+```
+
+Or generate it as a `String` (default format is dd/M/yy):
+```java 
+birthday.genString();
+=> "01/01/94"
+```
+
+Select the person type using the `child(), adult(), teen(), senior(), type(PersonType type)`.
+See [Age](#age) for more details on how they are used.
+
+If returning a string then you can return an american date instead (M/dd/yy):
+```java 
+birthday.american().genString();
+=> "03/21/93"
+```
+
+Or specify your own format using:
+```java 
+birthday.format("dd/M/yy").genString();
+=> "21/03/94"
+```
+
+### gender
+
+Returns a random gender.
+
+**Methods**
+
+```java$
+JRand.gender()
+JRand.gender().full()
+JRand.gender().full(boolean enabled)
+JRand.gender().likelihood(int likelihood)
+JRand.gender().format(String male, String female)
+```
+
+**Examples**
+
+```java 
+GenderGenerator gender = new GenderGenerator();
+```
+
+Generate a random gender as `String` from ("M"/"F"):
+```java 
+gender.gen();
+=> "M"
+```
+
+You can return `Male` or `Female` with:
+```java 
+gender.full().gen();
+=> "Male"
+```
+
+You can set the *likelihood* as an integer **0-100** of returning male with:
+```java 
+gender.likelihood(90).gen();
+=> "Male"
+```
+
+You can also specify your own male and female strings with:
+```java 
+gender.format("Man","Woman").gen();
+=> "Woman"
+```
+
+If preferred you can also return a `Gender.MALE` or `Gender.FEMALE` enum:
+```java 
+gender.genAsGender();
+=> Gender.MALE
 ```
 
 ## Money
@@ -922,7 +1114,7 @@ cardType.common().gen();
 => CardType {Visa [Visa] Prefixes: 4}
 ```
 
-### expiry
+### expiryDate
 
 Returns a random expiry date.
 
@@ -967,7 +1159,7 @@ expiryDate.canExpire(true).gen();
 => "04/16"
 ```
 
-### issue
+### issueDate
 
 Returns a random issue date. 
 
@@ -999,10 +1191,118 @@ issueDate.longVersion().gen();
 => "12/2011"
 ```
 
+### CVV
+
+Returns a random CVV code.
+
+**Methods**
+
+```java$
+JRand.cvv()
+JRand.cvv().amex()
+JRand.cvv().amex(boolean enabled)
+```
+
+**Examples**
+
+```java 
+CVVGenerator cvv = JRand.cvv();
+```
+
+Generate a random three-digit `CVV` code.
+
+```java 
+cvv.gen();
+=> "344"
+```
+
+Generate a **four** digit CVV code (for American Express cards):
+
+```java 
+cvv.amex().gen();
+=> "3221"
+```
+
 
 
 
 ## Location
+
+### country
+
+Returns a random country.
+
+**Methods**
+
+```java$
+JRand.country()
+JRand.country().prefix()
+JRand.country().prefix(boolean enabled)
+JRand.country().genAsCountry()
+```
+
+**Examples**
+
+```java 
+CountryGenerator country = JRand.country();
+```
+
+Generate a random country returning its full name:
+
+```java 
+country.gen();
+=> "United States"
+```
+
+You can optionally return the country prefix (short version):
+```java 
+country.prefix().gen();
+=> "US"
+```
+
+You can also get a `Country` object instead of a `String` using:
+```java 
+country.genAsCountry();
+=> Country {Name: United States, Prefix: US, Postal format: 99999)
+```
+
+### postcode
+
+Returns a random postcode.
+
+**Methods**
+
+```java$
+JRand.postcode()
+JRand.postcode().country(String countryPrefix)
+JRand.postcode().fromFormat(String postalFormat)
+```
+
+**Examples**
+
+```java 
+PostcodeGenerator postcode = JRand.postcode();
+```
+
+Return a random postcode for any country:
+```java 
+postcode.gen();
+=> "DH34LL"
+```
+
+Optionally you can specify the country prefix:
+```java 
+postcode.country("us").gen();
+=> "34555"
+```
+
+!> **Note**: This doesn't return an instance so a call to `gen` is not needed)
+There is also a *helper* function that can generate a postcode given a postal format,
+where 'A' indicates alphabet character and '9' indicates a digit:
+```java 
+postcode.fromFormat("999");
+=> "827"
+```
 
 ### street
 
