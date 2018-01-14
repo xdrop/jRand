@@ -24,6 +24,8 @@ JRand.firstname().gender("m").gen();
 // ...Read our documentation for a lot more examples!
 ```
 
+[>>> Documentation](https://jrand.xdrop.me)
+
 ## Installation
 
 You can install `JRand` via Maven Central:
