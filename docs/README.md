@@ -1296,7 +1296,9 @@ postcode.country("us").gen();
 => "34555"
 ```
 
-!> **Note**: This doesn't return an instance so a call to `gen` is not needed)
+!> **Note**: This doesn't return an instance so a call to `gen` is not needed.
+
+
 There is also a *helper* function that can generate a postcode given a postal format,
 where 'A' indicates alphabet character and '9' indicates a digit:
 ```java 
