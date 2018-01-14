@@ -12,8 +12,6 @@ access to any generator you wish via the `JRand` facade class.
 
 **The library is still under development with *weekly* releases of new generators.**
 
-**Coming soon***
-
 ## Examples
 > **Builder** style random data generators with **a lot** of options
 ```java
