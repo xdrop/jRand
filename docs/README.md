@@ -757,6 +757,55 @@ name.cardName().gen();
 => "R. Z. SMITH"
 ```
 
+### age
+
+Returns a random age.
+
+**Methods**
+
+```java$
+JRand.age()
+JRand.age().child()
+JRand.age().adult()
+JRand.age().adult()
+JRand.age().teen()
+JRand.age().senior()
+JRand.age().personType()
+```
+
+**Examples**
+
+```java 
+AgeGenerator age = JRand.age();
+```
+
+Return a random age as `Integer`:
+```java 
+age.gen();
+=> 45
+```
+
+Alternatively you can use the following helper functions to set the person type:
+```java 
+age.child().gen();
+=> 10
+age.teen().gen();
+=> 15
+age.adult().gen();
+=> 25
+age.senior().gen();
+=> 45
+```
+
+Or you can set the person type via the `PersonType` enum:
+```java 
+age.personType(PersonType.SENIOR).gen();
+=> 60
+```
+
+Available `PersonType`'s: `CHILD(1,12)`, `TEEN(13,17)`,`ADULT(18,40)`,`SENIOR(41,120)`,`GENERIC(1,120)` 
+
+
 ## Money
 
 ### card
