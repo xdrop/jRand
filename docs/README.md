@@ -805,6 +805,57 @@ age.personType(PersonType.SENIOR).gen();
 
 Available `PersonType`'s: `CHILD(1,12)`, `TEEN(13,17)`,`ADULT(18,40)`,`SENIOR(41,120)`,`GENERIC(1,120)` 
 
+### birthday
+
+Returns a random birthday.
+
+**Methods**
+
+```java$
+JRand.birthday()
+JRand.birthday().child()
+JRand.birthday().adult()
+JRand.birthday().teen()
+JRand.birthday().senior()
+JRand.birthday().type(PersonType type)
+JRand.birthday().american()
+JRand.birthday().american(boolean enabled)
+JRand.birthday().format(String format)
+JRand.birthday().getDateTime(); // Joda DateTime
+```
+
+**Examples**
+
+```java 
+BirthdayGenerator birthday = JRand.birthday();
+```
+
+Generate a random birthday (of any person type) as Java `Date`.
+```java 
+birthday.gen();
+=> java.util.Date {01/01/1994}
+```
+
+Or generate it as a `String` (default format is dd/M/yy):
+```java 
+birthday.genString();
+=> "01/01/94"
+```
+
+Select the person type using the `child(), adult(), teen(), senior(), type(PersonType type)`.
+See [Age](#age) for more details on how they are used.
+
+If returning a string then you can return an american date instead (M/dd/yy):
+```java 
+birthday.american().genString();
+=> "03/21/93"
+```
+
+Or specify your own format using:
+```java 
+birthday.format("dd/M/yy").genString();
+=> "21/03/94"
+```
 
 ## Money
 
