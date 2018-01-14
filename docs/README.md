@@ -694,6 +694,48 @@ lastname.gen();
 => "Alianiello"
 ```
 
+### prefix
+
+Returns a random name prefix.
+
+**Methods**
+
+```java$
+JRand.prefix()
+JRand.prefix().gender(String gender)
+JRand.prefix().gender(Gender gender)
+```
+
+**Examples**
+
+```java 
+PrefixGenerator prefix = JRand.prefix();
+```
+
+Generate a name prefix as `String`
+```java 
+prefix.gen();
+=> "Mr"
+```
+
+Or generate as a `Prefix` object:
+```java 
+prefix.genAsPrefix();
+=> Prefix {Full: Mister, Abbreviation: Mr}
+```
+
+You can specify the gender either via passing a `String` or `Gender`:
+```java 
+prefix.gender("m").gen();
+=> "Mr"
+prefix.gender("f").gen();
+=> "Ms"
+prefix.gender("n").gen(); // For neutral
+=> "Dr"
+prefix.gender(Gender.NEUTRAL).gen();
+=> "Dr"
+```
+
 ### name
 
 Returns a random name
@@ -855,6 +897,56 @@ Or specify your own format using:
 ```java 
 birthday.format("dd/M/yy").genString();
 => "21/03/94"
+```
+
+### gender
+
+Returns a random gender.
+
+**Methods**
+
+```java$
+JRand.gender()
+JRand.gender().full()
+JRand.gender().full(boolean enabled)
+JRand.gender().likelihood(int likelihood)
+JRand.gender().format(String male, String female)
+```
+
+**Examples**
+
+```java 
+GenderGenerator gender = new GenderGenerator();
+```
+
+Generate a random gender as `String` from ("M"/"F"):
+```java 
+gender.gen();
+=> "M"
+```
+
+You can return `Male` or `Female` with:
+```java 
+gender.full().gen();
+=> "Male"
+```
+
+You can set the *likelihood* as an integer **0-100** of returning male with:
+```java 
+gender.likelihood(90).gen();
+=> "Male"
+```
+
+You can also specify your own male and female strings with:
+```java 
+gender.format("Man","Woman").gen();
+=> "Woman"
+```
+
+If preferred you can also return a `Gender.MALE` or `Gender.FEMALE` enum:
+```java 
+gender.genAsGender();
+=> Gender.MALE
 ```
 
 ## Money
