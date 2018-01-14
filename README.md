@@ -2,7 +2,7 @@
 
 
 [![Build Status](https://travis-ci.org/xdrop/jRand.svg?branch=master)](https://travis-ci.org/xdrop/jRand)
-[![Documentation](https://img.shields.io/badge/documentation-0.2.1-alpha--alpha-green.svg)](https://jrand.xdrop.me)
+[![Documentation](https://img.shields.io/badge/documentation-0.2.1--alpha-green.svg)](https://jrand.xdrop.me)
 [ ![Download](https://api.bintray.com/packages/xdrop/jrand/jrand/images/download.svg) ](https://bintray.com/xdrop/jrand/jRand/_latestVersion)
 > Probably the *best* Java library for random data generation.*
 
