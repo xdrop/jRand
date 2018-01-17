@@ -50,7 +50,7 @@ results.
 ?> **Remember:** Different options and flags on generators can be *chained* in a builder
 fashion
 
-## Basic️
+## Basic
 
 The basic generators are used to generate different kinds of common data including numbers and strings.
 
