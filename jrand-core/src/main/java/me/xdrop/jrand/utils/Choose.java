@@ -14,7 +14,7 @@ public class Choose {
      * @param list The input list
      * @return The random element
      */
-    public static <T> T chooseOne(List<T> list) {
+    public static <T> T one(List<T> list) {
          int index = nat.range(list.size()).gen();
          return list.get(index);
     }
@@ -24,7 +24,7 @@ public class Choose {
      * @param arr The input array
      * @return The random element
      */
-    public static <T> T chooseOne(T[] arr) {
+    public static <T> T one(T[] arr) {
         int index = nat.range(arr.length).gen();
         return arr[index];
     }
@@ -33,7 +33,7 @@ public class Choose {
      * Return a random element from the list
      * @return The random element
      */
-    public static int chooseOne(int[] list) {
+    public static int one(int[] list) {
         int index = nat.range(list.length).gen();
         return list[index];
     }
@@ -42,7 +42,7 @@ public class Choose {
      * Return a random element from the list
      * @return The random element
      */
-    public static double chooseOne(double[] list) {
+    public static double one(double[] list) {
         int index = nat.range(list.length).gen();
         return list[index];
     }
@@ -53,7 +53,7 @@ public class Choose {
      * @param n Number of elements to retrieve
      * @return A list of random elements
      */
-    public static <T> List<T> chooseN(List<T> list, int n) {
+    public static <T> List<T> N(List<T> list, int n) {
         List<Integer> indices = nat.range(list.size()).genMany(n);
         List<T> result = new ArrayList<>();
         for (Integer i : indices) {
@@ -68,7 +68,7 @@ public class Choose {
      * @param n Number of elements to return
      * @return A list of unique random elements
      */
-    public static <T> List<T> chooseNUnique(List<T> list, int n) {
+    public static <T> List<T> NUnique(List<T> list, int n) {
         List<Integer> indices = nat.sample(n, list.size());
         List<T> result = new ArrayList<>();
         for (Integer i : indices) {
