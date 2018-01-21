@@ -638,6 +638,127 @@ paragraph.joining("\n").gen();
 "One.
 Two."
 ```
+
+### lorem
+
+Returns a random Lorem Ipsum passage.
+
+**Methods**
+
+```java$
+JRand.lorem()
+JRand.lorem().paragraphs(int noParagraphs)
+JRand.lorem().paragraphs(int min, int max)
+JRand.lorem().sentences(int noSentences)
+JRand.lorem().sentences(int min, int max)
+JRand.lorem().wordsPerSentence(int noWords)
+JRand.lorem().wordsPerSentence(int min, int max)
+JRand.lorem().capitalize()
+JRand.lorem().capitalize(boolean enabled)
+JRand.lorem().intro()
+JRand.lorem().intro(boolean enabled)
+JRand.lorem().single();
+JRand.lorem().single(boolean enabled);
+```
+
+**Examples**
+
+```java 
+LoremGenerator lorem = JRand.lorem();
+```
+
+To generate a random **lorem** paragraph made up of a few sentences use:
+```java 
+lorem.gen();
+=> "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget lorem tempus, 
+malesuada enim vitae, sollicitudin ante. Pellentesque a luctus nulla, vitae convallis 
+urna. Aenean imperdiet rutrum mi, quis vulputate orci venenatis et. Morbi pellentesque 
+tempor velit, sed laoreet tortor. Donec et lectus sed nibh elementum dignissim.
+Morbi pulvinar id risus sit amet elementum. Cras mollis rhoncus dui consectetur lacinia. 
+Maecenas auctor vel metus quis tincidunt. Nulla ac eros justo. Donec mollis risus 
+facilisis, molestie dolor et, maximus est."
+
+```
+
+You can set the number of paragraphs to return (separated by `\n\n`) using:
+```java 
+lorem.paragraphs(2).gen();
+=> "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget lorem tempus, 
+malesuada enim vitae, sollicitudin ante. Pellentesque a luctus nulla, vitae convallis 
+urna. Aenean imperdiet rutrum mi, quis vulputate orci venenatis et. Morbi pellentesque 
+tempor velit, sed laoreet tortor. Donec et lectus sed nibh elementum dignissim.
+Morbi pulvinar id risus sit amet elementum. Cras mollis rhoncus dui consectetur lacinia. 
+Maecenas auctor vel metus quis tincidunt. Nulla ac eros justo. Donec mollis risus 
+facilisis, molestie dolor et, maximus est.
+
+Nulla sollicitudin feugiat risus vel sagittis. Pellentesque non felis diam. Maecenas
+tristique, tellus vel ullamcorper pretium, ante quam semper quam, consequat congue
+odio nisi ut neque. Sed semper enim et sollicitudin feugiat. Maecenas mauris metus,
+accumsan eu luctus ornare, congue nec metus. Lorem ipsum dolor sit amet, consectetur 
+adipiscing elit. Nullam varius malesuada sagittis. In ut tristique tellus. Quisque 
+condimentum massa quis tristique pretium. Nunc porttitor pulvinar accumsan. Quisque 
+non arcu sed massa suscipit feugiat et at ligula. Suspendisse dignissim augue nec 
+diam placerat, quis porta velit commodo. Nullam feugiat malesuada est, auctor laoreet
+nisl aliquet posuere. Nullam leo nisl, pretium non efficitur ac, pharetra sit amet nisi."
+```
+
+You can also set a range of paragraphs to return using:
+```java 
+lorem.paragraphs(2,5).gen();
+=> ... // between 2 to 5 paragraphs
+```
+
+You can set the number of sentences in each paragraph using:
+```java 
+lorem.sentences(1).gen();
+=> "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+```
+
+Again, you can also set a range of sentences:
+```java 
+lorem.sentences(1,2).gen();
+=> "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget lorem tempus, 
+malesuada enim vitae, sollicitudin ante. "
+```
+
+In a similar fashion you can set the words per sentence using:
+```java 
+lorem.words(1).gen();
+=> "Lorem."
+```
+
+Or again set a range:
+```java 
+lorem.words(1,3).gen();
+=> "Lorem ipsum dolor."
+```
+
+!> If you wish to return a single word without any punctuation or sentences use `single()`.
+
+Return a single word:
+```java 
+lorem.single().gen();
+=> "Lorem"
+```
+
+By default the paragraphs will be random, if you want them to start with the words **Lorem ipsum dolor sit amet...**
+use the `intro()` flag:
+```java 
+lorem.intro().gen();
+=> "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget lorem tempus, 
+malesuada enim vitae, sollicitudin ante. Pellentesque a luctus nulla, vitae convallis 
+urna. Aenean imperdiet rutrum mi, quis vulputate orci venenatis et. Morbi pellentesque 
+tempor velit, sed laoreet tortor. Donec et lectus sed nibh elementum dignissim.
+Morbi pulvinar id risus sit amet elementum. Cras mollis rhoncus dui consectetur lacinia. 
+Maecenas auctor vel metus quis tincidunt. Nulla ac eros justo. Donec mollis risus 
+facilisis, molestie dolor et, maximus est."
+```
+
+Turn off capitalization using:
+```java 
+lore.capitalize(false).gen();
+=> "lorem ipsum ..."
+```
 ## Person
 
 ### firstname
