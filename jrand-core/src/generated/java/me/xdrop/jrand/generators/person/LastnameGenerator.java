@@ -18,7 +18,7 @@ public class LastnameGenerator extends Generator<String> {
 
     @Override
     public String gen() {
-        return Choose.chooseOne(names);
+        return Choose.one(names);
     }
     
     @Generated("me.xdrop.jrand.annotation.processing.ForkClassGenerator")

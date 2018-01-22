@@ -24,7 +24,7 @@ public class GenderGenerator extends Generator<String> {
      * @param female The female string to return
      * @return The same generator
      */
-    GenderGenerator format(String male, String female) {
+    public GenderGenerator format(String male, String female) {
         this.male = male;
         this.female = female;
         return this;

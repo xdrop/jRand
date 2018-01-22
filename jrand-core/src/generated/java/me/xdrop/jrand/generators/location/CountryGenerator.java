@@ -46,12 +46,12 @@ public class CountryGenerator extends Generator<String> {
      * @return The country object
      */
     public Country genAsCountry(){
-        return Choose.chooseOne(countries);
+        return Choose.one(countries);
     }
 
     @Override
     public String gen() {
-        Country country = Choose.chooseOne(countries);
+        Country country = Choose.one(countries);
         if (prefix) {
             return country.getPrefix();
         } else {

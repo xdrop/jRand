@@ -156,8 +156,8 @@ public class CardNumberGenerator extends Generator<String> {
     }
 
     private String generateCardNumber(CardType type) {
-        IINRange iinRange = Choose.chooseOne(type.getIinRange());
-        int length = Choose.chooseOne(type.getLengths());
+        IINRange iinRange = Choose.one(type.getIinRange());
+        int length = Choose.one(type.getLengths());
         StringBuilder sb = new StringBuilder(length);
         String prefix;
         if (iinRange.getEnd() == -1) {

@@ -141,9 +141,9 @@ public class CardTypeGenerator extends Generator<CardType> {
     @Override
     public CardType gen() {
         if (customPool.size() != 0) {
-            return Choose.chooseOne(customPool);
+            return Choose.one(customPool);
         }
-        return Choose.chooseOne(allCol);
+        return Choose.one(allCol);
     }
 
 

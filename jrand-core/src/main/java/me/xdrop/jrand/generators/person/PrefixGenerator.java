@@ -130,11 +130,11 @@ public class PrefixGenerator extends Generator<String> {
     }
 
     public Prefix genAsPrefix() {
-        return Choose.chooseOne(prefixPool);
+        return Choose.one(prefixPool);
     }
 
     public String gen() {
-        Prefix prefix = Choose.chooseOne(prefixPool);
+        Prefix prefix = Choose.one(prefixPool);
         return isLong ? prefix.getFull() : prefix.getAbbreviation();
     }
 }

@@ -46,12 +46,12 @@ public final class JRand {
         return new FirstnameGenerator();
     }
 
-    public static final StringGenerator string() {
-        return new StringGenerator();
-    }
-
     public static final BoolGenerator bool() {
         return new BoolGenerator();
+    }
+
+    public static final StringGenerator string() {
+        return new StringGenerator();
     }
 
     public static final GenderGenerator gender() {
@@ -110,12 +110,12 @@ public final class JRand {
         return new CardTypeGenerator();
     }
 
-    public static final FloatGenerator flt() {
-        return new FloatGenerator();
-    }
-
     public static final DoubleGenerator dbl() {
         return new DoubleGenerator();
+    }
+
+    public static final FloatGenerator flt() {
+        return new FloatGenerator();
     }
 
     public static final LastnameGenerator lastname() {
@@ -134,11 +134,11 @@ public final class JRand {
         return new WordGenerator();
     }
 
-    public static final AgeGenerator age() {
-        return new AgeGenerator();
-    }
-
     public static final CardGenerator card() {
         return new CardGenerator();
+    }
+
+    public static final AgeGenerator age() {
+        return new AgeGenerator();
     }
 }
