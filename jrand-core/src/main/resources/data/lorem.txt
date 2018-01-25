@@ -36,7 +36,7 @@ irure
 labore
 laboris
 laborum
-Lorem
+lorem
 magna
 minim
 mollit

@@ -5,7 +5,7 @@ public class RangeOption {
     private int max;
 
     public static RangeOption from(int min, int max) {
-        return new RangeOption(min ,max);
+        return new RangeOption(min, max);
     }
 
     public static RangeOption from(int fixed) {
@@ -17,7 +17,16 @@ public class RangeOption {
         this.max = max;
     }
 
-    public boolean isSingle(){
+    public boolean isSingle() {
         return min == max;
     }
+
+    public int getMin() {
+        return min;
+    }
+
+    public int getMax() {
+        return max;
+    }
+
 }

@@ -2,6 +2,7 @@ package me.xdrop.jrand.generators.basics;
 
 import me.xdrop.jrand.Generator;
 import me.xdrop.jrand.annotation.Facade;
+import me.xdrop.jrand.model.RangeOption;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,6 +62,12 @@ public class NaturalGenerator extends Generator<Integer> {
     public NaturalGenerator range(int max) {
         min(0);
         max(max - 1);
+        return this;
+    }
+
+    public NaturalGenerator range(RangeOption rangeOption) {
+        min(rangeOption.getMin());
+        max(rangeOption.getMax());
         return this;
     }
 
