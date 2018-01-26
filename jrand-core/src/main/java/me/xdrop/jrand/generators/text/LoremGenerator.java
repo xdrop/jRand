@@ -187,16 +187,8 @@ public class LoremGenerator extends Generator<String> {
         String previousWord = "";
 
         if (intro) {
-            String[] wordsOfIntro = introText.split(" ");
-            int n = wordsOfIntro.length;
-            int used = 0;
-            while (number != 0 && number >= used && used <= n) {
-                if (sentence.length() > 0) sentence.append(" ");
-                sentence.append(wordsOfIntro[used]);
-                previousWord = wordsOfIntro[used];
-                number--;
-                used++;
-            }
+            sentence.append(introText).append(". ");
+            return sentence.toString();
         }
 
         while (number > 0) {
