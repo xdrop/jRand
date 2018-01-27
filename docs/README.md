@@ -20,13 +20,13 @@ You can install `JRand` via Maven Central:
 <dependency>
     <groupId>me.xdrop</groupId>
     <artifactId>jrand</artifactId>
-    <version>0.2.1-alpha</version>
+    <version>0.2.2-alpha</version>
 </dependency>
 ```
 
 **Gradle**:
 ```gradle
-compile 'me.xdrop:jrand:0.2.1-alpha'
+compile 'me.xdrop:jrand:0.2.2-alpha'
 ```
 
 ## Generator
@@ -651,8 +651,8 @@ JRand.lorem().paragraphs(int noParagraphs)
 JRand.lorem().paragraphs(int min, int max)
 JRand.lorem().sentences(int noSentences)
 JRand.lorem().sentences(int min, int max)
-JRand.lorem().wordsPerSentence(int noWords)
-JRand.lorem().wordsPerSentence(int min, int max)
+JRand.lorem().words(int noWords)
+JRand.lorem().words(int min, int max)
 JRand.lorem().capitalize()
 JRand.lorem().capitalize(boolean enabled)
 JRand.lorem().intro()

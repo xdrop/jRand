@@ -23,6 +23,7 @@ public class PrefixGenerator extends Generator<String> {
 
     private boolean isLong;
     private boolean all;
+    private boolean withDot;
 
 
     public PrefixGenerator() {
@@ -54,12 +55,32 @@ public class PrefixGenerator extends Generator<String> {
     public PrefixGenerator full() {
         return full(true);
     }
+
     /**
      * Include all male, female and neutral genders
      * @return The same generator
      */
     public PrefixGenerator all() {
         return all(true);
+    }
+
+    /**
+     * Add a dot at the end of the prefix
+     * @param enabled True for enabled,
+     *                False otherwise
+     * @return The same generator
+     */
+    public PrefixGenerator withDot(boolean enabled) {
+        this.withDot = enabled;
+        return this;
+    }
+
+    /**
+     * Add a dot at the end of the prefix
+     * @return The same generator
+     */
+    public PrefixGenerator withDot() {
+        return withDot(true);
     }
 
     /**
@@ -136,7 +157,12 @@ public class PrefixGenerator extends Generator<String> {
 
     public String gen() {
         Prefix prefix = Choose.one(prefixPool);
-        return isLong ? prefix.getFull() : prefix.getAbbreviation();
+        String _prefix = isLong ? prefix.getFull() : prefix.getAbbreviation();
+        if (withDot) {
+            _prefix += '.';
+        }
+
+        return _prefix;
     }
     
     @Generated("me.xdrop.jrand.annotation.processing.ForkClassGenerator")
@@ -147,18 +173,20 @@ public class PrefixGenerator extends Generator<String> {
                 new java.util.ArrayList<>(femalePrefixes),
                 new java.util.ArrayList<>(neutralPrefixes),
                 isLong,
-                all);
+                all,
+                withDot);
     }
     
     @Generated("me.xdrop.jrand.annotation.processing.ForkClassGenerator")
     private PrefixGenerator(List<Prefix> prefixPool, List<Prefix> malePrefixes,
-            List<Prefix> femalePrefixes, List<Prefix> neutralPrefixes, boolean isLong,
-            boolean all) {
+            List<Prefix> femalePrefixes, List<Prefix> neutralPrefixes, boolean isLong, boolean all,
+            boolean withDot) {
         this.prefixPool = prefixPool;
         this.malePrefixes = malePrefixes;
         this.femalePrefixes = femalePrefixes;
         this.neutralPrefixes = neutralPrefixes;
         this.isLong = isLong;
         this.all = all;
+        this.withDot = withDot;
     }
 }

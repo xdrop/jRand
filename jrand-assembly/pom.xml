@@ -175,17 +175,17 @@
         <dependency>
             <groupId>me.xdrop</groupId>
             <artifactId>jrand-core</artifactId>
-            <version>0.2.1-alpha</version>
+            <version>0.2.2-alpha</version>
         </dependency>
         <dependency>
             <groupId>me.xdrop</groupId>
             <artifactId>jrand-test</artifactId>
-            <version>0.2.1-alpha</version>
+            <version>0.2.2-alpha</version>
         </dependency>
         <dependency>
             <groupId>me.xdrop</groupId>
             <artifactId>jrand-annotation-processor</artifactId>
-            <version>0.2.1-alpha</version>
+            <version>0.2.2-alpha</version>
         </dependency>
     </dependencies>
 
