@@ -2,7 +2,7 @@
 
 ![logo](_media/logoonly.svg)
 
-# jrand <small>0.2.2-alpha</small>
+# jrand <small>0.2.3-alpha</small>
 
 > Probably the *best* Java library for random data generation.*
 
