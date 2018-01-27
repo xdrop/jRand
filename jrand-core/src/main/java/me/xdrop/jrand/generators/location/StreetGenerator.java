@@ -110,11 +110,11 @@ public class StreetGenerator extends Generator<String> {
         StreetSuffix suffix;
 
         if (country.equals("uk")) {
-            suffix = Choose.chooseOne(ukStreetSuffixes);
+            suffix = Choose.one(ukStreetSuffixes);
         } else if (country.equals("us")) {
-            suffix = Choose.chooseOne(usStreetPrefixes);
+            suffix = Choose.one(usStreetPrefixes);
         } else {
-            suffix = Choose.chooseOne(all);
+            suffix = Choose.one(all);
         }
 
         if (shortSuffix) {

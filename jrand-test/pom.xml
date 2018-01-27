@@ -5,29 +5,28 @@
     <parent>
         <artifactId>jRand-bundle</artifactId>
         <groupId>me.xdrop</groupId>
-        <version>0.2.0-alpha</version>
+        <version>0.2.1-alpha</version>
     </parent>
 
     <artifactId>jrand-test</artifactId>
     <packaging>jar</packaging>
     <description>JRand test suite</description>
 
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.gmavenplus</groupId>
                 <artifactId>gmavenplus-plugin</artifactId>
-                <version>1.5</version>
+                <version>1.6</version>
                 <executions>
                     <execution>
                         <goals>
-                            <goal>addSources</goal>
-                            <goal>addTestSources</goal>
-                            <goal>compile</goal>
-                            <goal>testGenerateStubs</goal>
-                            <goal>testCompile</goal>
-                            <goal>removeTestStubs</goal>
+                            <goal>execute</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -47,7 +46,7 @@
         <dependency>
             <groupId>me.xdrop</groupId>
             <artifactId>jrand-core</artifactId>
-            <version>0.2.0-alpha</version>
+            <version>0.2.1-alpha</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -60,8 +59,8 @@
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
             <!-- any version of Groovy \>= 1.5.0 should work here -->
-            <version>2.4.6</version>
-            <scope>test</scope>
+            <version>2.4.12</version>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>

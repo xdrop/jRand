@@ -57,9 +57,9 @@ public class FirstnameGenerator extends Generator<String>{
         }
 
         if (_gender == Gender.MALE) {
-            return Choose.chooseOne(maleNames);
+            return Choose.one(maleNames);
         } else {
-            return Choose.chooseOne(femaleNames);
+            return Choose.one(femaleNames);
         }
     }
     

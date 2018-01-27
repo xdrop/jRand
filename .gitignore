@@ -5,6 +5,7 @@
 *.versionsBackup
 *.iml
 **/*.iml
+*.bak
 
 jrand-assembly/sources/**/*
 

@@ -1,5 +1,6 @@
-#!/bin/bash
+#!/bin/zsh
 
 mvn versions:set -DnewVersion=$1
-find -E . -iregex '.*(README|_coverpage).md' -exec sed -i .bak -e s/'[0-9]\.[0-9][0-9]*\.[0-9][0-9]*\(-[a-z][a-z]*\)\{0,1\}'/$1/g {} \;
-
+version=$(cat VERSION)
+find . -iregex '.*\(README\|_coverpage\).md' -exec sed -i .bak -e s/$version/$1/g {} \;
+sed -E -i .bak -e "s/documentation-(.+)-green.svg/documentation-$(echo $version | sed 's/-/--/g')-green.svg/g" README.md
