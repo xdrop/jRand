@@ -62,6 +62,7 @@ compile 'me.xdrop:jrand:0.2.2-alpha'
 * [Word](https://jrand.xdrop.me/#/?id=word)
 * [Sentence](https://jrand.xdrop.me/#/?id=sentence)
 * [Paragraph](https://jrand.xdrop.me/#/?id=paragraph)
+* [Lorem Ipsum](https://jrand.xdrop.me/#/?id=lorem)
 
 #### Person
 * [Firstname](https://jrand.xdrop.me/#/?id=firstname)
