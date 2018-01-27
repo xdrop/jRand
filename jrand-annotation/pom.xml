@@ -5,7 +5,7 @@
     <parent>
         <artifactId>jRand-bundle</artifactId>
         <groupId>me.xdrop</groupId>
-        <version>0.2.1-alpha</version>
+        <version>0.2.2-alpha</version>
     </parent>
     <artifactId>jrand-annotation</artifactId>
     <packaging>jar</packaging>
