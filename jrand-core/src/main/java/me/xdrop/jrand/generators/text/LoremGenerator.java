@@ -31,6 +31,7 @@ public class LoremGenerator extends Generator<String> {
         this.noSentences = RangeOption.from(5,8);
         this.noWords = RangeOption.from(5,10);
         this.commas = true;
+        this.capitalize = true;
         this.nat = new NaturalGenerator();
     }
 
@@ -198,7 +199,7 @@ public class LoremGenerator extends Generator<String> {
             if (sentence.length() > 0) sentence.append(" ");
             String nextWord;
             // Avoid duplicate words
-            while ((nextWord = Choose.one(loremWords)).equals(previousWord)){ }
+            while ((nextWord = word()).equals(previousWord)){ }
             sentence.append(nextWord);
             previousWord = nextWord;
             number--;
@@ -206,7 +207,7 @@ public class LoremGenerator extends Generator<String> {
 
         sentence.append(". ");
 
-        return CharUtils.capitalize(sentence.toString());
+        return capitalize ? CharUtils.capitalize(sentence.toString()): sentence.toString();
     }
 
     private String paragraph(boolean intro) {
@@ -223,7 +224,6 @@ public class LoremGenerator extends Generator<String> {
             number--;
         }
 
-        paragraph.append("\n\n");
 
         return paragraph.toString();
     }
@@ -246,6 +246,9 @@ public class LoremGenerator extends Generator<String> {
         while (number > 0) {
             loremIpsum.append(paragraph(false));
             number--;
+            if (number != 0) {
+                loremIpsum.append("\n\n");
+            }
         }
 
         return loremIpsum.toString();
