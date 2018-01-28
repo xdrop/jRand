@@ -37,6 +37,17 @@ public class AssetLoader {
     }
 
 
+    @SuppressWarnings("unchecked")
+    public static <T> Map<String, List<T>> loadMultiIndex(String assetName, IndexedAssetMapper<T> assetMapper) {
+        if (cache.containsKey(assetName)) {
+            return cache.get(assetName).getIndex();
+        }
+        Asset<T> cached = internalLoad(assetName, assetMapper);
+        cache.put(assetName,  cached);
+
+        return cached.getMultiIndex();
+    }
+
     private static <T> Asset<T> internalLoad(String assetName, AssetMapper<T> mapper) {
         InputStream resource = loadResourceByName(assetName);
 
@@ -82,6 +93,28 @@ public class AssetLoader {
         }
 
         return Asset.from(list,map);
+    }
+
+    private static <T> Asset<T> loadMultiIndex(InputStream resource, IndexedAssetMapper<T> mapper) {
+        List<T> list = new ArrayList<>();
+        Map<String, List<T>> map = new HashMap<>();
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(resource));
+            while (reader.ready()) {
+                Tuple<String, T> entry = mapper.indexedMap(reader.readLine());
+                list.add(entry.getVal());
+                List<T> subKeyList = map.get(entry.getKey());
+                if (subKeyList == null) {
+                    subKeyList = new ArrayList<>();
+                    map.put(entry.getKey(), subKeyList);
+                }
+                subKeyList.add(entry.getVal());
+            }
+        } catch (IOException e) {
+            return Asset.from(Collections.<T>emptyList());
+        }
+
+        return Asset.fromMulti(list, map);
     }
 
     private static InputStream loadResourceByName(String assetName) {
