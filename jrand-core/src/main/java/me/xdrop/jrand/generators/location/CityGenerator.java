@@ -2,6 +2,7 @@ package me.xdrop.jrand.generators.location;
 
 import me.xdrop.jrand.Generator;
 import me.xdrop.jrand.data.AssetLoader;
+import me.xdrop.jrand.data.Assets;
 import me.xdrop.jrand.model.location.City;
 import me.xdrop.jrand.model.location.CityMapper;
 import me.xdrop.jrand.utils.Choose;
@@ -16,10 +17,15 @@ public class CityGenerator extends Generator<String> {
 
 
     public CityGenerator() {
-        this.cities = AssetLoader.loadList("cities.txt", new CityMapper());
-        this.citiesMap = AssetLoader.loadMultiIndex("cities.txt", new CityMapper());
+        this.cities = Assets.CITIES.loadItems();
+        this.citiesMap = Assets.CITIES.load().getGroupingIndex();
     }
 
+    /**
+     * Return a city from the given country
+     * @param country The given country
+     * @return The same generator
+     */
     public CityGenerator country(String country) {
         this.country = country;
         return this;
@@ -27,7 +33,7 @@ public class CityGenerator extends Generator<String> {
 
     @Override
     public String gen() {
-        if (country != null) {
+        if (country != null && citiesMap.get(country) != null) {
             List<City> list = citiesMap.get(country);
             return Choose.one(list).getName();
         }

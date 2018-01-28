@@ -3,7 +3,9 @@ package me.xdrop.jrand.generators.text;
 import me.xdrop.jrand.CharUtils;
 import me.xdrop.jrand.Generator;
 import me.xdrop.jrand.annotation.Facade;
+import me.xdrop.jrand.data.Asset;
 import me.xdrop.jrand.data.AssetLoader;
+import me.xdrop.jrand.data.Assets;
 import me.xdrop.jrand.generators.basics.NaturalGenerator;
 import me.xdrop.jrand.model.RangeOption;
 import me.xdrop.jrand.utils.Choose;
@@ -26,7 +28,7 @@ public class LoremGenerator extends Generator<String> {
     private boolean commas;
 
     public LoremGenerator() {
-        this.loremWords = AssetLoader.loadList("lorem.txt");
+        this.loremWords = Assets.LOREM.loadItems();
         this.noParagraphs = RangeOption.from(1);
         this.noSentences = RangeOption.from(5,8);
         this.noWords = RangeOption.from(5,10);

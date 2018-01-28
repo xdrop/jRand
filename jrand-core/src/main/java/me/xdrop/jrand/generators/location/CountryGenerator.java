@@ -3,6 +3,7 @@ package me.xdrop.jrand.generators.location;
 import me.xdrop.jrand.Generator;
 import me.xdrop.jrand.annotation.Facade;
 import me.xdrop.jrand.data.AssetLoader;
+import me.xdrop.jrand.data.Assets;
 import me.xdrop.jrand.model.location.Country;
 import me.xdrop.jrand.model.location.CountryMapper;
 import me.xdrop.jrand.utils.Choose;
@@ -16,7 +17,7 @@ public class CountryGenerator extends Generator<String> {
     private boolean prefix;
 
     public CountryGenerator() {
-        this.countries = AssetLoader.loadList("countries.txt", new CountryMapper());
+        this.countries = Assets.COUNTRIES.loadItems();
         this.prefix = false;
     }
 

@@ -1,13 +1,8 @@
 package me.xdrop.jrand.model.location;
 
-import me.xdrop.jrand.Tuple;
-import me.xdrop.jrand.data.IndexedAssetMapper;
+import me.xdrop.jrand.data.AssetMapper;
 
-public class CityMapper implements IndexedAssetMapper<City>{
-    @Override
-    public Tuple<String, City> indexedMap(String element) {
-        return null;
-    }
+public class CityMapper implements AssetMapper<City> {
 
     @Override
     public City map(String element) {

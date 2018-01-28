@@ -4,46 +4,50 @@ import java.util.List;
 import java.util.Map;
 
 public class Asset<T> {
-    private List<T> list;
-    private Map<String, T> index;
-    private Map<String, List<T>> multiIndex;
+    private List<T> itemList;
+    private Map<String, T> mappingIndex;
+    private Map<String, List<T>> groupingIndex;
 
-    private Asset(List<T> list) {
-        this.list = list;
+    private Asset(List<T> itemList, Map<String, T> mappingIndex, Map<String, List<T>> groupingIndex) {
+        this.itemList = itemList;
+        this.mappingIndex = mappingIndex;
+        this.groupingIndex = groupingIndex;
     }
 
-    private Asset(List<T> list, Map<String, T> index) {
-        this.list = list;
-        this.index = index;
+    public static <T> Asset<T> from(List<T> asset) {
+        return new Asset<>(asset, null, null);
     }
 
-    private Asset(List<T> list, Map<String,T> index, Map<String, List<T>> multiIndex) {
-        this.list = list;
-        this.index = index;
-        this.multiIndex = multiIndex;
+    public static <T> Asset<T> fromMapping(List<T> asset, Map<String,T> mappingIndex) {
+        return new Asset<>(asset, mappingIndex, null);
     }
 
-    public static <T> Asset<T> from(List<T> list) {
-        return new Asset<>(list);
+    public static <T> Asset<T> from(List<T> asset, Map<String,T> mappingIndex, Map<String, List<T>> groupingIndex) {
+        return new Asset<>(asset, mappingIndex, groupingIndex);
     }
 
-    public static <T> Asset<T> from(List<T> list, Map<String, T> index) {
-        return new Asset<>(list, index);
+    public static <T> Asset<T> fromGrouping(List<T> asset, Map<String,List<T>> groupingIndex) {
+        return new Asset<>(asset, null, groupingIndex);
     }
 
-    public static <T> Asset<T> fromMulti(List<T> list, Map<String, List<T>> multiIndex) {
-        return new Asset<>(list, null, multiIndex);
+    public List<T> getItems() {
+        return this.itemList;
     }
 
-    public List<T> getList() {
-        return list;
+    public Map<String, T> getMappingIndex() {
+        return this.mappingIndex;
     }
 
-    public Map<String, T> getIndex() {
-        return index;
+    public Map<String, List<T>> getGroupingIndex() {
+        return this.groupingIndex;
     }
 
-    public Map<String, List<T>> getMultiIndex() {
-        return multiIndex;
+    public boolean hasMappingIndex() {
+        return mappingIndex != null;
     }
+
+    public boolean hasGroupingIndex() {
+        return groupingIndex != null;
+    }
+
 }

@@ -1,13 +1,13 @@
 package me.xdrop.jrand.model.location;
 
 import me.xdrop.jrand.Tuple;
-import me.xdrop.jrand.data.IndexedAssetMapper;
-import me.xdrop.jrand.model.location.Country;
+import me.xdrop.jrand.data.AssetMapper;
+import me.xdrop.jrand.data.IndexMapper;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CountryMapper implements IndexedAssetMapper<Country> {
+public class CountryMapper implements IndexMapper<Country>, AssetMapper<Country> {
     private Pattern pattern = Pattern.compile("\"\"\"([\\w\\d\\s]+)\"\"\"");
 
     public Country map(String element) {
@@ -26,8 +26,7 @@ public class CountryMapper implements IndexedAssetMapper<Country> {
     }
 
     @Override
-    public Tuple<String, Country> indexedMap(String element) {
-        Country mapped = map(element);
-        return Tuple.from(mapped.getPrefix(), mapped);
+    public Tuple<String, Country> indexedMap(Country element) {
+        return Tuple.from(element.getPrefix(), element);
     }
 }

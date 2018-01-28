@@ -3,6 +3,7 @@ package me.xdrop.jrand.generators.person;
 import me.xdrop.jrand.Generator;
 import me.xdrop.jrand.annotation.Facade;
 import me.xdrop.jrand.data.AssetLoader;
+import me.xdrop.jrand.data.Assets;
 import me.xdrop.jrand.model.person.Gender;
 import me.xdrop.jrand.model.person.Prefix;
 import me.xdrop.jrand.model.person.PrefixMapper;
@@ -27,9 +28,9 @@ public class PrefixGenerator extends Generator<String> {
 
     public PrefixGenerator() {
         this.prefixPool = new ArrayList<>();
-        malePrefixes = AssetLoader.loadList("male/prefixes.txt", new PrefixMapper());
-        femalePrefixes = AssetLoader.loadList("female/prefixes.txt", new PrefixMapper());
-        neutralPrefixes = AssetLoader.loadList("neutral/prefixes.txt", new PrefixMapper());
+        malePrefixes = Assets.MALE_PREFIXES.load().getItems();
+        femalePrefixes = Assets.FEMALE_PREFIXES.loadItems();
+        neutralPrefixes = Assets.NEUTRAL_PREFIXES.loadItems();
         prefixPool.addAll(malePrefixes);
         prefixPool.addAll(femalePrefixes);
     }
