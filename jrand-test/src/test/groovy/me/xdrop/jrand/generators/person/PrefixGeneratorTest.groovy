@@ -1,15 +1,16 @@
 package me.xdrop.jrand.generators.person
 
 import me.xdrop.jrand.data.AssetLoader
+import me.xdrop.jrand.data.Assets
 import me.xdrop.jrand.model.person.Gender
 import me.xdrop.jrand.model.person.Prefix
 import me.xdrop.jrand.model.person.PrefixMapper
 
 class PrefixGeneratorTest extends GroovyTestCase {
     def instance = {-> new PrefixGenerator()}
-    def prefixesMale = AssetLoader.loadList("male/prefixes.txt", new PrefixMapper())
-    def prefixesFemale = AssetLoader.loadList("female/prefixes.txt", new PrefixMapper())
-    def prefixesNeutral = AssetLoader.loadList("neutral/prefixes.txt", new PrefixMapper())
+    def prefixesMale = Assets.MALE_PREFIXES.loadItems()
+    def prefixesFemale = Assets.FEMALE_PREFIXES.loadItems()
+    def prefixesNeutral = Assets.NEUTRAL_PREFIXES.loadItems()
     def all = new ArrayList<Prefix>(prefixesFemale + prefixesMale)
 
 
