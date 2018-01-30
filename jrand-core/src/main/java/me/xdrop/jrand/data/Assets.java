@@ -6,7 +6,7 @@ import me.xdrop.jrand.model.person.PrefixMapper;
 
 public class Assets {
 
-    public static AssetDescriptor<City> CITIES = new AssetDescriptor<>("cities.txt", new CityMapper());
+    public static AssetDescriptor<City> CITIES = new AssetDescriptor<>("cities.txt", new CityMapper(), null, new CityMapper());
     public static AssetDescriptor<Country> COUNTRIES = new AssetDescriptor<>("countries.txt", new CountryMapper(), new CountryMapper());
     public static AssetDescriptor<StreetSuffix> UK_STREET_SUFFIXES = new AssetDescriptor<>("uk/street_suffixes.txt", new StreetSuffixMapper());
     public static AssetDescriptor<StreetSuffix> US_STREET_SUFFIXES = new AssetDescriptor<>("us/street_suffixes.txt", new StreetSuffixMapper());

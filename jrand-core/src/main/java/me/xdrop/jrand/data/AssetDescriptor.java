@@ -44,7 +44,7 @@ public class AssetDescriptor<T> {
     private Map<String, List<T>> createGroupingIndex(Asset<T> asset) {
         Map<String,List<T>> groupingIndex = new HashMap<>();
         for (T t : asset.getItems()) {
-            Tuple<String, T> alias = Objects.requireNonNull(aliasIndexMapper).indexedMap(t);
+            Tuple<String, T> alias = Objects.requireNonNull(groupingIndexMapper).indexedMap(t);
             List<T> group = groupingIndex.get(alias.getKey());
             if (group == null) {
                 group = new ArrayList<>();

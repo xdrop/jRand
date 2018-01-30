@@ -15,7 +15,10 @@ public class AssetLoader {
             return cache.get(assetName);
         }
 
-        return cache.put(assetName, readFile(assetName, mapper));
+        Asset<T> read = readFile(assetName, mapper);
+        cache.put(assetName, read);
+        
+        return read;
     }
 
     private static <T> Asset<T> readFile(String assetName, AssetMapper<T> mapper) {
