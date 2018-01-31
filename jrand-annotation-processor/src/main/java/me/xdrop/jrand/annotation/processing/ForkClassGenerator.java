@@ -63,7 +63,7 @@ public class ForkClassGenerator {
         for (VariableElement variable : variableElements) {
 
             String varName = variable.getSimpleName().toString();
-            if (!variable.getModifiers().contains(Modifier.FINAL)) {
+            if (!variable.getModifiers().contains(Modifier.FINAL) || variable.getConstantValue() == null) {
                 if (typeUtils.isSubtype(variable.asType(), typeUtils.erasure(listElement))) {
                     fields.append("new java.util.ArrayList<>(");
                     fields.append(varName);
@@ -103,7 +103,7 @@ public class ForkClassGenerator {
                 .addAnnotation(generated);
 
         variableElements.forEach(varEl -> {
-            if (!varEl.getModifiers().contains(Modifier.FINAL)){
+            if (!varEl.getModifiers().contains(Modifier.FINAL) || varEl.getConstantValue() == null){
                 String identifier = varEl.getSimpleName().toString();
                 constructor.addParameter(ClassName.get(varEl.asType()), identifier);
                 constructor.addStatement("this.$N = $N", identifier, identifier);
