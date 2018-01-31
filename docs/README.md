@@ -1387,6 +1387,41 @@ country.genAsCountry();
 => Country {Name: United States, Prefix: US, Postal format: 99999)
 ```
 
+### city
+
+Returns a random city.
+
+**Methods**
+
+```java$
+JRand.city()
+JRand.city().country(String country)
+```
+
+**Examples**
+
+```java 
+CityGenerator city = JRand.city();
+```
+
+Generate a random city (out of 23k+)
+```java 
+city.gen();
+=> "London"
+```
+
+Generate a random city from given country:
+```java 
+city.country("United Kingdom").gen();
+=> "London"
+```
+
+?> Make sure you give the **full** name of the country (eg. not `UK` but `United Kingdom`), as found
+on the ISO tables
+
+Most major cities from most countries are included.
+
+
 ### postcode
 
 Returns a random postcode.
@@ -1474,6 +1509,42 @@ Or include a house number using `houseNumber()`
 ```java 
 street.houseNumber().gen();
 => "36 Obel Street"
+```
+
+### altitude
+
+Returns a random altidue
+
+**Methods**
+
+```java$
+JRand.altitude()
+JRand.altitude().digits(int digits)
+JRand.altitude().max(double max)
+```
+
+**Examples**
+
+```java 
+AltitudeGenerator altitude = JRand.altitude();
+```
+
+Generate a random altitude which by default has max of 8848m (height of Mount Everest):
+```java 
+altitude.gen();
+=> "7333.12345"
+```
+
+You can also set the `max` using
+```java 
+altitude.max(1000).gen();
+=> "733.22344"
+```
+
+Or the number of digits using:
+```java 
+altitude.digits(7).gen();
+=> "233.8732224"
 ```
 
 
