@@ -6,6 +6,7 @@
 *.iml
 **/*.iml
 *.bak
+**/generated/**
 
 jrand-assembly/sources/**/*
 

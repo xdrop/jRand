@@ -3,6 +3,7 @@ package me.xdrop.jrand.generators.location;
 import me.xdrop.jrand.Generator;
 import me.xdrop.jrand.annotation.Facade;
 import me.xdrop.jrand.data.AssetLoader;
+import me.xdrop.jrand.data.Assets;
 import me.xdrop.jrand.generators.basics.NaturalGenerator;
 import me.xdrop.jrand.generators.text.WordGenerator;
 import me.xdrop.jrand.model.location.StreetSuffix;
@@ -26,8 +27,8 @@ public class StreetGenerator extends Generator<String> {
 
     public StreetGenerator() {
         this.wordGenerator = new WordGenerator();
-        ukStreetSuffixes = AssetLoader.loadList("uk/street_suffixes.txt", new StreetSuffixMapper());
-        usStreetPrefixes = AssetLoader.loadList("us/street_suffixes.txt", new StreetSuffixMapper());
+        ukStreetSuffixes = Assets.UK_STREET_SUFFIXES.loadItems();
+        usStreetPrefixes = Assets.US_STREET_SUFFIXES.loadItems();
         all = new ArrayList<>(ukStreetSuffixes);
         all.addAll(usStreetPrefixes);
         this.country = "all";

@@ -4,32 +4,50 @@ import java.util.List;
 import java.util.Map;
 
 public class Asset<T> {
-    private List<T> list;
-    private Map<String, T> index;
+    private List<T> itemList;
+    private Map<String, T> mappingIndex;
+    private Map<String, List<T>> groupingIndex;
 
-    private Asset(List<T> list) {
-        this.list = list;
+    private Asset(List<T> itemList, Map<String, T> mappingIndex, Map<String, List<T>> groupingIndex) {
+        this.itemList = itemList;
+        this.mappingIndex = mappingIndex;
+        this.groupingIndex = groupingIndex;
     }
 
-    private Asset(List<T> list, Map<String, T> index) {
-        this.list = list;
-        this.index = index;
+    public static <T> Asset<T> from(List<T> asset) {
+        return new Asset<>(asset, null, null);
     }
 
-    public static <T> Asset<T> from(List<T> list) {
-        return new Asset<>(list);
+    public static <T> Asset<T> fromMapping(List<T> asset, Map<String,T> mappingIndex) {
+        return new Asset<>(asset, mappingIndex, null);
     }
 
-    public static <T> Asset<T> from(List<T> list, Map<String, T> index) {
-        return new Asset<>(list, index);
+    public static <T> Asset<T> from(List<T> asset, Map<String,T> mappingIndex, Map<String, List<T>> groupingIndex) {
+        return new Asset<>(asset, mappingIndex, groupingIndex);
     }
 
-    public List<T> getList() {
-        return list;
+    public static <T> Asset<T> fromGrouping(List<T> asset, Map<String,List<T>> groupingIndex) {
+        return new Asset<>(asset, null, groupingIndex);
     }
 
-    public Map<String, T> getIndex() {
-        return index;
+    public List<T> getItems() {
+        return this.itemList;
+    }
+
+    public Map<String, T> getMappingIndex() {
+        return this.mappingIndex;
+    }
+
+    public Map<String, List<T>> getGroupingIndex() {
+        return this.groupingIndex;
+    }
+
+    public boolean hasMappingIndex() {
+        return mappingIndex != null;
+    }
+
+    public boolean hasGroupingIndex() {
+        return groupingIndex != null;
     }
 
 }

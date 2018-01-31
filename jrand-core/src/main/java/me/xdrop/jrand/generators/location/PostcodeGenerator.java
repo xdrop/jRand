@@ -3,6 +3,7 @@ package me.xdrop.jrand.generators.location;
 import me.xdrop.jrand.Generator;
 import me.xdrop.jrand.annotation.Facade;
 import me.xdrop.jrand.data.AssetLoader;
+import me.xdrop.jrand.data.Assets;
 import me.xdrop.jrand.generators.basics.CharacterGenerator;
 import me.xdrop.jrand.model.location.Country;
 import me.xdrop.jrand.model.location.CountryMapper;
@@ -26,7 +27,7 @@ public class PostcodeGenerator extends Generator<String> {
      * @return The same generator
      */
     public PostcodeGenerator country(String countryPrefix) {
-        Map<String, Country> index = AssetLoader.loadIndex("countries.txt", new CountryMapper());
+        Map<String, Country> index = Assets.COUNTRIES.load().getMappingIndex();
         this.country = index.get(countryPrefix.toUpperCase());
         return this;
     }

@@ -2,7 +2,9 @@ package me.xdrop.jrand.generators.person;
 
 import me.xdrop.jrand.Generator;
 import me.xdrop.jrand.annotation.Facade;
+import me.xdrop.jrand.data.Asset;
 import me.xdrop.jrand.data.AssetLoader;
+import me.xdrop.jrand.data.Assets;
 import me.xdrop.jrand.model.person.Gender;
 import me.xdrop.jrand.utils.Choose;
 
@@ -16,8 +18,8 @@ public class FirstnameGenerator extends Generator<String>{
     private GenderGenerator genderGen;
 
     public FirstnameGenerator() {
-        this.maleNames = AssetLoader.loadList("male/firstnames.txt");
-        this.femaleNames = AssetLoader.loadList("female/firstnames.txt");
+        this.maleNames = Assets.MALE_FIRSTNAMES.loadItems();
+        this.femaleNames = Assets.FEMALE_FIRSTNAMES.loadItems();
         this.genderGen = new GenderGenerator();
     }
 
