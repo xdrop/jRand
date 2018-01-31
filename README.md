@@ -77,7 +77,10 @@ compile 'me.xdrop:jrand:0.2.3-alpha'
 #### Location
 * [Street](https://jrand.xdrop.me/#/?id=street)
 * [Country](https://jrand.xdrop.me/#/?id=country)
+* [City](https://jrand.xdrop.me/#/?id=city)
 * [Postcode](https://jrand.xdrop.me/#/?id=postcode)
+* [Altitude](https://jrand.xdrop.me/#/?id=altitude)
+
 
 #### Money
 * [Credit Card](https://jrand.xdrop.me/#/?id=card)
