@@ -1,6 +1,7 @@
 package me.xdrop.jrand.generators.location;
 
 import me.xdrop.jrand.Generator;
+import me.xdrop.jrand.annotation.Facade;
 import me.xdrop.jrand.data.AssetLoader;
 import me.xdrop.jrand.data.Assets;
 import me.xdrop.jrand.model.location.City;
@@ -10,6 +11,7 @@ import me.xdrop.jrand.utils.Choose;
 import java.util.List;
 import java.util.Map;
 
+@Facade(accessor = "city")
 public class CityGenerator extends Generator<String> {
     private final List<City> cities;
     private final Map<String, List<City>> citiesMap;
