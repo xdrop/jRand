@@ -2,20 +2,20 @@ package me.xdrop.jrand.generators.basics;
 
 import me.xdrop.jrand.Generator;
 import me.xdrop.jrand.annotation.Facade;
+import me.xdrop.jrand.model.RangeOption;
 
 import java.math.BigDecimal;
 
 @Facade(accessor = "decimal")
 public class DecimalGenerator extends Generator<String> {
 
-    private double min;
-    private double max;
+    private RangeOption<Double> range;
     private int digits;
     private boolean roundUp;
 
     public DecimalGenerator() {
         this.roundUp = true;
-        this.max = 100;
+        this.range = RangeOption.from(100.0);
     }
 
     /**
@@ -25,7 +25,7 @@ public class DecimalGenerator extends Generator<String> {
      * @return The same generator
      */
     public DecimalGenerator min(double min) {
-        this.min = min;
+        range.setMin(min);
         return this;
     }
 
@@ -36,7 +36,7 @@ public class DecimalGenerator extends Generator<String> {
      * @return The same generator
      */
     public DecimalGenerator max(double max) {
-        this.max = max;
+        range.setMax(max);
         return this;
     }
 
@@ -48,8 +48,17 @@ public class DecimalGenerator extends Generator<String> {
      * @return The same generator
      */
     public DecimalGenerator range(double min, double max) {
-        this.max = max;
-        this.min = min;
+        this.range = RangeOption.from(min, max);
+        return this;
+    }
+
+    /**
+     * Set a min/max range
+     * @param range The range
+     * @return The same generator
+     */
+    public DecimalGenerator range(RangeOption<Double> range) {
+        this.range = range;
         return this;
     }
 
@@ -81,7 +90,7 @@ public class DecimalGenerator extends Generator<String> {
      * @return Return the value as BigDecimal
      */
     public BigDecimal genAsDecimal() {
-        double rand = new DoubleGenerator().min(this.min).max(this.max).gen();
+        double rand = new DoubleGenerator().min(range.getMin()).max(range.getMax()).gen();
         BigDecimal decimal;
         if (digits != 0) {
             if (roundUp) {
