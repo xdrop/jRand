@@ -1,5 +1,7 @@
 #!/bin/zsh
-
+cd jrand-assembly
+mvn versions:set -DnewVersion=$1
+cd ..
 mvn versions:set -DnewVersion=$1
 version=$(cat VERSION)
 find . -iregex '.*\(README\|_coverpage\).md' -exec sed -i -e s/$version/$1/g {} \;

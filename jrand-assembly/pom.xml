@@ -5,7 +5,7 @@
 
     <groupId>me.xdrop</groupId>
     <artifactId>jrand</artifactId>
-    <version>0.2.5-alpha</version>
+    <version>0.2.6-alpha</version>
     <name>jrand</name>
     <description>Java random data generation library</description>
     <url>https://jrand.xdrop.me</url>
@@ -174,17 +174,17 @@
         <dependency>
             <groupId>me.xdrop</groupId>
             <artifactId>jrand-core</artifactId>
-            <version>0.2.5-alpha</version>
+            <version>0.2.6-alpha</version>
         </dependency>
         <dependency>
             <groupId>me.xdrop</groupId>
             <artifactId>jrand-test</artifactId>
-            <version>0.2.5-alpha</version>
+            <version>0.2.6-alpha</version>
         </dependency>
         <dependency>
             <groupId>me.xdrop</groupId>
             <artifactId>jrand-annotation-processor</artifactId>
-            <version>0.2.5-alpha</version>
+            <version>0.2.6-alpha</version>
         </dependency>
     </dependencies>
 

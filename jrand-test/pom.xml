@@ -5,7 +5,7 @@
     <parent>
         <artifactId>jRand-bundle</artifactId>
         <groupId>me.xdrop</groupId>
-        <version>0.2.5-alpha</version>
+        <version>0.2.6-alpha</version>
     </parent>
 
     <artifactId>jrand-test</artifactId>
@@ -53,7 +53,7 @@
         <dependency>
             <groupId>me.xdrop</groupId>
             <artifactId>jrand-core</artifactId>
-            <version>0.2.5-alpha</version>
+            <version>0.2.6-alpha</version>
             <scope>compile</scope>
         </dependency>
         <dependency>

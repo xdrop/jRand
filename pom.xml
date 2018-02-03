@@ -5,7 +5,7 @@
 
     <groupId>me.xdrop</groupId>
     <artifactId>jRand-bundle</artifactId>
-    <version>0.2.5-alpha</version>
+    <version>0.2.6-alpha</version>
     <packaging>pom</packaging>
     <name>jrand - bundle</name>
     <description>Java random data generation library</description>
