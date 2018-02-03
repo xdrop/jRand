@@ -1547,6 +1547,103 @@ altitude.digits(7).gen();
 => "233.8732224"
 ```
 
+### latitude
+
+Returns a random latitude.
+
+**Methods**
+
+```java$
+JRand.latitude()
+JRand.latitude().decimals(int noDecimals)
+JRand.latitude().range(double min, double max)
+```
+
+**Examples**
+
+```java 
+latitude.gen();
+=> "13.18223"
+```
+
+By default it returns with 5 decimal places, change that using:
+```java 
+latitude.decimals(3).gen();
+=> "13.182"
+```
+
+By default this returns between `-90` and `90`, change using:
+```java 
+latitude.range(-81.33,82.34).gen();
+=> "-73.23333"
+```
+
+### longitude
+
+Returns a random longitude
+
+**Methods**
+
+```java$
+JRand.longitude()
+JRand.longitude().decimals(int noDecimals)
+JRand.longitude().range(double min, double max)
+```
+
+**Examples**
+
+```java 
+LongitudeGenerator longitude = JRand.longitude();
+```
+
+Generate a random longitude
+```java 
+longitude.gen();
+=> "-23.51273"
+```
+
+By default it returns with 5 decimal places, change that using:
+```java 
+longitude.decimals(3).gen();
+=> "-23.512"
+```
+
+By default this returns between `-180` and `180`, change using:
+```java 
+longitude.range(-81.33,82.34).gen();
+=> "-73.23333"
+```
+
+
+
+### coordinates
+
+Returns a random coordinates.
+
+**Methods**
+
+```java$
+JRand.coordinates()
+JRand.coordinates().decimals(int noOfDecimals)
+```
+
+**Examples**
+
+```java 
+CoordinatesGenerator coordinates = JRand.coordinates();
+```
+
+Generate random coordinates
+```java 
+coordinates.gen();
+=> "-23.51273, 22.32315"
+```
+
+By default it returns with 5 decimal places, change that using:
+```java 
+coordinates.decimals(3).gen();
+=> "-23.512, 22.323"
+
 
 ## License
 Copyright 2018 - xdrop
