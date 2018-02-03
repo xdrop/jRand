@@ -13,7 +13,10 @@ class DecimalGeneratorTest extends GroovyTestCase {
 
     void testRange() {
         def res = instance().range(0.0 as double, 1.0 as double).genAsDecimal()
+        def res2 = instance().range(0.0 as double, 3.0 as double).genAsDecimal()
         assertTrue res >= 0.0 && res <= 1.0
+        assertTrue res2 >= 0.0 && res <= 3.0
+
     }
 
     void testDigits() {

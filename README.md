@@ -2,7 +2,7 @@
 
 
 [![Build Status](https://travis-ci.org/xdrop/jRand.svg?branch=master)](https://travis-ci.org/xdrop/jRand)
-[![Documentation](https://img.shields.io/badge/documentation-0.2.3--alpha-green.svg)](https://jrand.xdrop.me)
+[![Documentation](https://img.shields.io/badge/documentation-0.2.4--alpha-green.svg)](https://jrand.xdrop.me)
 [ ![Download](https://api.bintray.com/packages/xdrop/jrand/jrand/images/download.svg) ](https://bintray.com/xdrop/jrand/jRand/_latestVersion)
 > Probably the *best* Java library for random data generation.*
 
@@ -35,13 +35,13 @@ You can install `JRand` via Maven Central:
 <dependency>
     <groupId>me.xdrop</groupId>
     <artifactId>jrand</artifactId>
-    <version>0.2.3-alpha</version>
+    <version>0.2.4-alpha</version>
 </dependency>
 ```
 
 **Gradle**:
 ```gradle
-compile 'me.xdrop:jrand:0.2.3-alpha'
+compile 'me.xdrop:jrand:0.2.4-alpha'
 ```
 
 
@@ -80,6 +80,11 @@ compile 'me.xdrop:jrand:0.2.3-alpha'
 * [City](https://jrand.xdrop.me/#/?id=city)
 * [Postcode](https://jrand.xdrop.me/#/?id=postcode)
 * [Altitude](https://jrand.xdrop.me/#/?id=altitude)
+* [Depth](https://jrand.xdrop.me/#/?id=depth)
+* [Longitude](https://jrand.xdrop.me/#/?id=longitude)
+* [Latitude](https://jrand.xdrop.me/#/?id=latitude)
+* [Coordinates](https://jrand.xdrop.me/#/?id=coordinates)
+* [Geohash](https://jrand.xdrop.me/#/?id=coordinates)
 
 
 #### Money

@@ -2,20 +2,22 @@ package me.xdrop.jrand.generators.basics;
 
 import me.xdrop.jrand.Generator;
 import me.xdrop.jrand.annotation.Facade;
+import me.xdrop.jrand.model.Range;
 
 import java.math.BigDecimal;
 
 @Facade(accessor = "decimal")
 public class DecimalGenerator extends Generator<String> {
 
-    private double min;
-    private double max;
+    private Range<Double> range;
     private int digits;
     private boolean roundUp;
+    private DoubleGenerator dbl;
 
     public DecimalGenerator() {
         this.roundUp = true;
-        this.max = 100;
+        this.dbl = new DoubleGenerator();
+        this.range = Range.from(100.0);
     }
 
     /**
@@ -25,7 +27,7 @@ public class DecimalGenerator extends Generator<String> {
      * @return The same generator
      */
     public DecimalGenerator min(double min) {
-        this.min = min;
+        dbl.min(min);
         return this;
     }
 
@@ -36,7 +38,7 @@ public class DecimalGenerator extends Generator<String> {
      * @return The same generator
      */
     public DecimalGenerator max(double max) {
-        this.max = max;
+        dbl.max(max);
         return this;
     }
 
@@ -48,8 +50,17 @@ public class DecimalGenerator extends Generator<String> {
      * @return The same generator
      */
     public DecimalGenerator range(double min, double max) {
-        this.max = max;
-        this.min = min;
+        dbl.range(min, max);
+        return this;
+    }
+
+    /**
+     * Set a min/max range
+     * @param range The range
+     * @return The same generator
+     */
+    public DecimalGenerator range(Range<Double> range) {
+        dbl.range(range);
         return this;
     }
 
@@ -81,7 +92,7 @@ public class DecimalGenerator extends Generator<String> {
      * @return Return the value as BigDecimal
      */
     public BigDecimal genAsDecimal() {
-        double rand = new DoubleGenerator().min(this.min).max(this.max).gen();
+        double rand = dbl.gen();
         BigDecimal decimal;
         if (digits != 0) {
             if (roundUp) {

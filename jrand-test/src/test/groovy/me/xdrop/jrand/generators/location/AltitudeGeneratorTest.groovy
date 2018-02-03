@@ -8,6 +8,7 @@ class AltitudeGeneratorTest extends GroovyTestCase {
     }
 
     void testDigits() {
+        println instance().max(2).digits(3).gen()
         assertTrue instance().max(2).digits(3).gen().length() == 5
     }
 }
