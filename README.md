@@ -80,6 +80,11 @@ compile 'me.xdrop:jrand:0.2.4-alpha'
 * [City](https://jrand.xdrop.me/#/?id=city)
 * [Postcode](https://jrand.xdrop.me/#/?id=postcode)
 * [Altitude](https://jrand.xdrop.me/#/?id=altitude)
+* [Depth](https://jrand.xdrop.me/#/?id=depth)
+* [Longitude](https://jrand.xdrop.me/#/?id=longitude)
+* [Latitude](https://jrand.xdrop.me/#/?id=latitude)
+* [Coordinates](https://jrand.xdrop.me/#/?id=coordinates)
+* [Geohash](https://jrand.xdrop.me/#/?id=coordinates)
 
 
 #### Money
