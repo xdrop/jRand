@@ -5,7 +5,7 @@
     <parent>
         <artifactId>jRand-bundle</artifactId>
         <groupId>me.xdrop</groupId>
-        <version>0.2.4-alpha</version>
+        <version>0.2.5-alpha</version>
     </parent>
 
     <artifactId>jrand-core</artifactId>
@@ -76,7 +76,7 @@
         <dependency>
             <groupId>me.xdrop</groupId>
             <artifactId>jrand-annotation-processor</artifactId>
-            <version>0.2.4-alpha</version>
+            <version>0.2.5-alpha</version>
         </dependency>
         <dependency>
             <groupId>joda-time</groupId>
@@ -86,7 +86,7 @@
         <dependency>
             <groupId>me.xdrop</groupId>
             <artifactId>jrand-annotation</artifactId>
-            <version>0.2.4-alpha</version>
+            <version>0.2.5-alpha</version>
         </dependency>
     </dependencies>
 </project>

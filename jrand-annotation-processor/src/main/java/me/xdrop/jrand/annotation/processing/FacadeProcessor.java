@@ -22,22 +22,16 @@ import java.util.Set;
 @SupportedAnnotationTypes("me.xdrop.jrand.annotation.Facade")
 @SupportedSourceVersion(SourceVersion.RELEASE_7)
 public class FacadeProcessor extends AbstractProcessor {
+    public static String GENERATED_PACKAGE = "me.xdrop.jrand.generated.generators";
+    private static String packageName = "me.xdrop.jrand";
+    private static String generatorPath = "generators";
     private Messager messager;
     private Filer filer;
     private Map<String, TypeElement> facadeClasses;
-    private static String packageName = "me.xdrop.jrand";
-    public static String GENERATED_PACKAGE = "me.xdrop.jrand.generated.generators";
-    private static String generatorPath = "generators";
-
     private Path outputPathGenerators;
     private FacadeClassBuilder classBuilder;
     private ForkClassGenerator forkClassGenerator;
     private Path outputPathFacade;
-
-    private class FacadeGeneratorInfo {
-        private String packageName;
-        private String simpleName;
-    }
 
     @Override
     public synchronized void init(ProcessingEnvironment processingEnv) {
@@ -48,7 +42,7 @@ public class FacadeProcessor extends AbstractProcessor {
         this.classBuilder = new FacadeClassBuilder();
         this.forkClassGenerator = new ForkClassGenerator(processingEnv);
         this.outputPathGenerators = Paths.get("jrand-core", "src", "generated",
-                "java","me", "xdrop", "jrand", "generators");
+                "java", "me", "xdrop", "jrand", "generators");
         this.outputPathFacade = Paths.get("jrand-core", "src", "generated", "java", "me", "xdrop", "jrand");
     }
 
@@ -65,6 +59,7 @@ public class FacadeProcessor extends AbstractProcessor {
 
             Facade facade = element.getAnnotation(Facade.class);
             String accessor = facade.accessor();
+            facadeClasses.put(accessor, typeElement);
             try {
                 String[] subpackageParts = pkg.getQualifiedName().toString()
                         .split("\\.");
@@ -81,20 +76,25 @@ public class FacadeProcessor extends AbstractProcessor {
                 e.printStackTrace();
             }
 
-            facadeClasses.put(accessor, typeElement);
-            TypeSpec jrandFacade = classBuilder.buildFacadeClass(facadeClasses);
+        }
+
+        TypeSpec jrandFacade = classBuilder.buildFacadeClass(facadeClasses);
 
 
-            try {
-                try (FileWriter fw = new FileWriter(new File(outputPathFacade.toString(), "JRand.java"))) {
-                    classBuilder.writeFacade(fw, jrandFacade, packageName);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+        try {
+            try (FileWriter fw = new FileWriter(new File(outputPathFacade.toString(), "JRand.java"))) {
+                classBuilder.writeFacade(fw, jrandFacade, packageName);
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         return false;
 
+    }
+
+    private class FacadeGeneratorInfo {
+        private String packageName;
+        private String simpleName;
     }
 }
