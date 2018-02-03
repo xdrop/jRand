@@ -29,11 +29,11 @@ public class RangeOption<T extends Number> {
         return max;
     }
 
-    public void setMin(T min) {
-        this.min = min;
+    public RangeOption<T> newMin(T min) {
+        return new RangeOption<>(min, max);
     }
 
-    public void setMax(T max) {
-        this.max = max;
+    public RangeOption<T> newMax(T max) {
+        return new RangeOption<>(min, max);
     }
 }

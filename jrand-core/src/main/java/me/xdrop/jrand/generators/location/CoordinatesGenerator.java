@@ -3,11 +3,18 @@ package me.xdrop.jrand.generators.location;
 import me.xdrop.jrand.Generator;
 import me.xdrop.jrand.annotation.Facade;
 
+import javax.security.auth.callback.LanguageCallback;
+
 @Facade(accessor = "coordinates")
 public class CoordinatesGenerator extends Generator<String> {
     private int decimals;
     private LatitudeGenerator latitude;
     private LongitudeGenerator longitude;
+
+    public CoordinatesGenerator() {
+        latitude = new LatitudeGenerator();
+        longitude = new LongitudeGenerator();
+    }
 
     /**
      * Set the number of decimal digits to generate

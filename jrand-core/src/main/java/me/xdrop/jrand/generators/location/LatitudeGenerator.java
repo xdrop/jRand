@@ -11,7 +11,7 @@ public class LatitudeGenerator extends Generator<String> {
     private int decimals;
     private DecimalGenerator decimal;
 
-    public LatitudeGenerator(RangeOption range) {
+    public LatitudeGenerator() {
         this.decimals = 5;
         this.decimal = new DecimalGenerator();
         this.decimal.range(RangeOption.from(-90.0, 90.0));

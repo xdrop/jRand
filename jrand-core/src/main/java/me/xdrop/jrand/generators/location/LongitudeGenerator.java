@@ -11,7 +11,7 @@ public class LongitudeGenerator extends Generator<String> {
     private int decimals;
     private DecimalGenerator decimal;
 
-    public LongitudeGenerator(RangeOption range) {
+    public LongitudeGenerator() {
         this.decimals = 5;
         this.decimal = new DecimalGenerator();
         this.decimal.range(RangeOption.from(-180.0, 180.0));

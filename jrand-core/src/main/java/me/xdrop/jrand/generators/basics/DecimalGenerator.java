@@ -12,9 +12,11 @@ public class DecimalGenerator extends Generator<String> {
     private RangeOption<Double> range;
     private int digits;
     private boolean roundUp;
+    private DoubleGenerator dbl;
 
     public DecimalGenerator() {
         this.roundUp = true;
+        this.dbl = new DoubleGenerator();
         this.range = RangeOption.from(100.0);
     }
 
@@ -25,7 +27,7 @@ public class DecimalGenerator extends Generator<String> {
      * @return The same generator
      */
     public DecimalGenerator min(double min) {
-        range.setMin(min);
+        dbl.min(min);
         return this;
     }
 
@@ -36,7 +38,7 @@ public class DecimalGenerator extends Generator<String> {
      * @return The same generator
      */
     public DecimalGenerator max(double max) {
-        range.setMax(max);
+        dbl.max(max);
         return this;
     }
 
@@ -48,7 +50,7 @@ public class DecimalGenerator extends Generator<String> {
      * @return The same generator
      */
     public DecimalGenerator range(double min, double max) {
-        this.range = RangeOption.from(min, max);
+        dbl.range(min, max);
         return this;
     }
 
@@ -58,7 +60,7 @@ public class DecimalGenerator extends Generator<String> {
      * @return The same generator
      */
     public DecimalGenerator range(RangeOption<Double> range) {
-        this.range = range;
+        dbl.range(range);
         return this;
     }
 
@@ -90,7 +92,7 @@ public class DecimalGenerator extends Generator<String> {
      * @return Return the value as BigDecimal
      */
     public BigDecimal genAsDecimal() {
-        double rand = new DoubleGenerator().min(range.getMin()).max(range.getMax()).gen();
+        double rand = dbl.gen();
         BigDecimal decimal;
         if (digits != 0) {
             if (roundUp) {

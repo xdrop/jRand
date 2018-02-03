@@ -65,7 +65,7 @@ public class NaturalGenerator extends Generator<Integer> {
         return this;
     }
 
-    public NaturalGenerator range(RangeOption rangeOption) {
+    public NaturalGenerator range(RangeOption<Integer> rangeOption) {
         min(rangeOption.getMin());
         max(rangeOption.getMax());
         return this;
