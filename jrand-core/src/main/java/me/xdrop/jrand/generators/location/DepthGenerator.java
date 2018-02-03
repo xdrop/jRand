@@ -11,8 +11,8 @@ public class DepthGenerator extends Generator<String> {
     private int noDecimals;
 
     public DepthGenerator() {
-        this.decimal = new DecimalGenerator().range(Range.from(-10994.0, 0.0));
         this.noDecimals = 5;
+        this.decimal = new DecimalGenerator().range(Range.from(-10994.0, 0.0)).digits(noDecimals);
     }
 
     /**
@@ -32,27 +32,6 @@ public class DepthGenerator extends Generator<String> {
      */
     public DepthGenerator min(double min) {
         decimal.min(min);
-        return this;
-    }
-
-    /**
-     * Set the maximum depth
-     * @param max The maximum depth
-     * @return The same generator
-     */
-    public DepthGenerator max(double max) {
-        decimal.max(max);
-        return this;
-    }
-
-    /**
-     * Set the minimum and maximum depth
-     * @param min Minimum depth (inclusive)
-     * @param max Maximum depth (inclusive)
-     * @return The same generator
-     */
-    public DepthGenerator range(double min, double max) {
-        decimal.range(min, max);
         return this;
     }
 

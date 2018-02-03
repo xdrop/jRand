@@ -1547,6 +1547,37 @@ altitude.digits(7).gen();
 => "233.8732224"
 ```
 
+### depth
+
+Returns a random depth.
+
+**Methods**
+
+```java$
+JRand.depth()
+JRand.depth().min(double min)
+JRand.depth().decimals(double noDecimals)
+```
+
+**Examples**
+
+```java 
+DepthGenerator depth = JRand.depth();
+```
+
+Generate a random (negative) depth value between `0` and `-10994`
+```java 
+depth.gen();
+=> "-2333.12272"
+```
+
+Change the number of digits after the decimal point using:
+```java 
+depth.decimals(1).gen();
+=> "-2333.1"
+```
+
+
 ### latitude
 
 Returns a random latitude.
@@ -1643,6 +1674,31 @@ By default it returns with 5 decimal places, change that using:
 ```java 
 coordinates.decimals(3).gen();
 => "-23.512, 22.323"
+
+### geohash
+
+Returns a random geohash.
+
+**Methods**
+
+```java$
+JRand.geohash()
+JRand.geohash().length(int length)
+```
+
+**Examples**
+
+```java 
+GeohashGenerator geohash = JRand.geohash();
+```
+
+To generate a random [Geohash](http://en.wikipedia.org/wiki/Geohash)
+```java 
+geohash.gen();
+=> "h9xhn7y"
+```
+
+
 
 
 ## License
