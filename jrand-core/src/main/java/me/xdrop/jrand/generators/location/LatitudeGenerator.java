@@ -3,18 +3,18 @@ package me.xdrop.jrand.generators.location;
 import me.xdrop.jrand.Generator;
 import me.xdrop.jrand.annotation.Facade;
 import me.xdrop.jrand.generators.basics.DecimalGenerator;
-import me.xdrop.jrand.model.RangeOption;
+import me.xdrop.jrand.model.Range;
 
 @Facade(accessor = "latitude")
 public class LatitudeGenerator extends Generator<String> {
-    private RangeOption<Double> range;
+    private Range<Double> range;
     private int decimals;
     private DecimalGenerator decimal;
 
     public LatitudeGenerator() {
         this.decimals = 5;
         this.decimal = new DecimalGenerator();
-        this.decimal.range(RangeOption.from(-90.0, 90.0));
+        this.decimal.range(Range.from(-90.0, 90.0));
     }
 
     /**

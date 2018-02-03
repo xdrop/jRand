@@ -2,14 +2,14 @@ package me.xdrop.jrand.generators.basics;
 
 import me.xdrop.jrand.Generator;
 import me.xdrop.jrand.annotation.Facade;
-import me.xdrop.jrand.model.RangeOption;
+import me.xdrop.jrand.model.Range;
 
 import java.math.BigDecimal;
 
 @Facade(accessor = "decimal")
 public class DecimalGenerator extends Generator<String> {
 
-    private RangeOption<Double> range;
+    private Range<Double> range;
     private int digits;
     private boolean roundUp;
     private DoubleGenerator dbl;
@@ -17,7 +17,7 @@ public class DecimalGenerator extends Generator<String> {
     public DecimalGenerator() {
         this.roundUp = true;
         this.dbl = new DoubleGenerator();
-        this.range = RangeOption.from(100.0);
+        this.range = Range.from(100.0);
     }
 
     /**
@@ -59,7 +59,7 @@ public class DecimalGenerator extends Generator<String> {
      * @param range The range
      * @return The same generator
      */
-    public DecimalGenerator range(RangeOption<Double> range) {
+    public DecimalGenerator range(Range<Double> range) {
         dbl.range(range);
         return this;
     }

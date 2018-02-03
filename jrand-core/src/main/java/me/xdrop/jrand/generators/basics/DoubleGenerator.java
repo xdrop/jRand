@@ -2,7 +2,7 @@ package me.xdrop.jrand.generators.basics;
 
 import me.xdrop.jrand.Generator;
 import me.xdrop.jrand.annotation.Facade;
-import me.xdrop.jrand.model.RangeOption;
+import me.xdrop.jrand.model.Range;
 
 @Facade(accessor = "dbl")
 public class DoubleGenerator extends Generator<Double> {
@@ -53,7 +53,7 @@ public class DoubleGenerator extends Generator<Double> {
         return this;
     }
 
-    public DoubleGenerator range(RangeOption<Double> range) {
+    public DoubleGenerator range(Range<Double> range) {
         this.max = range.getMax();
         this.min = range.getMin();
         return this;

@@ -7,7 +7,7 @@ import me.xdrop.jrand.data.Asset;
 import me.xdrop.jrand.data.AssetLoader;
 import me.xdrop.jrand.data.Assets;
 import me.xdrop.jrand.generators.basics.NaturalGenerator;
-import me.xdrop.jrand.model.RangeOption;
+import me.xdrop.jrand.model.Range;
 import me.xdrop.jrand.utils.Choose;
 
 import java.util.List;
@@ -19,9 +19,9 @@ public class LoremGenerator extends Generator<String> {
     private String introText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit";
 
     private List<String> loremWords;
-    private RangeOption noParagraphs;
-    private RangeOption noSentences;
-    private RangeOption noWords;
+    private Range noParagraphs;
+    private Range noSentences;
+    private Range noWords;
     private boolean capitalize;
     private boolean intro;
     private boolean single;
@@ -29,9 +29,9 @@ public class LoremGenerator extends Generator<String> {
 
     public LoremGenerator() {
         this.loremWords = Assets.LOREM.loadItems();
-        this.noParagraphs = RangeOption.from(1);
-        this.noSentences = RangeOption.from(5,8);
-        this.noWords = RangeOption.from(5,10);
+        this.noParagraphs = Range.from(1);
+        this.noSentences = Range.from(5,8);
+        this.noWords = Range.from(5,10);
         this.commas = true;
         this.capitalize = true;
         this.nat = new NaturalGenerator();
@@ -44,7 +44,7 @@ public class LoremGenerator extends Generator<String> {
      * @return The same generator
      */
     public LoremGenerator paragraphs(int noParagraphs) {
-        this.noParagraphs = RangeOption.from(noParagraphs);
+        this.noParagraphs = Range.from(noParagraphs);
         return this;
     }
 
@@ -56,7 +56,7 @@ public class LoremGenerator extends Generator<String> {
      * @return The same generator
      */
     public LoremGenerator paragraphs(int min, int max) {
-        this.noParagraphs = RangeOption.from(min, max);
+        this.noParagraphs = Range.from(min, max);
         return this;
     }
 
@@ -67,7 +67,7 @@ public class LoremGenerator extends Generator<String> {
      * @return The same generator
      */
     public LoremGenerator sentences(int noSentences) {
-        this.noSentences = RangeOption.from(noSentences);
+        this.noSentences = Range.from(noSentences);
         return this;
     }
 
@@ -79,7 +79,7 @@ public class LoremGenerator extends Generator<String> {
      * @return The same generator
      */
     public LoremGenerator sentences(int min, int max) {
-        this.noSentences = RangeOption.from(min, max);
+        this.noSentences = Range.from(min, max);
         return this;
     }
 
@@ -90,7 +90,7 @@ public class LoremGenerator extends Generator<String> {
      * @return The same generator
      */
     public LoremGenerator words(int noWords) {
-        this.noWords = RangeOption.from(noWords);
+        this.noWords = Range.from(noWords);
         return this;
     }
 
@@ -102,7 +102,7 @@ public class LoremGenerator extends Generator<String> {
      * @return The same generator
      */
     public LoremGenerator words(int min, int max) {
-        this.noWords = RangeOption.from(min, max);
+        this.noWords = Range.from(min, max);
         return this;
     }
 
