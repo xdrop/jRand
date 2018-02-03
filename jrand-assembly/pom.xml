@@ -70,7 +70,7 @@
                         <configuration>
                             <tasks>
 
-                                <mkdir dir="sources" />
+                                <mkdir dir="sources"/>
 
                                 <delete includeEmptyDirs="true">
                                     <fileset dir="sources" includes="**/*" defaultexcludes="no"/>
@@ -81,7 +81,6 @@
                                         <exclude name="**/generators/**"/>
                                     </fileset>
                                 </copy>
-
                                 <copy todir="sources/main/resources">
                                     <fileset dir="../jrand-core/src/main/resources"/>
                                 </copy>
