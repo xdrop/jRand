@@ -85,7 +85,13 @@ compile 'me.xdrop:jrand:0.2.6-alpha'
 * [Latitude](https://jrand.xdrop.me/#/?id=latitude)
 * [Coordinates](https://jrand.xdrop.me/#/?id=coordinates)
 * [Geohash](https://jrand.xdrop.me/#/?id=coordinates)
+* [Phone Number](https://jrand.xdrop.me/#/?id=phone)
 
+#### Time
+* [Millisecond](https://jrand.xdrop.me/#/?id=milli)
+* [Second](https://jrand.xdrop.me/#/?id=second)
+* [Minute](https://jrand.xdrop.me/#/?id=minute)
+* [Hour](https://jrand.xdrop.me/#/?id=hour)
 
 #### Money
 * [Credit Card](https://jrand.xdrop.me/#/?id=card)
