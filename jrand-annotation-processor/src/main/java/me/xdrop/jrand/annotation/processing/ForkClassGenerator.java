@@ -31,7 +31,6 @@ public class ForkClassGenerator {
 
     private static String GENERATOR_ID = "me.xdrop.jrand.annotation.processing.ForkClassGenerator";
 
-
     private final Path root;
     private ProcessingEnvironment processingEnv;
     private SourceRoot sourceRoot;
@@ -68,10 +67,12 @@ public class ForkClassGenerator {
                     fields.append("new java.util.ArrayList<>(");
                     fields.append(varName);
                     fields.append(")");
-                } else if (typeUtils.isAssignable(variable.asType(), typeUtils.erasure(mapElement))){
+                } else if (typeUtils.isAssignable(variable.asType(), typeUtils.erasure(mapElement))) {
                     fields.append("new java.util.HashMap<>(");
                     fields.append(varName);
                     fields.append(")");
+                } else if (variable.asType().getKind().isPrimitive()) {
+                    fields.append(varName);
                 } else if (typeUtils.isAssignable(variable.asType(), typeUtils.erasure(generatorSuper))) {
                     fields.append(varName);
                     fields.append(".fork()");
@@ -113,15 +114,11 @@ public class ForkClassGenerator {
         return constructor.build();
     }
 
-    private CompilationUnit buildForkedClass(TypeElement generator) {
+    public CompilationUnit buildForkedClass(TypeElement generator, CompilationUnit source) {
         List<VariableElement> variableElements = ElementFilter.fieldsIn(generator.getEnclosedElements());
         String pkg = processingEnv.getElementUtils().getPackageOf(generator).getQualifiedName().toString();
-
-        String filename = generator.getSimpleName().toString() + ".java";
-        final CompilationUnit forkedClass = LexicalPreservingPrinter.setup(sourceRoot.parse(pkg, filename));
-
-        Optional<ClassOrInterfaceDeclaration> optClassDecl = forkedClass.getClassByName(generator.getSimpleName().toString());
-        Optional<PackageDeclaration> optPackageDecl = forkedClass.findFirst(PackageDeclaration.class);
+        Optional<ClassOrInterfaceDeclaration> optClassDecl = source.getClassByName(generator.getSimpleName().toString());
+        Optional<PackageDeclaration> optPackageDecl = source.findFirst(PackageDeclaration.class);
 
         if (optClassDecl.isPresent() && optPackageDecl.isPresent()) {
             ClassOrInterfaceDeclaration classDecl = optClassDecl.get();
@@ -149,20 +146,13 @@ public class ForkClassGenerator {
 
             ImportDeclaration parse = LexicalPreservingPrinter.setup(JavaParser.parseImport("import javax.annotation.Generated;\n"));
             parse.getData(LexicalPreservingPrinter.NODE_TEXT_DATA).addToken(0, 3, "\n");
-            forkedClass.addImport(parse);
+            source.addImport(parse);
             classDecl.addMember(parsedFork);
             classDecl.addMember(parsedCopyConstructor);
-            return forkedClass;
+            return source;
         }
 
         return null;
-    }
-
-    public void writeForkedClass(TypeElement generator, Writer writer) throws IOException {
-        CompilationUnit cu = buildForkedClass(generator);
-        if (cu != null) {
-            LexicalPreservingPrinter.print(cu, writer);
-        }
     }
 
 }
