@@ -36,7 +36,7 @@ public class ProcessorRepository {
     }
 
     public boolean isComplete(String className) {
-        return rounds.get(className) == noProcessors;
+        return rounds.getOrDefault(className, 0) == noProcessors;
     }
 
     public void addCU(String className, CompilationUnit cu) {

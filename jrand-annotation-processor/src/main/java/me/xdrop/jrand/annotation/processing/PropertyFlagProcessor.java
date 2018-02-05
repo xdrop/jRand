@@ -4,10 +4,7 @@ import me.xdrop.jrand.annotation.PropertyFlag;
 
 import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;
-import javax.lang.model.element.Element;
-import javax.lang.model.element.ElementKind;
-import javax.lang.model.element.PackageElement;
-import javax.lang.model.element.TypeElement;
+import javax.lang.model.element.*;
 import javax.tools.Diagnostic;
 import java.util.Set;
 
@@ -23,10 +20,9 @@ public class PropertyFlagProcessor extends BaseProcessor {
                 getMessager().printMessage(Diagnostic.Kind.ERROR, "Annotation [PropertyFlag] should only be used on fields.");
                 return true;
             }
-            System.out.println("Property flag found");
-            TypeElement typeElement = (TypeElement) element;
-            PackageElement pkg = processingEnv.getElementUtils().getPackageOf(typeElement);
-            propertyMethodGenerator.buildMethod(typeElement, "");
+            VariableElement symbol = (VariableElement) element;
+            PackageElement pkg = processingEnv.getElementUtils().getPackageOf(symbol);
+            propertyMethodGenerator.buildMethod(symbol, "");
         }
         return false;
     }
