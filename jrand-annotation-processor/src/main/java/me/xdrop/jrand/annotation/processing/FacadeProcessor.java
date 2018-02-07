@@ -32,7 +32,7 @@ public class FacadeProcessor extends BaseProcessor {
         super.init(processingEnv);
         this.facadeClasses = new HashMap<>();
         this.classBuilder = new FacadeClassBuilder();
-        this.forkClassGenerator = new ForkClassGenerator(processingEnv);
+        this.forkClassGenerator = new ForkClassGenerator(processingEnv, getRepository());
         this.outputPathFacade = Paths.get("jrand-core", "src", "generated", "java", "me", "xdrop", "jrand");
     }
 
@@ -61,7 +61,9 @@ public class FacadeProcessor extends BaseProcessor {
                 // Get the source Compilation unit
                 CompilationUnit sourceCU = getRepository().getCU(pkg.toString(), className);
                 // Create the new compilation unit
-                CompilationUnit newCU = forkClassGenerator.buildForkedClass(typeElement, sourceCU);
+                CompilationUnit newCU = forkClassGenerator.buildForkedClass(typeElement, className, sourceCU);
+                // Add a round to that file to indicate that it was processed
+                getRepository().addRound(className);
                 // Write the new compilation unit
                 getRepository().writeTo(path, className, newCU);
             } catch (IOException e) {

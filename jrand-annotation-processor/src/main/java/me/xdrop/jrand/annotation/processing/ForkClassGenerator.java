@@ -1,16 +1,10 @@
 package me.xdrop.jrand.annotation.processing;
 
-import com.github.javaparser.JavaParser;
 import com.github.javaparser.ast.CompilationUnit;
-import com.github.javaparser.ast.ImportDeclaration;
-import com.github.javaparser.ast.PackageDeclaration;
-import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
-import com.github.javaparser.ast.body.ConstructorDeclaration;
-import com.github.javaparser.ast.body.MethodDeclaration;
-import com.github.javaparser.ast.expr.Name;
-import com.github.javaparser.printer.lexicalpreservation.LexicalPreservingPrinter;
 import com.github.javaparser.utils.SourceRoot;
-import com.squareup.javapoet.*;
+import com.squareup.javapoet.AnnotationSpec;
+import com.squareup.javapoet.ClassName;
+import com.squareup.javapoet.MethodSpec;
 
 import javax.annotation.Generated;
 import javax.annotation.processing.ProcessingEnvironment;
@@ -20,12 +14,9 @@ import javax.lang.model.element.VariableElement;
 import javax.lang.model.type.TypeMirror;
 import javax.lang.model.util.ElementFilter;
 import javax.lang.model.util.Types;
-import java.io.IOException;
-import java.io.Writer;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.Optional;
 
 public class ForkClassGenerator {
 
@@ -34,11 +25,13 @@ public class ForkClassGenerator {
     private final Path root;
     private ProcessingEnvironment processingEnv;
     private SourceRoot sourceRoot;
+    private ProcessorRepository repository;
 
-    public ForkClassGenerator(ProcessingEnvironment processingEnv) {
+    public ForkClassGenerator(ProcessingEnvironment processingEnv, ProcessorRepository repository) {
         this.processingEnv = processingEnv;
         root = Paths.get("jrand-core", "src", "main", "java");
         sourceRoot = new SourceRoot(root);
+        this.repository = repository;
     }
 
     public MethodSpec buildMethod(TypeElement generator, List<VariableElement> variableElements) {
@@ -104,7 +97,7 @@ public class ForkClassGenerator {
                 .addAnnotation(generated);
 
         variableElements.forEach(varEl -> {
-            if (!varEl.getModifiers().contains(Modifier.FINAL) || varEl.getConstantValue() == null){
+            if (!varEl.getModifiers().contains(Modifier.FINAL) || varEl.getConstantValue() == null) {
                 String identifier = varEl.getSimpleName().toString();
                 constructor.addParameter(ClassName.get(varEl.asType()), identifier);
                 constructor.addStatement("this.$N = $N", identifier, identifier);
@@ -114,45 +107,16 @@ public class ForkClassGenerator {
         return constructor.build();
     }
 
-    public CompilationUnit buildForkedClass(TypeElement generator, CompilationUnit source) {
+    public CompilationUnit buildForkedClass(TypeElement generator, String className, CompilationUnit source) {
         List<VariableElement> variableElements = ElementFilter.fieldsIn(generator.getEnclosedElements());
         String pkg = processingEnv.getElementUtils().getPackageOf(generator).getQualifiedName().toString();
-        Optional<ClassOrInterfaceDeclaration> optClassDecl = source.getClassByName(generator.getSimpleName().toString());
-        Optional<PackageDeclaration> optPackageDecl = source.findFirst(PackageDeclaration.class);
 
-        if (optClassDecl.isPresent() && optPackageDecl.isPresent()) {
-            ClassOrInterfaceDeclaration classDecl = optClassDecl.get();
-            PackageDeclaration packageDecl = optPackageDecl.get();
+        MethodSpec forkMethod = buildMethod(generator, variableElements);
+        MethodSpec copyConstructor = buildConstructor(generator, variableElements);
 
-            MethodSpec forkMethod = buildMethod(generator, variableElements);
-            MethodSpec copyConstructor = buildConstructor(generator, variableElements);
+        repository.addMethods(source, className, pkg, forkMethod, copyConstructor);
 
-            TypeSpec clazz = TypeSpec.classBuilder(ClassName.get(generator))
-                    .addOriginatingElement(generator)
-                    .addModifiers(Modifier.PUBLIC)
-                    .addMethod(forkMethod)
-                    .addMethod(copyConstructor)
-                    .build();
-
-            JavaFile withFork = JavaFile.builder(pkg, clazz).indent("    ").build();
-
-            CompilationUnit generated = LexicalPreservingPrinter.setup(JavaParser.parse(withFork.toString()));
-            MethodDeclaration parsedFork = generated.findFirst(MethodDeclaration.class).get();
-            ConstructorDeclaration parsedCopyConstructor = generated.findFirst(ConstructorDeclaration.class).get();
-
-            Name javaxImport = new Name(new Name("javax.annotation"), "Generated");
-            ImportDeclaration generatedImport = new ImportDeclaration(javaxImport, false, false);
-
-
-            ImportDeclaration parse = LexicalPreservingPrinter.setup(JavaParser.parseImport("import javax.annotation.Generated;\n"));
-            parse.getData(LexicalPreservingPrinter.NODE_TEXT_DATA).addToken(0, 3, "\n");
-            source.addImport(parse);
-            classDecl.addMember(parsedFork);
-            classDecl.addMember(parsedCopyConstructor);
-            return source;
-        }
-
-        return null;
+        return source;
     }
 
 }

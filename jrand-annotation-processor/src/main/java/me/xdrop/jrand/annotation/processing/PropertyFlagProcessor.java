@@ -1,5 +1,6 @@
 package me.xdrop.jrand.annotation.processing;
 
+import com.github.javaparser.ast.CompilationUnit;
 import me.xdrop.jrand.annotation.PropertyFlag;
 
 import javax.annotation.processing.*;
@@ -11,7 +12,7 @@ import java.util.Set;
 @SupportedAnnotationTypes("me.xdrop.jrand.annotation.PropertyFlag")
 @SupportedSourceVersion(SourceVersion.RELEASE_7)
 public class PropertyFlagProcessor extends BaseProcessor {
-    private PropertyMethodGenerator propertyMethodGenerator = new PropertyMethodGenerator();
+    private PropertyMethodGenerator propertyMethodGenerator = new PropertyMethodGenerator(processingEnv);
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
@@ -22,7 +23,9 @@ public class PropertyFlagProcessor extends BaseProcessor {
             }
             VariableElement symbol = (VariableElement) element;
             PackageElement pkg = processingEnv.getElementUtils().getPackageOf(symbol);
-            propertyMethodGenerator.buildMethod(symbol, "");
+            String className = symbol.getEnclosingElement().getSimpleName().toString();
+            CompilationUnit compilationUnit = getRepository().getCU(pkg.toString(), className);
+            propertyMethodGenerator.buildMethod(compilationUnit, symbol, "");
         }
         return false;
     }
