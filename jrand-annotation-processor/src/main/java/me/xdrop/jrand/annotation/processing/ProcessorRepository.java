@@ -120,13 +120,11 @@ public class ProcessorRepository {
     }
 
     public void writeTo(Path path, String className, CompilationUnit cu) throws IOException {
-//        if (isComplete(className)) {
         try (FileWriter fw = new FileWriter(new File(path.toString(), className + ".java"))) {
             if (cu != null) {
                 LexicalPreservingPrinter.print(cu, fw);
             }
         }
-//        }
     }
 
 }
