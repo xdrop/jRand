@@ -87,11 +87,7 @@ public class FacadeProcessor extends BaseProcessor {
 
     }
 
-    protected String getLastPackageName(PackageElement pkg) {
-        String[] subpackageParts = pkg.getQualifiedName().toString()
-                .split("\\.");
-        return subpackageParts[subpackageParts.length - 1];
-    }
+
 
     private class FacadeGeneratorInfo {
         private String packageName;

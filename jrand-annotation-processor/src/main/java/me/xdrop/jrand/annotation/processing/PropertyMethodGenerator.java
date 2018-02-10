@@ -1,32 +1,25 @@
 package me.xdrop.jrand.annotation.processing;
 
-import com.github.javaparser.JavaParser;
 import com.github.javaparser.ast.CompilationUnit;
-import com.github.javaparser.ast.ImportDeclaration;
-import com.github.javaparser.ast.PackageDeclaration;
-import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
-import com.github.javaparser.ast.body.ConstructorDeclaration;
-import com.github.javaparser.ast.body.MethodDeclaration;
-import com.github.javaparser.printer.lexicalpreservation.LexicalPreservingPrinter;
 import com.squareup.javapoet.*;
 
 import javax.annotation.Generated;
 import javax.annotation.processing.ProcessingEnvironment;
 import javax.lang.model.element.Modifier;
 import javax.lang.model.element.VariableElement;
-import javax.lang.model.type.TypeMirror;
-import java.util.Optional;
 
 public class PropertyMethodGenerator {
 
     private static String GENERATOR_ID = "me.xdrop.jrand.annotation.processing.PropertyMethodGenerator";
     private ProcessingEnvironment processingEnv;
+    private ProcessorRepository repository;
 
-    public PropertyMethodGenerator(ProcessingEnvironment processingEnv) {
+    public PropertyMethodGenerator(ProcessingEnvironment processingEnv, ProcessorRepository repository) {
         this.processingEnv = processingEnv;
+        this.repository = repository;
     }
 
-    public void buildMethod(CompilationUnit source, VariableElement field, String javadoc) {
+    public CompilationUnit buildMethod(CompilationUnit source, VariableElement field, String className, String pkg, String javadoc) {
         AnnotationSpec generated = AnnotationSpec.builder(Generated.class)
                 .addMember("value", "$S", GENERATOR_ID)
                 .build();
@@ -35,6 +28,7 @@ public class PropertyMethodGenerator {
         MethodSpec withParam = buildMethodWithParam(field, generated, name);
         MethodSpec withoutParam = buildMethodWithoutParam(field, generated, name);
 
+        return repository.addMethods(source, className, pkg, withParam, withoutParam);
 
     }
 

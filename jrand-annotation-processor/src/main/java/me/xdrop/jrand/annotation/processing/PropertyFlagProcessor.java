@@ -7,12 +7,21 @@ import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.*;
 import javax.tools.Diagnostic;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Set;
 
 @SupportedAnnotationTypes("me.xdrop.jrand.annotation.PropertyFlag")
 @SupportedSourceVersion(SourceVersion.RELEASE_7)
 public class PropertyFlagProcessor extends BaseProcessor {
-    private PropertyMethodGenerator propertyMethodGenerator = new PropertyMethodGenerator(processingEnv);
+    private PropertyMethodGenerator propertyMethodGenerator;
+
+    @Override
+    public synchronized void init(ProcessingEnvironment processingEnv) {
+        super.init(processingEnv);
+        propertyMethodGenerator = new PropertyMethodGenerator(processingEnv, getRepository());
+    }
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
@@ -25,7 +34,17 @@ public class PropertyFlagProcessor extends BaseProcessor {
             PackageElement pkg = processingEnv.getElementUtils().getPackageOf(symbol);
             String className = symbol.getEnclosingElement().getSimpleName().toString();
             CompilationUnit compilationUnit = getRepository().getCU(pkg.toString(), className);
-            propertyMethodGenerator.buildMethod(compilationUnit, symbol, "");
+            String fullPackage = pkg.getQualifiedName().toString();
+            CompilationUnit newCU = propertyMethodGenerator.buildMethod(compilationUnit, symbol, className, fullPackage, "");
+            // Get the last part of the package eg. me.xdrop.generators.text would be text
+            String lastPackage = getLastPackageName(pkg);
+            Path path = Paths.get(getOutputPathGenerators().toString(), lastPackage);
+
+            try {
+                getRepository().writeTo(path, className, newCU);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return false;
     }

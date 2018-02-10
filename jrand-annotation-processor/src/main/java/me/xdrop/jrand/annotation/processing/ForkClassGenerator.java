@@ -114,9 +114,7 @@ public class ForkClassGenerator {
         MethodSpec forkMethod = buildMethod(generator, variableElements);
         MethodSpec copyConstructor = buildConstructor(generator, variableElements);
 
-        repository.addMethods(source, className, pkg, forkMethod, copyConstructor);
-
-        return source;
+        return repository.addMethods(source, className, pkg, forkMethod, copyConstructor);
     }
 
 }
