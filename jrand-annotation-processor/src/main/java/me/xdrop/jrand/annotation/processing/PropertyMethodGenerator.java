@@ -25,23 +25,25 @@ public class PropertyMethodGenerator {
                 .build();
 
         String name = field.getSimpleName().toString();
-        MethodSpec withParam = buildMethodWithParam(field, generated, name);
-        MethodSpec withoutParam = buildMethodWithoutParam(field, generated, name);
+        MethodSpec withParam = buildMethodWithParam(field, generated, name, javadoc);
+        MethodSpec withoutParam = buildMethodWithoutParam(field, generated, name, javadoc);
 
         return repository.addMethods(source, className, pkg, withParam, withoutParam);
 
     }
 
-    protected MethodSpec buildMethodWithoutParam(VariableElement field, AnnotationSpec generated, String name) {
+    protected MethodSpec buildMethodWithoutParam(VariableElement field, AnnotationSpec generated, String name, String javadoc) {
         return MethodSpec.methodBuilder(name)
                 .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
                 .addAnnotation(generated)
                 .addStatement("return $L(true)", name)
                 .returns(ClassName.get(field.getEnclosingElement().asType()))
+                .addJavadoc(javadoc + "\n")
+                .addJavadoc("@return The same generator")
                 .build();
     }
 
-    protected MethodSpec buildMethodWithParam(VariableElement field, AnnotationSpec generated, String name) {
+    protected MethodSpec buildMethodWithParam(VariableElement field, AnnotationSpec generated, String name, String javadoc) {
         return MethodSpec.methodBuilder(name)
                 .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
                 .addAnnotation(generated)
@@ -49,6 +51,8 @@ public class PropertyMethodGenerator {
                 .addStatement("this.$L = enabled", name)
                 .addStatement("return this")
                 .returns(ClassName.get(field.getEnclosingElement().asType()))
+                .addJavadoc(javadoc + "\n")
+                .addJavadoc("@return The same generator")
                 .build();
     }
 }

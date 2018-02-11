@@ -91,6 +91,7 @@ public class ProcessorRepository {
         return false;
     }
 
+
     public CompilationUnit addMethods(CompilationUnit source, String className, String pkg, MethodSpec... methodSpecs) {
         Optional<ClassOrInterfaceDeclaration> clazzInSource = getClassByName(source, className);
         TypeSpec builtClass = generateClassWithMethods(className, methodSpecs);
