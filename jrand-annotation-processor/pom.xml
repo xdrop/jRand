@@ -48,8 +48,8 @@
             <groupId>com.github.javaparser</groupId>
             <artifactId>javaparser-core</artifactId>
             <scope>system</scope>
-            <version>3.5.7-SNAPSHOT</version>
-            <systemPath>${project.basedir}/src/main/resources/javaparser.jar</systemPath>
+            <version>3.5.17-SNAPSHOT</version>
+            <systemPath>/Users/ppasto/Projects/javaparser/javaparser-core/target/javaparser-core-3.5.17-SNAPSHOT.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>me.xdrop</groupId>
