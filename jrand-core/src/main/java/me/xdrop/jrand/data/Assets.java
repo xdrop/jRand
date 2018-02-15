@@ -17,5 +17,9 @@ public class Assets {
     public static AssetDescriptor<Prefix> MALE_PREFIXES = new AssetDescriptor<>("male/prefixes.txt", new PrefixMapper());
     public static AssetDescriptor<Prefix> FEMALE_PREFIXES = new AssetDescriptor<>("female/prefixes.txt", new PrefixMapper());
     public static AssetDescriptor<String> LOREM = new AssetDescriptor<>("lorem.txt", new StringMapper());
+    public static AssetDescriptor<String> UK_PHONE_LAND = new AssetDescriptor<>("uk/landline_phone_numbers.txt", new StringMapper());
+    public static AssetDescriptor<String> UK_PHONE_MOBILE = new AssetDescriptor<>("uk/mobile_phone_numbers.txt", new StringMapper());
+    public static AssetDescriptor<String> US_PHONE_LAND = new AssetDescriptor<>("uk/landline_phone_numbers.txt", new StringMapper());
+    public static AssetDescriptor<String> US_PHONE_MOBILE = new AssetDescriptor<>("uk/mobile_phone_numbers.txt", new StringMapper());
 
 }
