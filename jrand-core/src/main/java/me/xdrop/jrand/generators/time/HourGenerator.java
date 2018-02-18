@@ -18,9 +18,19 @@ public class HourGenerator extends Generator<String> {
         this.nat.min(1).max(12);
     }
 
+
+    public int genInt() {
+        if (twentyfour) {
+            nat.range(1, 24);
+        } else {
+            nat.range(1, 12);
+        }
+        return nat.gen();
+    }
+
     @Override
     public String gen() {
-        return null;
+        return genInt() + "";
     }
 
 
