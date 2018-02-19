@@ -5,7 +5,7 @@ import me.xdrop.jrand.annotation.Facade;
 import me.xdrop.jrand.generators.basics.NaturalGenerator;
 
 @Facade(accessor = "second")
-public class SecondGenerator extends Generator<Integer> {
+public class SecondGenerator extends Generator<String> {
 
     private NaturalGenerator nat;
 
@@ -14,9 +14,13 @@ public class SecondGenerator extends Generator<Integer> {
         this.nat.min(0).max(59);
     }
 
+    public int genInt() {
+        return nat.gen();
+    }
+
     @Override
-    public Integer gen() {
-        return this.nat.gen();
+    public String gen() {
+        return nat.genString();
     }
 
 
