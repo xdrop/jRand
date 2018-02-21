@@ -62,8 +62,7 @@ public class FacadeProcessor extends BaseProcessor {
                 CompilationUnit sourceCU = getRepository().getCU(pkg.toString(), className);
                 // Create the new compilation unit
                 CompilationUnit newCU = forkClassGenerator.buildForkedClass(typeElement, className, sourceCU);
-                // Add a round to that file to indicate that it was processed
-                getRepository().addRound(className);
+                getRepository().addCU(className, newCU);
                 // Write the new compilation unit
                 getRepository().writeTo(path, className, newCU);
             } catch (IOException e) {
