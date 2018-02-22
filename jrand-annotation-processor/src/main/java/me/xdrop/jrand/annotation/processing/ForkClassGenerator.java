@@ -16,6 +16,7 @@ import javax.lang.model.util.ElementFilter;
 import javax.lang.model.util.Types;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
 
 public class ForkClassGenerator {
@@ -113,8 +114,9 @@ public class ForkClassGenerator {
 
         MethodSpec forkMethod = buildMethod(generator, variableElements);
         MethodSpec copyConstructor = buildConstructor(generator, variableElements);
+        List<MethodSpec> methodSpecs = Arrays.asList(forkMethod, copyConstructor);
 
-        return repository.addMethods(source, className, pkg, forkMethod, copyConstructor);
+        return repository.addMethods(source, className, pkg, methodSpecs);
     }
 
 }
