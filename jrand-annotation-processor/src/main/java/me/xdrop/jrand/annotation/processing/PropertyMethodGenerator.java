@@ -7,6 +7,9 @@ import javax.annotation.Generated;
 import javax.annotation.processing.ProcessingEnvironment;
 import javax.lang.model.element.Modifier;
 import javax.lang.model.element.VariableElement;
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.List;
 
 public class PropertyMethodGenerator {
 
@@ -19,7 +22,7 @@ public class PropertyMethodGenerator {
         this.repository = repository;
     }
 
-    public CompilationUnit buildMethod(CompilationUnit source, VariableElement field, String className, String pkg, String javadoc) {
+    public List<MethodSpec> buildMethods(CompilationUnit source, VariableElement field, String javadoc) {
         AnnotationSpec generated = AnnotationSpec.builder(Generated.class)
                 .addMember("value", "$S", GENERATOR_ID)
                 .build();
@@ -28,9 +31,10 @@ public class PropertyMethodGenerator {
         MethodSpec withParam = buildMethodWithParam(field, generated, name, javadoc);
         MethodSpec withoutParam = buildMethodWithoutParam(field, generated, name, javadoc);
 
-        return repository.addMethods(source, className, pkg, withParam, withoutParam);
+        return Arrays.asList(withParam, withoutParam);
 
     }
+
 
     protected MethodSpec buildMethodWithoutParam(VariableElement field, AnnotationSpec generated, String name, String javadoc) {
         return MethodSpec.methodBuilder(name)
@@ -39,7 +43,7 @@ public class PropertyMethodGenerator {
                 .addStatement("return $L(true)", name)
                 .returns(ClassName.get(field.getEnclosingElement().asType()))
                 .addJavadoc(javadoc + "\n")
-                .addJavadoc("@return The same generator")
+                .addJavadoc("@return The same generator\n")
                 .build();
     }
 
@@ -52,7 +56,7 @@ public class PropertyMethodGenerator {
                 .addStatement("return this")
                 .returns(ClassName.get(field.getEnclosingElement().asType()))
                 .addJavadoc(javadoc + "\n")
-                .addJavadoc("@return The same generator")
+                .addJavadoc("@return The same generator\n")
                 .build();
     }
 }
