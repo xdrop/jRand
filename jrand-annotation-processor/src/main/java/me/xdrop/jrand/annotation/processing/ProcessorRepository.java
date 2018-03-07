@@ -58,11 +58,9 @@ public class ProcessorRepository {
     public CompilationUnit getCU(String pkg, String className) {
         CompilationUnit compilationUnit = compilationUnits.get(className);
         if (compilationUnit == null) {
-            System.out.println("Parsing " + className);
             compilationUnit = parseCU(pkg, className + ".java");
             compilationUnits.put(className, compilationUnit);
         } else {
-            System.out.println("Reusing " + className);
             System.out.println(compilationUnit);
         }
         return compilationUnit;
