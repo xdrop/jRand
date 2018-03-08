@@ -65,10 +65,8 @@ public class PropertyFlagProcessor extends BaseProcessor {
             Path path = Paths.get(getOutputPathGenerators().toString(), lastPackage);
             String className = k.getClassName();
             CompilationUnit cu = getRepository().getCU(pkg.toString(), className);
-            List<MethodSpec> methodsToAdd = v;
-            System.out.println("Writing..."  + className);
 
-            getRepository().addMethods(cu, className, fullPackage, methodsToAdd);
+            getRepository().addMethods(cu, className, fullPackage, v);
             try {
                 getRepository().writeTo(path, className, cu);
             } catch (IOException e) {
