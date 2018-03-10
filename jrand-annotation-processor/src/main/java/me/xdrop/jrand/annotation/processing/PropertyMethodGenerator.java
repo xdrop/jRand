@@ -14,13 +14,6 @@ import java.util.List;
 public class PropertyMethodGenerator {
 
     private static String GENERATOR_ID = "me.xdrop.jrand.annotation.processing.PropertyMethodGenerator";
-    private ProcessingEnvironment processingEnv;
-    private ProcessorRepository repository;
-
-    public PropertyMethodGenerator(ProcessingEnvironment processingEnv, ProcessorRepository repository) {
-        this.processingEnv = processingEnv;
-        this.repository = repository;
-    }
 
     public List<MethodSpec> buildMethods(CompilationUnit source, VariableElement field, String javadoc) {
         AnnotationSpec generated = AnnotationSpec.builder(Generated.class)
