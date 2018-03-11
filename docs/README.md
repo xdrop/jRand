@@ -1698,6 +1698,38 @@ geohash.gen();
 => "h9xhn7y"
 ```
 
+### time
+
+### minute
+
+Returns a random minute
+
+**Methods**
+
+```java$
+JRand.minute()
+```
+
+**Examples**
+
+```java 
+MinuteGenerator minute = JRand.minute();
+```
+
+Generate a random minute (0-59) as string:
+```java 
+minute().gen();
+=> "23"
+```
+
+Or alternatively as `int`:
+```java 
+minute().genInt();
+=> 23
+```
+
+
+
 
 
 
