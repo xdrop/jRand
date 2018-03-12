@@ -1728,7 +1728,33 @@ minute().genInt();
 => 23
 ```
 
+### second
 
+Returns a random second
+
+**Methods**
+
+```java$
+JRand.second()
+```
+
+**Examples**
+
+```java 
+SecondGenerator second = JRand.second();
+```
+
+Generate a random second (0-59) as string:
+```java 
+second.gen();
+=> "11"
+```
+
+Or otherwise as `int`:
+```java 
+second.genInt();
+=> 11
+```
 
 
 
