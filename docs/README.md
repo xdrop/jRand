@@ -1698,7 +1698,47 @@ geohash.gen();
 => "h9xhn7y"
 ```
 
-### time
+## Time
+
+### hour
+
+Returns a random hour
+
+**Methods**
+
+```java$
+JRand.hour()
+JRand.hour().twentyfour()
+JRand.hour().twentyfour(boolean enabled)
+JRand.hour().padded()
+JRand.hour().padded(boolean enabled)
+```
+
+**Examples**
+
+```java 
+HourGenerator hour = JRand.hour();
+```
+
+Generate a random hour between `0` to `12` as a `String`:
+```java 
+hour.gen();
+=> "9"
+```
+
+Force it to be to digits using:
+```java 
+hour.padded().gen();
+=> "09"
+```
+
+Or return an hour between `0` and `23`:
+```java 
+hour.twentyfour().gen();
+=> "23"
+```
+
+
 
 ### minute
 
