@@ -1710,8 +1710,8 @@ Returns a random hour
 JRand.hour()
 JRand.hour().twentyfour()
 JRand.hour().twentyfour(boolean enabled)
-JRand.hour().padded()
-JRand.hour().padded(boolean enabled)
+JRand.hour().twodigit()
+JRand.hour().twodigit(boolean enabled)
 ```
 
 **Examples**
@@ -1726,9 +1726,9 @@ hour.gen();
 => "9"
 ```
 
-Force it to be to digits using:
+Force it to be two digits using:
 ```java 
-hour.padded().gen();
+hour.twodigit().gen();
 => "09"
 ```
 
@@ -1737,6 +1737,8 @@ Or return an hour between `0` and `23`:
 hour.twentyfour().gen();
 => "23"
 ```
+
+!> By default this is not two digits so you can call `twodigit` on that as well
 
 
 
