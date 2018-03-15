@@ -1798,6 +1798,34 @@ second.genInt();
 => 11
 ```
 
+### millisecond
+
+Returns a random millisecond
+
+**Methods**
+
+```java$
+JRand.millisecond()
+```
+
+**Examples**
+
+```java 
+Millisecond millisecond = JRand.millisecond();
+```
+
+Generate a random millisecond `0` to `999` as `String`
+```java 
+millisecond.gen();
+=> "777"
+```
+
+Or as an `int` using:
+```java 
+millisecond.genInt();
+=> 777
+```
+
 
 
 
