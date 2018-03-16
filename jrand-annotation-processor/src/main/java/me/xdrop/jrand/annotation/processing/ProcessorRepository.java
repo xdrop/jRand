@@ -60,8 +60,6 @@ public class ProcessorRepository {
         if (compilationUnit == null) {
             compilationUnit = parseCU(pkg, className + ".java");
             compilationUnits.put(className, compilationUnit);
-        } else {
-            System.out.println(compilationUnit);
         }
         return compilationUnit;
     }

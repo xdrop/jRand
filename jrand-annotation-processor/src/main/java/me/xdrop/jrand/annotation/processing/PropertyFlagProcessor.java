@@ -26,7 +26,7 @@ public class PropertyFlagProcessor extends BaseProcessor {
     @Override
     public synchronized void init(ProcessingEnvironment processingEnv) {
         super.init(processingEnv);
-        propertyMethodGenerator = new PropertyMethodGenerator(processingEnv, getRepository());
+        propertyMethodGenerator = new PropertyMethodGenerator();
     }
 
     @Override
@@ -44,7 +44,6 @@ public class PropertyFlagProcessor extends BaseProcessor {
             VariableElement symbol = (VariableElement) element;
             PropertyFlag annotation = symbol.getAnnotation(PropertyFlag.class);
 
-            System.out.println(annotation.toString());
             PackageElement pkg = processingEnv.getElementUtils().getPackageOf(symbol);
             String className = symbol.getEnclosingElement().getSimpleName().toString();
             CompilationUnit cu = getRepository().getCU(pkg.toString(), className);
