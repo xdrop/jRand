@@ -12,6 +12,7 @@ public class Choose {
     /**
      * Return a random element from the list
      * @param list The input list
+     * @param <T> The type of the list
      * @return The random element
      */
     public static <T> T one(List<T> list) {
@@ -21,7 +22,8 @@ public class Choose {
 
     /**
      * Return a random element from any of the lists
-     * @param list The input list
+     * @param lists The input list
+     * @param <T> The type of the lists
      * @return The random element
      */
     @SafeVarargs
@@ -33,6 +35,7 @@ public class Choose {
     /**
      * Return a random element from the list
      * @param arr The input array
+     * @param <T> The type of the array
      * @return The random element
      */
     public static <T> T one(T[] arr) {
