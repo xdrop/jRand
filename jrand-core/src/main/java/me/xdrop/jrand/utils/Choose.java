@@ -65,6 +65,7 @@ public class Choose {
      * Return n random elements from the list (with replacement)
      * @param list Input list
      * @param n Number of elements to retrieve
+     * @param <T> The type of the list
      * @return A list of random elements
      */
     public static <T> List<T> N(List<T> list, int n) {
@@ -80,6 +81,7 @@ public class Choose {
      * Return n *unique* random elements from the list (without replacement)
      * @param list Input list
      * @param n Number of elements to return
+     * @param <T> The type of the list
      * @return A list of unique random elements
      */
     public static <T> List<T> NUnique(List<T> list, int n) {
