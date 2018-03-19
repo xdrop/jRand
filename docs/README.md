@@ -213,10 +213,10 @@ Set the maximum number to generate
 ```java 
 decimal.max(3.0).gen();
 => 2.78
-``````
+​``````
 
 Set the minimum number to generate
-```java 
+​```java 
 decimal.min(16.0).gen();
 => 32.8
 ```
@@ -378,7 +378,7 @@ You can alternatively specify a character pool yourself:
 string.pool("abc123").gen();
 => "cca21" 
  ```
- 
+
 You can turn on the `symbols` flag to return only symbols, the `alpha` flag to return only
 alphabet characters or the `digit` to return only numerical digits:
 ```java 
@@ -1674,6 +1674,7 @@ By default it returns with 5 decimal places, change that using:
 ```java 
 coordinates.decimals(3).gen();
 => "-23.512, 22.323"
+```
 
 ### geohash
 
