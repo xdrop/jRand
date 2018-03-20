@@ -97,6 +97,6 @@ public class PhoneGenerator extends Generator<String> {
             String subscriber = nat.range(1000, 9999).genString();
             number = areacode + " " + exchange + "-" + subscriber;
         }
-        return null;
+        return number;
     }
 }
