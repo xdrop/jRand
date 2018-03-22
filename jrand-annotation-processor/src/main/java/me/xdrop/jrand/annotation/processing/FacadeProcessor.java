@@ -50,6 +50,7 @@ public class FacadeProcessor extends BaseProcessor {
             Facade facade = element.getAnnotation(Facade.class);
             String accessor = facade.accessor();
             facadeClasses.put(accessor, typeElement);
+
             try {
                 // Get the last part of the package eg. me.xdrop.generators.text would be text
                 String lastPackage = getLastPackageName(pkg);
@@ -72,7 +73,6 @@ public class FacadeProcessor extends BaseProcessor {
         }
 
         TypeSpec jrandFacade = classBuilder.buildFacadeClass(facadeClasses);
-
 
         try {
             try (FileWriter fw = new FileWriter(new File(outputPathFacade.toString(), "JRand.java"))) {

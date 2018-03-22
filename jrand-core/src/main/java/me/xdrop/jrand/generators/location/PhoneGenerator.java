@@ -76,8 +76,8 @@ public class PhoneGenerator extends Generator<String> {
         if (format != null) {
             return generateCustom(format);
         }
-
-        String number;
+        
+        String number = "";
 
         if (uk) {
             String prefix;

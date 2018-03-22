@@ -19,6 +19,7 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
+@SuppressWarnings("FieldCanBeLocal")
 public class ForkClassGenerator {
 
     private static String GENERATOR_ID = "me.xdrop.jrand.annotation.processing.ForkClassGenerator";
@@ -36,7 +37,6 @@ public class ForkClassGenerator {
     }
 
     public MethodSpec buildMethod(TypeElement generator, List<VariableElement> variableElements) {
-
         AnnotationSpec generated = AnnotationSpec.builder(Generated.class)
                 .addMember("value", "$S", GENERATOR_ID)
                 .build();
