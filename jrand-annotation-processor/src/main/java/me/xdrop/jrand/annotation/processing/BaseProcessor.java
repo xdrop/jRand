@@ -9,11 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public abstract class BaseProcessor extends AbstractProcessor {
-
-    public static String GENERATED_PACKAGE = "me.xdrop.jrand.generated.generators";
-    public static String packageName = "me.xdrop.jrand";
-    public static String generatorPath = "generators";
-    private static ProcessorRepository repository;
+    public static String rootPackage = "me.xdrop.jrand";
     private Messager messager;
     private Filer filer;
     private Path outputPathGenerators;
@@ -23,7 +19,6 @@ public abstract class BaseProcessor extends AbstractProcessor {
         super.init(processingEnv);
         this.messager = processingEnv.getMessager();
         this.filer = processingEnv.getFiler();
-        repository = new ProcessorRepository();
         this.outputPathGenerators = Paths.get("jrand-core", "src", "generated",
                 "java", "me", "xdrop", "jrand", "generators");
     }
@@ -34,10 +29,6 @@ public abstract class BaseProcessor extends AbstractProcessor {
 
     public Filer getFiler() {
         return filer;
-    }
-
-    public ProcessorRepository getRepository() {
-        return repository;
     }
 
     public Path getOutputPathGenerators() {

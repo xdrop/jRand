@@ -49,6 +49,7 @@ class PropertyFlagProcessor : BaseProcessor() {
             ProcessorRepository.addMethods(id, createPropertySetterMethods(element, annotation.value).asList())
         }
 
-        return false
+        // Claim all flag annotations
+        return true
     }
 }

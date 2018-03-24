@@ -3,6 +3,7 @@ package me.xdrop.jrand.annotation.processing
 import com.squareup.javapoet.ClassName
 import com.squareup.javapoet.MethodSpec
 import com.squareup.javapoet.TypeSpec
+import javax.lang.model.element.Modifier
 
 /**
  * This class serves as a common ground for all annotation processors. Two
@@ -18,18 +19,34 @@ object ProcessorRepository {
     private val classToMethods : MutableMap<ClassIdentifier, TypeSpec.Builder> = HashMap();
 
     /**
-     * Adds all [methodSpecs] to the class at [target]
+     * Generates a default [TypeSpec.Builder] for [clazz].
+     */
+    private fun defaultClassSpec(clazz: ClassIdentifier): TypeSpec.Builder {
+        return  TypeSpec.classBuilder(ClassName.get(clazz.typeElement).toString() + "Gen")
+                .superclass(ClassName.get(clazz.typeElement))
+                .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
+    }
+
+    /**
+     * Adds all [methodSpecs] to the class at [target].
      */
     fun addMethods(target: ClassIdentifier, methodSpecs: List<MethodSpec>) {
-        classToMethods.computeIfAbsent(target, { TypeSpec.classBuilder(ClassName.get(target.typeElement))})
+        classToMethods.computeIfAbsent(target, { defaultClassSpec(target) })
                 .addMethods(methodSpecs)
     }
 
     /**
-     * Adds one [methodSpec] to the class at [target]
+     * Adds one [methodSpec] to the class at [target].
      */
     fun addMethod(target: ClassIdentifier, methodSpec: MethodSpec) {
-        classToMethods.computeIfAbsent(target, { TypeSpec.classBuilder(ClassName.get(target.typeElement))})
+        classToMethods.computeIfAbsent(target, { defaultClassSpec(target) })
                 .addMethod(methodSpec)
+    }
+
+    /**
+     * Builds the class identified by [clazz] to create a [TypeSpec].
+     */
+    fun buildClass(clazz : ClassIdentifier): TypeSpec? {
+        return classToMethods[clazz]?.build()
     }
 }

@@ -43,7 +43,7 @@ class FacadeProcessor : BaseProcessor() {
             val id = ClassIdentifier(element, pkg)
             val accessor = annotation.accessor
 
-            ProcessorRepository.addMethod(id, forkClassGenerator.)
+            ProcessorRepository.addMethods(id, forkClassGenerator.getForkAndCloneMethods(element))
 
             facadeClasses[accessor] = element
         }
