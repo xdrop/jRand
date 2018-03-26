@@ -1,11 +1,12 @@
 package me.xdrop.jrand.annotation.processing
 
-import com.squareup.javapoet.*
-
+import com.squareup.javapoet.AnnotationSpec
+import com.squareup.javapoet.ClassName
+import com.squareup.javapoet.MethodSpec
+import com.squareup.javapoet.TypeName
 import javax.annotation.Generated
 import javax.lang.model.element.Modifier
 import javax.lang.model.element.VariableElement
-import java.util.Arrays
 
 var GENERATOR_ID = "me.xdrop.jrand.annotation.processing.PropertyMethodGenerator"
 

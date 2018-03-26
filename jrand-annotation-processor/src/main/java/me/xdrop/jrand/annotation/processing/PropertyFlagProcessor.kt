@@ -1,23 +1,15 @@
 package me.xdrop.jrand.annotation.processing
 
-import com.github.javaparser.ast.CompilationUnit
-import com.squareup.javapoet.ClassName
-import com.squareup.javapoet.MethodSpec
-import com.squareup.javapoet.TypeSpec
 import me.xdrop.jrand.annotation.PropertyFlag
-
 import javax.annotation.processing.ProcessingEnvironment
 import javax.annotation.processing.RoundEnvironment
 import javax.annotation.processing.SupportedAnnotationTypes
 import javax.annotation.processing.SupportedSourceVersion
 import javax.lang.model.SourceVersion
-import javax.lang.model.element.*
+import javax.lang.model.element.ElementKind
+import javax.lang.model.element.TypeElement
+import javax.lang.model.element.VariableElement
 import javax.tools.Diagnostic
-import java.io.IOException
-import java.nio.file.Path
-import java.nio.file.Paths
-import java.util.*
-import kotlin.collections.ArrayList
 
 @SupportedAnnotationTypes("me.xdrop.jrand.annotation.PropertyFlag")
 @SupportedSourceVersion(SourceVersion.RELEASE_7)

@@ -1,6 +1,5 @@
 package me.xdrop.jrand.annotation.processing;
 
-import com.github.javaparser.ast.CompilationUnit;
 import com.squareup.javapoet.AnnotationSpec;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.MethodSpec;
@@ -13,7 +12,6 @@ import javax.lang.model.element.VariableElement;
 import javax.lang.model.type.TypeMirror;
 import javax.lang.model.util.ElementFilter;
 import javax.lang.model.util.Types;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 
