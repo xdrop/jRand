@@ -52,7 +52,7 @@
 
         <dependency>
             <groupId>me.xdrop</groupId>
-            <artifactId>jrand-core</artifactId>
+            <artifactId>jrand</artifactId>
             <version>0.2.6-alpha</version>
             <scope>compile</scope>
         </dependency>

@@ -27,11 +27,11 @@ class JRandTest extends GroovyTestCase {
 //        assertTrue JRand.birthday() instanceof BirthdayGenerator
 //    }
 
-    void testFacade(){
+    void testFacade() {
         // TODO: Write for the generated facade
     }
 
-   static void likelihoodTest(MethodClosure func) {
+    static void likelihoodTest(MethodClosure func) {
         def likelihood = new Random().nextInt(100)
         def generator = func(likelihood)
 
@@ -40,13 +40,14 @@ class JRandTest extends GroovyTestCase {
 
         int iterations = 1000
 
-        for (int i = 0; i <= iterations; i++) {
+        iterations.times {
             if (generator.gen()) {
                 bucketYes++
             } else {
                 bucketNo++
             }
         }
+
 
         def actual = (bucketYes / iterations) * 100
         println("Likelihood actual": actual)
