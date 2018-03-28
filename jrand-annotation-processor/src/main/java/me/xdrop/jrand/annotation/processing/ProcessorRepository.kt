@@ -1,8 +1,10 @@
 package me.xdrop.jrand.annotation.processing
 
 import com.squareup.javapoet.ClassName
+import com.squareup.javapoet.JavaFile
 import com.squareup.javapoet.MethodSpec
 import com.squareup.javapoet.TypeSpec
+import javax.annotation.processing.Filer
 import javax.lang.model.element.Modifier
 
 /**
@@ -17,12 +19,13 @@ import javax.lang.model.element.Modifier
 object ProcessorRepository {
 
     private val classToMethods : MutableMap<ClassIdentifier, TypeSpec.Builder> = HashMap();
+    const val CLASS_SUFFIX = "Gen"
 
     /**
      * Generates a default [TypeSpec.Builder] for [clazz].
      */
     private fun defaultClassSpec(clazz: ClassIdentifier): TypeSpec.Builder {
-        return  TypeSpec.classBuilder(ClassName.get(clazz.typeElement).toString() + "Gen")
+        return  TypeSpec.classBuilder(ClassName.get(clazz.typeElement).toString() + CLASS_SUFFIX)
                 .superclass(ClassName.get(clazz.typeElement))
                 .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
     }
@@ -48,5 +51,13 @@ object ProcessorRepository {
      */
     fun buildClass(clazz : ClassIdentifier): TypeSpec? {
         return classToMethods[clazz]?.build()
+    }
+
+    /**
+     * Writes the class identified by [clazz] to the given [filer]
+     */
+    fun writeToFiler(clazz: ClassIdentifier, filer: Filer) {
+        JavaFile.builder(clazz.packageName.toString(), buildClass(clazz))
+                .build().writeTo(filer)
     }
 }

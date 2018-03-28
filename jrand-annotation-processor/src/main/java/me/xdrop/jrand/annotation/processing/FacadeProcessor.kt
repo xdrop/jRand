@@ -18,6 +18,12 @@ import javax.lang.model.element.TypeElement
 import javax.tools.Diagnostic
 
 
+/**
+ * The facade processor is responsible for creating the JRand facade class,
+ * as well as rendering the finalized extended generators with the
+ * fork() method as well as any existing modifications made from
+ * the property processor.
+ */
 @SupportedAnnotationTypes("me.xdrop.jrand.annotation.Facade")
 @SupportedSourceVersion(SourceVersion.RELEASE_7)
 class FacadeProcessor : BaseProcessor() {
@@ -48,6 +54,7 @@ class FacadeProcessor : BaseProcessor() {
             val accessor = annotation.accessor
 
             ProcessorRepository.addMethods(id, forkClassGenerator.getForkAndCloneMethods(element))
+            ProcessorRepository.writeToFiler(id, filer)
 
             facadeClasses[accessor] = element
         }
