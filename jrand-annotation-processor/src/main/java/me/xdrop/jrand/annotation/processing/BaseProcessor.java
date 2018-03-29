@@ -12,15 +12,12 @@ public abstract class BaseProcessor extends AbstractProcessor {
     public static String rootPackage = "me.xdrop.jrand";
     private Messager messager;
     private Filer filer;
-    private Path outputPathGenerators;
 
     @Override
     public synchronized void init(ProcessingEnvironment processingEnv) {
         super.init(processingEnv);
         this.messager = processingEnv.getMessager();
         this.filer = processingEnv.getFiler();
-        this.outputPathGenerators = Paths.get("jrand-core", "src", "generated",
-                "java", "me", "xdrop", "jrand", "generators");
     }
 
     public Messager getMessager() {
@@ -31,13 +28,4 @@ public abstract class BaseProcessor extends AbstractProcessor {
         return filer;
     }
 
-    public Path getOutputPathGenerators() {
-        return outputPathGenerators;
-    }
-
-    protected String getLastPackageName(PackageElement pkg) {
-        String[] subpackageParts = pkg.getQualifiedName().toString()
-                .split("\\.");
-        return subpackageParts[subpackageParts.length - 1];
-    }
 }

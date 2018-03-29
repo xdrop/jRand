@@ -28,13 +28,14 @@ import javax.tools.Diagnostic
 @SupportedSourceVersion(SourceVersion.RELEASE_7)
 class FacadeProcessor : BaseProcessor() {
     private val classBuilder: FacadeClassBuilder = FacadeClassBuilder()
-    private val forkClassGenerator: ForkClassGenerator = ForkClassGenerator(processingEnv)
+    private var forkClassGenerator: ForkClassGenerator? = null
     private val facadeClasses: MutableMap<String, TypeElement> = HashMap()
     private var outputPathFacade: Path = Paths.get("jrand-core", "src", "generated", "java", "me", "xdrop", "jrand")
 
     @Synchronized
     override fun init(processingEnv: ProcessingEnvironment) {
         super.init(processingEnv)
+        this.forkClassGenerator = ForkClassGenerator(processingEnv)
     }
 
     override fun process(annotations: Set<TypeElement>, roundEnv: RoundEnvironment): Boolean {
@@ -42,7 +43,7 @@ class FacadeProcessor : BaseProcessor() {
             return true
         }
 
-        roundEnv.getElementsAnnotatedWith(PropertyFlag::class.java).forEach { element ->
+        roundEnv.getElementsAnnotatedWith(Facade::class.java).forEach { element ->
             if (element.kind != ElementKind.CLASS || element !is TypeElement) {
                 messager.printMessage(Diagnostic.Kind.ERROR, "Annotation [Facade] should only be used on classes.")
                 return true
@@ -53,7 +54,7 @@ class FacadeProcessor : BaseProcessor() {
             val id = ClassIdentifier(element, pkg)
             val accessor = annotation.accessor
 
-            ProcessorRepository.addMethods(id, forkClassGenerator.getForkAndCloneMethods(element))
+            ProcessorRepository.addMethods(id, forkClassGenerator?.getForkAndCloneMethods(element) ?: emptyList())
             ProcessorRepository.writeToFiler(id, filer)
 
             facadeClasses[accessor] = element

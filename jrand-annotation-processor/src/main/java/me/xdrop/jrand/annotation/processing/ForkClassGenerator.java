@@ -121,7 +121,6 @@ public class ForkClassGenerator {
      */
     public List<MethodSpec> getForkAndCloneMethods (TypeElement sourceClass) {
         List<VariableElement> variableElements = ElementFilter.fieldsIn(sourceClass.getEnclosedElements());
-        String pkg = processingEnv.getElementUtils().getPackageOf(sourceClass).getQualifiedName().toString();
 
         MethodSpec forkMethod = createForkMethod(sourceClass, variableElements);
         MethodSpec copyConstructor = createConstructor(variableElements);
