@@ -94,13 +94,6 @@
             <version>1.9.0</version>
         </dependency>
         <dependency>
-            <groupId>com.github.javaparser</groupId>
-            <artifactId>javaparser-core</artifactId>
-            <scope>system</scope>
-            <version>3.5.17-SNAPSHOT</version>
-            <systemPath>${project.basedir}/src/main/resources/javaparser.jar</systemPath>
-        </dependency>
-        <dependency>
             <groupId>me.xdrop</groupId>
             <artifactId>jrand-annotation</artifactId>
             <version>0.2.6-alpha</version>

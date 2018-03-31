@@ -15,6 +15,8 @@ import javax.lang.model.util.Types;
 import java.util.Arrays;
 import java.util.List;
 
+import static me.xdrop.jrand.annotation.processing.ProcessorRepository.CLASS_SUFFIX;
+
 public class ForkClassGenerator {
 
     private static String GENERATOR_ID = "me.xdrop.jrand.annotation.processing.ForkClassGenerator";
@@ -30,10 +32,11 @@ public class ForkClassGenerator {
      * While forking any other data structure is subject to accidental mutation.
      *
      * @param generator The source generator class (eg. PhoneGenerator)
+     * @param pkg The package of the generator class
      * @param variableElements A list of other variables in that class
      * @return A generated {@code fork()} method
      */
-    public MethodSpec createForkMethod(TypeElement generator, List<VariableElement> variableElements) {
+    public MethodSpec createForkMethod(TypeElement generator, String pkg, List<VariableElement> variableElements) {
         AnnotationSpec generated = AnnotationSpec.builder(Generated.class)
                 .addMember("value", "$S", GENERATOR_ID)
                 .build();
@@ -65,7 +68,11 @@ public class ForkClassGenerator {
                 } else if (variable.asType().getKind().isPrimitive()) {
                     fields.append(varName);
                 } else if (typeUtils.isAssignable(variable.asType(), typeUtils.erasure(generatorSuper))) {
+                    fields.append("((");
+                    fields.append(variable.asType()).append(CLASS_SUFFIX);
+                    fields.append(')');
                     fields.append(varName);
+                    fields.append(')');
                     fields.append(".fork()");
                 } else {
                     fields.append(varName);
@@ -80,7 +87,9 @@ public class ForkClassGenerator {
         if (fields.length() > 1) {
             fieldString = fields.substring(0, fields.length() - 2);
         }
-        methodBuilder.addStatement("return new $T($L)", generator, fieldString);
+
+        ClassName generatedClassName = ClassName.get(pkg, generator.getSimpleName().toString().concat(CLASS_SUFFIX));
+        methodBuilder.addStatement("return new $T($L)", generatedClassName, fieldString);
 
         return methodBuilder.build();
     }
@@ -92,7 +101,7 @@ public class ForkClassGenerator {
      * @param variableElements The list of fields which this constructor will assign to
      * @return The generated constructor
      */
-    public MethodSpec createConstructor(List<VariableElement> variableElements) {
+    public MethodSpec createCopyConstructor(List<VariableElement> variableElements) {
         AnnotationSpec generated = AnnotationSpec.builder(Generated.class)
                 .addMember("value", "$S", GENERATOR_ID)
                 .build();
@@ -113,7 +122,7 @@ public class ForkClassGenerator {
     }
 
     /**
-     * Generate the {@code fork} and constructor methods. See {@link ForkClassGenerator#createConstructor(List)}
+     * Generate the {@code fork} and constructor methods. See {@link ForkClassGenerator#createCopyConstructor(List)}
      * and {@link ForkClassGenerator#createForkMethod(TypeElement, List)}
      *
      * @param sourceClass The source class for which to generate these for
@@ -121,9 +130,10 @@ public class ForkClassGenerator {
      */
     public List<MethodSpec> getForkAndCloneMethods (TypeElement sourceClass) {
         List<VariableElement> variableElements = ElementFilter.fieldsIn(sourceClass.getEnclosedElements());
+        String pkg = processingEnv.getElementUtils().getPackageOf(sourceClass).toString();
 
-        MethodSpec forkMethod = createForkMethod(sourceClass, variableElements);
-        MethodSpec copyConstructor = createConstructor(variableElements);
+        MethodSpec forkMethod = createForkMethod(sourceClass, pkg, variableElements);
+        MethodSpec copyConstructor = createCopyConstructor(variableElements);
         return Arrays.asList(forkMethod, copyConstructor);
     }
 

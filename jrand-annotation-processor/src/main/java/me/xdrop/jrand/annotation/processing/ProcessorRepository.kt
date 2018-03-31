@@ -25,7 +25,7 @@ object ProcessorRepository {
      * Generates a default [TypeSpec.Builder] for [clazz].
      */
     private fun defaultClassSpec(clazz: ClassIdentifier): TypeSpec.Builder {
-        return  TypeSpec.classBuilder(ClassName.get(clazz.typeElement).toString() + CLASS_SUFFIX)
+        return  TypeSpec.classBuilder(clazz.className + CLASS_SUFFIX)
                 .superclass(ClassName.get(clazz.typeElement))
                 .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
     }
