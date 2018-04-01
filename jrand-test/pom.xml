@@ -49,13 +49,6 @@
     </build>
 
     <dependencies>
-
-        <dependency>
-            <groupId>me.xdrop</groupId>
-            <artifactId>jrand</artifactId>
-            <version>0.2.6-alpha</version>
-            <scope>compile</scope>
-        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
