@@ -14,26 +14,26 @@ import java.util.List;
 public class PhoneGenerator extends Generator<String> {
 
     @PropertyFlag("Enable formatting the phone number")
-    private boolean formatted;
+    protected boolean formatted;
 
     @PropertyFlag("Return a mobile number")
-    private boolean mobile;
+    protected boolean mobile;
 
     @PropertyFlag("Return a landline number")
-    private boolean landline;
+    protected boolean landline;
 
     @PropertyFlag("Return a UK phone number")
-    private boolean uk;
+    protected boolean uk;
 
     @PropertyFlag("Return a US phone number")
-    private boolean us;
+    protected boolean us;
 
-    private StringGenerator string;
-    private NaturalGenerator nat;
-    private AreaCodeGenerator areacode;
-    private String format;
-    private List<String> prefixesUKLand;
-    private List<String> prefixesUKMobile;
+    protected StringGenerator string;
+    protected NaturalGenerator nat;
+    protected AreaCodeGenerator areacode;
+    protected String format;
+    protected List<String> prefixesUKLand;
+    protected List<String> prefixesUKMobile;
 
     public PhoneGenerator() {
         this.string = new StringGenerator();

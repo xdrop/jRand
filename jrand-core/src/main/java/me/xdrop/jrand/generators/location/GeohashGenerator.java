@@ -6,8 +6,8 @@ import me.xdrop.jrand.generators.basics.StringGenerator;
 
 @Facade(accessor = "geohash")
 public class GeohashGenerator extends Generator<String> {
-    private int length;
-    private StringGenerator string;
+    protected int length;
+    protected StringGenerator string;
 
     public GeohashGenerator() {
         this.length = 7;

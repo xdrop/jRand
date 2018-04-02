@@ -16,14 +16,14 @@ import java.util.List;
 @Facade(accessor = "street")
 public class StreetGenerator extends Generator<String> {
 
-    private WordGenerator wordGenerator;
-    private NaturalGenerator nat;
-    private String country;
-    private boolean shortSuffix;
-    private List<StreetSuffix> ukStreetSuffixes;
-    private List<StreetSuffix> usStreetPrefixes;
-    private List<StreetSuffix> all;
-    private boolean houseNumber;
+    protected WordGenerator wordGenerator;
+    protected NaturalGenerator nat;
+    protected String country;
+    protected boolean shortSuffix;
+    protected List<StreetSuffix> ukStreetSuffixes;
+    protected List<StreetSuffix> usStreetPrefixes;
+    protected List<StreetSuffix> all;
+    protected boolean houseNumber;
 
     public StreetGenerator() {
         this.wordGenerator = new WordGenerator();

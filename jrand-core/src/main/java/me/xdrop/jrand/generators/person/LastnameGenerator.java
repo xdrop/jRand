@@ -10,7 +10,7 @@ import java.util.List;
 
 @Facade(accessor = "lastname")
 public class LastnameGenerator extends Generator<String> {
-    private List<String> names;
+    protected List<String> names;
 
     public LastnameGenerator() {
         this.names = Assets.NEUTRAL_SURNAMES.load().getItems();

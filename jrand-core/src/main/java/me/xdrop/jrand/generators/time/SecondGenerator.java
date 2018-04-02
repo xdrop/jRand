@@ -7,7 +7,7 @@ import me.xdrop.jrand.generators.basics.NaturalGenerator;
 @Facade(accessor = "second")
 public class SecondGenerator extends Generator<String> {
 
-    private NaturalGenerator nat;
+    protected NaturalGenerator nat;
 
     public SecondGenerator() {
         this.nat = new NaturalGenerator();

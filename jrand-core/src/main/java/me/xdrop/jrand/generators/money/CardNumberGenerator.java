@@ -10,11 +10,11 @@ import me.xdrop.jrand.utils.Choose;
 @Facade(accessor = "cardNo")
 public class CardNumberGenerator extends Generator<String> {
 
-    private NaturalGenerator nat;
-    private CardTypeGenerator ctype;
-    private CardType customCardType;
-    private String formatString;
-    private boolean useDefaultFormat;
+    protected NaturalGenerator nat;
+    protected CardTypeGenerator ctype;
+    protected CardType customCardType;
+    protected String formatString;
+    protected boolean useDefaultFormat;
 
     public CardNumberGenerator() {
         nat = new NaturalGenerator();

@@ -9,11 +9,11 @@ import org.joda.time.format.DateTimeFormatter;
 
 @Facade(accessor = "expiryDate")
 public class ExpiryDateGenerator extends Generator<String>{
-    private boolean longVersion;
-    private boolean expired;
-    private boolean canExpire;
+    protected boolean longVersion;
+    protected boolean expired;
+    protected boolean canExpire;
 
-    private NaturalGenerator nat;
+    protected NaturalGenerator nat;
 
     public ExpiryDateGenerator() {
         this.nat = new NaturalGenerator();

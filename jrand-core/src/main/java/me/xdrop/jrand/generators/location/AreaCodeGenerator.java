@@ -7,10 +7,10 @@ import me.xdrop.jrand.generators.basics.NaturalGenerator;
 
 @Facade(accessor = "areacode")
 public class AreaCodeGenerator extends Generator<String> {
-    private NaturalGenerator nat;
+    protected NaturalGenerator nat;
 
     @PropertyFlag("Include parenthesis around the number")
-    private boolean parenthesis;
+    protected boolean parenthesis;
 
     public AreaCodeGenerator() {
         this.nat = new NaturalGenerator();

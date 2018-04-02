@@ -8,11 +8,11 @@ import me.xdrop.jrand.generators.basics.NaturalGenerator;
 @Facade(accessor = "paragraph")
 public class ParagraphGenerator extends Generator<String> {
 
-    private int minSentences;
-    private int maxSentences;
-    private String joining;
-    private SentenceGenerator sentGen;
-    private NaturalGenerator nat;
+    protected int minSentences;
+    protected int maxSentences;
+    protected String joining;
+    protected SentenceGenerator sentGen;
+    protected NaturalGenerator nat;
 
     public ParagraphGenerator() {
         this.nat = new NaturalGenerator();

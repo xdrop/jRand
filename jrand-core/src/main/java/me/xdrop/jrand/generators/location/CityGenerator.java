@@ -13,9 +13,9 @@ import java.util.Map;
 
 @Facade(accessor = "city")
 public class CityGenerator extends Generator<String> {
-    private final List<City> cities;
-    private final Map<String, List<City>> citiesMap;
-    private String country;
+    protected final List<City> cities;
+    protected final Map<String, List<City>> citiesMap;
+    protected String country;
 
 
     public CityGenerator() {

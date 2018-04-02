@@ -7,8 +7,8 @@ import me.xdrop.jrand.model.Range;
 @Facade(accessor = "dbl")
 public class DoubleGenerator extends Generator<Double> {
 
-    private double min;
-    private double max;
+    protected double min;
+    protected double max;
 
     public DoubleGenerator() {
         this.min = Double.MIN_VALUE;

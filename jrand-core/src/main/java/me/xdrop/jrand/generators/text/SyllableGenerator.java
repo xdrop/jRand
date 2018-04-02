@@ -11,9 +11,9 @@ import me.xdrop.jrand.generators.basics.NaturalGenerator;
 @Facade(accessor = "syllable")
 public class SyllableGenerator extends Generator<String> {
 
-    private CharacterGenerator charGen;
-    private int length;
-    private boolean capitalize;
+    protected CharacterGenerator charGen;
+    protected int length;
+    protected boolean capitalize;
 
     public SyllableGenerator() {
         this.charGen = new CharacterGenerator();

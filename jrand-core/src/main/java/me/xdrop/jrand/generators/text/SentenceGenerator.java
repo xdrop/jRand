@@ -11,11 +11,11 @@ import java.util.List;
 
 @Facade(accessor = "sentence")
 public class SentenceGenerator extends Generator<String>{
-    private WordGenerator wordGen;
-    private NaturalGenerator nat;
-    private int wordsMin;
-    private int wordsMax;
-    private boolean punctuation;
+    protected WordGenerator wordGen;
+    protected NaturalGenerator nat;
+    protected int wordsMin;
+    protected int wordsMax;
+    protected boolean punctuation;
 
     public SentenceGenerator() {
         this.wordGen = new WordGenerator();

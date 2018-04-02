@@ -6,7 +6,7 @@ import me.xdrop.jrand.generators.basics.NaturalGenerator;
 
 @Facade(accessor = "millisecond")
 public class MillisecondGenerator extends Generator<String> {
-    private NaturalGenerator nat;
+    protected NaturalGenerator nat;
 
     public MillisecondGenerator() {
         this.nat = new NaturalGenerator();

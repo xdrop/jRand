@@ -16,14 +16,14 @@ import java.util.List;
 
 @Facade(accessor = "prefix")
 public class PrefixGenerator extends Generator<String> {
-    private List<Prefix> prefixPool;
-    private List<Prefix> malePrefixes;
-    private List<Prefix> femalePrefixes;
-    private List<Prefix> neutralPrefixes;
+    protected List<Prefix> prefixPool;
+    protected List<Prefix> malePrefixes;
+    protected List<Prefix> femalePrefixes;
+    protected List<Prefix> neutralPrefixes;
 
-    private boolean isLong;
-    private boolean all;
-    private boolean withDot;
+    protected boolean isLong;
+    protected boolean all;
+    protected boolean withDot;
 
 
     public PrefixGenerator() {

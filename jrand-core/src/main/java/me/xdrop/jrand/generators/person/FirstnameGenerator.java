@@ -12,10 +12,10 @@ import java.util.List;
 
 @Facade(accessor = "firstname")
 public class FirstnameGenerator extends Generator<String>{
-    private List<String> maleNames;
-    private List<String> femaleNames;
-    private Gender gender;
-    private GenderGenerator genderGen;
+    protected List<String> maleNames;
+    protected List<String> femaleNames;
+    protected Gender gender;
+    protected GenderGenerator genderGen;
 
     public FirstnameGenerator() {
         this.maleNames = Assets.MALE_FIRSTNAMES.loadItems();

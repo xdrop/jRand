@@ -6,8 +6,8 @@ import me.xdrop.jrand.generators.basics.NaturalGenerator;
 
 @Facade(accessor = "cvv")
 public class CVVGenerator extends Generator<String> {
-    private NaturalGenerator nat;
-    private boolean amex;
+    protected NaturalGenerator nat;
+    protected boolean amex;
 
     public CVVGenerator() {
         nat = new NaturalGenerator();

@@ -12,15 +12,15 @@ import me.xdrop.jrand.model.money.CardType;
 
 @Facade(accessor = "card")
 public class CardGenerator extends Generator<Card> {
-    private StreetGenerator street;
-    private NameGenerator name;
-    private CardNumberGenerator card;
-    private CardTypeGenerator cardType;
-    private CVVGenerator cvv;
-    private ExpiryDateGenerator expiry;
-    private IssueDateGenerator issue;
-    private CountryGenerator country;
-    private PostcodeGenerator postcode;
+    protected StreetGenerator street;
+    protected NameGenerator name;
+    protected CardNumberGenerator card;
+    protected CardTypeGenerator cardType;
+    protected CVVGenerator cvv;
+    protected ExpiryDateGenerator expiry;
+    protected IssueDateGenerator issue;
+    protected CountryGenerator country;
+    protected PostcodeGenerator postcode;
 
     public CardGenerator() {
         this.street = new StreetGenerator().houseNumber();

@@ -14,9 +14,9 @@ import java.util.Date;
 @Facade(accessor = "birthday")
 public class BirthdayGenerator extends Generator<Date> {
 
-    private PersonType personType;
-    private String format;
-    private final String defaultFormat= "dd/M/yy";
+    protected PersonType personType;
+    protected String format;
+    protected final String defaultFormat= "dd/M/yy";
 
     public BirthdayGenerator() {
         this.format = defaultFormat;

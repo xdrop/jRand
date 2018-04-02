@@ -7,9 +7,9 @@ import me.xdrop.jrand.model.Range;
 
 @Facade(accessor = "latitude")
 public class LatitudeGenerator extends Generator<String> {
-    private Range<Double> range;
-    private int decimals;
-    private DecimalGenerator decimal;
+    protected Range<Double> range;
+    protected int decimals;
+    protected DecimalGenerator decimal;
 
     public LatitudeGenerator() {
         this.decimals = 5;

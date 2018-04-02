@@ -8,10 +8,10 @@ import me.xdrop.jrand.generators.basics.NaturalGenerator;
 @Facade(accessor = "hour")
 public class HourGenerator extends Generator<String> {
 
-    private NaturalGenerator nat;
+    protected NaturalGenerator nat;
 
     @PropertyFlag("Enable to return an hour between 1 and 24")
-    private boolean twentyfour;
+    protected boolean twentyfour;
 
     public HourGenerator() {
         this.nat = new NaturalGenerator();

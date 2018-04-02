@@ -8,12 +8,12 @@ import me.xdrop.jrand.generators.basics.NaturalGenerator;
 @Facade(accessor = "word")
 public class WordGenerator extends Generator<String> {
 
-    private NaturalGenerator nat;
-    private SyllableGenerator syl;
-    private boolean capitalize;
-    private int syllablesMin;
-    private int syllablesMax;
-    private int length;
+    protected NaturalGenerator nat;
+    protected SyllableGenerator syl;
+    protected boolean capitalize;
+    protected int syllablesMin;
+    protected int syllablesMax;
+    protected int length;
 
     public WordGenerator() {
         this.syllablesMin = 1;

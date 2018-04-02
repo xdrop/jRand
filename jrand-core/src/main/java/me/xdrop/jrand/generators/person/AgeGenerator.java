@@ -8,8 +8,8 @@ import me.xdrop.jrand.model.person.PersonType;
 @Facade(accessor = "age")
 public class AgeGenerator extends Generator<Integer> {
 
-    private PersonType personType;
-    private NaturalGenerator natGen;
+    protected PersonType personType;
+    protected NaturalGenerator natGen;
 
 
     public AgeGenerator() {

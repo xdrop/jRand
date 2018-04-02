@@ -7,9 +7,9 @@ import me.xdrop.jrand.model.Range;
 
 @Facade(accessor = "longitude")
 public class LongitudeGenerator extends Generator<String> {
-    private Range<Double> range;
-    private int decimals;
-    private DecimalGenerator decimal;
+    protected Range<Double> range;
+    protected int decimals;
+    protected DecimalGenerator decimal;
 
     public LongitudeGenerator() {
         this.decimals = 5;

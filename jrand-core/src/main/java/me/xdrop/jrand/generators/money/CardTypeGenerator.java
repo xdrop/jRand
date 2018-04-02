@@ -10,9 +10,9 @@ import java.util.*;
 @Facade(accessor = "cardType")
 public class CardTypeGenerator extends Generator<CardType> {
 
-    private static Map<String, CardType> all;
-    private static CardType[] allCol;
-    private static Map<Integer, String> defaultFormats;
+    protected static Map<String, CardType> all;
+    protected static CardType[] allCol;
+    protected static Map<Integer, String> defaultFormats;
 
     static {
         all = new HashMap<>();
@@ -46,7 +46,7 @@ public class CardTypeGenerator extends Generator<CardType> {
         allCol = CardType.values();
     }
 
-    private List<CardType> customPool;
+    protected List<CardType> customPool;
 
     public CardTypeGenerator() {
         this.customPool = new ArrayList<>();

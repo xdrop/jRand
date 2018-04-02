@@ -7,8 +7,8 @@ import me.xdrop.jrand.model.Range;
 
 @Facade(accessor = "depth")
 public class DepthGenerator extends Generator<String> {
-    private DecimalGenerator decimal;
-    private int noDecimals;
+    protected DecimalGenerator decimal;
+    protected int noDecimals;
 
     public DepthGenerator() {
         this.noDecimals = 5;

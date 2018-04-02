@@ -5,8 +5,8 @@ import me.xdrop.jrand.annotation.Facade;
 
 @Facade(accessor = "flt")
 public class FloatGenerator extends Generator<Float> {
-    private float min;
-    private float max;
+    protected float min;
+    protected float max;
 
     public FloatGenerator() {
         this.min = Float.MIN_VALUE;

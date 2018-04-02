@@ -6,7 +6,7 @@ import me.xdrop.jrand.annotation.Facade;
 @Facade(accessor = "bool")
 public class BoolGenerator extends Generator<Boolean> {
 
-    private int likelihood;
+    protected int likelihood;
 
     public BoolGenerator() {
         this.likelihood = 50;

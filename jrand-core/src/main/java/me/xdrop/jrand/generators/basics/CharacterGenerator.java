@@ -11,9 +11,9 @@ import java.util.*;
 @Facade(accessor = "character")
 public class CharacterGenerator extends Generator<Character> {
 
-    private List<Character> pool;
-    private Set<CHARSET> includedCharsets;
-    private boolean _default;
+    protected List<Character> pool;
+    protected Set<CHARSET> includedCharsets;
+    protected boolean _default;
 
     public enum Casing {
         LOWER, UPPER

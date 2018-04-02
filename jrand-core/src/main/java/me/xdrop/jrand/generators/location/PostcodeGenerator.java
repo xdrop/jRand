@@ -12,9 +12,9 @@ import java.util.Map;
 
 @Facade(accessor = "postcode")
 public class PostcodeGenerator extends Generator<String> {
-    private CharacterGenerator character;
-    private CountryGenerator countryGen;
-    private Country country;
+    protected CharacterGenerator character;
+    protected CountryGenerator countryGen;
+    protected Country country;
 
     public PostcodeGenerator() {
         this.character = new CharacterGenerator();

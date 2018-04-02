@@ -9,10 +9,10 @@ import java.math.BigDecimal;
 @Facade(accessor = "decimal")
 public class DecimalGenerator extends Generator<String> {
 
-    private Range<Double> range;
-    private int digits;
-    private boolean roundUp;
-    private DoubleGenerator dbl;
+    protected Range<Double> range;
+    protected int digits;
+    protected boolean roundUp;
+    protected DoubleGenerator dbl;
 
     public DecimalGenerator() {
         this.roundUp = true;

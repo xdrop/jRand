@@ -9,8 +9,8 @@ import org.joda.time.format.DateTimeFormatter;
 
 @Facade(accessor = "issueDate")
 public class IssueDateGenerator extends Generator<String> {
-    private boolean longVersion;
-    private NaturalGenerator nat;
+    protected boolean longVersion;
+    protected NaturalGenerator nat;
 
     public IssueDateGenerator() {
         this.nat = new NaturalGenerator();

@@ -14,18 +14,18 @@ import java.util.List;
 
 @Facade(accessor = "lorem")
 public class LoremGenerator extends Generator<String> {
-    private NaturalGenerator nat;
+    protected NaturalGenerator nat;
 
-    private String introText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit";
+    protected String introText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit";
 
-    private List<String> loremWords;
-    private Range noParagraphs;
-    private Range noSentences;
-    private Range noWords;
-    private boolean capitalize;
-    private boolean intro;
-    private boolean single;
-    private boolean commas;
+    protected List<String> loremWords;
+    protected Range noParagraphs;
+    protected Range noSentences;
+    protected Range noWords;
+    protected boolean capitalize;
+    protected boolean intro;
+    protected boolean single;
+    protected boolean commas;
 
     public LoremGenerator() {
         this.loremWords = Assets.LOREM.loadItems();

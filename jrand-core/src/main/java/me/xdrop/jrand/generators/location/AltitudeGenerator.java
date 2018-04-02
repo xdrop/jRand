@@ -6,7 +6,7 @@ import me.xdrop.jrand.generators.basics.DecimalGenerator;
 
 @Facade(accessor = "altitude")
 public class AltitudeGenerator extends Generator<String> {
-    DecimalGenerator decimal;
+    protected DecimalGenerator decimal;
 
     public AltitudeGenerator() {
         this.decimal = new DecimalGenerator();

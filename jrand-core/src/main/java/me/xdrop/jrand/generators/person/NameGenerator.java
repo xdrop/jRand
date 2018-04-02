@@ -7,18 +7,18 @@ import me.xdrop.jrand.model.person.Gender;
 @Facade(accessor = "name")
 public class NameGenerator extends Generator<String> {
 
-    private LastnameGenerator last;
-    private FirstnameGenerator first;
-    private PrefixGenerator prefix;
+    protected LastnameGenerator last;
+    protected FirstnameGenerator first;
+    protected PrefixGenerator prefix;
 
-    private boolean reverseOrder;
-    private boolean withMiddleName;
-    private boolean withPrefix;
-    private boolean asCardName;
+    protected boolean reverseOrder;
+    protected boolean withMiddleName;
+    protected boolean withPrefix;
+    protected boolean asCardName;
 
-    private Gender gender;
+    protected Gender gender;
 
-    private String separator = " ";
+    protected String separator = " ";
 
     public NameGenerator() {
         this.last = new LastnameGenerator();

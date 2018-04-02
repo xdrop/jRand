@@ -7,7 +7,7 @@ import me.xdrop.jrand.generators.basics.NaturalGenerator;
 @Facade(accessor = "minute")
 public class MinuteGenerator extends Generator<String> {
 
-    private NaturalGenerator nat;
+    protected NaturalGenerator nat;
 
     public MinuteGenerator() {
         this.nat = new NaturalGenerator();

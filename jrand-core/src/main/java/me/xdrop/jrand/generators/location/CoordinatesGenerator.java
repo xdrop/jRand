@@ -7,9 +7,9 @@ import javax.security.auth.callback.LanguageCallback;
 
 @Facade(accessor = "coordinates")
 public class CoordinatesGenerator extends Generator<String> {
-    private int decimals;
-    private LatitudeGenerator latitude;
-    private LongitudeGenerator longitude;
+    protected int decimals;
+    protected LatitudeGenerator latitude;
+    protected LongitudeGenerator longitude;
 
     public CoordinatesGenerator() {
         latitude = new LatitudeGenerator();

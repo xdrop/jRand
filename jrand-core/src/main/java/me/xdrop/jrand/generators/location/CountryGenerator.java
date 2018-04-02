@@ -13,8 +13,8 @@ import java.util.List;
 @Facade(accessor = "country")
 public class CountryGenerator extends Generator<String> {
 
-    private List<Country> countries;
-    private boolean prefix;
+    protected List<Country> countries;
+    protected boolean prefix;
 
     public CountryGenerator() {
         this.countries = Assets.COUNTRIES.loadItems();

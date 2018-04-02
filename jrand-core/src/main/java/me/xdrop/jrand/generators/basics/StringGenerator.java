@@ -7,10 +7,10 @@ import me.xdrop.jrand.model.basics.enums.CHARSET;
 @Facade(accessor = "string")
 public class StringGenerator extends Generator<String> {
 
-    private CharacterGenerator charGen;
-    private int min;
-    private int max;
-    private int length;
+    protected CharacterGenerator charGen;
+    protected int min;
+    protected int max;
+    protected int length;
 
     public StringGenerator() {
         this.min = 1;

@@ -8,10 +8,10 @@ import me.xdrop.jrand.model.person.Gender;
 @Facade(accessor = "gender")
 public class GenderGenerator extends Generator<String> {
 
-    private String male;
-    private String female;
-    private boolean full;
-    private BoolGenerator bool;
+    protected String male;
+    protected String female;
+    protected boolean full;
+    protected BoolGenerator bool;
 
     public GenderGenerator() {
         this.bool = new BoolGenerator();
