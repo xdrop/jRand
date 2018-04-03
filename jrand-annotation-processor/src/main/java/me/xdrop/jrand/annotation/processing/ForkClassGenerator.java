@@ -56,7 +56,7 @@ public class ForkClassGenerator {
         for (VariableElement variable : variableElements) {
 
             String varName = variable.getSimpleName().toString();
-            if (!variable.getModifiers().contains(Modifier.FINAL) || variable.getConstantValue() == null) {
+            if (!variable.getModifiers().contains(Modifier.FINAL)){
                 if (typeUtils.isSubtype(variable.asType(), typeUtils.erasure(listElement))) {
                     fields.append("new java.util.ArrayList<>(");
                     fields.append(varName);
@@ -111,7 +111,7 @@ public class ForkClassGenerator {
                 .addAnnotation(generated);
 
         variableElements.forEach(varEl -> {
-            if (!varEl.getModifiers().contains(Modifier.FINAL) || varEl.getConstantValue() == null) {
+            if (!varEl.getModifiers().contains(Modifier.FINAL)) {
                 String identifier = varEl.getSimpleName().toString();
                 constructor.addParameter(ClassName.get(varEl.asType()), identifier);
                 constructor.addStatement("this.$N = $N", identifier, identifier);
@@ -123,7 +123,7 @@ public class ForkClassGenerator {
 
     /**
      * Generate the {@code fork} and constructor methods. See {@link ForkClassGenerator#createCopyConstructor(List)}
-     * and {@link ForkClassGenerator#createForkMethod(TypeElement, List)}
+     * and {@link ForkClassGenerator#createForkMethod(TypeElement, String, List)}
      *
      * @param sourceClass The source class for which to generate these for
      * @return A list containing the fork method at index [0] and the constructor at index [1]
