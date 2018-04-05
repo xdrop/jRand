@@ -121,12 +121,25 @@ public class ForkClassGenerator {
         return constructor.build();
     }
 
+    public MethodSpec createDefaultConstructor() {
+        AnnotationSpec generated = AnnotationSpec.builder(Generated.class)
+                .addMember("value", "$S", GENERATOR_ID)
+                .build();
+
+        MethodSpec.Builder constructor = MethodSpec.constructorBuilder()
+                .addModifiers(Modifier.PUBLIC)
+                .addAnnotation(generated);
+
+        return constructor.build();
+    }
+
     /**
      * Generate the {@code fork} and constructor methods. See {@link ForkClassGenerator#createCopyConstructor(List)}
      * and {@link ForkClassGenerator#createForkMethod(TypeElement, String, List)}
      *
      * @param sourceClass The source class for which to generate these for
-     * @return A list containing the fork method at index [0] and the constructor at index [1]
+     * @return A list containing the fork method at index [0], the default constructor at [1],
+     * and the copy constructor at index [2]
      */
     public List<MethodSpec> getForkAndCloneMethods (TypeElement sourceClass) {
         List<VariableElement> variableElements = ElementFilter.fieldsIn(sourceClass.getEnclosedElements());
@@ -134,7 +147,8 @@ public class ForkClassGenerator {
 
         MethodSpec forkMethod = createForkMethod(sourceClass, pkg, variableElements);
         MethodSpec copyConstructor = createCopyConstructor(variableElements);
-        return Arrays.asList(forkMethod, copyConstructor);
+        MethodSpec defaultConstructor = createDefaultConstructor();
+        return Arrays.asList(forkMethod, defaultConstructor, copyConstructor);
     }
 
 }

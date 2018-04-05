@@ -1,5 +1,6 @@
 package me.xdrop.jrand.annotation.processing
 
+import com.squareup.javapoet.JavaFile
 import me.xdrop.jrand.annotation.Facade
 import me.xdrop.jrand.annotation.PropertyFlag
 import java.io.File
@@ -8,10 +9,7 @@ import java.io.IOException
 import java.nio.file.Path
 import java.nio.file.Paths
 import java.util.*
-import javax.annotation.processing.ProcessingEnvironment
-import javax.annotation.processing.RoundEnvironment
-import javax.annotation.processing.SupportedAnnotationTypes
-import javax.annotation.processing.SupportedSourceVersion
+import javax.annotation.processing.*
 import javax.lang.model.SourceVersion
 import javax.lang.model.element.ElementKind
 import javax.lang.model.element.TypeElement
@@ -29,8 +27,7 @@ import javax.tools.Diagnostic
 class FacadeProcessor : BaseProcessor() {
     private val classBuilder: FacadeClassBuilder = FacadeClassBuilder()
     private var forkClassGenerator: ForkClassGenerator? = null
-    private val facadeClasses: MutableMap<String, TypeElement> = HashMap()
-    private var outputPathFacade: Path = Paths.get("jrand-core", "src", "generated", "java", "me", "xdrop", "jrand")
+    private val facadeClasses: MutableMap<String, Pair<TypeElement, String>> = HashMap()
 
     @Synchronized
     override fun init(processingEnv: ProcessingEnvironment) {
@@ -57,20 +54,18 @@ class FacadeProcessor : BaseProcessor() {
             ProcessorRepository.addMethods(id, forkClassGenerator?.getForkAndCloneMethods(element) ?: emptyList())
             ProcessorRepository.writeToFiler(id, filer)
 
-            facadeClasses[accessor] = element
+            facadeClasses[accessor] = Pair(element, pkg.toString())
         }
 
         val jrandFacade = classBuilder.buildFacadeClass(facadeClasses)
 
+        messager.printMessage(Diagnostic.Kind.WARNING, "ONCE")
         try {
-            FileWriter(File(outputPathFacade.toString(), "JRand.java")).use { fw ->
-                classBuilder.writeFacade(fw, jrandFacade, rootPackage)
-            }
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
+            JavaFile.builder("me.xdrop.jrand", jrandFacade)
+                    .build().writeTo(filer)
+        } catch (file: FilerException) {}
 
-        return true
+        return false
     }
 
 }
