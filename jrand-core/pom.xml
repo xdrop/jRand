@@ -40,8 +40,8 @@
                         <configuration>
                             <processors>
                                 <!-- list of processors to use -->
-                                <processor>me.xdrop.jrand.annotation.processing.FacadeProcessor</processor>
                                 <processor>me.xdrop.jrand.annotation.processing.PropertyFlagProcessor</processor>
+                                <processor>me.xdrop.jrand.annotation.processing.FacadeProcessor</processor>
                             </processors>
                           <compilerArguments>
                               -source 1.7

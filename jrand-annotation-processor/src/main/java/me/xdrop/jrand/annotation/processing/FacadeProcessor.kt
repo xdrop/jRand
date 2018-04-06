@@ -59,7 +59,7 @@ class FacadeProcessor : BaseProcessor() {
 
         val jrandFacade = classBuilder.buildFacadeClass(facadeClasses)
 
-        messager.printMessage(Diagnostic.Kind.WARNING, "ONCE")
+        // TODO: Why is this run twice?
         try {
             JavaFile.builder("me.xdrop.jrand", jrandFacade)
                     .build().writeTo(filer)
