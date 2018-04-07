@@ -59,11 +59,12 @@ class FacadeProcessor : BaseProcessor() {
 
         val jrandFacade = classBuilder.buildFacadeClass(facadeClasses)
 
-        // TODO: Why is this run twice?
         try {
             JavaFile.builder("me.xdrop.jrand", jrandFacade)
                     .build().writeTo(filer)
-        } catch (file: FilerException) {}
+        } catch (ignored: FilerException) {
+            // This fails because on later rounds the facade is already created, but it is fine
+        }
 
         return false
     }
