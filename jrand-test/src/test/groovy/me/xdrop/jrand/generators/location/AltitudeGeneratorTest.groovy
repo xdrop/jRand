@@ -1,7 +1,9 @@
 package me.xdrop.jrand.generators.location
 
+import me.xdrop.jrand.JRand
+
 class AltitudeGeneratorTest extends GroovyTestCase {
-    def instance = {-> new AltitudeGenerator()}
+    def instance = {-> JRand.altitude()}
 
     void testMax() {
         assertTrue Double.parseDouble(instance().max(1000).gen()) < 1000

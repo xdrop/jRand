@@ -1,7 +1,9 @@
 package me.xdrop.jrand.generators.money
 
+import me.xdrop.jrand.JRand
+
 class CardGeneratorTest extends GroovyTestCase {
-    def instance = {-> new CardGenerator()}
+    def instance = { -> JRand.card() }
 
     void testNullity() {
         assertTrue instance().gen().cardType != null
@@ -14,6 +16,7 @@ class CardGeneratorTest extends GroovyTestCase {
         assertTrue instance().gen().expiryDate != null
         assertTrue instance().gen().cvv != null
     }
+
     void testPrint() {
         println instance().gen()
     }

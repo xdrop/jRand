@@ -1,13 +1,14 @@
 package me.xdrop.jrand.generators.location
 
 import com.google.common.base.CharMatcher
+import me.xdrop.jrand.JRand
 
 class PostcodeGeneratorTest extends GroovyTestCase {
-    def instance = {-> new PostcodeGenerator()}
+    def instance = { -> JRand.postcode() }
 
     void testCountry() {
         def postcode = instance().country("cy").gen()
-        assertTrue  postcode.length() == 4
+        assertTrue postcode.length() == 4
         assertTrue CharMatcher.javaDigit().matchesAllOf(postcode)
         def ukPostcode = instance().country("gb").gen()
         assertTrue CharMatcher.javaLetterOrDigit().matchesAllOf(ukPostcode.replace(" ", ""))
@@ -22,7 +23,7 @@ class PostcodeGeneratorTest extends GroovyTestCase {
 
     void testFixedPostcode() {
         def fixed = instance().country("FK").gen()
-        assertTrue  fixed == "FIQQ 1ZZ"
+        assertTrue fixed == "FIQQ 1ZZ"
     }
 
 }

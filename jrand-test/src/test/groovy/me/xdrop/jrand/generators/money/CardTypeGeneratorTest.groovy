@@ -1,9 +1,10 @@
 package me.xdrop.jrand.generators.money
 
+import me.xdrop.jrand.JRand
 import me.xdrop.jrand.model.money.CardType
 
 class CardTypeGeneratorTest extends GroovyTestCase {
-    def instance = {-> new CardTypeGenerator()}
+    def instance = { -> JRand.cardType() }
 
     void testGetTypeByName() {
         assertTrue CardTypeGenerator.getTypeByName("amex") == CardType.AMERICAN_EXPRESS

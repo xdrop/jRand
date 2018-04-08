@@ -1,7 +1,9 @@
 package me.xdrop.jrand.generators.text
 
+import me.xdrop.jrand.JRand
+
 class ParagraphGeneratorTest extends GroovyTestCase {
-    def instance = {-> new ParagraphGenerator()}
+    def instance = { -> JRand.paragraph() }
 
     void testSentences() {
         assertTrue instance().sentences(10).gen().split("\\.").length == 10
@@ -20,7 +22,7 @@ class ParagraphGeneratorTest extends GroovyTestCase {
                 .split(" ")
                 .length == 1
         def zwx = instance().sentences(1)
-                .wordsPerSentence(1,3)
+                .wordsPerSentence(1, 3)
                 .gen()
                 .split(" ")
                 .length

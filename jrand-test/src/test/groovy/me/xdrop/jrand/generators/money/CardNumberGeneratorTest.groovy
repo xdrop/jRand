@@ -1,11 +1,12 @@
 package me.xdrop.jrand.generators.money
 
+import me.xdrop.jrand.JRand
 import me.xdrop.jrand.model.money.CardType
 
 import java.util.regex.Matcher
 
 class CardNumberGeneratorTest extends GroovyTestCase {
-    def instance = {-> new CardNumberGenerator()}
+    def instance = { -> JRand.cardNo() }
 
     void testCardType() {
         assertTrue instance().cardType("visa").gen().startsWith("4")
@@ -39,7 +40,7 @@ class CardNumberGeneratorTest extends GroovyTestCase {
         assertTrue num2.length() == 15
     }
 
-    void testCommon(){
+    void testCommon() {
         def num = instance().common().gen()
         assertTrue num.length() >= 15 && num.length() <= 16
     }

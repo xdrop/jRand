@@ -1,10 +1,11 @@
 package me.xdrop.jrand.generators.person
 
 import com.google.common.base.CharMatcher
+import me.xdrop.jrand.JRand
 import me.xdrop.jrand.model.person.Gender
 
 class NameGeneratorTest extends GroovyTestCase {
-    def instance = { -> new NameGenerator() }
+    def instance = { -> JRand.name() }
 
     void testPrefix() {
         assertTrue instance().withPrefix().gen().split(" ").length == 3

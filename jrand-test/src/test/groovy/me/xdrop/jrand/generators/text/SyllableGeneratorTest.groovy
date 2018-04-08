@@ -1,7 +1,9 @@
 package me.xdrop.jrand.generators.text
 
+import me.xdrop.jrand.JRand
+
 class SyllableGeneratorTest extends GroovyTestCase {
-    def instance = {-> new SyllableGenerator()}
+    def instance = { -> JRand.syllable() }
 
     void testLength() {
         assertTrue instance().length(3).gen().length() == 3

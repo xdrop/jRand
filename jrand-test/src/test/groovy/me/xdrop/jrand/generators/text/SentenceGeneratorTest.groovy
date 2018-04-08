@@ -1,8 +1,10 @@
 package me.xdrop.jrand.generators.text
 
+import me.xdrop.jrand.JRand
+
 
 class SentenceGeneratorTest extends GroovyTestCase {
-    def instance = {-> new SentenceGenerator()}
+    def instance = { -> JRand.sentence() }
 
     void testWords() {
         assertTrue instance().words(5).gen().split(" ").length == 5

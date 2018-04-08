@@ -1,12 +1,13 @@
 package me.xdrop.jrand.generators.basics
 
 import com.google.common.base.CharMatcher
+import me.xdrop.jrand.JRand
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.ExpectedException
 
 class CharacterGeneratorTest extends GroovyTestCase {
-    def instance = { -> return new CharacterGenerator() }
+    def instance = { -> JRand.character() }
 
     void testPool() {
         def pool = "qwz"
@@ -37,7 +38,7 @@ class CharacterGeneratorTest extends GroovyTestCase {
         assertTrue CharMatcher.JAVA_LOWER_CASE.matchesAllOf(instance().alpha().casing("lower").genString())
     }
 
-    void testDefault () {
+    void testDefault() {
         assertTrue CharMatcher.JAVA_LETTER_OR_DIGIT.matchesAllOf(instance().genString())
     }
 
@@ -56,10 +57,10 @@ class CharacterGeneratorTest extends GroovyTestCase {
     }
 
     void testGenWithIndexEmptyPool() {
-        shouldFail(RuntimeException){
+        shouldFail(RuntimeException) {
             instance().pool("").genWithIndex()
         }
-        shouldFail (RuntimeException) {
+        shouldFail(RuntimeException) {
             instance().pool("").gen()
         }
     }

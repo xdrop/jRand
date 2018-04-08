@@ -1,9 +1,10 @@
 package me.xdrop.jrand.generators.money
 
+import me.xdrop.jrand.JRand
 import org.joda.time.format.DateTimeFormat
 
 class ExpiryDateGeneratorTest extends GroovyTestCase {
-    def instance = { -> new ExpiryDateGenerator() }
+    def instance = { -> JRand.expiryDate() }
 
     void testExpired() {
         def exp = DateTimeFormat.forPattern("MM/yy").parseDateTime(instance().expired().gen())

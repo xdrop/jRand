@@ -1,10 +1,11 @@
 package me.xdrop.jrand.generators.person
 
+import me.xdrop.jrand.JRand
 import me.xdrop.jrand.model.person.PersonType
 
 
 class AgeGeneratorTest extends GroovyTestCase {
-    def instance = {-> new AgeGenerator()}
+    def instance = { -> JRand.age() }
 
     void testChild() {
         def years = instance().child().gen()

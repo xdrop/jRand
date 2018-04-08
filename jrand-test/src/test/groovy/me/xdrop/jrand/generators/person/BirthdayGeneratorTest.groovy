@@ -1,11 +1,12 @@
 package me.xdrop.jrand.generators.person
 
+import me.xdrop.jrand.JRand
 import me.xdrop.jrand.model.person.PersonType
 import org.joda.time.DateTime
 import org.joda.time.Period
 
 class BirthdayGeneratorTest extends GroovyTestCase {
-    def instance = { -> new BirthdayGenerator() }
+    def instance = { -> JRand.birthday() }
 
     void testType() {
         DateTime date = instance().type(PersonType.CHILD).getDateTime()

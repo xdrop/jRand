@@ -1,7 +1,9 @@
 package me.xdrop.jrand.generators.basics
 
+import me.xdrop.jrand.JRand
+
 class FloatGeneratorTest extends GroovyTestCase {
-    def instance = {-> new FloatGenerator()}
+    def instance = {-> JRand.flt() }
 
     void testMax() {
         assertTrue instance().max(2.0 as float).gen() <= 2

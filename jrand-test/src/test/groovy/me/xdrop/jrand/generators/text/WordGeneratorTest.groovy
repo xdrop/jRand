@@ -1,7 +1,9 @@
 package me.xdrop.jrand.generators.text
 
+import me.xdrop.jrand.JRand
+
 class WordGeneratorTest extends GroovyTestCase {
-    def instance = {-> new WordGenerator()}
+    def instance = { -> JRand.word() }
 
     void testLength() {
         assertTrue instance().length(6).gen().length() == 6

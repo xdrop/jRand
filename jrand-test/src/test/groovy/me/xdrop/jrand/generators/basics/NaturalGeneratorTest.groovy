@@ -1,7 +1,9 @@
 package me.xdrop.jrand.generators.basics
 
+import me.xdrop.jrand.JRand
+
 class NaturalGeneratorTest extends GroovyTestCase {
-    def instance = {-> new NaturalGenerator()}
+    def instance = {-> JRand.natural() }
 
     void testMin() {
         assertTrue instance().min(50).gen() >= 50

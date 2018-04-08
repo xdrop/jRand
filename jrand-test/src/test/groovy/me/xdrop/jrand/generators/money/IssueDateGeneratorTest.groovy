@@ -1,9 +1,10 @@
 package me.xdrop.jrand.generators.money
 
+import me.xdrop.jrand.JRand
 import org.joda.time.format.DateTimeFormat
 
 class IssueDateGeneratorTest extends GroovyTestCase {
-    def instance = { -> new IssueDateGenerator() }
+    def instance = { -> JRand.issueDate() }
 
     void testIsBeforeNow() {
         def exp = DateTimeFormat.forPattern("mm/yy").parseDateTime(instance().gen())

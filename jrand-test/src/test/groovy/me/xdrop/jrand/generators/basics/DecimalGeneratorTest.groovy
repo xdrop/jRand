@@ -1,7 +1,9 @@
 package me.xdrop.jrand.generators.basics
 
+import me.xdrop.jrand.JRand
+
 class DecimalGeneratorTest extends GroovyTestCase {
-    def instance = { -> new DecimalGenerator() }
+    def instance = { -> JRand.decimal() }
 
     void testMin() {
         assertTrue instance().min(5.0 as double).genAsDecimal() >= 5

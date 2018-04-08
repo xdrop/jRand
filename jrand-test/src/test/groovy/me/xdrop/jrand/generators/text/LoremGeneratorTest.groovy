@@ -1,7 +1,9 @@
 package me.xdrop.jrand.generators.text
 
+import me.xdrop.jrand.JRand
+
 class LoremGeneratorTest extends GroovyTestCase {
-    def instance = { -> new LoremGenerator() }
+    def instance = { -> JRand.lorem() }
 
     void testParagraphs() {
         def lorem = instance().paragraphs(3).gen().split("\n\n").length

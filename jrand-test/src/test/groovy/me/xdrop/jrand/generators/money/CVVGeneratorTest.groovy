@@ -1,7 +1,9 @@
 package me.xdrop.jrand.generators.money
 
+import me.xdrop.jrand.JRand
+
 class CVVGeneratorTest extends GroovyTestCase {
-    def instance = { -> new CVVGenerator() }
+    def instance = { -> JRand.cvv() }
 
     void testIsThreeDigitsLong() {
         def cvv = instance()
@@ -13,7 +15,7 @@ class CVVGeneratorTest extends GroovyTestCase {
         assertTrue cvv.amex().gen().length() == 4
     }
 
-    void testPrint(){
+    void testPrint() {
         println instance().gen()
         println instance().amex().gen()
     }

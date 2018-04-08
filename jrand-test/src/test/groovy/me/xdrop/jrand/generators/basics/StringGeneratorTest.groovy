@@ -1,10 +1,11 @@
 package me.xdrop.jrand.generators.basics
 
 import com.google.common.base.CharMatcher
+import me.xdrop.jrand.JRand
 
 class StringGeneratorTest extends GroovyTestCase {
 
-    def instance = {-> new StringGenerator()}
+    def instance = {-> JRand.string() }
 
     void testPool() {
         def pool = "qwz"
