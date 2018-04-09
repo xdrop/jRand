@@ -63,41 +63,6 @@
         </resources>
         <plugins>
             <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <configuration>
-                            <tasks>
-
-                                <mkdir dir="sources"/>
-
-                                <delete includeEmptyDirs="true">
-                                    <fileset dir="sources" includes="**/*" defaultexcludes="no"/>
-                                </delete>
-
-                                <copy todir="sources/main">
-                                    <fileset dir="../jrand-core/src/main/">
-                                        <exclude name="**/generators/**"/>
-                                    </fileset>
-                                </copy>
-                                <copy todir="sources/main/resources">
-                                    <fileset dir="../jrand-core/src/main/resources"/>
-                                </copy>
-
-                                <copy todir="sources/main/java">
-                                    <fileset dir="../jrand-core/src/generated/java"/>
-                                </copy>
-
-                            </tasks>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.6.1</version>
