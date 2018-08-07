@@ -20,6 +20,17 @@ public class Choose {
     }
 
     /**
+     * Return a random element from any of the lists
+     * @param list The input list
+     * @return The random element
+     */
+    @SafeVarargs
+    public static <T> T one(List<T> ... lists) {
+        List<T> chosenList = lists[nat.range(0, lists.length - 1).gen()];
+        return one(chosenList);
+    }
+
+    /**
      * Return a random element from the list
      * @param arr The input array
      * @return The random element

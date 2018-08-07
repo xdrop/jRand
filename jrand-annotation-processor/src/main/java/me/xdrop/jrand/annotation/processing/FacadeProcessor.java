@@ -1,6 +1,6 @@
 package me.xdrop.jrand.annotation.processing;
 
-import com.squareup.javapoet.JavaFile;
+import com.github.javaparser.ast.CompilationUnit;
 import com.squareup.javapoet.TypeSpec;
 import me.xdrop.jrand.annotation.Facade;
 
@@ -21,28 +21,18 @@ import java.util.Set;
 
 @SupportedAnnotationTypes("me.xdrop.jrand.annotation.Facade")
 @SupportedSourceVersion(SourceVersion.RELEASE_7)
-public class FacadeProcessor extends AbstractProcessor {
-    public static String GENERATED_PACKAGE = "me.xdrop.jrand.generated.generators";
-    private static String packageName = "me.xdrop.jrand";
-    private static String generatorPath = "generators";
-    private Messager messager;
-    private Filer filer;
-    private Map<String, TypeElement> facadeClasses;
-    private Path outputPathGenerators;
+public class FacadeProcessor extends BaseProcessor {
     private FacadeClassBuilder classBuilder;
     private ForkClassGenerator forkClassGenerator;
+    private Map<String, TypeElement> facadeClasses;
     private Path outputPathFacade;
 
     @Override
     public synchronized void init(ProcessingEnvironment processingEnv) {
         super.init(processingEnv);
-        this.messager = processingEnv.getMessager();
-        this.filer = processingEnv.getFiler();
         this.facadeClasses = new HashMap<>();
         this.classBuilder = new FacadeClassBuilder();
-        this.forkClassGenerator = new ForkClassGenerator(processingEnv);
-        this.outputPathGenerators = Paths.get("jrand-core", "src", "generated",
-                "java", "me", "xdrop", "jrand", "generators");
+        this.forkClassGenerator = new ForkClassGenerator(processingEnv, getRepository());
         this.outputPathFacade = Paths.get("jrand-core", "src", "generated", "java", "me", "xdrop", "jrand");
     }
 
@@ -50,7 +40,7 @@ public class FacadeProcessor extends AbstractProcessor {
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
         for (Element element : roundEnv.getElementsAnnotatedWith(Facade.class)) {
             if (element.getKind() != ElementKind.CLASS) {
-                messager.printMessage(Diagnostic.Kind.ERROR, "Annotation [Facade] should only be used on classes.");
+                getMessager().printMessage(Diagnostic.Kind.ERROR, "Annotation [Facade] should only be used on classes.");
                 return true;
             }
 
@@ -61,17 +51,20 @@ public class FacadeProcessor extends AbstractProcessor {
             String accessor = facade.accessor();
             facadeClasses.put(accessor, typeElement);
             try {
-                String[] subpackageParts = pkg.getQualifiedName().toString()
-                        .split("\\.");
-                String lastPackage = subpackageParts[subpackageParts.length - 1];
-
-                String newGeneratedFileName = GENERATED_PACKAGE + "." + lastPackage + "." + typeElement.getSimpleName();
+                // Get the last part of the package eg. me.xdrop.generators.text would be text
+                String lastPackage = getLastPackageName(pkg);
+                // Get the class name eg. LoremGenerator
                 String className = typeElement.getSimpleName().toString();
-                Path path = Paths.get(outputPathGenerators.toString(), lastPackage);
+                // Get the output path which eg. generated/me/xdrop/generators/text
+                Path path = Paths.get(getOutputPathGenerators().toString(), lastPackage);
                 boolean mkdirs = path.toFile().mkdirs();
-                try (FileWriter fw = new FileWriter(new File(path.toString(), className + ".java"))) {
-                    forkClassGenerator.writeForkedClass(typeElement, fw);
-                }
+                // Get the source Compilation unit
+                CompilationUnit sourceCU = getRepository().getCU(pkg.toString(), className);
+                // Create the new compilation unit
+                CompilationUnit newCU = forkClassGenerator.buildForkedClass(typeElement, className, sourceCU);
+                getRepository().addCU(className, newCU);
+                // Write the new compilation unit
+                getRepository().writeTo(path, className, newCU);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -92,6 +85,8 @@ public class FacadeProcessor extends AbstractProcessor {
         return false;
 
     }
+
+
 
     private class FacadeGeneratorInfo {
         private String packageName;

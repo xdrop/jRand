@@ -18,6 +18,14 @@ public abstract class Generator<T> {
 
     public abstract T gen();
 
+    public String repeat(int times) {
+        StringBuilder sb = new StringBuilder();
+        while (times-- > 0) {
+            sb.append(gen());
+        }
+        return sb.toString();
+    }
+
     public String genString() {
         return gen().toString();
     }

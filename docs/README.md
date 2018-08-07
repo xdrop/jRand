@@ -20,13 +20,13 @@ You can install `JRand` via Maven Central:
 <dependency>
     <groupId>me.xdrop</groupId>
     <artifactId>jrand</artifactId>
-    <version>0.2.5-alpha</version>
+    <version>0.2.6-alpha</version>
 </dependency>
 ```
 
 **Gradle**:
 ```gradle
-compile 'me.xdrop:jrand:0.2.5-alpha'
+compile 'me.xdrop:jrand:0.2.6-alpha'
 ```
 
 ## Generator
@@ -1696,6 +1696,134 @@ To generate a random [Geohash](http://en.wikipedia.org/wiki/Geohash)
 ```java 
 geohash.gen();
 => "h9xhn7y"
+```
+
+## Time
+
+### hour
+
+Returns a random hour
+
+**Methods**
+
+```java$
+JRand.hour()
+JRand.hour().twentyfour()
+JRand.hour().twentyfour(boolean enabled)
+JRand.hour().twodigit()
+JRand.hour().twodigit(boolean enabled)
+```
+
+**Examples**
+
+```java 
+HourGenerator hour = JRand.hour();
+```
+
+Generate a random hour between `0` to `12` as a `String`:
+```java 
+hour.gen();
+=> "9"
+```
+
+Force it to be two digits using:
+```java 
+hour.twodigit().gen();
+=> "09"
+```
+
+Or return an hour between `0` and `23`:
+```java 
+hour.twentyfour().gen();
+=> "23"
+```
+
+!> By default this is not two digits so you can call `twodigit` on that as well
+
+
+
+### minute
+
+Returns a random minute
+
+**Methods**
+
+```java$
+JRand.minute()
+```
+
+**Examples**
+
+```java 
+MinuteGenerator minute = JRand.minute();
+```
+
+Generate a random minute (0-59) as string:
+```java 
+minute().gen();
+=> "23"
+```
+
+Or alternatively as `int`:
+```java 
+minute().genInt();
+=> 23
+```
+
+### second
+
+Returns a random second
+
+**Methods**
+
+```java$
+JRand.second()
+```
+
+**Examples**
+
+```java 
+SecondGenerator second = JRand.second();
+```
+
+Generate a random second (0-59) as string:
+```java 
+second.gen();
+=> "11"
+```
+
+Or otherwise as `int`:
+```java 
+second.genInt();
+=> 11
+```
+
+### millisecond
+
+Returns a random millisecond
+
+**Methods**
+
+```java$
+JRand.millisecond()
+```
+
+**Examples**
+
+```java 
+Millisecond millisecond = JRand.millisecond();
+```
+
+Generate a random millisecond `0` to `999` as `String`
+```java 
+millisecond.gen();
+=> "777"
+```
+
+Or as an `int` using:
+```java 
+millisecond.genInt();
+=> 777
 ```
 
 

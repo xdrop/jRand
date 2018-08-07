@@ -2,7 +2,7 @@
 
 
 [![Build Status](https://travis-ci.org/xdrop/jRand.svg?branch=master)](https://travis-ci.org/xdrop/jRand)
-[![Documentation](https://img.shields.io/badge/documentation-0.2.5--alpha-green.svg)](https://jrand.xdrop.me)
+[![Documentation](https://img.shields.io/badge/documentation-0.2.6--alpha-green.svg)](https://jrand.xdrop.me)
 [ ![Download](https://api.bintray.com/packages/xdrop/jrand/jrand/images/download.svg) ](https://bintray.com/xdrop/jrand/jRand/_latestVersion)
 > Probably the *best* Java library for random data generation.*
 
@@ -35,13 +35,13 @@ You can install `JRand` via Maven Central:
 <dependency>
     <groupId>me.xdrop</groupId>
     <artifactId>jrand</artifactId>
-    <version>0.2.5-alpha</version>
+    <version>0.2.6-alpha</version>
 </dependency>
 ```
 
 **Gradle**:
 ```gradle
-compile 'me.xdrop:jrand:0.2.5-alpha'
+compile 'me.xdrop:jrand:0.2.6-alpha'
 ```
 
 
@@ -85,7 +85,13 @@ compile 'me.xdrop:jrand:0.2.5-alpha'
 * [Latitude](https://jrand.xdrop.me/#/?id=latitude)
 * [Coordinates](https://jrand.xdrop.me/#/?id=coordinates)
 * [Geohash](https://jrand.xdrop.me/#/?id=coordinates)
+* [Phone Number](https://jrand.xdrop.me/#/?id=phone)
 
+#### Time
+* [Millisecond](https://jrand.xdrop.me/#/?id=milli)
+* [Second](https://jrand.xdrop.me/#/?id=second)
+* [Minute](https://jrand.xdrop.me/#/?id=minute)
+* [Hour](https://jrand.xdrop.me/#/?id=hour)
 
 #### Money
 * [Credit Card](https://jrand.xdrop.me/#/?id=card)
