@@ -1,6 +1,6 @@
 <!-- Load the header without a physical h1 tag -->
 <!-- hidden-header:JRand:1 -->
-![jrand](https://jrand.xdrop.me/_media/jrand.svg)
+![jrand](_media/jrand.svg)
 
 > Probably the *best* Java library for random data generation.*
 
