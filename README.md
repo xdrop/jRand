@@ -1,4 +1,4 @@
-<a href="https://jrand.xdrop.me"><img src="https://jrand.xdrop.me/_media/jrand.svg" width="168.5px"/></a>
+<a href="https://xdrop.github.io/jRand/#/"><img src="https://raw.githubusercontent.com/xdrop/jRand/c129c793f75345b8847c25d9ff1a5c721aa4a76a/docs/_media/jrand2.svg" width="168.5px"/></a>
 
 
 [![Build Status](https://travis-ci.org/xdrop/jRand.svg?branch=master)](https://travis-ci.org/xdrop/jRand)
